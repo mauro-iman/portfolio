@@ -1,0 +1,142 @@
+---
+/* Shared page shell: head, header, footer, mobile tabs, 60 s overlay and the scripts.
+   home: true on the home (nav links are in-page anchors); case pages link back to the home sections. */
+import { site, url, BASE, translator, cases } from '../lib/content.js';
+
+const { lang, D, path = '', titleKey, home = false, asm = false, pageScripts = [] } = Astro.props;
+const t = translator(D, lang);
+const other = lang === 'en' ? 'es' : 'en';
+const sec = h => home ? h : url(lang, h);           /* nav target for a home section */
+const secL = h => home ? undefined : h;              /* language-neutral path for site.js to rewrite on switch */
+const canonical = new URL(url(lang, path), Astro.site).href;
+const alt = new URL(url(other, path), Astro.site).href;
+const cfg = { lang, base: BASE, path, D, email: site.email, cases: cases.map(c => ({ slug: c.slug, title: c.title, sector: c[lang].sector })) };
+const json = JSON.stringify(cfg).replace(/</g, '\\u003c');
+---
+<!doctype html>
+<html lang={lang}>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#EDEFEE" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0B0F0D" media="(prefers-color-scheme: dark)">
+<title data-i={titleKey}>{t(titleKey)}</title>
+<meta name="description" content={t('doc.desc')}>
+<link rel="canonical" href={canonical}>
+<link rel="alternate" hreflang={lang} href={canonical}>
+<link rel="alternate" hreflang={other} href={alt}>
+<link rel="alternate" hreflang="x-default" href={new URL(url('en', path), Astro.site).href}>
+<meta property="og:title" content={t(titleKey)}>
+<meta property="og:description" content={t('doc.desc')}>
+<meta property="og:type" content="website">
+<meta property="og:url" content={canonical}>
+<link rel="icon" href={`${BASE}favicon.svg`} type="image/svg+xml">
+<script is:inline>try { var t = localStorage.getItem('mi-theme'); if (t === 'light' || t === 'dark') document.documentElement.setAttribute('data-theme', t); } catch (e) {} document.documentElement.classList.add('js'); addEventListener('pagereveal', function (e) { var v = e.viewTransition; if (v) { v.ready.catch(function () {}); v.finished.catch(function () {}); } });</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300..800&family=Geist+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href={`${BASE}site.css`}>
+{asm && <script is:inline>try { if (!matchMedia('(prefers-reduced-motion: reduce)').matches && localStorage.getItem('mi-field') !== 'off') document.documentElement.classList.add('asm'); } catch (e) { document.documentElement.classList.add('asm'); }</script>}
+<script is:inline set:html={`window.MI = ${json};`}></script>
+</head>
+<body data-base={home ? 'home' : 'work'}>
+<a class="skip" href="#main" data-i="skip">{t('skip')}</a>
+
+<header class="top" id="top">
+  <div class="wrap">
+    <a class="logo" href={home ? '#home' : url(lang)} data-l={home ? undefined : ''}>Mauro Im<span class="acc">á</span>n</a>
+    <div class="top-r">
+      <nav class="nav" id="nav" aria-label="Main">
+        <span class="tilde" id="navTilde" aria-hidden="true"></span>
+        <a href={sec('#work')} data-l={secL('#work')} data-sec="work" data-mag data-i="nav.work">{t('nav.work')}</a>
+        <a href={sec('#highlights')} data-l={secL('#highlights')} data-sec="highlights" data-mag data-i="nav.highlights">{t('nav.highlights')}</a>
+        <a href={sec('#about')} data-l={secL('#about')} data-sec="about" data-mag data-i="nav.about">{t('nav.about')}</a>
+        <a href="#contact" data-sec="contact" data-mag data-i="nav.contact">{t('nav.contact')}</a>
+      </nav>
+      <a class="btn-sm" id="langTop" href={url(other, path)} lang={other} hreflang={other} aria-label={other === 'es' ? 'Español' : 'English'}>{other.toUpperCase()}</a>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+  <slot />
+
+  <section class="sec" id="contact" aria-labelledby="cta-h">
+    <div class="wrap">
+      <div class="cta-st rv" id="ctaSt">
+        <canvas class="fieldcv" id="fCta" aria-hidden="true"></canvas>
+        <canvas class="fe" id="fFerro" aria-hidden="true"></canvas>
+        <div class="cta-in">
+          <span class="label" data-i="nav.contact">{t('nav.contact')}</span>
+          <h2 id="cta-h" data-i="cta.h">{t('cta.h')}</h2>
+          <div class="cta-row">
+            <a class="btn-p" href={`mailto:${site.email}`} id="ctaBtn"><span data-i="cta.btn">{t('cta.btn')}</span><span class="tilde" aria-hidden="true"></span></a>
+            <button type="button" class="copy" id="copy" aria-describedby="status"><span class="em" id="email">{site.email}</span><span class="ck" id="ck" data-i="cta.copy">{t('cta.copy')}</span></button>
+          </div>
+          <p class="status" id="status" role="status" aria-live="polite"></p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="foot" id="foot">
+  <canvas class="fieldcv" id="fFoot" aria-hidden="true"></canvas>
+  <div class="wrap">
+    <div class="ft-cols">
+      <div>
+        <span class="label" data-i="foot.now">{t('foot.now')}</span>
+        <p class="ft-now"><span id="time">--:--</span> <span data-i="foot.in">{t('foot.in')}</span></p>
+        <p data-i="foot.avail">{t('foot.avail')}</p>
+      </div>
+      <div>
+        <span class="label" data-i="foot.site">{t('foot.site')}</span>
+        <ul class="ft-list"><li><a href={sec('#work')} data-l={secL('#work')} data-i="nav.work">{t('nav.work')}</a></li><li><a href={sec('#highlights')} data-l={secL('#highlights')} data-i="nav.highlights">{t('nav.highlights')}</a></li><li><a href={sec('#about')} data-l={secL('#about')} data-i="nav.about">{t('nav.about')}</a></li></ul>
+      </div>
+      <div>
+        <span class="label" data-i="foot.else">{t('foot.else')}</span>
+        <ul class="ft-list"><li><a href={site.linkedin} rel="me noopener" target="_blank">LinkedIn</a></li><li><a href={`mailto:${site.email}`}>Email</a></li></ul>
+      </div>
+      <div>
+        <span class="label" data-i="foot.settings">{t('foot.settings')}</span>
+        <button type="button" class="btn-sm" id="fieldBtn" aria-pressed="true"><span class="tilde" aria-hidden="true"></span><span id="fieldL">{t('foot.field')} · {t('foot.on')}</span></button>
+        <div class="seg" role="group" aria-label={t('foot.theme')} id="themeSeg">
+          <button type="button" data-t="system" data-i="foot.system">{t('foot.system')}</button>
+          <button type="button" data-t="light" data-i="foot.light">{t('foot.light')}</button>
+          <button type="button" data-t="dark" data-i="foot.dark">{t('foot.dark')}</button>
+        </div>
+        <a class="btn-sm" id="langFoot" href={url(other, path)} lang={other} hreflang={other}>{other === 'es' ? 'Español' : 'English'}</a>
+        <button type="button" class="btn-sm" id="topBtn" data-i="foot.top">{t('foot.top')}</button>
+      </div>
+    </div>
+    <div class="ft-legal"><span class="label">© {new Date().getFullYear()} Mauro Imán</span><span class="label"><span data-i="foot.legal">{t('foot.legal')}</span><span class="kb"> · <span data-i="foot.grid">{t('foot.grid')}</span></span></span></div>
+    <div class="ft-word" aria-hidden="true"><span class="w" id="word">Im<span class="acc">á</span>n</span></div>
+  </div>
+</footer>
+
+<nav class="tabs" id="tabs" aria-label="Main">
+  <span class="tilde" id="tabTilde" aria-hidden="true"></span>
+  <a href={home ? '#home' : url(lang)} data-l={home ? undefined : ''} data-sec="home" aria-current={home ? 'true' : undefined} data-i="tab.home">{t('tab.home')}</a>
+  <a href={sec('#work')} data-l={secL('#work')} data-sec="work" data-i="nav.work">{t('nav.work')}</a>
+  <a href={sec('#highlights')} data-l={secL('#highlights')} data-sec="highlights" data-hl-tab data-i="tab.60">{t('tab.60')}</a>
+  <a href={sec('#about')} data-l={secL('#about')} data-sec="about" data-i="nav.about">{t('nav.about')}</a>
+</nav>
+
+<div class="hlo" id="hlo" role="dialog" aria-modal="true" aria-labelledby="hlo-t" hidden>
+  <canvas class="fieldcv" id="fHlo" aria-hidden="true"></canvas>
+  <div class="hlo-bar">
+    <div class="hlo-prog"><i id="hloFill"></i><span class="tilde" id="hloTilde" aria-hidden="true"></span></div>
+    <span class="label hlo-time" id="hloTime" aria-live="off">60 s</span>
+    <button type="button" class="btn-sm" id="hloExit" data-i="hl.exit">{t('hl.exit')}</button>
+  </div>
+  <div class="hlo-steps" id="hloSteps" tabindex="0"></div>
+</div>
+
+<canvas class="pull-fx" id="pullFx" aria-hidden="true" hidden></canvas>
+<div class="seam" id="seam" aria-hidden="true"></div>
+<div class="gridov" id="gridov" aria-hidden="true"><div class="wrap"><div class="grid"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div></div></div>
+
+{pageScripts.map(s => <script is:inline src={`${BASE}${s}`}></script>)}
+<script is:inline src={`${BASE}site.js`}></script>
+</body>
+</html>

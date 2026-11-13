@@ -1,0 +1,116 @@
+# Silstech · YPF case. English and Spanish side by side; text in [brackets] is still a placeholder.
+title: Silstech · YPF
+order: 2
+cover: ypf
+system: false
+homeMetric: "−15%"
+
+en:
+  sector: Energy
+  years: 2019–2021
+  summary: A national logistics and safety platform, designed from zero for Argentina’s leading energy company and its carriers.
+  homeMetricLabel: road incidents
+  highlight: 15% fewer road incidents · 35% faster emergency response
+  role: Senior product designer at Silstech (client YPF)
+  scope: Product strategy · Control tower · Driver app · Incident management
+  team: Silstech product and engineering, YPF operations and its carriers
+  timeline: Early 2019 – Mid 2021
+  coverAlt: Silstech · YPF product cover
+  metrics:
+    - { value: "−15%", label: road incidents }
+    - { value: "+35%", label: faster emergency response times }
+    - { value: "90%", label: adoption among field workers in the first six months }
+  problem: Thousands of trucks and IoT sensors across the country, run by many carriers with their own tools, and no single live view of trips, incidents and compliance.
+  did: Designed from zero a national platform — a system of record for traceability, incident management with playback, real-time fleet telemetry and a safety-first app for drivers.
+  result: 15% fewer road incidents, emergency response 35% faster and 90% adoption among field staff within six months.
+  story:
+    title: From radio and paper to one live map.
+    chapters:
+      - kicker: Problem
+        title: A national operation with no single view.
+        text: Fuel moves across the country through many carriers, each with its own way of dispatching, reporting and checking trucks. YPF needed to see every trip and every incident as it happened, not after.
+        data: → Thousands of vehicles and IoT sensors nationwide
+      - kicker: Decision
+        title: Start from the driver, then give the operation one source of truth.
+        text: Instead of digitizing every form, we designed around the trip — a mobile app built for the road feeds a system of record where YPF and its carriers see the same live state.
+        data: → Three modules — security and road safety, maintenance and documents, performance and telemetry
+      - kicker: Result
+        title: Every trip visible, every incident on record.
+        text: Incidents are tracked, replayed and resolved in one place, so teams act while the truck is still on the road. Field workers and non-technical staff adopted it fast.
+        data: → 15% fewer road incidents · 35% faster emergency response
+  work:
+    title: Four pillars, one trip.
+    items:
+      - mini: q
+        title: Full traceability
+        text: A system of record for incidents and cases, with dashboards, insights and a full history for every truck, driver and trip.
+        screen: "[screen: incident management]"
+      - mini: notes
+        title: Incident management and playback
+        text: Replay any trip on the map to understand what happened, when and why, and turn it into an action.
+        screen: "[screen: trip playback]"
+      - mini: sys
+        title: Real-time fleet telemetry
+        text: Live fleet position, vehicle cameras and telemetry from thousands of sensors in one control tower.
+        screen: "[screen: fleet position]"
+      - mini: q
+        title: Safety-first mobile app
+        text: QR login, trip plan, incident reporting, customer proximity alerts and fuel distribution, designed for drivers on the road. 90% adoption in six months.
+        screen: "[screen: driver trip flow]"
+  reflection: "[What this project taught me, in one or two sentences.]"
+  next: "[one line]"
+
+es:
+  sector: Energía
+  years: 2019–2021
+  summary: Una plataforma nacional de logística y seguridad, diseñada desde cero para la principal energética de Argentina y sus transportistas.
+  homeMetricLabel: de incidentes viales
+  highlight: 15% menos incidentes viales · respuesta a emergencias 35% más rápida
+  role: Senior product designer en Silstech (cliente YPF)
+  scope: Estrategia de producto · Torre de control · App de choferes · Gestión de incidentes
+  team: Producto e ingeniería de Silstech, operaciones de YPF y sus transportistas
+  timeline: Principios de 2019 – mediados de 2021
+  coverAlt: Portada del producto Silstech · YPF
+  metrics:
+    - { value: "−15%", label: de incidentes viales }
+    - { value: "+35%", label: de rapidez en la respuesta a emergencias }
+    - { value: "90%", label: de adopción entre trabajadores de campo en los primeros seis meses }
+  problem: Miles de camiones y sensores IoT en todo el país, operados por muchos transportistas con sus propias herramientas, y ninguna vista en vivo de viajes, incidentes y compliance.
+  did: Diseñé desde cero una plataforma nacional — un sistema de registro para la trazabilidad, gestión de incidentes con playback, telemetría de flota en tiempo real y una app para choferes centrada en la seguridad.
+  result: 15% menos incidentes viales, respuesta a emergencias 35% más rápida y 90% de adopción en el personal de campo en seis meses.
+  story:
+    title: De la radio y el papel a un solo mapa en vivo.
+    chapters:
+      - kicker: Problema
+        title: Una operación nacional sin una vista única.
+        text: El combustible se mueve por todo el país a través de muchos transportistas, cada uno con su forma de despachar, reportar y revisar camiones. YPF necesitaba ver cada viaje y cada incidente en el momento, no después.
+        data: → Miles de vehículos y sensores IoT en todo el país
+      - kicker: Decisión
+        title: Empezar por el chofer y darle a la operación una sola fuente de verdad.
+        text: En lugar de digitalizar cada formulario, diseñamos alrededor del viaje — una app pensada para la ruta alimenta un sistema de registro donde YPF y sus transportistas ven el mismo estado en vivo.
+        data: → Tres módulos — seguridad patrimonial y vial, mantenimiento y documentación, rendimiento y telemetría
+      - kicker: Resultado
+        title: Cada viaje visible, cada incidente registrado.
+        text: Los incidentes se siguen, se reproducen y se resuelven en un solo lugar, así los equipos actúan con el camión todavía en la ruta. El personal de campo y los usuarios no técnicos lo adoptaron rápido.
+        data: → 15% menos incidentes viales · respuesta a emergencias 35% más rápida
+  work:
+    title: Cuatro pilares, un solo viaje.
+    items:
+      - mini: q
+        title: Trazabilidad completa
+        text: Un sistema de registro de incidentes y casos, con tableros, insights y el historial completo de cada camión, chofer y viaje.
+        screen: "[pantalla: gestión de incidentes]"
+      - mini: notes
+        title: Gestión de incidentes y playback
+        text: Reproducir cualquier viaje en el mapa para entender qué pasó, cuándo y por qué, y convertirlo en una acción.
+        screen: "[pantalla: playback del viaje]"
+      - mini: sys
+        title: Telemetría de flota en tiempo real
+        text: Posición de la flota en vivo, cámaras de los vehículos y telemetría de miles de sensores en una sola torre de control.
+        screen: "[pantalla: posición de la flota]"
+      - mini: q
+        title: App móvil centrada en la seguridad
+        text: Ingreso con QR, plan de viaje, reporte de incidentes, avisos de proximidad al cliente y descarga de combustible, pensada para choferes en la ruta. 90% de adopción en seis meses.
+        screen: "[pantalla: flujo de viaje del chofer]"
+  reflection: "[Qué me enseñó este proyecto, en una o dos frases.]"
+  next: "[una línea]"

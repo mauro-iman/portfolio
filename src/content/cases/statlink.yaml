@@ -1,0 +1,108 @@
+# StatLink case. English and Spanish side by side; text in [brackets] is still a placeholder.
+title: StatLink
+order: 3
+cover: statlink
+system: false
+homeMetric: "7"
+
+en:
+  sector: Sports tech
+  years: 2020–2023
+  summary: The information architecture pivot that reshaped a platform for coaches, players and scouts.
+  homeMetricLabel: personas behind one account model
+  highlight: One account, many profiles, across 7 personas
+  role: Product strategy and lead designer
+  scope: Strategy · Information architecture · Design system
+  team: Independent consulting for DSA Labs
+  timeline: Mid 2020 – Late 2023
+  coverAlt: StatLink product cover
+  metrics:
+    - { value: "7", label: personas mapped, from club directors to scouts }
+    - { value: "1 → many", label: one login, several profiles per person }
+    - { value: "0 → 1", label: dark atomic design system built from scratch }
+  problem: Every account meant one person with one role, so a coach who also scouted, or a director running several teams, needed separate logins.
+  did: Competitive analysis against WyScout and Opta, seven personas, a multi-profile information architecture and a dark atomic design system, plus agile rituals for the team.
+  result: A unified account model — one credential, multiple profiles — and a product ready for the partnership with Iterpro.
+  story:
+    title: Breaking the one-account, one-role logic.
+    chapters:
+      - kicker: Problem
+        title: One person, one account, one role.
+        text: In football the same person plays many parts — player, coach, scout, director. The platform tied each account to a single role, which pushed people into duplicate logins and fragmented data.
+        data: → A crowded market led by WyScout and Opta Sports
+      - kicker: Decision
+        title: Design around people, not accounts.
+        text: A SWOT analysis and seven personas, like “Marek the Director” and “John the Scout”, led to a new architecture — one unified account that holds several profiles, each with its own view.
+        data: → Unified account — one credential, multiple profiles
+      - kicker: Result
+        title: One login for every role in the club.
+        text: Teams, players and staff live in one coherent structure, built on a dark design system made for analysis-heavy screens.
+        data: → Partnership with Iterpro · [impact metric]
+  work:
+    title: Three moves, one platform.
+    items:
+      - mini: notes
+        title: Strategy and positioning
+        text: SWOT and competitive analysis against WyScout and Opta Sports to find where StatLink could win.
+        screen: "[image: SWOT and personas]"
+      - mini: q
+        title: Multi-persona architecture
+        text: Seven personas and the unified account model — team and player profiles with stats, roster, subscription and evaluation cards.
+        screen: "[screen: team profile]"
+      - mini: sys
+        title: Dark atomic design system
+        text: A dark UI kit built from scratch — icon font, color palette and components — plus agile ceremonies introduced to the team.
+        screen: "[image: UI kit components]"
+  reflection: "[What this project taught me, in one or two sentences.]"
+  next: "[one line]"
+
+es:
+  sector: Deportes
+  years: 2020–2023
+  summary: El pivot de arquitectura de información que transformó una plataforma para entrenadores, jugadores y scouts.
+  homeMetricLabel: personas detrás de un solo modelo de cuenta
+  highlight: Una cuenta, varios perfiles, para 7 personas
+  role: Estrategia de producto y lead designer
+  scope: Estrategia · Arquitectura de información · Design system
+  team: Consultoría independiente para DSA Labs
+  timeline: Mediados de 2020 – fines de 2023
+  coverAlt: Portada del producto StatLink
+  metrics:
+    - { value: "7", label: personas definidas, de directores de club a scouts }
+    - { value: "1 → n", label: un solo login, varios perfiles por persona }
+    - { value: "0 → 1", label: design system atómico oscuro construido desde cero }
+  problem: Cada cuenta era una persona con un solo rol, así que un entrenador que también hacía scouting, o un director con varios equipos, necesitaba logins separados.
+  did: Análisis competitivo frente a WyScout y Opta, siete personas, una arquitectura de información multiperfil y un design system atómico oscuro, además de rituales ágiles para el equipo.
+  result: Un modelo de cuenta unificada — una credencial, varios perfiles — y un producto listo para la alianza con Iterpro.
+  story:
+    title: Romper la lógica de una cuenta, un rol.
+    chapters:
+      - kicker: Problema
+        title: Una persona, una cuenta, un rol.
+        text: En el fútbol la misma persona cumple muchos papeles — jugador, entrenador, scout, director. La plataforma ataba cada cuenta a un solo rol, lo que llevaba a logins duplicados y datos fragmentados.
+        data: → Un mercado competido, liderado por WyScout y Opta Sports
+      - kicker: Decisión
+        title: Diseñar alrededor de las personas, no de las cuentas.
+        text: Un análisis FODA y siete personas, como “Marek el Director” y “John el Scout”, llevaron a una nueva arquitectura — una cuenta unificada que reúne varios perfiles, cada uno con su propia vista.
+        data: → Cuenta unificada — una credencial, varios perfiles
+      - kicker: Resultado
+        title: Un solo login para cada rol del club.
+        text: Equipos, jugadores y staff conviven en una estructura coherente, sobre un design system oscuro pensado para pantallas de análisis.
+        data: → Alianza con Iterpro · [métrica de impacto]
+  work:
+    title: Tres movimientos, una plataforma.
+    items:
+      - mini: notes
+        title: Estrategia y posicionamiento
+        text: Análisis FODA y competitivo frente a WyScout y Opta Sports para encontrar dónde podía ganar StatLink.
+        screen: "[imagen: FODA y personas]"
+      - mini: q
+        title: Arquitectura multipersona
+        text: Siete personas y el modelo de cuenta unificada — perfiles de equipo y de jugador con estadísticas, plantel, suscripción y tarjetas de evaluación.
+        screen: "[pantalla: perfil de equipo]"
+      - mini: sys
+        title: Design system atómico oscuro
+        text: Un UI kit oscuro construido desde cero — fuente de íconos, paleta de color y componentes — y ceremonias ágiles incorporadas al equipo.
+        screen: "[imagen: componentes del UI kit]"
+  reflection: "[Qué me enseñó este proyecto, en una o dos frases.]"
+  next: "[una línea]"

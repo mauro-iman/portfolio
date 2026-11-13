@@ -1,0 +1,462 @@
+<title>Imán Color y Tipografía</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,200..800&family=Instrument+Sans:wght@400..600&family=IBM+Plex+Mono:wght@400;500&family=Geist:wght@300..800&family=Geist+Mono:wght@400;500&family=Archivo:wdth,wght@62..125,100..900&family=Instrument+Serif:ital@0;1&family=Inter+Tight:wght@400..700&family=Unbounded:wght@400..800&family=Hanken+Grotesk:wght@400..700&display=swap">
+<style>
+/* Layout: 12-column page grid; labels in columns 1–3, content in 4–12. Page tokens are overwritten live by the selected palette. */
+:root {
+  --paper: #ECEDEE; --panel: #E1E2E4; --ink: #141110; --ink-2: #55504D; --line: #CBCACA;
+  --accent: #B23A0E; --fill: #E04E0E;
+  --pass: #1F7A3A; --fail: #B3261E;
+  --f-display: "Bricolage Grotesque", "Helvetica Neue", Arial, sans-serif;
+  --f-text: "Instrument Sans", "Helvetica Neue", Arial, sans-serif;
+  --f-mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+  --s-0: .75rem; --s-2: 1.25rem; --s-4: clamp(2rem, 4vw, 3rem); --s-5: clamp(2.75rem, 7.5vw, 6.5rem);
+  --gutter: 24px; --maxw: 1280px; --spring: cubic-bezier(.3, 1.45, .5, 1);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #0F0D0C; --panel: #181514; --ink: #ECE8E6; --ink-2: #A59D98; --line: #2E2926;
+    --accent: #FF7A45; --fill: #FF6A2B; --pass: #5BD08A; --fail: #FF8A80; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #0F0D0C; --panel: #181514; --ink: #ECE8E6; --ink-2: #A59D98; --line: #2E2926;
+  --accent: #FF7A45; --fill: #FF6A2B; --pass: #5BD08A; --fail: #FF8A80; color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body {
+  background: var(--paper); color: var(--ink); font-family: var(--f-text); font-size: 1rem; line-height: 1.55;
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px));
+  -webkit-font-smoothing: antialiased; transition: background .4s, color .4s;
+}
+::selection { background: var(--accent); color: var(--paper); }
+button { font: inherit; color: inherit; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+.wrap { max-width: var(--maxw); margin: 0 auto; padding-inline: clamp(0px, 2.5vw, 32px); }
+.grid { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gutter); }
+@media (max-width: 760px) { :root { --gutter: 16px; } }
+.label { font-family: var(--f-mono); font-size: var(--s-0); letter-spacing: .06em; text-transform: uppercase; color: var(--ink-2); }
+.label b { color: var(--ink); font-weight: 500; }
+.acc { color: var(--accent); }
+.tilde { display: inline-block; width: 3px; height: 11px; background: var(--fill); border-radius: 2px; transform: rotate(34deg); }
+
+.top { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 30; background: var(--paper); border-bottom: 1px solid var(--line); transition: background .4s; }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 31; background: var(--paper); }
+.top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 12px; }
+.mark { font-family: var(--f-display); font-weight: 650; font-size: 1.05rem; font-variation-settings: "wdth" 85, "opsz" 24; }
+@media (max-width: 560px) { .top .label { display: none; } }
+
+.hero { padding-block: clamp(56px, 10vw, 120px) clamp(32px, 5vw, 64px); }
+.hero .label { grid-column: 1 / 4; padding-top: .9em; }
+.hero h1 { grid-column: 4 / 13; margin: 0; font-family: var(--f-display); font-size: var(--s-5); line-height: .94; letter-spacing: -.035em; font-weight: 700; font-variation-settings: "wdth" 80, "opsz" 96; text-wrap: balance; }
+.hero .lead { grid-column: 4 / 11; margin: 28px 0 0; font-size: var(--s-2); color: var(--ink-2); max-width: 62ch; }
+@media (max-width: 760px) { .hero .label, .hero h1, .hero .lead { grid-column: 1 / -1; } .hero h1 { margin-top: 16px; } }
+
+section.block { border-top: 1px solid var(--line); padding-block: clamp(48px, 7vw, 96px); }
+.side { grid-column: 1 / 4; display: flex; flex-direction: column; gap: 6px; }
+.main { grid-column: 4 / 13; min-width: 0; }
+@media (max-width: 760px) { .side, .main { grid-column: 1 / -1; } .side { margin-bottom: 24px; flex-direction: row; flex-wrap: wrap; gap: 4px 16px; } }
+h2 { margin: 0 0 16px; font-family: var(--f-display); font-weight: 650; font-size: var(--s-4); line-height: 1.02; letter-spacing: -.025em; font-variation-settings: "wdth" 85, "opsz" 72; text-wrap: balance; }
+h3 { margin: 0 0 8px; font-family: var(--f-display); font-weight: 600; font-size: var(--s-2); font-variation-settings: "wdth" 90, "opsz" 24; }
+p { margin: 0 0 1em; max-width: 64ch; text-wrap: pretty; }
+.muted { color: var(--ink-2); }
+.tagline { font-size: var(--s-2); color: var(--ink-2); margin: -4px 0 28px; max-width: 60ch; }
+
+/* Palette picker */
+.picker { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--gutter); margin-bottom: 28px; }
+.fam > .label { display: block; margin-bottom: 8px; }
+.fam-opts { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.sw {
+  border: 1px solid var(--line); background: var(--paper); border-radius: 6px; padding: 10px; cursor: pointer; text-align: left;
+  display: flex; flex-direction: column; gap: 8px; min-width: 0; transition: border-color .2s, transform .3s var(--spring);
+}
+.sw:hover { border-color: var(--ink-2); }
+.sw[aria-pressed="true"] { border-color: var(--ink); box-shadow: inset 0 0 0 1px var(--ink); }
+.sw .chips { display: flex; height: 28px; border-radius: 4px; overflow: hidden; }
+.sw .chips i { flex: 1; }
+.sw .nm { font-size: .88rem; font-weight: 600; line-height: 1.2; }
+.sw .badge { font-family: var(--f-mono); font-size: .66rem; letter-spacing: .04em; }
+@media (max-width: 760px) { .picker { grid-template-columns: 1fr; } }
+
+/* Mini sites */
+.duo { display: grid; grid-template-columns: 1fr 1fr; gap: var(--gutter); }
+@media (max-width: 900px) { .duo { grid-template-columns: 1fr; } }
+.mini {
+  position: relative; border-radius: 8px; overflow: hidden; isolation: isolate; height: 360px;
+  background: var(--m-paper); color: var(--m-ink); border: 1px solid var(--m-line); transition: background .4s, color .4s;
+}
+.mini canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+.mn-nav { position: absolute; top: 0; left: 0; right: 0; z-index: 2; display: flex; justify-content: space-between; align-items: center; padding: 14px 18px; gap: 10px; }
+.mn-logo { font-family: var(--m-display); font-weight: var(--m-dw, 700); font-size: 1rem; letter-spacing: var(--m-dls, -.01em); }
+.mn-logo .a, .mn-h .a { color: var(--m-accent); }
+.mn-links { display: flex; gap: 14px; font-family: var(--m-text); font-size: .8rem; position: relative; padding-top: 8px; }
+.mn-links span:first-of-type { font-weight: 600; }
+.mn-links .t { position: absolute; top: -3px; left: 8px; width: 2.5px; height: 9px; border-radius: 2px; background: var(--m-fill); transform: rotate(34deg); }
+.mn-hero { position: absolute; left: 18px; right: 18px; bottom: 18px; z-index: 2; }
+.mn-gloss { font-family: var(--m-mono); font-size: .7rem; color: var(--m-ink2); margin: 0 0 8px; }
+.mn-h { font-family: var(--m-display); font-weight: var(--m-dw, 700); font-style: var(--m-ds, normal); font-size: clamp(1.9rem, 3.6vw, 2.7rem); line-height: var(--m-dlh, .96); letter-spacing: var(--m-dls, -.03em); margin: 0 0 10px; max-width: 13ch; font-variation-settings: var(--m-dvar, normal); }
+.mn-body { font-family: var(--m-text); font-size: .85rem; color: var(--m-ink2); margin: 0 0 12px; max-width: 42ch; }
+.mn-body a { color: var(--m-accent); text-decoration: underline; text-underline-offset: 2px; }
+.mn-btns { display: flex; gap: 8px; flex-wrap: wrap; font-family: var(--m-text); font-size: .78rem; }
+.mn-btns span { border-radius: 999px; padding: 7px 12px; border: 1px solid var(--m-ink); }
+.mn-btns .b1 { background: var(--m-ink); color: var(--m-paper); }
+.mn-btns .b3 { border-color: var(--m-fill); color: var(--m-accent); }
+.mini .tag { position: absolute; top: 14px; right: 18px; z-index: 3; font-family: var(--f-mono); font-size: .65rem; letter-spacing: .06em; text-transform: uppercase; color: var(--m-ink2); display: none; }
+
+/* Contrast table */
+.ct { overflow-x: auto; border: 1px solid var(--line); border-radius: 6px; margin-top: 28px; }
+.ct table { border-collapse: collapse; width: 100%; min-width: 640px; font-size: .9rem; }
+.ct th, .ct td { text-align: left; padding: 10px 14px; border-bottom: 1px solid var(--line); vertical-align: middle; }
+.ct tr:last-child td { border-bottom: 0; }
+.ct th { font-family: var(--f-mono); font-weight: 400; font-size: var(--s-0); text-transform: uppercase; letter-spacing: .06em; color: var(--ink-2); }
+.ct td.num { font-family: var(--f-mono); font-variant-numeric: tabular-nums; }
+.pair { display: inline-flex; align-items: center; gap: 8px; }
+.pair i { width: 22px; height: 16px; border-radius: 3px; border: 1px solid var(--line); display: inline-grid; place-items: center; font-style: normal; font-size: 10px; font-weight: 700; }
+.ok { color: var(--pass); font-family: var(--f-mono); font-size: .75rem; }
+.ko { color: var(--fail); font-family: var(--f-mono); font-size: .75rem; }
+
+/* Overview */
+.ov { overflow-x: auto; border: 1px solid var(--line); border-radius: 6px; }
+.ov table { border-collapse: collapse; width: 100%; min-width: 620px; font-size: .9rem; }
+.ov th, .ov td { text-align: left; padding: 10px 14px; border-bottom: 1px solid var(--line); }
+.ov tr:last-child td { border-bottom: 0; }
+.ov th { font-family: var(--f-mono); font-weight: 400; font-size: var(--s-0); text-transform: uppercase; letter-spacing: .06em; color: var(--ink-2); }
+.ov td.num { font-family: var(--f-mono); font-variant-numeric: tabular-nums; }
+.ov tr.sel td { background: var(--panel); }
+.dotc { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 8px; vertical-align: middle; }
+
+.reco { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: var(--gutter); margin-top: 28px; }
+.reco > div { border-top: 1px solid var(--ink); padding-top: 12px; min-width: 0; }
+.reco .big { font-family: var(--f-display); font-weight: 700; font-size: 1.6rem; line-height: 1.05; letter-spacing: -.02em; font-variation-settings: "wdth" 82, "opsz" 48; margin: 6px 0 8px; }
+@media (max-width: 760px) { .reco { grid-template-columns: 1fr; } }
+.use { list-style: none; padding: 0; margin: 20px 0 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--gutter); }
+.use li { border-top: 1px solid var(--line); padding-top: 10px; font-size: .9rem; min-width: 0; }
+.use b { display: block; margin-bottom: 2px; }
+@media (max-width: 760px) { .use { grid-template-columns: 1fr; } }
+
+/* Type */
+.tp-pick { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 20px; }
+.tp-pick button { border: 1px solid var(--line); background: var(--paper); border-radius: 999px; padding: 7px 14px; cursor: pointer; font-size: .88rem; transition: border-color .2s; }
+.tp-pick button:hover { border-color: var(--ink-2); }
+.tp-pick button[aria-pressed="true"] { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+.spec { border: 1px solid var(--line); border-radius: 8px; padding: clamp(18px, 3vw, 32px); display: grid; gap: 20px; background: var(--paper); }
+.spec-head { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+.spec-h { margin: 0; font-size: clamp(2.4rem, 6.4vw, 5rem); line-height: var(--t-dlh, .95); letter-spacing: var(--t-dls, -.035em); font-family: var(--t-display); font-weight: var(--t-dw, 700); font-style: var(--t-ds, normal); font-variation-settings: var(--t-dvar, normal); text-wrap: balance; max-width: 14ch; }
+.spec-h .a { color: var(--accent); }
+.spec-cols { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); gap: var(--gutter); }
+.spec-cols p { font-family: var(--t-text); font-size: 1.02rem; margin: 0; }
+.spec-meta { display: grid; gap: 10px; }
+.spec-meta div { display: flex; justify-content: space-between; gap: 12px; border-top: 1px solid var(--line); padding-top: 8px; font-family: var(--t-text); font-size: .9rem; }
+.spec-meta span:first-child { color: var(--ink-2); }
+.spec-nums { font-family: var(--t-display); font-weight: var(--t-dw, 700); font-style: var(--t-ds, normal); font-size: 2rem; letter-spacing: var(--t-dls, -.02em); font-variant-numeric: tabular-nums; font-variation-settings: var(--t-dvar, normal); line-height: 1.1; }
+.spec-mono { font-family: var(--t-mono); font-size: .8rem; color: var(--ink-2); }
+@media (max-width: 760px) { .spec-cols { grid-template-columns: 1fr; } }
+.why { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--gutter); margin-top: 24px; }
+.why > div { border-top: 1px solid var(--line); padding-top: 10px; min-width: 0; }
+.why .label { display: block; margin-bottom: 6px; }
+.why p { font-size: .92rem; margin: 0; }
+@media (max-width: 760px) { .why { grid-template-columns: 1fr; } }
+.fd { overflow-x: auto; border: 1px solid var(--line); border-radius: 6px; margin-top: 36px; }
+.fd table { border-collapse: collapse; width: 100%; min-width: 640px; font-size: .9rem; }
+.fd th, .fd td { text-align: left; padding: 11px 14px; border-bottom: 1px solid var(--line); vertical-align: top; }
+.fd tr:last-child td { border-bottom: 0; }
+.fd th { font-family: var(--f-mono); font-weight: 400; font-size: var(--s-0); text-transform: uppercase; letter-spacing: .06em; color: var(--ink-2); }
+.fd td:first-child { font-weight: 600; white-space: nowrap; }
+
+.qs { list-style: none; padding: 0; margin: 0; counter-reset: q; }
+.qs li { counter-increment: q; display: grid; grid-template-columns: 3rem minmax(0, 1fr); border-top: 1px solid var(--line); padding: 16px 0; }
+.qs li::before { content: counter(q, decimal-leading-zero); font-family: var(--f-mono); font-size: var(--s-0); color: var(--ink-2); padding-top: 4px; }
+.qs strong { display: block; font-weight: 600; }
+.qs span { color: var(--ink-2); font-size: .95rem; }
+footer { border-top: 1px solid var(--line); padding-block: 32px 48px; }
+footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { transition-duration: 0s !important; animation: none !important; } }
+</style>
+
+<header class="top">
+  <div class="wrap">
+    <div class="mark">Mauro Im<span class="acc">á</span>n</div>
+    <span class="label" id="topSel">Color y tipografía · iteración 3</span>
+  </div>
+</header>
+
+<main>
+  <div class="hero">
+    <div class="wrap grid">
+      <div class="label">Rediseño · iteración 3</div>
+      <h1>Color y voz para el <span class="acc">concepto Imán</span>.</h1>
+      <p class="lead">Seis paletas en verde, azul y naranja, todas ajustadas para cumplir WCAG 2.2 AA en modo claro y oscuro. Elegí una y toda la página cambia, incluidos los dos previews. Después, cinco alternativas tipográficas para probar sobre el mismo hero.</p>
+    </div>
+  </div>
+
+  <!-- Color -->
+  <section class="block">
+    <div class="wrap"><div class="grid">
+      <div class="side"><span class="label"><b>Color</b></span><span class="label">WCAG 2.2 AA</span></div>
+      <div class="main">
+        <h2>Cada paleta tiene dos tonos de acento.</h2>
+        <p class="tagline">Uno para texto, que cumple 4.5:1. Otro más vivo para la tilde, el campo y los bordes, que cumple 3:1 como elemento gráfico. Así el color puede ser intenso sin romper la accesibilidad.</p>
+        <div class="picker" id="picker"></div>
+        <div class="duo">
+          <div class="mini" id="miniL"></div>
+          <div class="mini" id="miniD"></div>
+        </div>
+        <div class="ct" tabindex="0" aria-label="Contraste de la paleta elegida">
+          <table>
+            <thead><tr><th>Uso</th><th>Requisito</th><th>Claro</th><th>Oscuro</th></tr></thead>
+            <tbody id="ctBody"></tbody>
+          </table>
+        </div>
+        <h3 style="margin-top:44px">Las seis, comparadas</h3>
+        <p class="muted" style="font-size:.95rem">El peor caso de cada paleta. Para texto el mínimo es 4.5:1 y para gráficos 3:1.</p>
+        <div class="ov" tabindex="0" aria-label="Comparación de las seis paletas">
+          <table>
+            <thead><tr><th>Paleta</th><th>Texto acento · claro</th><th>Texto acento · oscuro</th><th>Tilde · claro</th><th>Tilde · oscuro</th><th>Resultado</th></tr></thead>
+            <tbody id="ovBody"></tbody>
+          </table>
+        </div>
+        <div class="reco">
+          <div><span class="label">Mi recomendación</span><p class="big">Naranja óxido</p><p>Es la única con una razón propia dentro del concepto: el óxido es lo que le pasa al hierro, y las limaduras son hierro. Además, sobre neutros fríos y con una grotesca se aleja del típico naranja sobre crema. En oscuro gana mucha presencia.</p></div>
+          <div><span class="label">La alternativa</span><p class="big">Verde ferrita</p><p>La ferrita es el material de los imanes cerámicos. Es más sobria y transmite precisión y confianza, ideal si querés hablarle primero a ejecutivos. Es la de mejor contraste en modo oscuro.</p></div>
+        </div>
+        <ul class="use">
+          <li><b>Acento de texto</b>Enlaces, la “á” del logotipo y los marcadores de métricas.</li>
+          <li><b>Acento vivo</b>La tilde, las limaduras cercanas al imán, el cursor y los bordes de hover.</li>
+          <li><b>Lo que no lleva color</b>Botones principales, en tinta. El color se reserva para el detalle.</li>
+        </ul>
+      </div>
+    </div></div>
+  </section>
+
+  <!-- Type -->
+  <section class="block">
+    <div class="wrap"><div class="grid">
+      <div class="side"><span class="label"><b>Tipografía</b></span><span class="label">La voz de la marca</span></div>
+      <div class="main">
+        <h2>Cinco voces posibles para el mismo mensaje.</h2>
+        <p class="tagline">Elegí un par y se aplica al espécimen y a los dos previews de arriba. Son fuentes libres de Google, que sirven para decidir la dirección. Abajo están sus equivalentes de fundición.</p>
+        <div class="tp-pick" id="tpPick" role="group" aria-label="Pares tipográficos"></div>
+        <div class="spec">
+          <div class="spec-head"><span class="label" id="tpName"></span><span class="label" id="tpFonts"></span></div>
+          <p class="spec-h">I design products people are <span class="a">drawn to</span>.</p>
+          <div class="spec-cols">
+            <p id="tpBody">Imán is Spanish for magnet. I’m a product designer and builder: strategy, design and front-end in one person. For a decade I’ve turned complex operations into products people trust, from a $17B PropTech to Argentina’s leading energy company.</p>
+            <div class="spec-meta">
+              <div class="spec-nums">$17B · 2017–2026</div>
+              <div><span>Compass</span><span>PropTech · Design System</span></div>
+              <div><span>Silstech · YPF</span><span>Energy · Logistics</span></div>
+              <div class="spec-mono" style="border:0;padding:0">imán /iˈman/ — Spanish for magnet</div>
+            </div>
+          </div>
+        </div>
+        <div class="why" id="tpWhy"></div>
+        <div class="fd" tabindex="0" aria-label="Equivalentes de fundición">
+          <table>
+            <thead><tr><th>Voz</th><th>Fundición: display</th><th>Fundición: texto</th><th>Por qué</th></tr></thead>
+            <tbody>
+              <tr><td>Expresiva</td><td>ABC Favorit (Dinamo) · PP Mori (Pangram Pangram)</td><td>ABC Diatype · PP Neue Montreal</td><td>Grotescas con detalles propios; reconocibles sin ser estridentes.</td></tr>
+              <tr><td>Producto</td><td>Söhne (Klim) · Suisse Int’l (Swiss Typefaces)</td><td>Söhne · Suisse Int’l</td><td>La voz de las mejores herramientas de software. Precisión y confianza.</td></tr>
+              <tr><td>Elástica</td><td>GT Flexa (Grilli Type)</td><td>GT America</td><td>Un eje de ancho enorme: las letras se pueden “estirar” con el campo magnético.</td></tr>
+              <tr><td>Editorial</td><td>GT Sectra · Tiempos Headline (Klim)</td><td>Söhne · Untitled Sans</td><td>Contraste serif y sans: más estrategia y seniority, menos herramienta.</td></tr>
+              <tr><td>Ancha</td><td>ABC Monument Grotesk Semi-Mono · Druk Wide</td><td>ABC Diatype</td><td>Presencia de marca fuerte; ideal si el hero es el protagonista absoluto.</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="muted" style="margin-top:20px;font-size:.95rem">Una licencia web de fundición suele costar entre USD 200 y 1.000 por familia, según tráfico y estilos. Las opciones de Google también pueden quedar en el sitio final si el presupuesto lo pide.</p>
+      </div>
+    </div></div>
+  </section>
+
+  <section class="block">
+    <div class="wrap"><div class="grid">
+      <div class="side"><span class="label"><b>Para avanzar</b></span></div>
+      <div class="main">
+        <h2>Dos elecciones y pasamos al home.</h2>
+        <ol class="qs">
+          <li><div><strong>¿Qué paleta?</strong><span>Puede ser una de las seis o un ajuste: por ejemplo, el óxido más rojo o más amarillo.</span></div></li>
+          <li><div><strong>¿Qué voz tipográfica?</strong><span>Con la dirección elegida, defino el par final, la escala y si vamos con fuentes libres o de fundición.</span></div></li>
+        </ol>
+      </div>
+    </div></div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span class="label" id="footSel"></span>
+    <span class="label">Contrastes calculados con la fórmula de WCAG 2.2</span>
+  </div>
+</footer>
+
+<script>
+(() => {
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const PAL = [
+    { id: 'ferrita', fam: 'Verde', name: 'Verde ferrita',
+      light: { paper: '#EDEFEE', panel: '#E1E5E3', ink: '#0E1311', ink2: '#4B5550', line: '#C5CCC8', accent: '#08704E', fill: '#0E8A5F' },
+      dark: { paper: '#0B0F0D', panel: '#131916', ink: '#E6EBE8', ink2: '#97A39D', line: '#25302B', accent: '#4ADE9E', fill: '#4ADE9E' } },
+    { id: 'agua', fam: 'Verde', name: 'Verde agua',
+      light: { paper: '#ECEFEF', panel: '#E0E5E5', ink: '#0D1314', ink2: '#4A5557', line: '#C4CCCD', accent: '#006B63', fill: '#00857A' },
+      dark: { paper: '#0A0F10', panel: '#121819', ink: '#E5EBEC', ink2: '#95A3A5', line: '#243032', accent: '#3FD6C6', fill: '#3FD6C6' } },
+    { id: 'petroleo', fam: 'Azul', name: 'Azul petróleo',
+      light: { paper: '#ECEEF0', panel: '#E0E4E8', ink: '#0D1216', ink2: '#4A535B', line: '#C4CBD2', accent: '#0B5C7A', fill: '#0F7699' },
+      dark: { paper: '#0A0E11', panel: '#12171B', ink: '#E5EAEE', ink2: '#95A0A9', line: '#242D34', accent: '#5CC8EE', fill: '#5CC8EE' } },
+    { id: 'electrico', fam: 'Azul', name: 'Azul eléctrico',
+      light: { paper: '#ECEEF2', panel: '#E0E4EA', ink: '#0D1118', ink2: '#4A525E', line: '#C4CAD4', accent: '#005BC9', fill: '#0A6BE8' },
+      dark: { paper: '#0A0D13', panel: '#12161D', ink: '#E6E9EF', ink2: '#969FAD', line: '#242A35', accent: '#6AA8FF', fill: '#6AA8FF' } },
+    { id: 'oxido', fam: 'Naranja', name: 'Naranja óxido',
+      light: { paper: '#ECEDEE', panel: '#E1E2E4', ink: '#141110', ink2: '#55504D', line: '#CBCACA', accent: '#B23A0E', fill: '#E04E0E' },
+      dark: { paper: '#0F0D0C', panel: '#181514', ink: '#ECE8E6', ink2: '#A59D98', line: '#2E2926', accent: '#FF7A45', fill: '#FF6A2B' } },
+    { id: 'senal', fam: 'Naranja', name: 'Naranja señal',
+      light: { paper: '#ECEDEE', panel: '#E1E2E4', ink: '#131110', ink2: '#544F4B', line: '#CBCAC9', accent: '#9E4A00', fill: '#D9580A' },
+      dark: { paper: '#0F0D0B', panel: '#181513', ink: '#EDE9E5', ink2: '#A69E97', line: '#2F2A25', accent: '#FF9A3D', fill: '#FF9A3D' } }
+  ];
+  const TYPE = [
+    { id: 'expresiva', name: 'Expresiva', fonts: 'Bricolage Grotesque + Instrument Sans', display: '"Bricolage Grotesque", sans-serif', text: '"Instrument Sans", sans-serif', mono: '"IBM Plex Mono", monospace', dw: 700, dls: '-.035em', dlh: '.95', dvar: '"wdth" 80, "opsz" 96',
+      why: [['Carácter', 'Grotesca con rasgos propios y tamaño óptico. Es la que venimos usando.'], ['Transmite', 'Diseñador con criterio propio, cálido y contemporáneo.'], ['Cuidado', 'Muy usada en 2025. Puede perder exclusividad con el tiempo.']] },
+    { id: 'producto', name: 'Producto', fonts: 'Geist + Geist Mono', display: '"Geist", sans-serif', text: '"Geist", sans-serif', mono: '"Geist Mono", monospace', dw: 600, dls: '-.045em', dlh: '.98', dvar: 'normal',
+      why: [['Carácter', 'Neutra y precisa, hecha para interfaces. Con la mono comparte el mismo ADN.'], ['Transmite', 'Product builder: alguien que diseña y construye software.'], ['Cuidado', 'Muy asociada a Vercel y al mundo dev. Necesita que el campo y el color pongan la personalidad.']] },
+    { id: 'elastica', name: 'Elástica', fonts: 'Archivo (ancho 62–125)', display: '"Archivo", sans-serif', text: '"Archivo", sans-serif', mono: '"IBM Plex Mono", monospace', dw: 800, dls: '-.02em', dlh: '.9', dvar: '"wdth" 68',
+      why: [['Carácter', 'Una sola familia con un eje de ancho enorme. Condensada en titulares y normal en texto.'], ['Transmite', 'Sistema y rigor. Encaja con el concepto: las letras se pueden estirar hacia el imán.'], ['Cuidado', 'En texto es menos refinada que las otras. Su fuerza está en los titulares.']] },
+    { id: 'editorial', name: 'Editorial', fonts: 'Instrument Serif + Inter Tight', display: '"Instrument Serif", serif', text: '"Inter Tight", sans-serif', mono: '"IBM Plex Mono", monospace', dw: 400, dls: '-.02em', dlh: '.95', dvar: 'normal',
+      why: [['Carácter', 'Serif condensada y elegante contra una sans compacta.'], ['Transmite', 'Estrategia, seniority y criterio editorial. Le habla a ejecutivos.'], ['Cuidado', 'Se aleja de lo “tech”. Con un acento cálido puede caer en un look muy visto.']] },
+    { id: 'ancha', name: 'Ancha', fonts: 'Unbounded + Hanken Grotesk', display: '"Unbounded", sans-serif', text: '"Hanken Grotesk", sans-serif', mono: '"IBM Plex Mono", monospace', dw: 700, dls: '-.04em', dlh: '1', dvar: 'normal',
+      why: [['Carácter', 'Display extendida y geométrica, con mucha presencia.'], ['Transmite', 'Marca fuerte, tecnológica y segura de sí misma.'], ['Cuidado', 'Ocupa mucho ancho: en mobile obliga a titulares cortos.']] }
+  ];
+
+  const lin = c => { c /= 255; return c <= .03928 ? c / 12.92 : Math.pow((c + .055) / 1.055, 2.4); };
+  const lum = h => { const n = parseInt(h.slice(1), 16); return .2126 * lin(n >> 16 & 255) + .7152 * lin(n >> 8 & 255) + .0722 * lin(n & 255); };
+  const ratio = (a, b) => { const x = lum(a), y = lum(b); return (Math.max(x, y) + .05) / (Math.min(x, y) + .05); };
+  const fmt = r => r.toFixed(2) + ':1';
+  const verdict = (r, min) => r >= min ? `<span class="ok">✓ ${min === 7 ? 'AAA' : 'AA'}</span>` : `<span class="ko">✗ falla</span>`;
+  const worst = (t) => ({
+    text: Math.min(ratio(t.accent, t.paper), ratio(t.accent, t.panel)),
+    fill: Math.min(ratio(t.fill, t.paper), ratio(t.fill, t.panel))
+  });
+  const allPass = p => { const l = worst(p.light), d = worst(p.dark); return l.text >= 4.5 && d.text >= 4.5 && l.fill >= 3 && d.fill >= 3; };
+
+  let sel = PAL.find(p => p.id === 'oxido'), tsel = TYPE[0];
+  const isDark = () => { const a = document.documentElement.dataset.theme; return a ? a === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches; };
+
+  /* picker */
+  const picker = document.getElementById('picker');
+  ['Verde', 'Azul', 'Naranja'].forEach(fam => {
+    const box = document.createElement('div'); box.className = 'fam';
+    box.innerHTML = `<span class="label">${fam}</span><div class="fam-opts"></div>`;
+    PAL.filter(p => p.fam === fam).forEach(p => {
+      const b = document.createElement('button'); b.type = 'button'; b.className = 'sw'; b.dataset.id = p.id;
+      b.innerHTML = `<span class="chips"><i style="background:${p.light.accent}"></i><i style="background:${p.light.fill}"></i><i style="background:${p.dark.paper}"></i><i style="background:${p.dark.accent}"></i></span><span class="nm">${p.name}</span><span class="badge ${allPass(p) ? 'ok' : 'ko'}">${allPass(p) ? '✓ AA claro y oscuro' : '✗ revisar'}</span>`;
+      b.addEventListener('click', () => { sel = p; render(); });
+      box.querySelector('.fam-opts').appendChild(b);
+    });
+    picker.appendChild(box);
+  });
+
+  /* mini sites */
+  const miniHTML = mode => `<canvas aria-hidden="true"></canvas>
+    <div class="mn-nav"><span class="mn-logo">Mauro Im<span class="a">á</span>n</span><span class="mn-links"><span class="t"></span><span>Work</span><span>Highlights</span><span>About</span></span></div>
+    <div class="mn-hero"><p class="mn-gloss">imán /iˈman/ — Spanish for magnet · ${mode}</p><p class="mn-h">I design products people are <span class="a">drawn to</span>.</p>
+    <p class="mn-body">Product designer and builder. <a>Read the YPF case</a> or jump to the highlights.</p>
+    <div class="mn-btns"><span class="b1">See selected work</span><span class="b3">Short on time? 60 s</span></div></div>`;
+  const miniL = document.getElementById('miniL'), miniD = document.getElementById('miniD');
+  miniL.innerHTML = miniHTML('light'); miniD.innerHTML = miniHTML('dark');
+  const setMini = (el, t) => {
+    const s = el.style;
+    s.setProperty('--m-paper', t.paper); s.setProperty('--m-ink', t.ink); s.setProperty('--m-ink2', t.ink2); s.setProperty('--m-line', t.line);
+    s.setProperty('--m-accent', t.accent); s.setProperty('--m-fill', t.fill);
+  };
+  const setMiniType = el => {
+    const s = el.style;
+    s.setProperty('--m-display', tsel.display); s.setProperty('--m-text', tsel.text); s.setProperty('--m-mono', tsel.mono);
+    s.setProperty('--m-dw', tsel.dw); s.setProperty('--m-dls', tsel.dls); s.setProperty('--m-dlh', tsel.dlh); s.setProperty('--m-dvar', tsel.dvar);
+  };
+
+  /* field in minis */
+  const ORDER = -0.98;
+  const fields = [miniL, miniD].map((el, i) => ({ el, cv: el.querySelector('canvas'), dark: i === 1, W: 0, H: 0, target: null, mag: { x: 0, y: 0 } }));
+  fields.forEach(f => {
+    const ctx = f.cv.getContext('2d'); f.ctx = ctx;
+    new ResizeObserver(() => { const r = f.cv.getBoundingClientRect(), d = Math.min(devicePixelRatio || 1, 2); f.W = r.width; f.H = r.height; f.cv.width = f.W * d; f.cv.height = f.H * d; ctx.setTransform(d, 0, 0, d, 0, 0); if (!f.mag.x) { f.mag.x = f.W * .7; f.mag.y = f.H * .35; } }).observe(f.cv);
+    f.el.addEventListener('pointermove', e => { const r = f.el.getBoundingClientRect(); f.target = { x: e.clientX - r.left, y: e.clientY - r.top }; });
+    f.el.addEventListener('pointerleave', () => f.target = null);
+  });
+  const t0 = performance.now();
+  const drawField = (f, now) => {
+    const { ctx, W, H } = f; if (!W) return;
+    const t = now - t0, th = sel[f.dark ? 'dark' : 'light'];
+    const tx = f.target ? f.target.x : (reduce ? W * .72 : W * .62 + Math.cos(t * .0004) * W * .22), ty = f.target ? f.target.y : (reduce ? H * .35 : H * .4 + Math.sin(t * .0007) * H * .22);
+    f.mag.x += (tx - f.mag.x) * (reduce ? 1 : .08); f.mag.y += (ty - f.mag.y) * (reduce ? 1 : .08);
+    const a = reduce ? 0 : t * .00018, mx = Math.cos(a), my = Math.sin(a), s = 18, R = Math.max(W, H) * .3;
+    const P = [new Path2D(), new Path2D(), new Path2D()];
+    for (let y = s / 2; y < H; y += s) for (let x = s / 2; x < W; x += s) {
+      const rx = x - f.mag.x, ry = y - f.mag.y, d = Math.hypot(rx, ry); if (d < 10) continue;
+      const ux = rx / d, uy = ry / d, dt = mx * ux + my * uy; let bx = 3 * dt * ux - mx, by = 3 * dt * uy - my; const bl = Math.hypot(bx, by) || 1; bx /= bl; by /= bl;
+      const fz = Math.exp(-d / R), L = 2.5 + 6 * fz, b = fz > .55 ? 0 : fz > .3 ? 1 : 2;
+      P[b].moveTo(x - bx * L, y - by * L); P[b].lineTo(x + bx * L, y + by * L);
+    }
+    ctx.clearRect(0, 0, W, H); ctx.lineCap = 'round'; ctx.lineWidth = 1.3;
+    ctx.globalAlpha = .95; ctx.strokeStyle = th.fill; ctx.stroke(P[0]);
+    ctx.strokeStyle = th.ink; ctx.globalAlpha = .35; ctx.stroke(P[1]); ctx.globalAlpha = .13; ctx.stroke(P[2]);
+    ctx.globalAlpha = 1; ctx.fillStyle = th.fill; ctx.beginPath(); ctx.arc(f.mag.x, f.mag.y, 3.5, 0, Math.PI * 2); ctx.fill();
+  };
+  let vis = true;
+  new IntersectionObserver(es => { vis = es.some(e => e.isIntersecting); if (vis) requestAnimationFrame(loop); }).observe(document.querySelector('.duo'));
+  function loop(now) { fields.forEach(f => drawField(f, now)); if (vis) requestAnimationFrame(loop); }
+  requestAnimationFrame(loop);
+
+  /* contrast table */
+  const ctBody = document.getElementById('ctBody'), ovBody = document.getElementById('ovBody');
+  const chip = (fg, bg, txt = 'Aa') => `<span class="pair"><i style="background:${bg};color:${fg};border-color:${fg}33">${txt}</i></span>`;
+  const rowsDef = [
+    ['Texto principal', 'tinta sobre fondo', 'ink', 'paper', 7],
+    ['Texto secundario', 'gris sobre fondo', 'ink2', 'paper', 4.5],
+    ['Enlaces y acentos', 'acento sobre fondo', 'accent', 'paper', 4.5],
+    ['Acento sobre paneles', 'acento sobre panel', 'accent', 'panel', 4.5],
+    ['Tilde, campo y bordes', 'acento vivo sobre fondo', 'fill', 'paper', 3],
+    ['Botón principal', 'fondo sobre tinta', 'paper', 'ink', 4.5]
+  ];
+  const render = () => {
+    const L = sel.light, D = sel.dark;
+    document.querySelectorAll('.sw').forEach(b => b.setAttribute('aria-pressed', b.dataset.id === sel.id));
+    setMini(miniL, L); setMini(miniD, D);
+    ctBody.innerHTML = rowsDef.map(([use, desc, fg, bg, min]) => {
+      const rl = ratio(L[fg], L[bg]), rd = ratio(D[fg], D[bg]);
+      return `<tr><td>${use}<br><span class="label" style="text-transform:none;letter-spacing:0">${desc}</span></td><td class="num">≥ ${min}:1</td>
+        <td class="num">${chip(L[fg], L[bg])} ${fmt(rl)} ${verdict(rl, min)}</td><td class="num">${chip(D[fg], D[bg])} ${fmt(rd)} ${verdict(rd, min)}</td></tr>`;
+    }).join('');
+    ovBody.innerHTML = PAL.map(p => {
+      const l = worst(p.light), d = worst(p.dark), ok = allPass(p);
+      return `<tr class="${p.id === sel.id ? 'sel' : ''}"><td><span class="dotc" style="background:${p.light.fill}"></span>${p.name}</td>
+        <td class="num">${fmt(l.text)}</td><td class="num">${fmt(d.text)}</td><td class="num">${fmt(l.fill)}</td><td class="num">${fmt(d.fill)}</td>
+        <td>${ok ? '<span class="ok">✓ AA</span>' : '<span class="ko">✗ revisar</span>'}</td></tr>`;
+    }).join('');
+    const T = isDark() ? D : L, r = document.documentElement.style;
+    r.setProperty('--paper', T.paper); r.setProperty('--panel', T.panel); r.setProperty('--ink', T.ink); r.setProperty('--ink-2', T.ink2);
+    r.setProperty('--line', T.line); r.setProperty('--accent', T.accent); r.setProperty('--fill', T.fill);
+    document.getElementById('footSel').textContent = `Paleta: ${sel.name} · Voz: ${tsel.name}`;
+  };
+  matchMedia('(prefers-color-scheme: dark)').addEventListener('change', render);
+  new MutationObserver(render).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+
+  /* type */
+  const tpPick = document.getElementById('tpPick'), spec = document.querySelector('.spec');
+  TYPE.forEach(t => {
+    const b = document.createElement('button'); b.type = 'button'; b.textContent = t.name; b.dataset.id = t.id;
+    b.addEventListener('click', () => { tsel = t; renderType(); render(); });
+    tpPick.appendChild(b);
+  });
+  const renderType = () => {
+    tpPick.querySelectorAll('button').forEach(b => b.setAttribute('aria-pressed', b.dataset.id === tsel.id));
+    const s = spec.style;
+    s.setProperty('--t-display', tsel.display); s.setProperty('--t-text', tsel.text); s.setProperty('--t-mono', tsel.mono);
+    s.setProperty('--t-dw', tsel.dw); s.setProperty('--t-dls', tsel.dls); s.setProperty('--t-dlh', tsel.dlh); s.setProperty('--t-dvar', tsel.dvar);
+    document.getElementById('tpName').innerHTML = `<b>${tsel.name}</b>`;
+    document.getElementById('tpFonts').textContent = tsel.fonts;
+    document.getElementById('tpWhy').innerHTML = tsel.why.map(([k, v]) => `<div><span class="label">${k}</span><p>${v}</p></div>`).join('');
+    setMiniType(miniL); setMiniType(miniD);
+  };
+  renderType(); render();
+})();
+</script>

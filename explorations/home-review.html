@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Home Imán</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400..700&family=Geist+Mono:wght@400;500&display=swap">
+<style>
+:root { --paper: #EDEFEE; --panel: #E1E5E3; --ink: #0E1311; --ink-2: #4B5550; --line: #C5CCC8; --accent: #08704E; --fill: #0E8A5F; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --paper: #0B0F0D; --panel: #131916; --ink: #E6EBE8; --ink-2: #97A39D; --line: #25302B; --accent: #4ADE9E; --fill: #4ADE9E; color-scheme: dark; } }
+:root[data-theme="dark"] { --paper: #0B0F0D; --panel: #131916; --ink: #E6EBE8; --ink-2: #97A39D; --line: #25302B; --accent: #4ADE9E; --fill: #4ADE9E; color-scheme: dark; }
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+body { margin: 0; background: var(--panel); color: var(--ink); font-family: "Geist", Arial, sans-serif; display: flex; flex-direction: column; }
+.bar { display: flex; align-items: center; justify-content: space-between; gap: 8px 12px; flex-wrap: wrap; padding: 8px max(16px, env(safe-area-inset-left)); background: var(--paper); border-bottom: 1px solid var(--line); }
+.bar b { font-weight: 700; } .bar b span { color: var(--accent); }
+.label { font-family: "Geist Mono", monospace; font-size: .72rem; letter-spacing: .06em; text-transform: uppercase; color: var(--ink-2); }
+.seg { display: inline-flex; gap: 2px; border: 1px solid var(--line); border-radius: 999px; padding: 2px; background: var(--paper); }
+.seg button { border: 0; background: none; border-radius: 999px; min-height: 32px; padding: 0 14px; font: inherit; font-family: "Geist Mono", monospace; font-size: .72rem; letter-spacing: .04em; text-transform: uppercase; color: var(--ink-2); cursor: pointer; }
+.seg button[aria-pressed="true"] { background: var(--ink); color: var(--paper); }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+a { color: var(--accent); font-size: .85rem; }
+.view { flex: 1; min-height: 0; position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; }
+.host { position: relative; overflow: hidden; background: var(--paper); flex: none; }
+.host iframe { position: absolute; left: 0; top: 0; border: 0; transform-origin: 0 0; display: block; }
+/* desktop: 1440px page scaled into the frame */
+.view[data-v="desk"] { padding: 16px; }
+.view[data-v="desk"] .host { width: 100%; height: 100%; border: 1px solid var(--line); border-radius: 8px; }
+.view[data-v="desk"] iframe { width: 1440px; }
+/* mobile on a laptop: phone frame */
+.view[data-v="mob"] { padding: 16px; }
+.view[data-v="mob"] .host { width: 390px; height: 844px; border: 10px solid var(--ink); border-radius: 48px; transform-origin: center; }
+.view[data-v="mob"] iframe { width: 100%; height: 100%; }
+/* on a phone: the real page, full bleed, no scaling */
+.view[data-v="full"] .host { width: 100%; height: 100%; }
+.view[data-v="full"] iframe { width: 100%; height: 100%; }
+.note { font-size: .78rem; color: var(--ink-2); }
+</style>
+</head>
+<body>
+<div class="bar">
+  <div><b>Mauro Im<span>á</span>n</b> <span class="label">· Iteración 2</span></div>
+  <div class="seg" role="group" aria-label="Página">
+    <button type="button" aria-pressed="true" data-p="home.html">Home</button>
+    <button type="button" aria-pressed="false" data-p="case.html">Caso · Compass</button>
+    <button type="button" aria-pressed="false" data-p="ypf.html">Caso · YPF</button>
+  </div>
+  <div class="seg" role="group" aria-label="Intro del caso" id="aseg">
+    <button type="button" aria-pressed="true" data-a="sweep&amp;dir=rtl">Barrido ←</button>
+    <button type="button" aria-pressed="false" data-a="sweep&amp;dir=ltr">Barrido →</button>
+    <button type="button" aria-pressed="false" data-a="pull">Atracción</button>
+  </div>
+  <div class="seg" role="group" aria-label="Vista" id="vseg">
+    <button type="button" aria-pressed="true" data-v="desk">Desktop</button>
+    <button type="button" aria-pressed="false" data-v="mob">Mobile</button>
+  </div>
+  <a href="home.html" target="_blank" rel="noopener" id="full">Abrir a pantalla completa ↗</a>
+</div>
+<div class="view" id="view" data-v="desk"><div class="host" id="host"><iframe id="f" title="Home"></iframe></div></div>
+<script>
+(() => {
+  /* Only one live copy of the page at a time: the hidden view is not loaded, so it costs nothing.
+     On a phone the page is shown full bleed at its real size (no 1440px desktop scaled down). */
+  const btns = [...document.querySelectorAll('#vseg button')], pbtns = [...document.querySelectorAll('[data-p]')], view = document.getElementById('view'), host = document.getElementById('host'), f = document.getElementById('f');
+  const phone = matchMedia('(max-width: 700px)');
+  let mode = '', page = 'home.html', asm = 'sweep&dir=rtl';
+  const abtns = [...document.querySelectorAll('[data-a]')], url = () => page + '?asm=' + asm;
+  const fit = () => {
+    if (mode === 'desk') { const w = host.clientWidth, h = host.clientHeight, s = Math.min(1, w / 1440); f.style.transform = `scale(${s})`; f.style.height = (h / s) + 'px'; host.style.transform = ''; }
+    else if (mode === 'mob') { const v = view.getBoundingClientRect(), ps = Math.min(1, (v.height - 32) / 844, (v.width - 32) / 390); host.style.transform = `scale(${ps})`; f.style.transform = ''; f.style.height = ''; }
+    else { host.style.transform = ''; f.style.transform = ''; f.style.height = ''; }
+  };
+  const set = (v, force) => {
+    const m = v === 'mob' && phone.matches ? 'full' : v; if (m === mode && !force) return; mode = m;
+    view.dataset.v = m; btns.forEach(b => b.setAttribute('aria-pressed', String(b.dataset.v === v)));
+    f.title = v === 'desk' ? 'Home en desktop, 1440 px' : 'Home en mobile';
+    f.src = url(); document.getElementById('full').href = url(); fit();
+  };
+  btns.forEach(b => b.addEventListener('click', () => set(b.dataset.v)));
+  pbtns.forEach(b => b.addEventListener('click', () => { page = b.dataset.p; pbtns.forEach(x => x.setAttribute('aria-pressed', String(x === b))); set(btns.find(x => x.getAttribute('aria-pressed') === 'true').dataset.v, true); }));
+  abtns.forEach(b => b.addEventListener('click', () => { asm = b.dataset.a; abtns.forEach(x => x.setAttribute('aria-pressed', String(x === b))); set(btns.find(x => x.getAttribute('aria-pressed') === 'true').dataset.v, true); }));
+  new ResizeObserver(fit).observe(view);
+  set(phone.matches ? 'mob' : 'desk');
+})();
+</script>
+</body>
+</html>

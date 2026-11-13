@@ -1,0 +1,154 @@
+# Compass case. English and Spanish side by side; text in [brackets] is still a placeholder.
+# order: position on the home and in the next-case loop. cover: which drawing the cover placeholder uses.
+# system: true shows the "One system, any brand" demo (its copy is under demo).
+title: Compass
+order: 1
+cover: compass
+system: true
+homeMetric: "$400k"
+
+en:
+  sector: PropTech
+  years: 2024–2025
+  summary: "Design at the scale of a $17B company built on acquisitions: compliance operations, CRM research and a design system that absorbs new brands."
+  homeMetricLabel: saved per year
+  highlight: "$400k saved per year · 2× faster brand integrations"
+  role: Senior product designer (lead individual contributor)
+  scope: Contract automation · Compliance tools · CRM research · Design system
+  team: Transaction Operations, Brokers of Record, product and engineering
+  timeline: Early 2024 – Late 2025
+  coverAlt: Compass product cover
+  metrics:
+    - { value: "$400k", label: annual savings from the contract renewal workflow }
+    - { value: "4.8/5", label: UX satisfaction for the compliance checklist tool }
+    - { value: "2×", label: faster brand integrations with the multi-brand system }
+  problem: Every acquisition, from Christie’s to @properties, brought its own tools, brands and compliance steps, and routine changes waited on engineering.
+  did: Automated contract renewals, researched how agents work on behalf of others, rebuilt the compliance checklist tool as self-service and built one design system for every brand.
+  result: "$400k saved a year, routine compliance updates with no engineering involved, and new brands integrated twice as fast."
+  story:
+    title: From scattered to aligned.
+    chapters:
+      - kicker: Problem
+        title: Growth by acquisition, one product at a time.
+        text: Christie’s, @properties and Washington Fine Properties each arrived with their own tools, brands and compliance steps. Operations scaled; the experience fragmented, and every routine compliance change needed an engineer.
+        data: → A $17B company built on acquisitions
+      - kicker: Decision
+        title: Fix the shared foundations, not every screen.
+        text: Instead of redesigning product by product, I focused on what every brand shares — the contract workflow, the compliance rules behind each transaction and one design system as the single source of truth.
+        data: → One system for every brand, with design system office hours for the teams
+      - kicker: Result
+        title: New brands snap into place.
+        text: Renewals run without manual chasing, compliance teams update their own checklists, and each acquisition joins the system instead of adding to the noise.
+        data: → $400k saved per year · 100% of routine compliance updates without engineering
+  work:
+    title: Four initiatives, one direction.
+    items:
+      - mini: q
+        title: Contract service automation
+        text: Redesigned the contract renewal workflow for the Transaction Operations team, turning manual follow-ups into an automated service that saves $400k a year.
+        screen: "[screen: contract renewal workflow]"
+      - mini: notes
+        title: CRM “On behalf of” research
+        text: Research with 14 participants on how assistants and teams act for agents inside the CRM. The findings shaped the roadmap for a multichannel inbox.
+        screen: "[image: research synthesis]"
+      - mini: q
+        title: Checklist Admin Tool v2
+        text: Rebuilt a legacy tool for Brokers of Record as self-service, with dynamic filters, bulk editing and a full checklist item editor. UX satisfaction 4.8/5.
+        screen: "[screen: checklist item editor]"
+      - mini: sys
+        title: Multi-brand design system
+        text: Figma variables and tokens as a single source of truth, so a new brand re-skins the product instead of rebuilding it. Brand integrations became twice as fast.
+        screen: "[image: system components]"
+  reflection: "[What this project taught me, in one or two sentences.]"
+  next: "[one line]"
+  demo:
+    c.try: Try it
+    c.try.h: One system, any brand.
+    c.try.p: Pick a brand. The same components take its color, shape and weight.
+    c.b1: Brand A
+    c.b2: Brand B
+    c.b3: Brand C
+    c.bd.home: Listings
+    c.bd.r1: Review documents
+    c.bd.r2: Client follow-up
+    c.bd.r3: Disclosure signed
+    c.bd.t1: Pending
+    c.bd.t2: Today
+    c.bd.t3: Done
+    c.bd.in: Search clients
+    c.bd.btn: New listing
+    c.bd.note: Illustrative demo, not the real product.
+    c.bd.live: applied
+
+es:
+  sector: PropTech
+  years: 2024–2025
+  summary: "Diseño a la escala de una empresa de USD 17B que crece por adquisiciones: operaciones de compliance, research de CRM y un design system que absorbe marcas nuevas."
+  homeMetricLabel: de ahorro por año
+  highlight: "USD 400k de ahorro anual · integración de marcas 2× más rápida"
+  role: Senior product designer (lead individual contributor)
+  scope: Automatización de contratos · Herramientas de compliance · Research de CRM · Design system
+  team: Transaction Operations, Brokers of Record, producto e ingeniería
+  timeline: Principios de 2024 – fines de 2025
+  coverAlt: Portada del producto Compass
+  metrics:
+    - { value: "$400k", label: de ahorro anual con el flujo de renovación de contratos }
+    - { value: "4.8/5", label: de satisfacción UX con la herramienta de checklists de compliance }
+    - { value: "2×", label: más rápida la integración de marcas con el sistema multimarca }
+  problem: Cada adquisición, de Christie’s a @properties, traía sus propias herramientas, marcas y pasos de compliance, y los cambios de rutina dependían de ingeniería.
+  did: Automaticé la renovación de contratos, investigué cómo se trabaja en nombre de otros agentes, convertí la herramienta de checklists de compliance en autoservicio y armé un único design system para todas las marcas.
+  result: "USD 400k de ahorro por año, cambios de compliance de rutina sin pasar por ingeniería y marcas nuevas integradas el doble de rápido."
+  story:
+    title: Del caos al orden.
+    chapters:
+      - kicker: Problema
+        title: Crecer comprando, un producto a la vez.
+        text: Christie’s, @properties y Washington Fine Properties llegaron cada una con sus herramientas, marcas y pasos de compliance. La operación escalaba, la experiencia se fragmentaba y cada cambio de compliance necesitaba a un ingeniero.
+        data: → Una empresa de USD 17B construida a base de adquisiciones
+      - kicker: Decisión
+        title: Arreglar las bases compartidas, no cada pantalla.
+        text: En lugar de rediseñar producto por producto, me enfoqué en lo que todas las marcas comparten — el flujo de contratos, las reglas de compliance detrás de cada operación y un design system como única fuente de verdad.
+        data: → Un sistema para todas las marcas, con office hours de design system para los equipos
+      - kicker: Resultado
+        title: Las marcas nuevas encajan solas.
+        text: Las renovaciones avanzan sin persecuciones manuales, los equipos de compliance actualizan sus propios checklists y cada adquisición se suma al sistema en vez de sumar ruido.
+        data: → USD 400k de ahorro por año · 100% de los cambios de compliance de rutina sin ingeniería
+  work:
+    title: Cuatro iniciativas, una dirección.
+    items:
+      - mini: q
+        title: Automatización del servicio de contratos
+        text: Rediseñé el flujo de renovación de contratos del equipo de Transaction Operations y convertí los seguimientos manuales en un servicio automático que ahorra USD 400k por año.
+        screen: "[pantalla: flujo de renovación de contratos]"
+      - mini: notes
+        title: Research de CRM “On behalf of”
+        text: Research con 14 participantes sobre cómo asistentes y equipos actúan en nombre de los agentes dentro del CRM. Los hallazgos definieron el roadmap de una bandeja multicanal.
+        screen: "[imagen: síntesis del research]"
+      - mini: q
+        title: Checklist Admin Tool v2
+        text: Reconstruí una herramienta heredada para los Brokers of Record como autoservicio, con filtros dinámicos, edición masiva y un editor completo de ítems. Satisfacción UX de 4.8/5.
+        screen: "[pantalla: editor de ítems del checklist]"
+      - mini: sys
+        title: Design system multimarca
+        text: Variables y tokens en Figma como única fuente de verdad, para que una marca nueva cambie la piel del producto en lugar de reconstruirlo. Las integraciones de marca pasaron a ser el doble de rápidas.
+        screen: "[imagen: componentes del sistema]"
+  reflection: "[Qué me enseñó este proyecto, en una o dos frases.]"
+  next: "[una línea]"
+  demo:
+    c.try: Probalo
+    c.try.h: Un sistema, cualquier marca.
+    c.try.p: Elegí una marca. Los mismos componentes toman su color, forma y peso.
+    c.b1: Marca A
+    c.b2: Marca B
+    c.b3: Marca C
+    c.bd.home: Propiedades
+    c.bd.r1: Revisar documentos
+    c.bd.r2: Seguimiento de cliente
+    c.bd.r3: Declaración firmada
+    c.bd.t1: Pendiente
+    c.bd.t2: Hoy
+    c.bd.t3: Listo
+    c.bd.in: Buscar clientes
+    c.bd.btn: Nueva propiedad
+    c.bd.note: Demo ilustrativa, no es el producto real.
+    c.bd.live: aplicada

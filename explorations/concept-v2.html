@@ -1,0 +1,1494 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Concepto Imán</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300..800&family=Geist+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: 12-column page grid; mono labels in columns 1–3, content in 4–12. Demos are full-bleed inside the content track. */
+:root {
+  --paper: #EDEFEE;
+  --panel: #E1E5E3;
+  --ink: #0E1311;
+  --ink-2: #4B5550;
+  --line: #C5CCC8;
+  --accent: #08704E;   /* text accent, 4.5:1+ */
+  --fill: #0E8A5F;     /* graphic accent: tilde, field, borders, 3:1+ */
+  --on-accent: #FFFFFF;
+  --tint: rgba(14, 138, 95, .1);
+  --fill-inv: #4ADE9E; /* graphic accent on inverse (ink) surfaces */
+
+  --f-display: "Geist", "Helvetica Neue", Arial, sans-serif;
+  --f-text: "Geist", "Helvetica Neue", Arial, sans-serif;
+  --f-mono: "Geist Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+
+  --s-0: .75rem; --s-1: 1rem; --s-2: 1.25rem; --s-3: 1.75rem;
+  --s-4: clamp(2rem, 4vw, 3rem); --s-5: clamp(2.75rem, 7.5vw, 6.5rem);
+  --gutter: 24px; --maxw: 1280px;
+  --spring: cubic-bezier(.3, 1.45, .5, 1);
+  --out: cubic-bezier(.2, .8, .1, 1);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #0B0F0D; --panel: #131916; --ink: #E6EBE8; --ink-2: #97A39D; --fill: #4ADE9E;
+    --line: #25302B; --accent: #4ADE9E; --on-accent: #06110C; --tint: rgba(74, 222, 158, .1); --fill-inv: #08704E;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #0B0F0D; --panel: #131916; --ink: #E6EBE8; --ink-2: #97A39D; --fill: #4ADE9E;
+  --line: #25302B; --accent: #4ADE9E; --on-accent: #06110C; --tint: rgba(74, 222, 158, .1); --fill-inv: #08704E;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body {
+  background: var(--paper); color: var(--ink); font-family: var(--f-text); font-size: var(--s-1); line-height: 1.55;
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px));
+  -webkit-font-smoothing: antialiased; font-kerning: normal; hanging-punctuation: first last;
+}
+::selection { background: var(--accent); color: var(--on-accent); }
+button { font: inherit; color: inherit; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+.wrap { max-width: var(--maxw); margin: 0 auto; padding-inline: clamp(0px, 2.5vw, 32px); }
+.grid { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gutter); }
+@media (max-width: 760px) { :root { --gutter: 16px; } }
+.label { font-family: var(--f-mono); font-size: var(--s-0); letter-spacing: .06em; text-transform: uppercase; color: var(--ink-2); }
+.label b { color: var(--ink); font-weight: 500; }
+.acc { color: var(--accent); }
+kbd { font-family: var(--f-mono); font-size: .7rem; border: 1px solid currentColor; border-radius: 4px; padding: 0 5px; opacity: .7; }
+
+/* The tilde: the brand's one recurring mark */
+.tilde { display: inline-block; width: 3px; height: 11px; background: var(--fill); border-radius: 2px; transform: rotate(34deg); }
+
+.top { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 30; background: var(--paper); border-bottom: 1px solid var(--line); }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 31; background: var(--paper); }
+.top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 12px; }
+.mark { font-family: var(--f-display); font-weight: 650; font-size: 1.05rem; font-variation-settings: "wdth" 85, "opsz" 24; }
+@media (max-width: 560px) { .top .label { display: none; } }
+
+.btn {
+  display: inline-flex; align-items: center; gap: 8px; cursor: pointer; border: 1px solid var(--line); background: var(--paper);
+  border-radius: 999px; padding: 6px 12px; font-family: var(--f-mono); font-size: var(--s-0); letter-spacing: .04em; text-transform: uppercase;
+  transition: border-color .2s;
+}
+.btn:hover { border-color: var(--ink); }
+
+/* Hero */
+.hero { padding-block: clamp(56px, 10vw, 120px) clamp(40px, 6vw, 72px); }
+.hero .label { grid-column: 1 / 4; padding-top: .9em; }
+.hero h1 { grid-column: 4 / 13; margin: 0; font-family: var(--f-display); font-size: var(--s-5); line-height: .94; letter-spacing: -.035em; font-weight: 700; font-variation-settings: "wdth" 80, "opsz" 96; text-wrap: balance; }
+.hero .lead { grid-column: 4 / 11; margin: 32px 0 0; font-size: var(--s-2); color: var(--ink-2); max-width: 62ch; text-wrap: pretty; }
+@media (max-width: 760px) { .hero .label, .hero h1, .hero .lead { grid-column: 1 / -1; } .hero h1 { margin-top: 16px; } }
+
+section.block { border-top: 1px solid var(--line); padding-block: clamp(48px, 7vw, 96px); }
+.side { grid-column: 1 / 4; display: flex; flex-direction: column; gap: 6px; }
+.main { grid-column: 4 / 13; min-width: 0; }
+@media (max-width: 760px) { .side, .main { grid-column: 1 / -1; } .side { margin-bottom: 24px; flex-direction: row; flex-wrap: wrap; gap: 4px 16px; } }
+h2 { margin: 0 0 20px; font-family: var(--f-display); font-weight: 650; font-size: var(--s-4); line-height: 1.02; letter-spacing: -.025em; font-variation-settings: "wdth" 85, "opsz" 72; text-wrap: balance; }
+h3 { margin: 0 0 8px; font-family: var(--f-display); font-weight: 600; font-size: var(--s-2); letter-spacing: -.01em; font-variation-settings: "wdth" 90, "opsz" 24; }
+p { margin: 0 0 1em; max-width: 64ch; text-wrap: pretty; }
+.muted { color: var(--ink-2); }
+.tagline { font-size: var(--s-2); color: var(--ink-2); margin: -8px 0 28px; max-width: 58ch; }
+.cap { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; margin: 10px 0 0; }
+.notes { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--gutter); margin-top: 32px; }
+.notes > div { min-width: 0; border-top: 1px solid var(--line); padding-top: 12px; }
+.notes .label { display: block; margin-bottom: 6px; }
+.notes p { font-size: .95rem; margin: 0; }
+@media (max-width: 760px) { .notes { grid-template-columns: 1fr; gap: 16px; } }
+
+/* Concept statement */
+.thesis { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: var(--gutter); margin-top: 8px; }
+.thesis > div { border-top: 1px solid var(--ink); padding-top: 14px; min-width: 0; }
+.thesis .big { font-family: var(--f-display); font-weight: 700; font-size: var(--s-3); line-height: 1.08; letter-spacing: -.02em; font-variation-settings: "wdth" 82, "opsz" 48; margin: 8px 0 10px; text-wrap: balance; }
+@media (max-width: 760px) { .thesis { grid-template-columns: 1fr; } }
+.pillars { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--gutter); margin-top: 40px; }
+.pillars > div { background: var(--panel); border-radius: 6px; padding: 16px; min-width: 0; }
+.pillars .role { font-family: var(--f-display); font-weight: 650; font-size: 1.35rem; letter-spacing: -.015em; line-height: 1.05; margin: 8px 0; font-variation-settings: "wdth" 85, "opsz" 36; }
+.pillars p { font-size: .88rem; margin: 0; }
+.pillars .from { display: block; margin-top: 10px; }
+@media (max-width: 900px) { .pillars { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 480px) { .pillars { grid-template-columns: 1fr; } }
+
+/* Budget table */
+.budget { overflow-x: auto; border: 1px solid var(--line); border-radius: 6px; }
+.budget table { border-collapse: collapse; width: 100%; min-width: 600px; font-size: .92rem; }
+.budget th, .budget td { text-align: left; padding: 12px 16px; border-bottom: 1px solid var(--line); vertical-align: middle; }
+.budget tr:last-child td { border-bottom: 0; }
+.budget th { font-family: var(--f-mono); font-weight: 400; font-size: var(--s-0); text-transform: uppercase; letter-spacing: .06em; color: var(--ink-2); }
+.lvl { display: inline-flex; gap: 3px; margin-right: 10px; vertical-align: middle; }
+.lvl i { width: 16px; height: 5px; border-radius: 1px; background: var(--line); }
+.lvl i.on { background: var(--accent); }
+.lvl-name { font-family: var(--f-mono); font-size: .8rem; }
+.rules { list-style: none; padding: 0; margin: 28px 0 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 var(--gutter); }
+.rules li { border-top: 1px solid var(--line); padding: 12px 0 12px 22px; position: relative; font-size: .95rem; }
+.rules li .tilde { position: absolute; left: 4px; top: 18px; }
+@media (max-width: 760px) { .rules { grid-template-columns: 1fr; } }
+
+/* Stages */
+.stage { position: relative; background: var(--panel); border-radius: 6px; overflow: hidden; isolation: isolate; }
+.fieldcv { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+
+/* Tilde system tiles */
+.tiles { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--gutter); }
+.tile { background: var(--panel); border-radius: 6px; padding: 16px; min-width: 0; display: flex; flex-direction: column; gap: 14px; }
+.tile .demo { height: 96px; display: flex; align-items: center; justify-content: center; background: var(--paper); border-radius: 4px; position: relative; overflow: hidden; }
+.tile p { font-size: .88rem; margin: 0; color: var(--ink-2); }
+.tile h3 { margin: 0; font-size: 1.05rem; }
+@media (max-width: 900px) { .tiles { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 480px) { .tiles { grid-template-columns: 1fr; } }
+.t-nav { display: flex; gap: 18px; font-size: .9rem; position: relative; padding-top: 10px; }
+.t-nav .tilde { position: absolute; top: -4px; left: 12px; animation: navhop 4s var(--spring) infinite; }
+@keyframes navhop { 0%, 20% { left: 12px; } 30%, 50% { left: 62px; } 60%, 80% { left: 116px; } 90%, 100% { left: 12px; } }
+.t-list { list-style: none; margin: 0; padding: 0; font-size: .9rem; display: grid; gap: 4px; }
+.t-list li { display: flex; align-items: center; gap: 10px; }
+.t-list .tilde { height: 9px; }
+.t-load { display: flex; gap: 7px; }
+.t-load .tilde { animation: load 1.2s ease-in-out infinite; }
+.t-load .tilde:nth-child(2) { animation-delay: .15s; } .t-load .tilde:nth-child(3) { animation-delay: .3s; }
+@keyframes load { 0%, 100% { transform: rotate(34deg); opacity: .25; } 50% { transform: rotate(34deg) translateY(-6px); opacity: 1; } }
+.t-fav { display: flex; gap: 14px; align-items: center; }
+.fav { width: 40px; height: 40px; border-radius: 9px; background: var(--ink); display: grid; place-items: center; }
+.fav .tilde { width: 6px; height: 20px; border-radius: 3px; }
+.fav.sm { width: 20px; height: 20px; border-radius: 5px; } .fav.sm .tilde { width: 3px; height: 10px; }
+.t-link { font-size: 1.05rem; position: relative; padding-right: 12px; }
+.t-link .tilde { position: absolute; right: 0; top: -2px; animation: linkin 2.4s var(--spring) infinite; }
+@keyframes linkin { 0%, 30% { opacity: 0; transform: rotate(34deg) translate(-4px, 4px); } 45%, 85% { opacity: 1; transform: rotate(34deg); } 100% { opacity: 0; transform: rotate(34deg); } }
+.t-type { font-family: var(--f-display); font-weight: 800; font-size: 2.6rem; letter-spacing: -.04em; font-variation-settings: "wdth" 75, "opsz" 96; line-height: 1; }
+
+/* Demo 1 — site nav */
+.site { height: clamp(420px, 50vw, 520px); }
+.has-cursor, .has-cursor * { cursor: none !important; }
+.m-nav { position: absolute; top: 0; left: 0; right: 0; z-index: 3; display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 18px clamp(16px, 3vw, 32px); }
+.m-logo { font-family: var(--f-display); font-weight: 700; font-size: 1.1rem; font-variation-settings: "wdth" 85, "opsz" 24; }
+.m-links { display: flex; gap: clamp(12px, 2.4vw, 28px); position: relative; padding-top: 8px; }
+.m-links button, .m-lang { background: none; border: 0; padding: 4px 2px; cursor: pointer; font-size: .92rem; transition: transform .35s var(--spring); }
+.m-links button.on { font-weight: 600; }
+.m-links .tilde { position: absolute; top: -2px; left: 0; transition: left .5s var(--spring); }
+.m-lang { font-family: var(--f-mono); font-size: var(--s-0); border: 1px solid var(--line); border-radius: 999px; padding: 4px 10px; }
+.m-hero { position: absolute; left: clamp(16px, 3vw, 32px); right: clamp(16px, 3vw, 32px); bottom: clamp(20px, 4vw, 40px); z-index: 2; pointer-events: none; }
+.m-gloss { font-family: var(--f-mono); font-size: .8rem; color: var(--ink-2); margin: 0 0 12px; }
+.m-h { font-family: var(--f-display); font-weight: 750; font-size: clamp(2.2rem, 6.4vw, 4.6rem); line-height: .95; letter-spacing: -.035em; font-variation-settings: "wdth" 78, "opsz" 96; margin: 0 0 22px; max-width: 13ch; }
+.m-ctas { display: flex; gap: 10px; flex-wrap: wrap; pointer-events: auto; }
+.m-btn { border: 1px solid var(--ink); background: var(--paper); border-radius: 999px; padding: 10px 18px; cursor: pointer; font-size: .9rem; transition: transform .35s var(--spring), background .2s, color .2s; }
+.m-btn.primary { background: var(--ink); color: var(--paper); }
+.cursor { position: absolute; left: 0; top: 0; z-index: 10; width: 8px; height: 8px; margin: -4px 0 0 -4px; border-radius: 999px; background: var(--accent); pointer-events: none; transition: width .3s var(--spring), height .3s var(--spring), margin .3s var(--spring), background .2s, border-color .2s; border: 1.5px solid transparent; display: none; }
+.has-cursor .cursor { display: block; }
+.cursor.on { width: 44px; height: 44px; margin: -22px 0 0 -22px; background: transparent; border-color: var(--accent); }
+@media (max-width: 640px) { .m-links button:nth-child(n+3) { display: none; } }
+
+/* Demo 2 — phone */
+.mobile-row { display: grid; grid-template-columns: minmax(0, 360px) minmax(0, 1fr); gap: clamp(24px, 4vw, 56px); align-items: center; }
+@media (max-width: 760px) { .mobile-row { grid-template-columns: 1fr; } }
+.phone { position: relative; width: 100%; max-width: 360px; height: 700px; border-radius: 40px; border: 10px solid var(--ink); background: var(--paper); overflow: hidden; isolation: isolate; margin-inline: auto; }
+@media (max-width: 420px) { .phone { height: 620px; border-width: 8px; border-radius: 34px; } }
+.ph-notch { position: absolute; top: 8px; left: 50%; transform: translateX(-50%); width: 90px; height: 24px; background: var(--ink); border-radius: 20px; z-index: 6; }
+.ph-screen { position: absolute; inset: 0; z-index: 2; overflow-y: auto; overscroll-behavior: contain; scrollbar-width: none; }
+.ph-screen::-webkit-scrollbar { display: none; }
+.ph-hero { height: 560px; position: relative; touch-action: pan-y; padding: 64px 20px 24px; display: flex; flex-direction: column; justify-content: flex-end; }
+.ph-hero .gloss { font-family: var(--f-mono); font-size: .7rem; color: var(--ink-2); margin: 0 0 8px; }
+.ph-hero h4 { font-family: var(--f-display); font-weight: 750; font-size: 2.5rem; line-height: .95; letter-spacing: -.035em; font-variation-settings: "wdth" 78, "opsz" 96; margin: 0 0 16px; }
+.ph-pill { align-self: flex-start; border: 1px solid var(--ink); border-radius: 999px; padding: 8px 14px; font-size: .8rem; background: var(--paper); }
+.ph-hint { position: absolute; top: 56px; left: 20px; right: 20px; text-align: center; }
+.ph-sec { padding: 28px 20px; background: var(--paper); position: relative; }
+.ph-sec h5 { font-family: var(--f-mono); font-size: .7rem; letter-spacing: .06em; text-transform: uppercase; color: var(--ink-2); font-weight: 400; margin: 0 0 14px; display: flex; align-items: center; gap: 8px; }
+.ph-card { border-top: 1px solid var(--line); padding: 14px 0; }
+.ph-card b { font-family: var(--f-display); font-size: 1.35rem; font-weight: 650; letter-spacing: -.02em; display: block; font-variation-settings: "wdth" 82, "opsz" 36; }
+.ph-card span { font-size: .8rem; color: var(--ink-2); }
+.ph-sec p { font-size: .88rem; }
+.ph-tabs { position: absolute; left: 12px; right: 12px; bottom: 14px; z-index: 5; display: flex; justify-content: space-around; background: color-mix(in srgb, var(--paper) 86%, transparent); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid var(--line); border-radius: 999px; padding: 12px 8px 10px; }
+.ph-tabs button { background: none; border: 0; font-size: .78rem; padding: 2px 8px; cursor: pointer; position: relative; }
+.ph-tabs button.on { font-weight: 600; }
+.ph-tabs .tilde { position: absolute; top: 3px; left: 0; height: 8px; width: 2.5px; transition: left .5s var(--spring); }
+.m-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; }
+.m-list li { display: grid; grid-template-columns: 28px minmax(0, 1fr); border-top: 1px solid var(--line); padding: 14px 0; }
+.m-list li .tilde { margin-top: 6px; }
+.m-list b { display: block; font-weight: 600; }
+.m-list span { color: var(--ink-2); font-size: .95rem; }
+
+/* Demo 3 — work + case */
+.work { height: clamp(520px, 60vw, 620px); }
+.w-top { position: absolute; top: 0; left: 0; right: 0; z-index: 5; display: flex; justify-content: space-between; align-items: center; padding: 16px clamp(16px, 3vw, 28px); gap: 12px; }
+.k-pill { display: inline-flex; align-items: center; gap: 8px; border: 1px solid var(--line); background: var(--paper); border-radius: 999px; padding: 6px 8px 6px 14px; cursor: pointer; font-size: .85rem; color: var(--ink-2); transition: border-color .2s; }
+.k-pill:hover { border-color: var(--ink); color: var(--ink); }
+.w-grid { position: absolute; left: clamp(16px, 3vw, 28px); right: clamp(16px, 3vw, 28px); top: 64px; bottom: 56px; z-index: 3; display: grid; grid-template-columns: 1.25fr 1fr 1fr; gap: 14px; }
+.card {
+  text-align: left; cursor: pointer; border: 1px solid var(--line); border-radius: 6px; background: color-mix(in srgb, var(--paper) 88%, transparent);
+  padding: 18px; display: flex; flex-direction: column; justify-content: space-between; min-width: 0;
+  transition: transform .5s var(--out), opacity .4s, border-color .2s; backdrop-filter: blur(2px);
+}
+.card:hover { border-color: var(--accent); }
+.card .c-top { display: flex; justify-content: space-between; gap: 8px; }
+.card h4 { margin: 0; font-family: var(--f-display); font-weight: 700; font-size: clamp(1.6rem, 3.4vw, 2.6rem); line-height: .95; letter-spacing: -.03em; font-variation-settings: "wdth" 80, "opsz" 72; }
+.card p { margin: 8px 0 0; font-size: .85rem; color: var(--ink-2); }
+.card .open { font-family: var(--f-mono); font-size: .7rem; letter-spacing: .06em; text-transform: uppercase; color: var(--accent); opacity: 0; transition: opacity .2s; }
+.card:hover .open, .card:focus-visible .open { opacity: 1; }
+.w-grid.leaving .card { opacity: 0; transform: scale(.94) translateY(10px); pointer-events: none; }
+.w-grid.leaving .card:nth-child(2) { transition-delay: .05s; } .w-grid.leaving .card:nth-child(3) { transition-delay: .1s; }
+.w-foot { position: absolute; left: clamp(16px, 3vw, 28px); bottom: 18px; z-index: 3; transition: opacity .3s; }
+.leaving ~ .w-foot { opacity: 0; }
+@media (max-width: 760px) { .w-grid { grid-template-columns: 1fr; grid-template-rows: repeat(3, 1fr); } .card p { display: none; } }
+.morph { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 6; pointer-events: none; transition: opacity .5s; }
+.k-pal { position: absolute; z-index: 8; top: 56px; right: clamp(16px, 3vw, 28px); width: min(320px, calc(100% - 32px)); background: var(--paper); border: 1px solid var(--line); border-radius: 8px; box-shadow: 0 12px 40px -12px rgba(0, 0, 0, .25); overflow: hidden; transform-origin: top right; animation: palin .25s var(--out); }
+@keyframes palin { from { opacity: 0; transform: scale(.96) translateY(-4px); } }
+.k-pal input { width: 100%; border: 0; border-bottom: 1px solid var(--line); background: transparent; padding: 12px 14px; font: inherit; font-size: .9rem; color: var(--ink); outline: none; }
+.k-pal ul { list-style: none; margin: 0; padding: 4px; max-height: 240px; overflow: auto; }
+.k-pal li button { width: 100%; display: flex; justify-content: space-between; gap: 8px; text-align: left; background: none; border: 0; border-radius: 4px; padding: 7px 10px; cursor: pointer; font-size: .88rem; }
+.k-pal li button:hover, .k-pal li button:focus-visible { background: var(--panel); outline: none; }
+.k-pal li button span { font-family: var(--f-mono); font-size: .7rem; color: var(--ink-2); }
+.k-pal li button[disabled] { color: var(--ink-2); cursor: default; }
+.case { position: absolute; inset: 0; z-index: 7; padding: 18px clamp(16px, 3vw, 28px) 24px; overflow-y: auto; display: flex; flex-direction: column; gap: 14px; }
+.case.measuring { visibility: hidden; }
+.case-back { align-self: flex-start; }
+.case-t { margin: 8px 0 0; font-family: var(--f-display); font-weight: 700; line-height: 1; letter-spacing: 0; white-space: nowrap; opacity: 0; transition: opacity .45s; }
+.case.in .case-t { opacity: 1; }
+.rise { opacity: 0; transform: perspective(1000px) rotateX(22deg) translateY(36px); transform-origin: 50% 100%; transition: opacity .6s, transform .9s var(--out); transition-delay: var(--d, 0s); }
+.case.in .rise { opacity: 1; transform: none; }
+.case-sub { font-size: 1rem; color: var(--ink-2); margin: 0; max-width: 60ch; }
+.case-sum { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.case-sum div { border-top: 1px solid var(--ink); padding-top: 8px; min-width: 0; }
+.case-sum b { display: block; font-family: var(--f-display); font-weight: 700; font-size: 1.8rem; letter-spacing: -.03em; font-variation-settings: "wdth" 80, "opsz" 48; font-variant-numeric: tabular-nums; }
+.case-sum b.ph { color: var(--accent); }
+.case-sum span { font-size: .78rem; color: var(--ink-2); }
+.case-cover { flex: 1; min-height: 150px; border-radius: 6px; border: 1px solid var(--line); background: var(--paper); display: grid; grid-template-columns: 1fr 4fr; gap: 10px; padding: 12px; }
+.case-cover .nv { background: var(--panel); border-radius: 3px; }
+.case-cover .bd { display: grid; grid-template-rows: 12px 1fr; gap: 10px; }
+.case-cover .bd i { display: block; background: var(--line); border-radius: 2px; width: 40%; }
+.case-cover .tl { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+.case-cover .tl s { background: var(--panel); border-radius: 3px; text-decoration: none; }
+.case-cover .tl s:first-child { background: var(--accent); }
+@media (max-width: 560px) { .case-sum b { font-size: 1.3rem; } }
+
+/* Demo 4 — highlights */
+.hl { height: clamp(500px, 56vw, 580px); }
+.hl-entry { position: absolute; inset: 0; z-index: 3; display: flex; flex-direction: column; justify-content: center; align-items: flex-start; gap: 18px; padding: clamp(20px, 5vw, 56px); }
+.hl-entry h4 { margin: 0; font-family: var(--f-display); font-weight: 700; font-size: clamp(1.8rem, 4.4vw, 3.2rem); line-height: 1; letter-spacing: -.03em; font-variation-settings: "wdth" 80, "opsz" 72; max-width: 16ch; }
+.hl-go { display: inline-flex; align-items: center; gap: 14px; border: 0; background: var(--ink); color: var(--paper); border-radius: 999px; padding: 14px 22px 14px 18px; cursor: pointer; font-size: 1rem; transition: transform .35s var(--spring); }
+.hl-go:hover { transform: scale(1.03); }
+.hl-go .tilde { background: var(--fill-inv); }
+.hl-go small { font-family: var(--f-mono); font-size: .7rem; opacity: .7; letter-spacing: .04em; }
+.hl-mode { position: absolute; inset: 0; z-index: 4; display: flex; flex-direction: column; animation: fadein .5s var(--out); }
+@keyframes fadein { from { opacity: 0; } }
+.hl-bar { display: flex; align-items: center; gap: 14px; padding: 14px clamp(16px, 3vw, 28px); border-bottom: 1px solid var(--line); background: color-mix(in srgb, var(--panel) 80%, transparent); backdrop-filter: blur(6px); }
+.hl-prog { flex: 1; height: 2px; background: var(--line); position: relative; border-radius: 2px; }
+.hl-prog i { position: absolute; inset: 0 auto 0 0; width: 0; background: var(--accent); border-radius: 2px; }
+.hl-prog .tilde { position: absolute; top: -12px; left: 0; margin-left: -1px; }
+.hl-time { font-variant-numeric: tabular-nums; min-width: 9ch; text-align: right; }
+.hl-steps { flex: 1; overflow-y: auto; scroll-snap-type: y mandatory; overscroll-behavior: contain; }
+.hl-step { min-height: 100%; scroll-snap-align: start; display: flex; flex-direction: column; justify-content: center; padding: clamp(20px, 5vw, 56px); gap: 12px; }
+.hl-step .k { font-family: var(--f-mono); font-size: var(--s-0); letter-spacing: .06em; text-transform: uppercase; color: var(--ink-2); }
+.hl-step h4 { margin: 0; font-family: var(--f-display); font-weight: 700; font-size: clamp(1.9rem, 4.6vw, 3.4rem); line-height: 1; letter-spacing: -.03em; font-variation-settings: "wdth" 80, "opsz" 72; max-width: 18ch; text-wrap: balance; }
+.hl-step p { margin: 0; color: var(--ink-2); font-size: 1.05rem; max-width: 50ch; }
+.hl-step .ph { font-family: var(--f-mono); font-size: .8rem; color: var(--accent); }
+.hl-step > * { transition: opacity .6s, transform .8s var(--out); }
+.hl-step:not(.on) > * { opacity: .15; transform: translateY(14px); }
+.hl-cta { display: flex; gap: 10px; flex-wrap: wrap; }
+
+/* References */
+.refs { list-style: none; margin: 0; padding: 0; }
+.refs li { display: grid; grid-template-columns: minmax(0, 10rem) minmax(0, 1fr) minmax(0, 9rem); gap: var(--gutter); border-top: 1px solid var(--line); padding: 14px 0; align-items: baseline; }
+.refs li:last-child { border-bottom: 1px solid var(--line); }
+.refs b { font-weight: 600; }
+.refs span { color: var(--ink-2); font-size: .95rem; }
+.refs .label { text-align: right; }
+@media (max-width: 760px) { .refs li { grid-template-columns: 1fr; gap: 4px; } .refs .label { text-align: left; } }
+
+/* Demo 5 — case chapters */
+.chap { height: clamp(540px, 62vw, 620px); display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); }
+.ch-vis { position: relative; border-right: 1px solid var(--line); min-height: 0; }
+.ch-state { position: absolute; left: 16px; bottom: 14px; z-index: 2; display: flex; align-items: center; gap: 8px; background: var(--panel); padding: 2px 6px; border-radius: 3px; }
+.ch-text { position: relative; display: flex; flex-direction: column; min-height: 0; background: var(--paper); }
+.ch-rail { display: flex; gap: 6px; padding: 14px clamp(16px, 3vw, 24px) 12px; border-bottom: 1px solid var(--line); }
+.ch-rail button { flex: 1; min-width: 0; display: flex; align-items: center; gap: 8px; background: none; border: 0; border-top: 2px solid var(--line); padding: 10px 0 2px; text-align: left; cursor: pointer; font-family: var(--f-mono); font-size: .7rem; letter-spacing: .06em; text-transform: uppercase; color: var(--ink-2); transition: border-color .3s, color .3s; min-height: 32px; }
+.ch-rail button .tilde { opacity: 0; transition: opacity .3s; flex: none; }
+.ch-rail button.on { border-color: var(--fill); color: var(--ink); }
+.ch-rail button.on .tilde { opacity: 1; }
+.ch-scroll { position: relative; flex: 1; min-height: 0; overflow-y: auto; overscroll-behavior: contain; scroll-snap-type: y proximity; }
+.ch-step { min-height: 100%; scroll-snap-align: start; display: flex; flex-direction: column; justify-content: center; gap: 12px; padding: clamp(20px, 4vw, 40px); }
+.ch-step .k { font-family: var(--f-mono); font-size: var(--s-0); letter-spacing: .06em; text-transform: uppercase; color: var(--ink-2); }
+.ch-step h4 { margin: 0; font-family: var(--f-display); font-weight: 700; font-size: clamp(1.6rem, 3.2vw, 2.4rem); line-height: 1.02; letter-spacing: -.03em; text-wrap: balance; }
+.ch-step p { margin: 0; color: var(--ink-2); max-width: 44ch; }
+.ch-step .ph { font-family: var(--f-mono); font-size: .8rem; color: var(--accent); }
+.ch-step > * { transition: opacity .6s, transform .8s var(--out); }
+.ch-step:not(.on) > * { opacity: .3; transform: translateY(12px); }
+@media (max-width: 760px) {
+  .chap { grid-template-columns: 1fr; grid-template-rows: 38% minmax(0, 1fr); height: 660px; }
+  .ch-vis { border-right: 0; border-bottom: 1px solid var(--line); }
+}
+
+/* Demo 6 — attracting CTA */
+.cta { height: clamp(460px, 50vw, 520px); }
+.cta-in { position: absolute; inset: 0; z-index: 3; display: flex; flex-direction: column; justify-content: flex-end; gap: 18px; padding: clamp(20px, 5vw, 56px); pointer-events: none; }
+.cta-h { margin: 0; font-family: var(--f-display); font-weight: 700; font-size: clamp(2rem, 5.4vw, 4rem); line-height: .95; letter-spacing: -.035em; max-width: 13ch; text-wrap: balance; }
+.cta-row { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; pointer-events: auto; }
+.cta-btn { position: relative; overflow: hidden; isolation: isolate; display: inline-flex; align-items: center; gap: 14px; border: 0; border-radius: 999px; background: var(--ink); color: var(--paper); padding: 18px 28px; font-size: 1.05rem; font-weight: 500; cursor: pointer; transition: transform .35s var(--spring); }
+.cta-btn .tilde { background: var(--fill-inv); }
+.cta-cv { position: absolute; inset: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none;
+  -webkit-mask-image: radial-gradient(ellipse 62% 75% at 45% 50%, transparent 45%, #000 100%); mask-image: radial-gradient(ellipse 62% 75% at 45% 50%, transparent 45%, #000 100%); }
+.cta-copy { display: inline-flex; align-items: center; gap: 12px; border: 1px solid var(--line); background: var(--paper); border-radius: 999px; padding: 8px 8px 8px 18px; cursor: pointer; min-height: 44px; transition: border-color .2s; }
+.cta-copy:hover { border-color: var(--ink); }
+.cta-copy .em { font-family: var(--f-mono); font-size: .88rem; }
+.cta-copy .ck { font-family: var(--f-mono); font-size: .7rem; letter-spacing: .06em; text-transform: uppercase; background: var(--panel); border-radius: 999px; padding: 6px 10px; transition: background .2s, color .2s; }
+.cta-copy.done .ck { background: var(--accent); color: var(--on-accent); }
+.cta-status { min-height: 1.4em; margin: 0; font-size: .85rem; color: var(--ink-2); pointer-events: auto; }
+
+/* Demo 7 — closing footer */
+.foot { min-height: clamp(540px, 62vw, 620px); container-type: inline-size; display: flex; flex-direction: column; }
+.ft-cols { position: relative; z-index: 2; display: grid; grid-template-columns: minmax(0, 1.5fr) repeat(3, minmax(0, 1fr)); gap: 20px; padding: clamp(20px, 4vw, 36px); }
+.ft-cols > div { min-width: 0; display: flex; flex-direction: column; gap: 10px; align-items: flex-start; }
+.ft-now { margin: 0; font-family: var(--f-display); font-weight: 600; font-size: 1.5rem; letter-spacing: -.02em; line-height: 1.1; font-variant-numeric: tabular-nums; }
+.ft-cols p { margin: 0; font-size: .9rem; }
+.ft-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 4px; }
+.ft-list a { color: var(--ink); text-decoration: none; position: relative; padding: 2px 14px 2px 0; display: inline-block; font-size: .95rem; }
+.ft-list a::after { content: ""; position: absolute; right: 0; top: 5px; width: 3px; height: 10px; border-radius: 2px; background: var(--fill); transform: rotate(34deg) translate(-4px, 4px); opacity: 0; transition: opacity .2s, transform .35s var(--spring); }
+.ft-list a:hover::after, .ft-list a:focus-visible::after { opacity: 1; transform: rotate(34deg); }
+.ft-legal { position: relative; z-index: 2; display: flex; justify-content: space-between; gap: 8px 16px; flex-wrap: wrap; padding: 8px clamp(20px, 4vw, 36px) 0; margin-top: auto; }
+.ft-word { position: relative; z-index: 1; line-height: .74; margin: 4px 0 -.07em; white-space: nowrap; user-select: none; }
+.ft-word span.w { display: inline-block; font-family: var(--f-display); font-weight: 800; font-size: 38cqw; letter-spacing: -.055em; margin-left: -.035em; }
+@container (max-width: 620px) { .ft-cols { grid-template-columns: 1fr 1fr; } .ft-cols > div:first-child { grid-column: 1 / -1; } }
+
+/* Demo 8 — magnetic fluids */
+.mag3 { display: grid; gap: clamp(36px, 5vw, 56px); }
+.sub-h { display: flex; justify-content: space-between; align-items: baseline; gap: 4px 12px; flex-wrap: wrap; margin: 0 0 12px; }
+.sub-h h3 { margin: 0; }
+.sub p.sub-p { color: var(--ink-2); font-size: .95rem; margin: 0 0 14px; }
+.flow, .film { height: clamp(380px, 44vw, 460px); }
+.ferro { height: clamp(470px, 52vw, 540px); }
+.seg { position: absolute; top: 14px; right: 14px; z-index: 5; display: flex; gap: 2px; border: 1px solid var(--line); border-radius: 999px; background: var(--paper); padding: 3px; }
+.seg button { border: 0; background: none; border-radius: 999px; padding: 6px 12px; min-height: 30px; font-family: var(--f-mono); font-size: .7rem; letter-spacing: .06em; text-transform: uppercase; color: var(--ink-2); cursor: pointer; }
+.seg button[aria-pressed="true"] { background: var(--ink); color: var(--paper); }
+.st-l { position: absolute; left: 16px; bottom: 14px; z-index: 4; background: var(--panel); padding: 2px 6px; border-radius: 3px; }
+.film { padding: clamp(14px, 3vw, 24px); touch-action: pan-y; }
+.film .case-cover { height: 100%; position: relative; z-index: 1; grid-template-columns: 1fr 3fr; }
+.film .fc-t { position: absolute; z-index: 2; left: calc(clamp(14px, 3vw, 24px) + 12px); top: calc(clamp(14px, 3vw, 24px) + 12px); }
+.film canvas { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 3; pointer-events: none; }
+.fe-in { position: absolute; z-index: 3; left: clamp(20px, 5vw, 48px); top: clamp(20px, 5vw, 44px); right: clamp(20px, 5vw, 48px); display: flex; flex-direction: column; align-items: flex-start; gap: 16px; pointer-events: none; }
+.fe-in .cta-h { font-size: clamp(1.8rem, 4.2vw, 3rem); max-width: 14ch; }
+.fe-in .cta-btn { pointer-events: auto; }
+.ferro canvas.fe { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 2; pointer-events: none; }
+
+/* Under the hood */
+.hood { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(24px, 4vw, 48px); align-items: start; }
+@media (max-width: 760px) { .hood { grid-template-columns: 1fr; } }
+.og { border: 1px solid var(--line); border-radius: 8px; overflow: hidden; background: var(--paper); }
+.og-img { position: relative; aspect-ratio: 1200 / 630; background: var(--panel); }
+.og-gl { position: absolute; left: 6%; top: 9%; z-index: 2; font-family: var(--f-mono); font-size: .68rem; color: var(--ink-2); }
+.og-t { position: absolute; left: 6%; bottom: 10%; z-index: 2; margin: 0; font-family: var(--f-display); font-weight: 700; font-size: clamp(1.2rem, 2.6vw, 2rem); line-height: 1; letter-spacing: -.03em; max-width: 12ch; }
+.og-meta { padding: 10px 14px; border-top: 1px solid var(--line); }
+.og-meta b { display: block; font-weight: 600; font-size: .92rem; }
+.og-meta span { font-family: var(--f-mono); font-size: .72rem; color: var(--ink-2); }
+
+/* Questions */
+.qs { list-style: none; padding: 0; margin: 0; counter-reset: q; }
+.qs li { counter-increment: q; display: grid; grid-template-columns: 3rem minmax(0, 1fr); border-top: 1px solid var(--line); padding: 16px 0; }
+.qs li::before { content: counter(q, decimal-leading-zero); font-family: var(--f-mono); font-size: var(--s-0); color: var(--ink-2); padding-top: 4px; }
+.qs strong { display: block; font-weight: 600; }
+.qs span { color: var(--ink-2); font-size: .95rem; }
+footer { border-top: 1px solid var(--line); padding-block: 32px 48px; }
+footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition-duration: 0s !important; transition-delay: 0s !important; }
+}
+</style>
+
+<header class="top">
+  <div class="wrap">
+    <div class="mark">Mauro Im<span class="acc">á</span>n</div>
+    <span class="label">Concepto unificado · Verde ferrita + Geist</span>
+  </div>
+</header>
+
+<main>
+  <div class="hero">
+    <div class="wrap grid">
+      <div class="label">Rediseño · iteración 3</div>
+      <h1>Un solo concepto: todo se <span class="acc">atrae</span> a su lugar.</h1>
+      <p class="lead">Tomé tu devolución y uní lo mejor de las cuatro direcciones bajo una idea. Abajo están las reglas para que no moleste, cómo vive en la navegación, cómo funciona en mobile sin mouse, la transición al abrir un caso y el modo “tengo poco tiempo”. Nuevo en esta iteración: tres demos y una nota técnica que salen de las referencias (desde la Demo 5), y los fluidos magnéticos (Demo 8).</p>
+    </div>
+  </div>
+
+  <!-- Concept -->
+  <section class="block">
+    <div class="wrap"><div class="grid">
+      <div class="side"><span class="label"><b>El concepto</b></span><span class="label">Campo · Field</span></div>
+      <div class="main">
+        <h2>Imán deja de ser un efecto y pasa a ser el comportamiento del sitio.</h2>
+        <p>Tenés razón: en inglés se pierde la conexión con <i>magnet</i>. Por eso el concepto no depende de la palabra. Se apoya en dos cosas que funcionan en cualquier idioma: un <b>comportamiento</b> (las cosas se atraen a su lugar) y una <b>marca</b> (la tilde). La historia del apellido queda como un gancho que se cuenta, no como algo que hay que entender.</p>
+        <div class="thesis">
+          <div><span class="label">En inglés (default)</span><p class="big">“Imán is Spanish for magnet. I design products people are drawn to.”</p><p class="muted">La glosa convierte la pérdida en una historia. A un reclutador le queda “el diseñador cuyo apellido significa imán”.</p></div>
+          <div><span class="label">En español</span><p class="big">“Imán. Diseño productos que atraen.”</p><p class="muted">En español el juego de palabras es directo y no necesita explicación.</p></div>
+        </div>
+        <div class="pillars">
+          <div><span class="label">Comportamiento</span><p class="role">El campo</p><p>Limaduras que reaccionan al cursor, al dedo o al scroll. Viven en el fondo y bajan de intensidad cuando hay que leer.</p><span class="label from">Viene de A</span></div>
+          <div><span class="label">Marca</span><p class="role">La tilde</p><p>Un solo trazo que funciona como indicador, viñeta, cursor, carga y favicon. Es lo que se repite en todo el sitio.</p><span class="label from">Viene de A</span></div>
+          <div><span class="label">Transición</span><p class="role">El ensamble</p><p>Al abrir un caso, las limaduras viajan y forman el título. El “wow” ocurre en el momento de cambio, una sola vez.</p><span class="label from">Viene de C</span></div>
+          <div><span class="label">Atajo</span><p class="role">60 segundos</p><p>“Short on time?” abre tus highlights narrados con scroll. Mientras se lee, el campo se ordena.</p><span class="label from">Viene de D</span></div>
+        </div>
+        <p class="muted" style="margin-top:28px">La dirección B no se descarta: se convierte en la capa tipográfica de todo el sitio, sin demo propia. Más abajo hay una nota sobre eso.</p>
+      </div>
+    </div></div>
+  </section>
+
+  <!-- Budget -->
+  <section class="block">
+    <div class="wrap"><div class="grid">
+      <div class="side"><span class="label"><b>Reglas</b></span><span class="label">Para no abusar</span></div>
+      <div class="main">
+        <h2>Un presupuesto de campo: cuánto se mueve en cada lugar.</h2>
+        <p class="tagline">La intensidad depende de lo que hace el visitante. Cuanto más lee, más quieto queda el campo.</p>
+        <div class="budget" tabindex="0" aria-label="Intensidad del campo por lugar del sitio">
+          <table>
+            <thead><tr><th>Lugar</th><th>Intensidad</th><th>Qué hace el campo</th></tr></thead>
+            <tbody>
+              <tr><td>Hero del home</td><td><span class="lvl"><i class="on"></i><i class="on"></i><i class="on"></i></span><span class="lvl-name">Plena</span></td><td>Protagonista. Responde al cursor o al dedo. Cuando nadie lo toca, la magnetita fluye por las líneas del campo.</td></tr>
+              <tr><td>Abrir un caso</td><td><span class="lvl"><i class="on"></i><i class="on"></i><i class="on"></i></span><span class="lvl-name">Plena, un instante</span></td><td>Las limaduras forman el título y desaparecen. Dura alrededor de 1,5 segundos.</td></tr>
+              <tr><td>Índice de trabajo</td><td><span class="lvl"><i class="on"></i><i class="on"></i><i></i></span><span class="lvl-name">Media</span></td><td>Se orienta hacia el proyecto que está bajo el cursor. Es una pista, no un espectáculo.</td></tr>
+              <tr><td>Imágenes de casos</td><td><span class="lvl"><i class="on"></i><i></i><i></i></span><span class="lvl-name">Sutil, al pasar</span></td><td>La película magnética aparece solo bajo el cursor y revela el imán escondido. Nunca sobre texto.</td></tr>
+              <tr><td>Capítulos de un caso</td><td><span class="lvl"><i class="on"></i><i class="on"></i><i></i></span><span class="lvl-name">Media</span></td><td>Pasa del caos al orden mientras avanzás. Vive en su propio panel, nunca detrás del texto.</td></tr>
+              <tr><td>CTA final</td><td><span class="lvl"><i class="on"></i><i class="on"></i><i class="on"></i></span><span class="lvl-name">Plena, un instante</span></td><td>El único ferrofluido del sitio. Las púas y las limaduras apuntan al botón y se disparan al tocarlo.</td></tr>
+              <tr><td>Navegación y botones</td><td><span class="lvl"><i class="on"></i><i></i><i></i></span><span class="lvl-name">Sutil</span></td><td>La tilde marca dónde estás. Los botones tienen una atracción mínima hacia el cursor.</td></tr>
+              <tr><td>Highlights</td><td><span class="lvl"><i class="on"></i><i></i><i></i></span><span class="lvl-name">Ordenada</span></td><td>Todas las limaduras se alinean como tildes paralelas. Queda una textura quieta.</td></tr>
+              <tr><td>Footer</td><td><span class="lvl"><i class="on"></i><i></i><i></i></span><span class="lvl-name">En reposo</span></td><td>Alineado y quieto. Se despierta solo donde pasa el cursor. Ahí vive el interruptor “Field off”.</td></tr>
+              <tr><td>Lectura de un caso y About</td><td><span class="lvl"><i></i><i></i><i></i></span><span class="lvl-name">Apagada</span></td><td>Sin campo. Solo tipografía, grilla e imágenes del trabajo.</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <ul class="rules">
+          <li><span class="tilde"></span>El campo se mueve cuando el visitante actúa o cambia de lugar. Nunca anima por su cuenta detrás de un texto.</li>
+          <li><span class="tilde"></span>Un solo protagonista por pantalla. Si el campo está pleno, todo lo demás queda quieto.</li>
+          <li><span class="tilde"></span>Con “reducir movimiento” activado, el campo queda como un dibujo estático y las transiciones son un fundido.</li>
+          <li><span class="tilde"></span>Un interruptor “Field off” en el footer, para quien lo prefiera. También dice algo de vos: diseñás pensando en el usuario.</li>
+        </ul>
+      </div>
+    </div></div>
+  </section>
+
+  <!-- Tilde system -->
+  <section class="block">
+    <div class="wrap"><div class="grid">
+      <div class="side"><span class="label"><b>La marca</b></span><span class="label">Un trazo, muchos usos</span></div>
+      <div class="main">
+        <h2>La tilde es lo que hace al concepto transversal.</h2>
+        <p class="tagline">El campo es intenso y se usa poco. La tilde es discreta y aparece en todos lados: es el hilo que une cada página.</p>
+        <div class="tiles">
+          <div class="tile"><div class="demo"><div class="t-nav"><span class="tilde"></span><span>Work</span><span>About</span><span>Contact</span></div></div><h3>Indicador de navegación</h3><p>Marca la sección actual y salta con un pequeño rebote al pasar el cursor.</p></div>
+          <div class="tile"><div class="demo"><ul class="t-list"><li><span class="tilde"></span>Product strategy</li><li><span class="tilde"></span>Design systems</li><li><span class="tilde"></span>Front-end build</li></ul></div><h3>Viñeta</h3><p>Reemplaza los puntos de lista y los separadores en todo el sitio.</p></div>
+          <div class="tile"><div class="demo"><div class="t-load"><span class="tilde"></span><span class="tilde"></span><span class="tilde"></span></div></div><h3>Carga</h3><p>Tres tildes que respiran mientras carga una imagen o un caso.</p></div>
+          <div class="tile"><div class="demo"><div class="t-fav"><span class="fav"><span class="tilde"></span></span><span class="fav sm"><span class="tilde"></span></span></div></div><h3>Favicon e isotipo</h3><p>La tilde sola funciona a 16 px, en la pestaña del navegador y como avatar.</p></div>
+          <div class="tile"><div class="demo"><span class="t-link">Read the case<span class="tilde"></span></span></div><h3>Hover de enlace</h3><p>En lugar de subrayar, aparece una tilde al final del enlace.</p></div>
+          <div class="tile"><div class="demo"><span class="t-type">Im<span class="acc">á</span>n</span></div><h3>Logotipo</h3><p>El nombre completo, con la tilde como único punto de color.</p></div>
+        </div>
+      </div>
+    </div></div>
+  </section>
+
+  <!-- Demo 1 -->
+  <section class="block">
+    <div class="wrap"><div class="grid">
+      <div class="side"><span class="label"><b>Demo 1</b></span><span class="label">Navegación · desktop</span></div>
+      <div class="main">
+        <h2>Así se ve en la navegación de todos los días.</h2>
+        <p class="tagline">El campo está en intensidad sutil, la tilde marca la sección y el cursor se vuelve imán.</p>
+        <div class="stage site" id="d1">
+          <canvas class="fieldcv" id="f1" aria-hidden="true"></canvas>
+          <header class="m-nav">
+            <div class="m-logo">Mauro Im<span class="acc">á</span>n</div>
+            <nav class="m-links" id="links" aria-label="Navegación de ejemplo">
+              <span class="tilde" id="navTilde"></span>
+              <button type="button" class="on" data-mag>Work</button>
+              <button type="button" data-mag>Highlights</button>
+              <button type="button" data-mag>About</button>
+              <button type="button" data-mag>Contact</button>
+            </nav>
+            <button type="button" class="m-lang" data-mag>ES</button>
+          </header>
+          <div class="m-hero">
+            <p class="m-gloss">imán /iˈman/ — Spanish for <i>magnet</i></p>
+            <p class="m-h">I design products people are drawn to.</p>
+            <div class="m-ctas">
+              <button type="button" class="m-btn primary" data-mag>See selected work</button>
+              <button type="button" class="m-btn" data-mag>Short on time? 60 s</button>
+            </div>
+          </div>
+          <div class="cursor" id="cur"></div>
+        </div>
+        <div class="cap"><span class="label">Pasá el cursor por el menú y los botones</span><span class="label">Campo en intensidad sutil</span></div>
+        <div class="notes">
+          <div><span class="label">Cursor</span><p>Un punto con el color de la tilde. Cerca de algo clickeable se convierte en un anillo que se “pega” al elemento.</p></div>
+          <div><span class="label">Botones</span><p>Se desplazan unos píxeles hacia el cursor. Es la atracción del imán en su versión mínima.</p></div>
+          <div><span class="label">Campo</span><p>Las limaduras apuntan a lo que estás por tocar. Le anticipan al visitante dónde está la acción.</p></div>
+        </div>
+      </div>
+    </div></div>
+  </section>
+
+  <!-- Demo 2 -->
+  <section class="block">
+    <div class="wrap"><div class="grid">
+      <div class="side"><span class="label"><b>Demo 2</b></span><span class="label">Mobile · sin mouse</span></div>
+      <div class="main">
+        <h2>En el teléfono, el imán es tu dedo y tu scroll.</h2>
+        <div class="mobile-row">
+          <div class="phone" id="phone">
+            <div class="ph-notch"></div>
+            <canvas class="fieldcv" id="f2" aria-hidden="true"></canvas>
+            <div class="ph-screen" id="phs">
+              <div class="ph-hero" id="phHero">
+                <span class="label ph-hint">Tocá o arrastrá · después hacé scroll</span>
+                <p class="gloss">imán — Spanish for magnet</p>
+                <h4>I design products people are drawn to.</h4>
+                <span class="ph-pill">Short on time? 60 s →</span>
+              </div>
+              <div class="ph-sec" id="ph-work">
+                <h5><span class="tilde"></span>Selected work</h5>
+                <div class="ph-card"><b>Compass</b><span>PropTech · Design System at scale</span></div>
+                <div class="ph-card"><b>Silstech · YPF</b><span>Energy · national logistics platform</span></div>
+                <div class="ph-card"><b>StatLink</b><span>Sports tech · IA pivot</span></div>
+              </div>
+              <div class="ph-sec" id="ph-hl">
+                <h5><span class="tilde"></span>Highlights</h5>
+                <p>A 60-second, scroll-driven tour of what I do and the results it got.</p>
+              </div>
+              <div class="ph-sec" id="ph-about" style="padding-bottom:110px">
+                <h5><span class="tilde"></span>About</h5>
+                <p>Product designer and builder. Strategy, design and front-end in one person.</p>
+              </div>
+            </div>
+            <nav class="ph-tabs" id="phTabs" aria-label="Pestañas de ejemplo">
+              <span class="tilde" id="phTilde"></span>
+              <button type="button" data-t="phHero" class="on">Home</button>
+              <button type="button" data-t="ph-work">Work</button>
+              <button type="button" data-t="ph-hl">60 s</button>
+              <button type="button" data-t="ph-about">About</button>
+            </nav>
+          </div>
+          <div>
+            <ul class="m-list">
+              <li><span class="tilde"></span><div><b>Tocar mueve el imán</b><span>Un toque coloca el imán y emite un pulso. Arrastrar en horizontal lo desplaza sin bloquear el scroll vertical.</span></div></li>
+              <li><span class="tilde"></span><div><b>El scroll es el imán</b><span>Sin tocar, el imán baja con el scroll. A medida que salís del hero, las limaduras se ordenan como tildes paralelas y el campo queda quieto para leer.</span></div></li>
+              <li><span class="tilde"></span><div><b>Inclinar el teléfono</b><span>En el sitio real, el giroscopio puede mover el imán al inclinar el teléfono. Es opcional y pide permiso en iOS. No funciona dentro de esta demo.</span></div></li>
+              <li><span class="tilde"></span><div><b>La tilde en la barra inferior</b><span>Navegación al alcance del pulgar, con el mismo indicador que en desktop.</span></div></li>
+              <li><span class="tilde"></span><div><b>Más liviano</b><span>Menos limaduras y 30 cuadros por segundo para cuidar la batería. Se pausa cuando el hero sale de pantalla.</span></div></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div></div>
+  </section>
+
+  <!-- Demo 3 -->
+  <section class="block">
+    <div class="wrap"><div class="grid">
+      <div class="side"><span class="label"><b>Demo 3</b></span><span class="label">Abrir un caso</span></div>
+      <div class="main">
+        <h2>El “wow” está en el cambio: las limaduras forman el título.</h2>
+        <p class="tagline">Tocá un proyecto. El campo se desarma, las limaduras viajan y se ensamblan en el nombre del caso, y la interfaz sube en 3D. El buscador arranca cerrado.</p>
+        <div class="stage work" id="d3" tabindex="-1">
+          <canvas class="fieldcv" id="f3" aria-hidden="true"></canvas>
+          <canvas class="morph" id="morph" aria-hidden="true"></canvas>
+          <div class="w-top">
+            <span class="label">Selected work</span>
+            <button type="button" class="k-pill" id="kpill" aria-haspopup="dialog">Search <kbd>⌘K</kbd></button>
+          </div>
+          <div class="w-grid" id="wgrid">
+            <button type="button" class="card" data-case="compass"><span class="c-top"><span class="label">PropTech</span><span class="open">Open →</span></span><span><h4>Compass</h4><p>Compliance operations, CRM research and Design System scale.</p></span></button>
+            <button type="button" class="card" data-case="ypf"><span class="c-top"><span class="label">Energy</span><span class="open">Open →</span></span><span><h4>Silstech · YPF</h4><p>A national logistics and safety platform, from zero.</p></span></button>
+            <button type="button" class="card" data-case="statlink"><span class="c-top"><span class="label">Sports tech</span><span class="open">Open →</span></span><span><h4>StatLink</h4><p>Information architecture pivot for coaches, players and scouts.</p></span></button>
+          </div>
+          <span class="label w-foot">+ 7 more in the archive</span>
+          <div class="k-pal" id="kpal" role="dialog" aria-label="Buscar proyecto" hidden>
+            <input id="kq" type="text" placeholder="Jump to a project…" autocomplete="off">
+            <ul id="klist"></ul>
+          </div>
+          <article class="case" id="case" hidden>
+            <button type="button" class="btn case-back" id="back">← Work</button>
+            <h3 class="case-t" id="caseT"></h3>
+            <p class="case-sub rise" id="caseSub" style="--d:.05s"></p>
+            <div class="case-sum rise" id="caseSum" style="--d:.15s"></div>
+            <div class="case-cover rise" style="--d:.28s"><div class="nv"></div><div class="bd"><i></i><div class="tl"><s></s><s></s><s></s><s></s><s></s><s></s><s></s><s></s></div></div></div>
+          </article>
+        </div>
+        <div class="cap"><span class="label">Tocá un proyecto · “← Work” para volver</span><span class="label">En el sitio real: WebGL con miles de partículas</span></div>
+        <div class="notes">
+          <div><span class="label">Por qué es nuevo</span><p>No es un zoom ni un fundido. Es el concepto de marca en acción: el material del fondo se vuelve contenido.</p></div>
+          <div><span class="label">El 3D</span><p>La interfaz del caso se inclina hacia el visitante como una pantalla que se levanta. En el sitio real, la portada del caso puede ser una escena 3D con tu producto.</p></div>
+          <div><span class="label">El buscador</span><p>Cerrado por defecto, como una píldora discreta. Se abre con un clic o con ⌘K y se cierra con Esc.</p></div>
+        </div>
+      </div>
+    </div></div>
+  </section>
+
+  <!-- Demo 4 -->
+  <section class="block">
+    <div class="wrap"><div class="grid">
+      <div class="side"><span class="label"><b>Demo 4</b></span><span class="label">Modo highlights</span></div>
+      <div class="main">
+        <h2>“Short on time?” Tus highlights en 60 segundos.</h2>
+        <p class="tagline">Un botón que está en todas las páginas abre un recorrido narrado con scroll, pensado para ejecutivos y reclutadores.</p>
+        <div class="stage hl" id="d4">
+          <canvas class="fieldcv" id="f4" aria-hidden="true"></canvas>
+          <div class="hl-entry" id="hlEntry">
+            <span class="label">Cualquier página del sitio</span>
+            <h4>Recruiter, founder or just busy?</h4>
+            <button type="button" class="hl-go" id="hlGo"><span class="tilde"></span>Show me Mauro’s highlights <small>60 s</small></button>
+          </div>
+          <div class="hl-mode" id="hlMode" hidden>
+            <div class="hl-bar">
+              <div class="hl-prog"><i id="hlFill"></i><span class="tilde" id="hlTilde"></span></div>
+              <span class="label hl-time" id="hlTime">60 s left</span>
+              <button type="button" class="btn" id="hlExit">Exit</button>
+            </div>
+            <div class="hl-steps" id="hlSteps" tabindex="0" aria-label="Highlights, desplazá para avanzar">
+              <div class="hl-step on"><span class="k">Who</span><h4>Product designer who builds.</h4><p>Strategy, design and front-end in one person. I turn complex operations into products people trust.</p><span class="ph">→ [años de experiencia] · [productos lanzados]</span></div>
+              <div class="hl-step"><span class="k">Compass · PropTech</span><h4>Scaled design across a $17B company built on acquisitions.</h4><p>Compliance operations, CRM research and a Design System that had to absorb new brands.</p><span class="ph">→ [métrica de impacto]</span></div>
+              <div class="hl-step"><span class="k">Silstech · YPF · Energy</span><h4>Designed a national logistics platform from zero.</h4><p>One ecosystem for Argentina’s leading energy company and its transport providers.</p><span class="ph">→ [métrica de impacto]</span></div>
+              <div class="hl-step"><span class="k">StatLink · Sports tech</span><h4>Led the pivot that reshaped the product.</h4><p>End-to-end design of a platform that connects coaches, players and scouts.</p><span class="ph">→ [métrica de impacto]</span></div>
+              <div class="hl-step"><span class="k">Next</span><h4>Let’s build something people are drawn to.</h4><div class="hl-cta"><button type="button" class="m-btn primary">Book a call</button><button type="button" class="m-btn">See full work</button></div></div>
+            </div>
+          </div>
+        </div>
+        <div class="cap"><span class="label">Abrí el modo y hacé scroll</span><span class="label">Textos en inglés, como en el sitio</span></div>
+        <div class="notes">
+          <div><span class="label">El recorrido</span><p>Quién sos, tres casos con un número cada uno y un llamado a la acción. Un minuto de lectura, con el tiempo restante siempre a la vista.</p></div>
+          <div><span class="label">El campo</span><p>Ordenado y casi quieto: acompaña sin distraer. La tilde avanza sobre la barra de progreso.</p></div>
+          <div><span class="label">Lo que falta</span><p>Una métrica real por caso. Es lo único que este modo necesita de vos para funcionar.</p></div>
+        </div>
+      </div>
+    </div></div>
+  </section>
+
+  <!-- References -->
+  <section class="block">
+    <div class="wrap"><div class="grid">
+      <div class="side"><span class="label"><b>Referencias</b></span><span class="label">Qué tomamos</span></div>
+      <div class="main">
+        <h2>De las referencias tomamos patrones, no estéticas.</h2>
+        <p class="tagline">Esas librerías las usan miles de sitios. Copiar su look nos haría parecer uno más. Lo que sí sirve es aplicar sus patrones al campo, que es propio.</p>
+        <ul class="refs">
+          <li><b>Scrolltide</b><span>El scroll como línea de tiempo: un caso contado en capítulos, con el campo pasando del caos al orden.</span><span class="label">Demo 5</span></li>
+          <li><b>cta.gallery</b><span>Un CTA único, grande y claro. En nuestro caso, además, atrae el campo hacia el botón. Más el patrón de “copiar email”.</span><span class="label">Demo 6</span></li>
+          <li><b>footer.design</b><span>El footer como final del relato: el nombre ocupando todo el ancho, el campo en reposo y los datos humanos (hora, disponibilidad).</span><span class="label">Demo 7</span></li>
+          <li><b>Scroll Shaders</b><span>Cómo se construye: WebGL2 sin librerías, cuidar la GPU, fotograma fijo con reduced motion, imagen para compartir y un campo dentro del botón.</span><span class="label">Bajo el capó · Demo 6</span></li>
+          <li><b>Refero Styles</b><span>Documentar el sistema en un DESIGN.md dentro del repo, para que cualquier herramienta respete tokens, grilla y reglas del campo.</span><span class="label">Bajo el capó</span></li>
+        </ul>
+      </div>
+    </div></div>
+  </section>
+
+  <!-- Demo 5 -->
+  <section class="block">
+    <div class="wrap"><div class="grid">
+      <div class="side"><span class="label"><b>Demo 5</b></span><span class="label">Un caso por capítulos</span></div>
+      <div class="main">
+        <h2>El campo cuenta el caso: del caos al orden.</h2>
+        <p class="tagline">Cada caso se lee en tres capítulos. Mientras avanzás, el campo pasa de limaduras dispersas a un imán que las atrae y, al final, a un orden total. El texto nunca queda encima del campo.</p>
+        <div class="stage chap" id="d5">
+          <div class="ch-vis">
+            <canvas class="fieldcv" id="f5" aria-hidden="true"></canvas>
+            <span class="label ch-state" id="chState" aria-hidden="true">Field · scattered</span>
+          </div>
+          <div class="ch-text">
+            <nav class="ch-rail" id="chRail" aria-label="Capítulos del caso">
+              <button type="button" class="on" aria-current="step"><span class="tilde"></span>01 Problem</button>
+              <button type="button"><span class="tilde"></span>02 Decision</button>
+              <button type="button"><span class="tilde"></span>03 Result</button>
+            </nav>
+            <div class="ch-scroll" id="chScroll" tabindex="0" aria-label="StatLink, caso en capítulos. Desplazá para avanzar.">
+              <section class="ch-step on"><span class="k">StatLink · Problem</span><h4>Three audiences, one tangled product.</h4><p>Coaches, players and scouts were each looking for something different inside the same screens.</p><span class="ph">→ [dato del problema]</span></section>
+              <section class="ch-step"><span class="k">StatLink · Decision</span><h4>Pivot the information architecture.</h4><p>Rebuild the structure around how the three audiences actually connect, instead of adding more screens.</p><span class="ph">→ [la decisión clave, en una línea]</span></section>
+              <section class="ch-step"><span class="k">StatLink · Result</span><h4>Everything found its place.</h4><p>One platform, three clear paths. The product became easier to explain, to sell and to grow.</p><span class="ph">→ [métrica de impacto]</span></section>
+            </div>
+          </div>
+        </div>
+        <div class="cap"><span class="label">Hacé scroll en el texto o tocá un capítulo</span><span class="label">Textos de ejemplo</span></div>
+        <div class="notes">
+          <div><span class="label">El patrón</span><p>Es el scroll narrativo de Scrolltide, pero con un motivo: la forma del campo resume en qué parte de la historia estás.</p></div>
+          <div><span class="label">Scroll suave</span><p>En el sitio real, Lenis suaviza el scroll. Se puede apagar y se desactiva solo con “reducir movimiento”.</p></div>
+          <div><span class="label">En mobile</span><p>El campo queda arriba, en una franja, y el texto abajo. Los capítulos siguen visibles como una barra de progreso.</p></div>
+        </div>
+      </div>
+    </div></div>
+  </section>
+
+  <!-- Demo 6 -->
+  <section class="block">
+    <div class="wrap"><div class="grid">
+      <div class="side"><span class="label"><b>Demo 6</b></span><span class="label">El CTA que atrae</span></div>
+      <div class="main">
+        <h2>En el momento que importa, todo apunta al botón.</h2>
+        <p class="tagline">Al final de cada página hay un solo llamado a la acción. Todas las limaduras se orientan hacia él. Si acercás el cursor, el botón lo “captura”, y adentro del botón también hay campo.</p>
+        <div class="stage cta" id="d6">
+          <canvas class="fieldcv" id="f6" aria-hidden="true"></canvas>
+          <div class="cta-in">
+            <span class="label">Final de cada página</span>
+            <p class="cta-h">Let’s build something people are drawn to.</p>
+            <div class="cta-row">
+              <button type="button" class="cta-btn" id="ctaBtn"><canvas class="cta-cv" id="f6b" aria-hidden="true"></canvas><span>Start a conversation</span><span class="tilde"></span></button>
+              <button type="button" class="cta-copy" id="ctaCopy" aria-describedby="ctaStatus"><span class="em" id="ctaEm">hello@mauroiman.com</span><span class="ck" id="ctaCk">Copy</span></button>
+            </div>
+            <p class="cta-status" id="ctaStatus" role="status" aria-live="polite"></p>
+          </div>
+        </div>
+        <div class="cap"><span class="label">Mové el cursor lejos y después acercalo al botón</span><span class="label">Email de ejemplo</span></div>
+        <div class="notes">
+          <div><span class="label">La metáfora</span><p>Es el único lugar donde el imán se vuelve literal: la marca empuja hacia la conversión sin decir “contratame”.</p></div>
+          <div><span class="label">Copiar email</span><p>Más cómodo que abrir el cliente de correo. Confirma con texto y lo anuncia a lectores de pantalla.</p></div>
+          <div><span class="label">Campo en el botón</span><p>La idea de Scroll Shaders, usada una sola vez. El centro queda limpio para que el texto mantenga su contraste.</p></div>
+        </div>
+      </div>
+    </div></div>
+  </section>
+
+  <!-- Demo 7 -->
+  <section class="block">
+    <div class="wrap"><div class="grid">
+      <div class="side"><span class="label"><b>Demo 7</b></span><span class="label">El footer de cierre</span></div>
+      <div class="main">
+        <h2>El sitio arranca con el campo a pleno y termina en reposo.</h2>
+        <p class="tagline">El footer es el final del relato: el nombre ocupa todo el ancho, el campo queda ordenado y se despierta solo donde pasa el cursor.</p>
+        <div class="stage foot" id="d7">
+          <canvas class="fieldcv" id="f7" aria-hidden="true"></canvas>
+          <div class="ft-cols">
+            <div>
+              <span class="label" data-es="Ahora" data-en="Now">Now</span>
+              <p class="ft-now"><span id="ftTime">--:--</span> <span data-es="en Buenos Aires" data-en="in Buenos Aires">in Buenos Aires</span></p>
+              <p class="muted" data-es="Disponible para roles senior de producto · [disponibilidad]" data-en="Open to senior product roles · [availability]">Open to senior product roles · [availability]</p>
+            </div>
+            <div>
+              <span class="label" data-es="Sitio" data-en="Site">Site</span>
+              <ul class="ft-list"><li><a href="#d7">Work</a></li><li><a href="#d7">Highlights</a></li><li><a href="#d7" data-es="Sobre mí" data-en="About">About</a></li><li><a href="#d7" data-es="Colofón" data-en="Colophon">Colophon</a></li></ul>
+            </div>
+            <div>
+              <span class="label" data-es="En otros lados" data-en="Elsewhere">Elsewhere</span>
+              <ul class="ft-list"><li><a href="#d7">LinkedIn</a></li><li><a href="#d7">GitHub</a></li><li><a href="#d7">Email</a></li></ul>
+            </div>
+            <div>
+              <span class="label" data-es="Ajustes" data-en="Settings">Settings</span>
+              <button type="button" class="btn" id="ftField" aria-pressed="true"><span class="tilde"></span><span id="ftFieldL">Field · On</span></button>
+              <button type="button" class="btn" id="ftLang" lang="es">Español</button>
+              <button type="button" class="btn" id="ftTop" data-es="Arriba ↑" data-en="Top ↑">Top ↑</button>
+            </div>
+          </div>
+          <div class="ft-legal"><span class="label">© 2027 Mauro Imán</span><span class="label" data-es="Geist sobre una grilla de 12 columnas" data-en="Set in Geist on a 12-column grid">Set in Geist on a 12-column grid</span></div>
+          <div class="ft-word" aria-hidden="true"><span class="w" id="ftWord">Im<span class="acc">á</span>n</span></div>
+        </div>
+        <div class="cap"><span class="label">Pasá el cursor · probá “Field · Off” y “Español”</span><span class="label">Hora real de Buenos Aires</span></div>
+        <div class="notes">
+          <div><span class="label">Cierre</span><p>El hero empieza con el campo a pleno y el footer lo deja ordenado. Visto de punta a punta, el sitio entero hace “todo se atrae a su lugar”.</p></div>
+          <div><span class="label">Datos humanos</span><p>Hora local y disponibilidad. A un reclutador le responden dos preguntas antes de escribirte.</p></div>
+          <div><span class="label">El interruptor</span><p>“Field off” vive acá, junto al idioma. Apaga el campo en todo el sitio y se recuerda en la próxima visita.</p></div>
+        </div>
+      </div>
+    </div></div>
+  </section>
+
+  <!-- Demo 8 -->
+  <section class="block">
+    <div class="wrap"><div class="grid">
+      <div class="side"><span class="label"><b>Demo 8</b></span><span class="label">Fluidos magnéticos</span></div>
+      <div class="main">
+        <h2>Ver el campo, entender el color, sentir la atracción.</h2>
+        <p class="tagline">Tres ideas tomadas de los experimentos con magnetita y ferrofluido, de la más sutil a la más espectacular. No compiten: cada una tiene su lugar.</p>
+        <p><b>Decidido: entran las tres.</b> El flujo pasa a ser el estado de reposo del hero. La película aparece al pasar el cursor por las imágenes de los casos. El ferrofluido vive solo en el CTA final y reemplaza al campo dentro del botón de la Demo 6, para que haya un solo protagonista.</p>
+        <div class="mag3">
+
+          <div class="sub">
+            <div class="sub-h"><h3>1 · El campo que fluye</h3><span class="label">Mejora de base · hero</span></div>
+            <p class="sub-p">Como el polvo de magnetita: unas partículas viajan por las líneas del campo, de polo a polo. Se ve la forma del campo, no solo su dirección.</p>
+            <div class="stage flow" id="d8a">
+              <canvas class="fieldcv" id="f8a" aria-hidden="true"></canvas>
+              <canvas class="fieldcv" id="f8aP" aria-hidden="true"></canvas>
+              <div class="seg" role="group" aria-label="Comparar el campo">
+                <button type="button" aria-pressed="false" data-m="before">Antes</button>
+                <button type="button" aria-pressed="true" data-m="after">Con flujo</button>
+              </div>
+              <span class="label st-l" aria-hidden="true">Mové el cursor o tocá</span>
+            </div>
+            <div class="cap"><span class="label">Compará “Antes” y “Con flujo”</span><span class="label">En lectura, el flujo frena hasta quedar quieto</span></div>
+          </div>
+
+          <div class="sub">
+            <div class="sub-h"><h3>2 · La película magnética</h3><span class="label">Historia del color · hover en imágenes</span></div>
+            <p class="sub-p">La película para ver campos magnéticos suele ser verde: muestra los polos en oscuro y las líneas en verde claro. Debajo de cada imagen de caso hay un imán escondido, inclinado con el ángulo de la tilde. El cursor funciona como una lupa de película que lo revela.</p>
+            <div class="stage film" id="d8b">
+              <div class="case-cover"><div class="nv"></div><div class="bd"><i></i><div class="tl"><s></s><s></s><s></s><s></s><s></s><s></s><s></s><s></s></div></div></div>
+              <span class="label fc-t">Compass · cover</span>
+              <canvas id="f8b" aria-hidden="true"></canvas>
+            </div>
+            <div class="cap"><span class="label">Pasá el cursor sobre la imagen · en el teléfono, mantené y arrastrá</span><span class="label">El imán está inclinado como la tilde</span></div>
+          </div>
+
+          <div class="sub">
+            <div class="sub-h"><h3>3 · Ferrofluido en el CTA</h3><span class="label">Una sola vez · pleno, un instante</span></div>
+            <p class="sub-p">Una gota de ferrofluido levanta púas hacia el imán. Por defecto, el imán es el botón final. Si alejás el cursor, las púas lo siguen; si lo acercás al botón, vuelven a él. Al tocar el botón, se disparan.</p>
+            <div class="stage ferro" id="d8c">
+              <canvas class="fieldcv" id="f8c" aria-hidden="true"></canvas>
+              <canvas class="fe" id="f8cF" aria-hidden="true"></canvas>
+              <div class="fe-in">
+                <span class="label">Final de cada página</span>
+                <p class="cta-h">Let’s build something people are drawn to.</p>
+                <button type="button" class="cta-btn" id="feBtn"><span>Start a conversation</span><span class="tilde"></span></button>
+              </div>
+            </div>
+            <div class="cap"><span class="label">Mové el cursor y tocá el botón</span><span class="label">En el sitio real: shader con reflejos</span></div>
+          </div>
+
+        </div>
+        <div class="notes">
+          <div><span class="label">Flujo</span><p>Reemplaza la órbita automática del hero. Es la mejora con menos riesgo: suma vida sin sumar un elemento nuevo.</p></div>
+          <div><span class="label">Película</span><p>Le da un origen al Verde ferrita. Antes de contarlo hay que verificar con fotos reales qué tan cerca está el verde de la película del nuestro.</p></div>
+          <div><span class="label">Ferrofluido</span><p>Es el momento para compartir. Si aparece en más de un lugar, se come a la tilde. Opciones: este CTA, la carga inicial o la página 404.</p></div>
+        </div>
+      </div>
+    </div></div>
+  </section>
+
+  <!-- Under the hood -->
+  <section class="block">
+    <div class="wrap"><div class="grid">
+      <div class="side"><span class="label"><b>Bajo el capó</b></span><span class="label">Cómo se construye</span></div>
+      <div class="main">
+        <h2>Un campo liviano, respetuoso y documentado.</h2>
+        <p class="tagline">La parte menos visible de las referencias y la que más valor suma: cómo hacer que el campo se vea bien sin castigar el teléfono de nadie.</p>
+        <div class="hood">
+          <div>
+            <div class="og">
+              <div class="og-img"><canvas class="fieldcv" id="fog" aria-hidden="true"></canvas><span class="og-gl">imán — Spanish for magnet</span><p class="og-t">I design products people are drawn to.</p></div>
+              <div class="og-meta"><b>Mauro Imán — Product designer</b><span>mauroiman.com</span></div>
+            </div>
+            <div class="cap"><span class="label">Vista previa al compartir el link</span><span class="label">Generada desde el campo</span></div>
+          </div>
+          <ul class="m-list">
+            <li><span class="tilde"></span><div><b>WebGL2, sin librerías</b><span>El campo pasa de canvas a un shader propio: miles de limaduras fluidas sin sumar three.js.</span></div></li>
+            <li><span class="tilde"></span><div><b>Cuida la GPU</b><span>Se pausa fuera de pantalla y en pestañas de fondo, con resolución tope de 2× y menos limaduras en mobile.</span></div></li>
+            <li><span class="tilde"></span><div><b>Reducir movimiento</b><span>Muestra un fotograma fijo del campo. Las transiciones pasan a ser un fundido.</span></div></li>
+            <li><span class="tilde"></span><div><b>Respaldos</b><span>Un PNG del campo para la vista previa en LinkedIn y otras redes, y un fotograma estático si el equipo no soporta WebGL.</span></div></li>
+            <li><span class="tilde"></span><div><b>DESIGN.md en el repo</b><span>Tokens, tipografía, grilla, presupuesto del campo y reglas de la tilde, en un archivo que leen personas y herramientas. Ya está creado en el repo.</span></div></li>
+          </ul>
+        </div>
+        <div class="notes">
+          <div><span class="label">Lo que no tomamos</span><p>Gradientes de malla, auroras y metal líquido. Son lo más visto de esas librerías y se reconocen al instante.</p></div>
+          <div><span class="label">Tampoco</span><p>La cinta animada de logos de tecnología y los banners de urgencia. Es lenguaje de producto en venta, no de marca personal.</p></div>
+          <div><span class="label">Una alerta</span><p>Wise usa un verde lima en fondos oscuros. Nuestro menta está lejos, pero no conviene saturarlo más en modo oscuro.</p></div>
+        </div>
+      </div>
+    </div></div>
+  </section>
+
+  <!-- B -->
+  <section class="block">
+    <div class="wrap"><div class="grid">
+      <div class="side"><span class="label"><b>La capa B</b></span><span class="label">Tipografía y grilla</span></div>
+      <div class="main">
+        <h2>Lo que quedó de Espécimen: el oficio, sin hacer ruido.</h2>
+        <p>No necesita ser una dirección para estar en todo el sitio. Se aplica como sistema: una escala tipográfica estricta, tamaños ópticos, microtipografía correcta en cada idioma, la grilla visible con la tecla G y una página de colofón. Es lo que un diseñador nota a los pocos segundos, aunque nada se mueva.</p>
+        <p class="muted">El próximo paso natural es una exploración tipográfica en serio: dos o tres pares de fuentes aplicados al home real, para elegir la voz de la marca.</p>
+      </div>
+    </div></div>
+  </section>
+
+  <!-- Questions -->
+  <section class="block">
+    <div class="wrap"><div class="grid">
+      <div class="side"><span class="label"><b>Para avanzar</b></span><span class="label">Siguientes decisiones</span></div>
+      <div class="main">
+        <h2>Lo que necesito para pasar del concepto al diseño.</h2>
+        <ol class="qs">
+          <li><div><strong>¿Este concepto unificado te representa?</strong><span>Si sí, lo bajamos a un home completo en desktop y mobile. Si algo no cierra, iteramos acá.</span></div></li>
+          <li><div><strong>¿La tilde como isotipo te convence?</strong><span>Puedo explorar variantes: más gruesa, con terminación, combinada con tus iniciales.</span></div></li>
+          <li><div><strong>¿Tipografías de fundición o libres?</strong><span>Define la exploración tipográfica que sigue.</span></div></li>
+          <li><div><strong>Métricas reales de Compass, YPF y StatLink</strong><span>Una por caso alcanza para el modo highlights.</span></div></li>
+          <li><div><strong>Datos del footer y del CTA</strong><span>Email público de contacto, disponibilidad (por ejemplo “Open to senior roles · 2027”) y qué redes mostrar.</span></div></li>
+          <li><div><strong>Un caso para escribir por capítulos</strong><span>Problema, decisión y resultado, con un dato en cada uno. Es el formato que usaría la Demo 5 en el sitio real.</span></div></li>
+        </ol>
+      </div>
+    </div></div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span class="label">Exploración · sin código del sitio todavía</span>
+    <span class="label">Iteración 3 de la exploración conceptual</span>
+  </div>
+</footer>
+
+<script>
+(() => {
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const fine = matchMedia('(pointer: fine)').matches;
+  const tok = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+  const ORDER = -0.98; // angle of the tilde (up and to the right)
+  const clamp = (v, a, b) => Math.min(b, Math.max(a, v));
+  const readColors = () => ({ ink: tok('--ink'), acc: tok('--fill'), paper: tok('--paper'), accInv: tok('--fill-inv') });
+  let colors = readColors();
+  const redrawStatic = [];
+  matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => { colors = readColors(); redrawStatic.forEach(f => f.draw(performance.now())); });
+  const hash = (x, y) => { const s = Math.sin(x * 12.9898 + y * 78.233) * 43758.5453; return s - Math.floor(s); };
+
+  /* ── Field: iron filings around a dipole ── */
+  class Field {
+    constructor(cv, o = {}) {
+      this.cv = cv; this.ctx = cv.getContext('2d');
+      this.o = Object.assign({ spacing: 19, alpha: 1, orbit: true, dot: true, strength: 1 }, o);
+      this.mag = { x: 0, y: 0 }; this.target = null; this.rest = null;
+      this.align = this.alignT = this.o.align || 0; this.alpha = this.alphaT = 1;
+      this.t0 = performance.now(); this.pulses = []; this.inited = false;
+      this.chaos = this.chaosT = 0; this.wake = 0; this.home = this.o.home || [.66, .5];
+      new ResizeObserver(() => this.resize()).observe(cv);
+    }
+    resize() {
+      const r = this.cv.getBoundingClientRect(); if (!r.width) return;
+      this.dpr = Math.min(devicePixelRatio || 1, 2); this.W = r.width; this.H = r.height;
+      this.cv.width = this.W * this.dpr; this.cv.height = this.H * this.dpr; this.ctx.setTransform(this.dpr, 0, 0, this.dpr, 0, 0);
+      if (!this.inited) { this.mag.x = this.W * this.home[0]; this.mag.y = this.H * this.home[1]; this.inited = true; }
+      this.draw(performance.now());
+    }
+    pulse(x, y) { this.pulses.push({ x, y, t: performance.now() }); }
+    lattice() {
+      const s = this.o.spacing * (this.W < 500 ? .85 : 1), pts = [];
+      for (let y = s / 2; y < this.H; y += s) for (let x = s / 2; x < this.W; x += s) pts.push([x, y]);
+      return pts;
+    }
+    draw(now) {
+      const { ctx, W, H } = this; if (!W) return;
+      const t = now - this.t0;
+      let tx, ty;
+      if (this.target) { tx = this.target.x; ty = this.target.y; }
+      else if (this.rest) { tx = this.rest.x; ty = this.rest.y; }
+      else if (this.o.orbit && !reduce) { tx = W * .5 + Math.cos(t * .00035) * W * .26; ty = H * .5 + Math.sin(t * .0006) * H * .28; }
+      else { tx = W * this.home[0]; ty = H * this.home[1]; }
+      const k = reduce ? 1 : .08;
+      this.mag.x += (tx - this.mag.x) * k; this.mag.y += (ty - this.mag.y) * k;
+      this.align += (this.alignT - this.align) * (reduce ? 1 : .06);
+      this.alpha += (this.alphaT - this.alpha) * (reduce ? 1 : .1);
+      this.chaos += (this.chaosT - this.chaos) * (reduce ? 1 : .05);
+      if (this.o.wake) this.wake += ((this.target ? 1 : 0) - this.wake) * (reduce ? 1 : .08);
+      ctx.clearRect(0, 0, W, H);
+      const ga = this.alpha * this.o.alpha; if (ga < .01) return;
+      const th = reduce ? 0 : t * .00018, mx = Math.cos(th), my = Math.sin(th);
+      const s = this.o.spacing * (W < 500 ? .85 : 1), R = Math.max(W, H) * .32 * this.o.strength, A0 = this.align, C = this.chaos, WK = this.wake;
+      const ox = Math.cos(ORDER), oy = Math.sin(ORDER);
+      const P = [new Path2D(), new Path2D(), new Path2D(), new Path2D()];
+      for (let y = s / 2; y < H; y += s) for (let x = s / 2; x < W; x += s) {
+        const rx = x - this.mag.x, ry = y - this.mag.y, d = Math.hypot(rx, ry);
+        const A = WK > .01 ? A0 * (1 - WK * Math.exp(-d / 90) * .95) : A0;
+        if (d < 10 && A < .5) continue;
+        const ux = rx / (d || 1), uy = ry / (d || 1), dot = mx * ux + my * uy;
+        let bx = 3 * dot * ux - mx, by = 3 * dot * uy - my; const bl = Math.hypot(bx, by) || 1; bx /= bl; by /= bl;
+        if (bx * ox + by * oy < 0) { bx = -bx; by = -by; }
+        let vx = bx * (1 - A) + ox * A, vy = by * (1 - A) + oy * A; const vl = Math.hypot(vx, vy) || 1; vx /= vl; vy /= vl;
+        if (C > .01) { // scattered filings: rotate each one by its own drifting angle
+          const h = hash(x, y), a = ((h - .5) * Math.PI * 2 + (reduce ? 0 : Math.sin(t * .0004 + h * 6.283) * .5)) * C;
+          const ca = Math.cos(a), sa = Math.sin(a); const nx = vx * ca - vy * sa; vy = vx * sa + vy * ca; vx = nx;
+        }
+        const f = Math.exp(-d / R) * (1 - A * .8) * (1 - C * .55), L = (2.5 + 6.5 * f) * (1 - A) + 3.2 * A;
+        const b = f > .62 ? 0 : f > .4 ? 1 : f > .22 ? 2 : 3;
+        P[b].moveTo(x - vx * L, y - vy * L); P[b].lineTo(x + vx * L, y + vy * L);
+      }
+      ctx.lineCap = 'round'; ctx.lineWidth = 1.4;
+      const accC = this.o.inverse ? colors.accInv : colors.acc;
+      ctx.globalAlpha = .95 * ga; ctx.strokeStyle = accC; ctx.stroke(P[0]);
+      ctx.strokeStyle = this.o.inverse ? colors.paper : colors.ink;
+      ctx.globalAlpha = .55 * ga; ctx.stroke(P[1]);
+      ctx.globalAlpha = .32 * ga; ctx.stroke(P[2]);
+      ctx.globalAlpha = (.16 + A0 * .06) * ga; ctx.stroke(P[3]);
+      this.pulses = this.pulses.filter(p => now - p.t < 900);
+      ctx.strokeStyle = accC;
+      this.pulses.forEach(p => { const q = (now - p.t) / 900; ctx.globalAlpha = (1 - q) * .8 * ga; ctx.lineWidth = 1.5; ctx.beginPath(); ctx.arc(p.x, p.y, 8 + q * 90, 0, Math.PI * 2); ctx.stroke(); });
+      if (this.o.dot && A0 < .5 && C < .5) { ctx.globalAlpha = ga * (1 - A0 * 2) * (1 - C * 2); ctx.fillStyle = accC; ctx.beginPath(); ctx.arc(this.mag.x, this.mag.y, 4, 0, Math.PI * 2); ctx.fill(); }
+      ctx.globalAlpha = 1;
+    }
+  }
+  const whenVisible = (el, fn, fps = 60) => {
+    let vis = false, raf = 0, last = 0; const gap = 1000 / fps - 2;
+    const loop = n => { if (n - last >= gap) { last = n; fn(n); } raf = vis ? requestAnimationFrame(loop) : 0; };
+    new IntersectionObserver(([e]) => { vis = e.isIntersecting; if (vis && !raf) raf = requestAnimationFrame(loop); }).observe(el);
+  };
+  const local = (el, e) => { const r = el.getBoundingClientRect(); return { x: e.clientX - r.left, y: e.clientY - r.top }; };
+  const tildeTo = (tilde, el, host) => { const r = el.getBoundingClientRect(), h = host.getBoundingClientRect(); tilde.style.left = (r.left - h.left + r.width / 2 - 1.5) + 'px'; };
+
+  /* ── Demo 1: nav ── */
+  {
+    const st = document.getElementById('d1'), f = new Field(document.getElementById('f1'), { alpha: .6, spacing: 21, strength: .8 });
+    const links = document.getElementById('links'), navTilde = document.getElementById('navTilde'), items = [...links.querySelectorAll('button')];
+    const cur = document.getElementById('cur'); let cp = { x: -50, y: -50 }, cg = { x: -50, y: -50 }, hover = null;
+    const active = () => links.querySelector('.on');
+    const settle = () => tildeTo(navTilde, active(), links);
+    items.forEach(b => {
+      b.addEventListener('pointerenter', () => tildeTo(navTilde, b, links));
+      b.addEventListener('click', () => { items.forEach(x => x.classList.toggle('on', x === b)); settle(); });
+    });
+    links.addEventListener('pointerleave', settle);
+    new ResizeObserver(settle).observe(links); document.fonts && document.fonts.ready.then(settle);
+    if (fine) st.classList.add('has-cursor');
+    st.querySelectorAll('[data-mag]').forEach(el => {
+      el.addEventListener('pointermove', e => {
+        const r = el.getBoundingClientRect(), dx = e.clientX - (r.left + r.width / 2), dy = e.clientY - (r.top + r.height / 2);
+        if (!reduce) el.style.transform = `translate(${(dx * .22).toFixed(1)}px, ${(dy * .3).toFixed(1)}px)`;
+        hover = el;
+      });
+      el.addEventListener('pointerleave', () => { el.style.transform = ''; hover = null; });
+    });
+    st.addEventListener('pointermove', e => { const p = local(st, e); cg = p; f.target = p; });
+    st.addEventListener('pointerleave', () => { f.target = null; cg = { x: -50, y: -50 }; });
+    whenVisible(st, n => {
+      let gx = cg.x, gy = cg.y;
+      if (hover) { const r = hover.getBoundingClientRect(), s = st.getBoundingClientRect(); const hx = r.left - s.left + r.width / 2, hy = r.top - s.top + r.height / 2; gx = hx + (cg.x - hx) * .3; gy = hy + (cg.y - hy) * .3; f.target = { x: hx, y: hy }; }
+      const k = reduce ? 1 : .25; cp.x += (gx - cp.x) * k; cp.y += (gy - cp.y) * k;
+      cur.style.transform = `translate(${cp.x}px, ${cp.y}px)`; cur.classList.toggle('on', !!hover);
+      f.draw(n);
+    });
+  }
+
+  /* ── Demo 2: phone ── */
+  {
+    const phone = document.getElementById('phone'), scr = document.getElementById('phs'), hero = document.getElementById('phHero');
+    const f = new Field(document.getElementById('f2'), { spacing: 17, orbit: true });
+    const tabs = document.getElementById('phTabs'), tb = [...tabs.querySelectorAll('button')], tilde = document.getElementById('phTilde');
+    let dragging = false, held = 0;
+    const setActive = id => { tb.forEach(b => b.classList.toggle('on', b.dataset.t === id)); tildeTo(tilde, tabs.querySelector('.on'), tabs); };
+    tb.forEach(b => b.addEventListener('click', () => { const el = document.getElementById(b.dataset.t); scr.scrollTo({ top: el.offsetTop, behavior: reduce ? 'auto' : 'smooth' }); setActive(b.dataset.t); }));
+    new ResizeObserver(() => setActive(tabs.querySelector('.on').dataset.t)).observe(tabs);
+    document.fonts && document.fonts.ready.then(() => setActive(tabs.querySelector('.on').dataset.t));
+    hero.addEventListener('pointerdown', e => { const p = local(phone, e); f.target = p; f.pulse(p.x, p.y); dragging = true; });
+    hero.addEventListener('pointermove', e => { if (dragging) f.target = local(phone, e); });
+    const release = () => { if (dragging) { dragging = false; held = performance.now(); } };
+    hero.addEventListener('pointerup', release); hero.addEventListener('pointercancel', release); hero.addEventListener('pointerleave', release);
+    const spy = () => {
+      const y = scr.scrollTop + 120; let id = 'phHero';
+      tb.forEach(b => { const el = document.getElementById(b.dataset.t); if (el.offsetTop <= y) id = b.dataset.t; });
+      if (!tabs.querySelector(`[data-t="${id}"]`).classList.contains('on')) setActive(id);
+    };
+    scr.addEventListener('scroll', spy, { passive: true });
+    whenVisible(phone, n => {
+      const st = scr.scrollTop, p = clamp(st / (hero.offsetHeight * .8), 0, 1);
+      f.alignT = p * .92;
+      if (!dragging && f.target && n - held > 1600) f.target = null;
+      f.rest = st > 8 ? { x: f.W * .5 + Math.sin(st * .012) * f.W * .3, y: f.H * .35 + p * f.H * .3 } : null;
+      f.draw(n);
+    }, 30);
+  }
+
+  /* ── Demo 3: work + case morph ── */
+  {
+    const st = document.getElementById('d3'), f = new Field(document.getElementById('f3'), { spacing: 18 });
+    const mcv = document.getElementById('morph'), mctx = mcv.getContext('2d');
+    const grid = document.getElementById('wgrid'), cards = [...grid.querySelectorAll('.card')];
+    const caseEl = document.getElementById('case'), caseT = document.getElementById('caseT'), caseSub = document.getElementById('caseSub'), caseSum = document.getElementById('caseSum');
+    const pill = document.getElementById('kpill'), pal = document.getElementById('kpal'), kq = document.getElementById('kq'), klist = document.getElementById('klist');
+    const CASES = {
+      compass: { t: 'Compass', sub: 'PropTech leader that scales through acquisitions. I drove compliance operations, CRM research and Design System scale during a high-growth phase.', sum: [['$17B', 'company valuation', 0], ['—', 'impact metric to add', 1], ['—', 'impact metric to add', 1]] },
+      ypf: { t: 'Silstech · YPF', sub: 'A national-scale platform, designed from the ground up, unifying logistics and safety between Argentina’s leading energy company and its transport providers.', sum: [['0 → 1', 'built from scratch', 0], ['—', 'impact metric to add', 1], ['—', 'impact metric to add', 1]] },
+      statlink: { t: 'StatLink', sub: 'End-to-end design of a collaborative platform connecting coaches, players and scouts, including a strategic information architecture pivot.', sum: [['E2E', 'design ownership', 0], ['—', 'impact metric to add', 1], ['—', 'impact metric to add', 1]] }
+    };
+    const ARCHIVE = ['RF Solutions', 'Holcim · Mi PoRHtal', 'Healthcare inc.', 'Viaje Perfecto', '3XM Group', 'Cideon · Enify', 'ePlan'];
+    let parts = null, mode = 'idle', t1 = 0, hoverCard = null, mW = 0, mH = 0;
+
+    const sizeMorph = () => { const r = st.getBoundingClientRect(), d = Math.min(devicePixelRatio || 1, 2); mW = r.width; mH = r.height; mcv.width = mW * d; mcv.height = mH * d; mctx.setTransform(d, 0, 0, d, 0, 0); };
+    new ResizeObserver(sizeMorph).observe(st);
+
+    cards.forEach(c => {
+      c.addEventListener('pointerenter', () => hoverCard = c);
+      c.addEventListener('pointerleave', () => hoverCard = null);
+      c.addEventListener('click', () => openCase(c.dataset.case));
+    });
+
+    // palette, closed by default
+    const items = [...Object.entries(CASES).map(([k, v]) => ({ k, name: v.t })), ...ARCHIVE.map(n => ({ k: null, name: n }))];
+    const renderList = q => {
+      klist.innerHTML = '';
+      items.filter(i => i.name.toLowerCase().includes(q.toLowerCase())).forEach(i => {
+        const li = document.createElement('li'), b = document.createElement('button');
+        b.type = 'button'; b.innerHTML = `${i.name}<span>${i.k ? 'Case ↵' : 'Archive'}</span>`;
+        if (!i.k) b.disabled = true; else b.onclick = () => { closePal(); openCase(i.k); };
+        li.appendChild(b); klist.appendChild(li);
+      });
+    };
+    const openPal = () => { pal.hidden = false; kq.value = ''; renderList(''); kq.focus(); };
+    const closePal = () => { pal.hidden = true; };
+    pill.addEventListener('click', () => pal.hidden ? openPal() : closePal());
+    kq.addEventListener('input', () => renderList(kq.value));
+    st.addEventListener('keydown', e => {
+      if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') { e.preventDefault(); openPal(); }
+      if (e.key === 'Escape') { if (!pal.hidden) closePal(); else if (mode === 'open') closeCase(); }
+    });
+    st.addEventListener('pointerdown', e => { if (!pal.hidden && !e.target.closest('.k-pal, .k-pill')) closePal(); });
+
+    async function openCase(key) {
+      if (mode !== 'idle') return;
+      const c = CASES[key]; mode = 'opening';
+      caseT.textContent = c.t; caseSub.textContent = c.sub;
+      caseSum.innerHTML = c.sum.map(([v, l, ph]) => `<div><b class="${ph ? 'ph' : ''}">${v}</b><span>${l}</span></div>`).join('');
+      try { await document.fonts.load('700 80px "Geist"'); } catch (e) {}
+      // fit title size to the stage, then measure where it will sit
+      const m = document.createElement('canvas').getContext('2d');
+      const pad = parseFloat(getComputedStyle(caseEl).paddingLeft);
+      let fs = Math.min(mW * .13, 112); m.font = `700 ${fs}px "Geist", sans-serif`;
+      const w = m.measureText(c.t).width, maxW = mW - pad * 2; if (w > maxW) fs *= maxW / w;
+      caseT.style.fontSize = fs + 'px';
+      caseEl.hidden = false; caseEl.classList.add('measuring'); caseEl.classList.remove('in'); caseEl.scrollTop = 0;
+      const tr = caseT.getBoundingClientRect(), sr = st.getBoundingClientRect();
+      caseEl.classList.remove('measuring');
+      if (reduce) { grid.classList.add('leaving'); f.alphaT = .25; caseEl.classList.add('in'); mode = 'open'; document.getElementById('back').focus({ preventScroll: true }); return; }
+      // sample title glyphs
+      const oc = document.createElement('canvas'); oc.width = Math.ceil(mW); oc.height = Math.ceil(mH);
+      const o = oc.getContext('2d'); o.font = `700 ${fs}px "Geist", sans-serif`; o.fillStyle = '#000';
+      const mm = o.measureText(c.t), asc = mm.fontBoundingBoxAscent || fs * .92, desc = mm.fontBoundingBoxDescent || fs * .26;
+      const baseline = tr.top - sr.top + (fs - (asc + desc)) / 2 + asc;
+      o.fillText(c.t, tr.left - sr.left, baseline);
+      const data = o.getImageData(0, 0, oc.width, oc.height).data, step = mW < 600 ? 3 : 4, targets = [];
+      for (let y = 0; y < oc.height; y += step) for (let x = 0; x < oc.width; x += step) if (data[(y * oc.width + x) * 4 + 3] > 140) targets.push([x, y]);
+      const maxP = mW < 600 ? 900 : 1800;
+      while (targets.length > maxP) targets.splice((Math.random() * targets.length) | 0, 1);
+      const lat = f.lattice();
+      parts = targets.map(([tx, ty]) => { const [sx, sy] = lat[(Math.random() * lat.length) | 0]; return { sx, sy, tx, ty, d: Math.random() * 260 + (sx / mW) * 140 }; });
+      grid.classList.add('leaving'); f.alphaT = 0; mcv.style.opacity = 1;
+      t1 = performance.now(); runMorph(1);
+    }
+    function closeCase() {
+      if (mode !== 'open') return; mode = 'closing';
+      caseEl.classList.remove('in'); pal.hidden = true;
+      if (reduce || !parts) { caseEl.hidden = true; grid.classList.remove('leaving'); f.alphaT = 1; mode = 'idle'; return; }
+      const lat = f.lattice();
+      parts.forEach(p => { const [x, y] = lat[(Math.random() * lat.length) | 0]; p.sx = p.tx; p.sy = p.ty; p.tx = x; p.ty = y; p.d = Math.random() * 200; });
+      mcv.style.opacity = 1; t1 = performance.now(); runMorph(-1);
+      setTimeout(() => { caseEl.hidden = true; grid.classList.remove('leaving'); }, 350);
+    }
+    document.getElementById('back').addEventListener('click', closeCase);
+    const ease = p => p < .5 ? 4 * p * p * p : 1 - Math.pow(-2 * p + 2, 3) / 2;
+    const ox = Math.cos(ORDER), oy = Math.sin(ORDER);
+    function runMorph(dir) {
+      const dur = dir > 0 ? 1000 : 800;
+      const frame = now => {
+        const el = now - t1; let done = true;
+        mctx.clearRect(0, 0, mW, mH); mctx.lineCap = 'round'; mctx.lineWidth = 1.5;
+        const flying = new Path2D(), landed = new Path2D();
+        for (const p of parts) {
+          const q = clamp((el - p.d) / dur, 0, 1); if (q < 1) done = false;
+          const e = ease(q), x = p.sx + (p.tx - p.sx) * e, y = p.sy + (p.ty - p.sy) * e;
+          let vx = p.tx - p.sx, vy = p.ty - p.sy; const vl = Math.hypot(vx, vy) || 1; vx /= vl; vy /= vl;
+          const end = dir > 0 ? clamp((q - .6) / .4, 0, 1) : 1 - clamp(q / .3, 0, 1);
+          let ax = vx * (1 - end) + ox * end, ay = vy * (1 - end) + oy * end; const al = Math.hypot(ax, ay) || 1; ax /= al; ay /= al;
+          const L = 1.7 + 7 * Math.sin(Math.PI * q);
+          const path = (dir > 0 ? q >= 1 : q <= 0) ? landed : flying;
+          path.moveTo(x - ax * L, y - ay * L); path.lineTo(x + ax * L, y + ay * L);
+        }
+        mctx.globalAlpha = .75; mctx.strokeStyle = colors.ink; mctx.stroke(flying);
+        mctx.globalAlpha = 1; mctx.strokeStyle = colors.acc; mctx.stroke(landed);
+        if (!done) return requestAnimationFrame(frame);
+        if (dir > 0) {
+          setTimeout(() => { caseEl.classList.add('in'); mcv.style.opacity = 0; mode = 'open'; document.getElementById('back').focus({ preventScroll: true }); }, 220);
+        } else { mctx.clearRect(0, 0, mW, mH); f.alphaT = 1; mode = 'idle'; parts = null; }
+      };
+      requestAnimationFrame(frame);
+    }
+    whenVisible(st, n => {
+      if (hoverCard && mode === 'idle') { const r = hoverCard.getBoundingClientRect(), s = st.getBoundingClientRect(); f.target = { x: r.left - s.left + r.width / 2, y: r.top - s.top + r.height / 2 }; }
+      else f.target = null;
+      f.draw(n);
+    });
+  }
+
+  /* ── Demo 4: highlights ── */
+  {
+    const st = document.getElementById('d4'), f = new Field(document.getElementById('f4'), { spacing: 22, alpha: .9 });
+    const entry = document.getElementById('hlEntry'), modeEl = document.getElementById('hlMode'), steps = document.getElementById('hlSteps');
+    const fill = document.getElementById('hlFill'), tilde = document.getElementById('hlTilde'), time = document.getElementById('hlTime');
+    const stepEls = [...steps.querySelectorAll('.hl-step')];
+    const spots = [[.78, .3], [.2, .7], [.82, .75], [.3, .25], [.7, .5]];
+    let idx = 0;
+    const update = () => {
+      const max = steps.scrollHeight - steps.clientHeight, p = max > 0 ? clamp(steps.scrollTop / max, 0, 1) : 0;
+      fill.style.width = (p * 100) + '%'; tilde.style.left = (p * 100) + '%';
+      time.textContent = p > .98 ? 'Done' : `${Math.max(5, Math.round((1 - p) * 60 / 5) * 5)} s left`;
+      const i = clamp(Math.round(steps.scrollTop / steps.clientHeight), 0, stepEls.length - 1);
+      if (i !== idx) { idx = i; stepEls.forEach((s, j) => s.classList.toggle('on', j === i)); }
+      const [sx, sy] = spots[idx]; f.rest = { x: f.W * sx, y: f.H * sy };
+    };
+    steps.addEventListener('scroll', update, { passive: true });
+    document.getElementById('hlGo').addEventListener('click', () => {
+      entry.hidden = true; modeEl.hidden = false; steps.scrollTop = 0; idx = -1; update(); f.alignT = .7; steps.focus({ preventScroll: true });
+    });
+    document.getElementById('hlExit').addEventListener('click', () => {
+      modeEl.hidden = true; entry.hidden = false; f.alignT = 0; f.rest = null; document.getElementById('hlGo').focus({ preventScroll: true });
+    });
+    whenVisible(st, n => f.draw(n));
+  }
+
+  /* ── Demo 5: case chapters ── */
+  {
+    const st = document.getElementById('d5'), f = new Field(document.getElementById('f5'), { spacing: 18 });
+    f.chaos = f.chaosT = 1;
+    const sc = document.getElementById('chScroll'), steps = [...sc.querySelectorAll('.ch-step')];
+    const rail = [...document.querySelectorAll('#chRail button')], state = document.getElementById('chState');
+    const names = ['Field · scattered', 'Field · attracted', 'Field · aligned'];
+    let idx = 0;
+    const update = () => {
+      const n = steps.length - 1, p = clamp(sc.scrollTop / Math.max(1, sc.clientHeight), 0, n);
+      f.chaosT = clamp(1 - p * 1.25, 0, 1);
+      f.alignT = clamp(p - 1, 0, 1) * .95;
+      f.rest = p > .35 && f.W ? { x: f.W * .5, y: f.H * .5 } : null;
+      const i = clamp(Math.round(p), 0, n);
+      if (i !== idx) {
+        idx = i;
+        steps.forEach((s, j) => s.classList.toggle('on', j === i));
+        rail.forEach((b, j) => { b.classList.toggle('on', j === i); if (j === i) b.setAttribute('aria-current', 'step'); else b.removeAttribute('aria-current'); });
+        state.textContent = names[i];
+      }
+    };
+    sc.addEventListener('scroll', update, { passive: true });
+    rail.forEach((b, i) => b.addEventListener('click', () => sc.scrollTo({ top: steps[i].offsetTop, behavior: reduce ? 'auto' : 'smooth' })));
+    whenVisible(st, n => f.draw(n));
+  }
+
+  /* ── Demo 6: attracting CTA ── */
+  {
+    const st = document.getElementById('d6'), btn = document.getElementById('ctaBtn');
+    const f = new Field(document.getElementById('f6'), { spacing: 20, alpha: .75, strength: .7, orbit: false });
+    const fb = new Field(document.getElementById('f6b'), { spacing: 8, dot: false, orbit: false, inverse: true, alpha: .6, strength: 1.6 });
+    let ptr = null, inBtn = null;
+    const center = () => { const r = btn.getBoundingClientRect(), s = st.getBoundingClientRect(); return { x: r.left - s.left + r.width / 2, y: r.top - s.top + r.height / 2 }; };
+    st.addEventListener('pointermove', e => { ptr = local(st, e); });
+    st.addEventListener('pointerleave', () => { ptr = null; });
+    btn.addEventListener('pointermove', e => {
+      inBtn = local(btn, e);
+      const r = btn.getBoundingClientRect(), dx = e.clientX - (r.left + r.width / 2), dy = e.clientY - (r.top + r.height / 2);
+      if (!reduce) btn.style.transform = `translate(${(dx * .12).toFixed(1)}px, ${(dy * .25).toFixed(1)}px)`;
+    });
+    btn.addEventListener('pointerleave', () => { inBtn = null; btn.style.transform = ''; });
+    btn.addEventListener('click', () => { const c = center(); f.pulse(c.x, c.y); fb.pulse(fb.W / 2, fb.H / 2); });
+    whenVisible(st, n => {
+      const c = center(); let pull = 1;
+      if (ptr) { const d = Math.hypot(ptr.x - c.x, ptr.y - c.y); pull = clamp(1 - (d - 80) / 220, 0, 1); f.target = pull > .5 ? c : ptr; }
+      else { f.target = null; f.rest = c; }
+      f.o.strength += ((.6 + pull * .8) - f.o.strength) * .1;
+      fb.target = inBtn; fb.rest = { x: (fb.W || 0) * .88, y: (fb.H || 0) * .5 };
+      f.draw(n); fb.draw(n);
+    });
+    // copy email
+    const copy = document.getElementById('ctaCopy'), ck = document.getElementById('ctaCk'), em = document.getElementById('ctaEm'), status = document.getElementById('ctaStatus');
+    let timer = 0;
+    copy.addEventListener('click', async () => {
+      let ok = false;
+      try { await navigator.clipboard.writeText(em.textContent); ok = true; } catch (e) {}
+      clearTimeout(timer);
+      if (ok) { copy.classList.add('done'); ck.textContent = 'Copied'; status.textContent = 'Email copied to clipboard.'; }
+      else { const r = document.createRange(); r.selectNodeContents(em); const s = getSelection(); s.removeAllRanges(); s.addRange(r); status.textContent = 'Email selected. Press Ctrl+C or ⌘C to copy.'; }
+      timer = setTimeout(() => { copy.classList.remove('done'); ck.textContent = 'Copy'; status.textContent = ''; }, 3000);
+    });
+  }
+
+  /* ── Demo 7: closing footer ── */
+  {
+    const st = document.getElementById('d7');
+    const f = new Field(document.getElementById('f7'), { spacing: 20, alpha: .6, strength: .55, orbit: false, wake: true, dot: false });
+    f.align = f.alignT = .94;
+    st.addEventListener('pointermove', e => { f.target = local(st, e); });
+    st.addEventListener('pointerleave', () => { f.target = null; });
+    st.querySelectorAll('.ft-list a').forEach(a => a.addEventListener('click', e => e.preventDefault()));
+    // field switch
+    const sw = document.getElementById('ftField'), swL = document.getElementById('ftFieldL');
+    let on = true, lang = 'en';
+    const swText = () => { swL.textContent = `${lang === 'es' ? 'Campo' : 'Field'} · ${on ? (lang === 'es' ? 'Sí' : 'On') : (lang === 'es' ? 'No' : 'Off')}`; };
+    sw.addEventListener('click', () => { on = !on; f.alphaT = on ? 1 : 0; sw.setAttribute('aria-pressed', String(on)); swText(); });
+    // language
+    const lb = document.getElementById('ftLang');
+    lb.addEventListener('click', () => {
+      lang = lang === 'en' ? 'es' : 'en';
+      st.querySelectorAll('[data-en]').forEach(el => { el.textContent = el.dataset[lang]; });
+      lb.textContent = lang === 'en' ? 'Español' : 'English'; lb.lang = lang === 'en' ? 'es' : 'en';
+      swText(); tick();
+    });
+    document.getElementById('ftTop').addEventListener('click', () => window.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' }));
+    // local time
+    const time = document.getElementById('ftTime');
+    const tick = () => { try { time.textContent = new Intl.DateTimeFormat(lang === 'es' ? 'es-AR' : 'en-GB', { timeZone: 'America/Argentina/Buenos_Aires', hour: '2-digit', minute: '2-digit', hourCycle: 'h23' }).format(new Date()); } catch (e) {} };
+    tick(); setInterval(tick, 15000);
+    // wordmark fills the full width
+    const word = document.getElementById('ftWord');
+    const fit = () => { word.style.fontSize = ''; const w = word.getBoundingClientRect().width, fs = parseFloat(getComputedStyle(word).fontSize); if (w) word.style.fontSize = (fs * st.clientWidth * 1.035 / w) + 'px'; };
+    new ResizeObserver(fit).observe(st); document.fonts && document.fonts.ready.then(fit);
+    whenVisible(st, n => f.draw(n), 45);
+  }
+
+  // canvas helper for overlays that are not a Field
+  const fitCanvas = cv => {
+    const o = { cv, ctx: cv.getContext('2d'), W: 0, H: 0 };
+    const rs = () => { const r = cv.getBoundingClientRect(); if (!r.width) return; const d = Math.min(devicePixelRatio || 1, 2); o.W = r.width; o.H = r.height; cv.width = o.W * d; cv.height = o.H * d; o.ctx.setTransform(d, 0, 0, d, 0, 0); };
+    new ResizeObserver(rs).observe(cv); rs(); return o;
+  };
+  // direction of the dipole field of a Field at (x, y)
+  const dipoleB = (f, x, y, now) => {
+    const th = reduce ? 0 : (now - f.t0) * .00018, mx = Math.cos(th), my = Math.sin(th);
+    const rx = x - f.mag.x, ry = y - f.mag.y, d = Math.hypot(rx, ry) || 1, ux = rx / d, uy = ry / d, dt = mx * ux + my * uy;
+    let bx = 3 * dt * ux - mx, by = 3 * dt * uy - my; const bl = Math.hypot(bx, by) || 1;
+    return [bx / bl, by / bl, d];
+  };
+
+  /* ── Demo 8a: flowing field ── */
+  {
+    const st = document.getElementById('d8a'), f = new Field(document.getElementById('f8a'), { spacing: 20, alpha: .45 });
+    const P = fitCanvas(document.getElementById('f8aP'));
+    const segB = [...st.querySelectorAll('.seg button')];
+    let mode = 'after', parts = [];
+    const spawn = p => {
+      const a = Math.random() * Math.PI * 2, r = 16 + Math.random() * Math.min(P.W, P.H) * .5;
+      p.x = f.mag.x + Math.cos(a) * r; p.y = f.mag.y + Math.sin(a) * r; p.life = 0; p.max = 70 + Math.random() * 110;
+      p.dir = Math.random() < .5 ? 1 : -1; p.trail = [];
+    };
+    const step = (p, now) => {
+      const [bx, by, d] = dipoleB(f, p.x, p.y, now), R = Math.max(P.W, P.H) * .32, fall = Math.exp(-d / R);
+      const sp = .5 + 2.8 * fall; p.x += bx * sp * p.dir; p.y += by * sp * p.dir; p.life++; p.fall = fall;
+      p.trail.push(p.x, p.y); if (p.trail.length > 28) p.trail.splice(0, 2);
+      if (p.life > p.max || d < 9 || p.x < -10 || p.y < -10 || p.x > P.W + 10 || p.y > P.H + 10) spawn(p);
+    };
+    const init = now => {
+      const n = P.W < 500 ? 150 : 280; parts = [];
+      for (let i = 0; i < n; i++) { const p = {}; spawn(p); p.life = Math.random() * p.max | 0; parts.push(p); if (reduce) for (let k = 0; k < 14; k++) step(p, now); }
+    };
+    const setMode = m => { mode = m; segB.forEach(b => b.setAttribute('aria-pressed', String(b.dataset.m === m))); f.o.alpha = m === 'after' ? .45 : 1; };
+    segB.forEach(b => b.addEventListener('click', () => setMode(b.dataset.m)));
+    st.addEventListener('pointermove', e => { if (e.pointerType === 'mouse' || e.buttons) f.target = local(st, e); });
+    st.addEventListener('pointerdown', e => { const p = local(st, e); f.target = p; f.pulse(p.x, p.y); });
+    st.addEventListener('pointerleave', () => { f.target = null; });
+    whenVisible(st, now => {
+      f.draw(now);
+      const { ctx, W, H } = P; if (!W) return;
+      ctx.clearRect(0, 0, W, H);
+      if (mode !== 'after') return;
+      if (!parts.length) init(now);
+      ctx.lineCap = 'round'; ctx.lineJoin = 'round'; ctx.lineWidth = 1.3;
+      for (const p of parts) {
+        if (!reduce) step(p, now);
+        const t = p.trail; if (t.length < 4) continue;
+        const life = Math.sin(Math.PI * clamp(p.life / p.max, 0, 1));
+        ctx.globalAlpha = life * (p.fall > .35 ? .95 : .55);
+        ctx.strokeStyle = p.fall > .35 ? colors.acc : colors.ink;
+        ctx.beginPath(); ctx.moveTo(t[0], t[1]); for (let i = 2; i < t.length; i += 2) ctx.lineTo(t[i], t[i + 1]); ctx.stroke();
+      }
+      ctx.globalAlpha = 1;
+    });
+  }
+
+  /* ── Demo 8b: magnetic viewing film ── */
+  {
+    const st = document.getElementById('d8b'), C = fitCanvas(document.getElementById('f8b'));
+    const SC = 3, buf = document.createElement('canvas'), bx = buf.getContext('2d');
+    let lens = { x: 0, y: 0, a: 0, r: 120 }, ptr = null, touched = false, img = null;
+    const DARK = [6, 17, 12], MID = [16, 104, 72], LIGHT = [74, 222, 158];
+    const mix = (a, b, t) => [a[0] + (b[0] - a[0]) * t, a[1] + (b[1] - a[1]) * t, a[2] + (b[2] - a[2]) * t];
+    st.addEventListener('pointermove', e => { if (e.pointerType === 'mouse' || e.buttons) { ptr = local(st, e); touched = true; } });
+    st.addEventListener('pointerdown', e => { ptr = local(st, e); touched = true; });
+    const off = e => { if (e.type === 'pointerleave' || e.pointerType !== 'mouse') ptr = null; };
+    st.addEventListener('pointerleave', off); st.addEventListener('pointerup', off); st.addEventListener('pointercancel', off);
+    whenVisible(st, now => {
+      const { ctx, W, H } = C; if (!W) return;
+      lens.r = Math.min(130, Math.max(80, W * .16));
+      let tx, ty, show;
+      if (ptr) { tx = ptr.x; ty = ptr.y; show = 1; }
+      else if (!touched && !reduce) { const t = now * .00035; tx = W * .5 + Math.cos(t) * W * .3; ty = H * .5 + Math.sin(t * 1.7) * H * .25; show = 1; }
+      else { tx = lens.x; ty = lens.y; show = 0; }
+      const k = reduce ? 1 : .2; lens.x += (tx - lens.x) * k; lens.y += (ty - lens.y) * k; lens.a += (show - lens.a) * (reduce ? 1 : .15);
+      ctx.clearRect(0, 0, W, H); if (lens.a < .01) return;
+      // hidden bar magnet: centered, tilted like the tilde
+      const a = Math.min(W, H) * .26, cx = W * .5, cy = H * .5, ox = Math.cos(ORDER) * a, oy = Math.sin(ORDER) * a;
+      const Nx = cx + ox, Ny = cy + oy, Sx = cx - ox, Sy = cy - oy;
+      const r = lens.r, n = Math.ceil(r * 2 / SC);
+      if (buf.width !== n) { buf.width = buf.height = n; img = bx.createImageData(n, n); }
+      const D = img.data;
+      for (let j = 0; j < n; j++) for (let i = 0; i < n; i++) {
+        const dx = (i + .5) * SC - r, dy = (j + .5) * SC - r, rr = Math.hypot(dx, dy), idx = (j * n + i) * 4;
+        if (rr > r) { D[idx + 3] = 0; continue; }
+        const px = lens.x + dx, py = lens.y + dy;
+        const r1 = Math.hypot(px - Nx, py - Ny), r2 = Math.hypot(px - Sx, py - Sy);
+        const psi = Math.atan2(py - Ny, px - Nx) - Math.atan2(py - Sy, px - Sx);
+        const band = Math.pow(.5 + .5 * Math.cos(psi * 14), 2.2);
+        const strength = Math.sqrt(clamp((a * a * 3) / (r1 * r2 + 1), 0, 1));
+        const pole = Math.exp(-Math.min(r1, r2) / (a * .22));
+        const v = clamp(.42 + band * .58 * strength - pole * .9, 0, 1);
+        const c = v < .4 ? mix(DARK, MID, v / .4) : mix(MID, LIGHT, (v - .4) / .6);
+        D[idx] = c[0]; D[idx + 1] = c[1]; D[idx + 2] = c[2];
+        D[idx + 3] = 255 * clamp((r - rr) / 10, 0, 1);
+      }
+      bx.putImageData(img, 0, 0);
+      ctx.globalAlpha = lens.a; ctx.imageSmoothingEnabled = true;
+      ctx.drawImage(buf, lens.x - r, lens.y - r, r * 2, r * 2);
+      ctx.strokeStyle = colors.acc; ctx.lineWidth = 1.5; ctx.beginPath(); ctx.arc(lens.x, lens.y, r, 0, Math.PI * 2); ctx.stroke();
+      ctx.globalAlpha = 1;
+    }, 45);
+  }
+
+  /* ── Demo 8c: ferrofluid CTA ── */
+  {
+    const st = document.getElementById('d8c'), btn = document.getElementById('feBtn');
+    const f = new Field(document.getElementById('f8c'), { spacing: 22, alpha: .35, orbit: false, dot: false });
+    const F = fitCanvas(document.getElementById('f8cF'));
+    let ptr = null, m = null, boost = 0, spikes = [];
+    const center = () => { const r = btn.getBoundingClientRect(), s = st.getBoundingClientRect(); return { x: r.left - s.left + r.width / 2, y: r.top - s.top + r.height / 2 }; };
+    st.addEventListener('pointermove', e => { if (e.pointerType === 'mouse' || e.buttons) ptr = local(st, e); });
+    st.addEventListener('pointerdown', e => { if (!e.target.closest('button')) ptr = local(st, e); });
+    st.addEventListener('pointerleave', () => { ptr = null; });
+    btn.addEventListener('click', () => { boost = 1; ptr = null; });
+    whenVisible(st, now => {
+      const { ctx, W, H } = F; if (!W) return;
+      const c = center(); let tgt = c;
+      if (ptr) { const d = Math.hypot(ptr.x - c.x, ptr.y - c.y); tgt = d < 150 ? c : ptr; }
+      if (!m) m = { x: c.x, y: c.y };
+      const k = reduce ? 1 : .12; m.x += (tgt.x - m.x) * k; m.y += (tgt.y - m.y) * k;
+      boost *= reduce ? 0 : .96;
+      f.target = { x: m.x, y: m.y }; f.draw(now);
+      // puddle geometry
+      const narrow = W < 560, N = narrow ? 9 : 13;
+      const cx = narrow ? W * .5 : W * .64, by = H * .9, w = Math.min(W * (narrow ? .86 : .6), 560), h0 = 16, bw = w / N * .5;
+      const Hmax = Math.min(H * (narrow ? .24 : .34), 160);
+      if (spikes.length !== N) spikes = Array.from({ length: N }, () => ({ h: 6, v: 0, lx: 0, lv: 0 }));
+      const pts = [];
+      for (let i = 0; i < N; i++) {
+        const s = spikes[i], xi = cx - w / 2 + w * (i + .5) / N, q = (xi - cx) / (w / 2), dome = Math.sqrt(Math.max(0, 1 - q * q));
+        const ys = by - h0 * dome, dx = m.x - xi, dy = m.y - ys, dd = Math.hypot(dx, dy) || 1;
+        const near = Math.pow(clamp(1 - dd / (Math.max(W, H) * 1.5), 0, 1), 1.1);
+        const th = (6 + Hmax * near * Math.pow(dome, .7)) * (1 + boost * .9) * (.92 + .08 * Math.sin(now * .004 + i * 1.7));
+        let ux = dx / dd, uy = dy / dd; if (uy > -.45) { uy = -.45; } const ul = Math.hypot(ux, uy); ux /= ul; uy /= ul;
+        if (reduce) { s.h = th; s.lx = ux; }
+        else { s.v = (s.v + (th - s.h) * .09) * .82; s.h += s.v; s.lv = (s.lv + (ux - s.lx) * .08) * .8; s.lx += s.lv; }
+        const lx = clamp(s.lx, -.9, .9), ly = -Math.sqrt(1 - lx * lx);
+        pts.push({ xi, ys, tx: xi + lx * s.h, ty: ys + ly * s.h, h: s.h });
+      }
+      ctx.clearRect(0, 0, W, H);
+      // shadow
+      ctx.fillStyle = 'rgba(0,0,0,.18)'; ctx.beginPath(); ctx.ellipse(cx, by + 4, w / 2 + 24, 7, 0, 0, Math.PI * 2); ctx.fill();
+      // body
+      const path = new Path2D(); path.moveTo(cx - w / 2 - 22, by);
+      path.quadraticCurveTo(cx - w / 2 - 4, by - 2, pts[0].xi - bw, pts[0].ys + 2);
+      for (const p of pts) {
+        path.bezierCurveTo(p.xi - bw * .45, p.ys - p.h * .12, p.tx - bw * .1, p.ty + p.h * .3, p.tx, p.ty);
+        path.bezierCurveTo(p.tx + bw * .1, p.ty + p.h * .3, p.xi + bw * .45, p.ys - p.h * .12, p.xi + bw, p.ys + 2);
+      }
+      path.quadraticCurveTo(cx + w / 2 + 4, by - 2, cx + w / 2 + 22, by); path.closePath();
+      const g = ctx.createLinearGradient(0, by - Hmax * 1.6, 0, by);
+      g.addColorStop(0, '#3A433F'); g.addColorStop(.5, '#111613'); g.addColorStop(1, '#020403');
+      ctx.fillStyle = g; ctx.fill(path);
+      ctx.strokeStyle = 'rgba(255,255,255,.24)'; ctx.lineWidth = 1; ctx.stroke(path);
+      // specular highlights down the left side of each spike
+      ctx.lineCap = 'round';
+      for (const p of pts) {
+        if (p.h < 14) continue;
+        ctx.globalAlpha = clamp(p.h / Hmax, .2, .8); ctx.strokeStyle = '#FFFFFF'; ctx.lineWidth = 1.2;
+        ctx.beginPath(); ctx.moveTo(p.tx - 1, p.ty + 6); ctx.quadraticCurveTo(p.tx - bw * .25, p.ty + p.h * .45, p.xi - bw * .45, p.ys - p.h * .08); ctx.stroke();
+      }
+      // a touch of green at the tallest tip: the brand catching the light
+      const top = pts.reduce((a, b) => (b.h > a.h ? b : a));
+      ctx.globalAlpha = .9; ctx.fillStyle = colors.acc; ctx.beginPath(); ctx.arc(top.tx, top.ty, 2.2, 0, Math.PI * 2); ctx.fill();
+      ctx.globalAlpha = 1;
+    });
+  }
+
+  /* ── Share image preview: a still frame of the field ── */
+  {
+    const f = new Field(document.getElementById('fog'), { spacing: 14, orbit: false, strength: .75, home: [.84, .42] });
+    redrawStatic.push(f);
+  }
+})();
+</script>

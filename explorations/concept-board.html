@@ -1,0 +1,769 @@
+<title>Mauro Imán Rediseño</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,200..800&family=Instrument+Sans:wght@400..600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: a 12-column page grid. Mono labels live in columns 1–3, content in 4–12. Press G to see it. */
+:root {
+  --paper: #ECEEF1;
+  --panel: #E1E4E9;
+  --ink: #0F1218;
+  --ink-2: #4E5561;
+  --line: #C6CBD3;
+  --accent: #2B39F0;
+  --on-accent: #FFFFFF;
+  --grid-tint: rgba(43, 57, 240, .07);
+
+  --f-display: "Bricolage Grotesque", "Helvetica Neue", Arial, sans-serif;
+  --f-text: "Instrument Sans", "Helvetica Neue", Arial, sans-serif;
+  --f-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+
+  --s-0: .75rem;   /* labels */
+  --s-1: 1rem;     /* body */
+  --s-2: 1.25rem;  /* lead */
+  --s-3: 1.75rem;
+  --s-4: clamp(2rem, 4vw, 3rem);
+  --s-5: clamp(2.75rem, 7.5vw, 6.5rem);
+
+  --gutter: 24px;
+  --maxw: 1280px;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #0C0E12; --panel: #14171D; --ink: #E7E9EC; --ink-2: #99A0AB;
+    --line: #272C35; --accent: #7A85FF; --on-accent: #0C0E12; --grid-tint: rgba(122, 133, 255, .08);
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #0C0E12; --panel: #14171D; --ink: #E7E9EC; --ink-2: #99A0AB;
+  --line: #272C35; --accent: #7A85FF; --on-accent: #0C0E12; --grid-tint: rgba(122, 133, 255, .08);
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--f-text);
+  font-size: var(--s-1);
+  line-height: 1.55;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  -webkit-font-smoothing: antialiased;
+  font-kerning: normal;
+  hanging-punctuation: first last;
+}
+::selection { background: var(--accent); color: var(--on-accent); }
+a { color: inherit; }
+button { font: inherit; color: inherit; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+
+.wrap { max-width: var(--maxw); margin: 0 auto; padding-inline: clamp(0px, 2.5vw, 32px); }
+.grid { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gutter); }
+@media (max-width: 760px) { :root { --gutter: 16px; } }
+
+.label {
+  font-family: var(--f-mono); font-size: var(--s-0); letter-spacing: .06em; text-transform: uppercase;
+  color: var(--ink-2); font-weight: 400;
+}
+.label b { color: var(--ink); font-weight: 500; }
+
+/* ── Top bar ── */
+.top { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; background: var(--paper); border-bottom: 1px solid var(--line); }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 21; background: var(--paper); }
+.top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 12px; }
+.mark { font-family: var(--f-display); font-weight: 650; font-size: 1.05rem; font-variation-settings: "wdth" 85, "opsz" 24; letter-spacing: -.01em; }
+.mark .acc { color: var(--accent); }
+.top-r { display: flex; align-items: center; gap: 16px; }
+.btn {
+  display: inline-flex; align-items: center; gap: 8px; cursor: pointer;
+  border: 1px solid var(--line); background: transparent; border-radius: 999px; padding: 6px 12px;
+  font-family: var(--f-mono); font-size: var(--s-0); letter-spacing: .04em; text-transform: uppercase;
+  transition: border-color .2s, background .2s, color .2s;
+}
+.btn:hover { border-color: var(--ink); }
+.btn[aria-pressed="true"] { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+kbd { font-family: var(--f-mono); font-size: .7rem; border: 1px solid currentColor; border-radius: 4px; padding: 0 5px; opacity: .7; }
+@media (max-width: 560px) { .top-r .label { display: none; } }
+
+/* ── Hero ── */
+.hero { padding-block: clamp(56px, 10vw, 128px) clamp(40px, 6vw, 72px); }
+.hero .label { grid-column: 1 / 4; padding-top: .9em; }
+.hero h1 {
+  grid-column: 4 / 13; margin: 0;
+  font-family: var(--f-display); font-size: var(--s-5); line-height: .94; letter-spacing: -.035em;
+  font-weight: 700; font-variation-settings: "wdth" 80, "opsz" 96;
+  text-wrap: balance;
+}
+.hero h1 em { font-style: normal; color: var(--accent); }
+.hero .lead { grid-column: 4 / 11; margin: 32px 0 0; font-size: var(--s-2); line-height: 1.5; color: var(--ink-2); max-width: 62ch; text-wrap: pretty; }
+@media (max-width: 760px) {
+  .hero .label, .hero h1, .hero .lead { grid-column: 1 / -1; }
+  .hero h1 { margin-top: 16px; }
+}
+
+/* ── Sections ── */
+section.block { border-top: 1px solid var(--line); padding-block: clamp(48px, 7vw, 96px); }
+.block > .wrap > .grid > .side { grid-column: 1 / 4; display: flex; flex-direction: column; gap: 6px; }
+.block > .wrap > .grid > .main { grid-column: 4 / 13; min-width: 0; }
+@media (max-width: 760px) {
+  .block > .wrap > .grid > .side, .block > .wrap > .grid > .main { grid-column: 1 / -1; }
+  .block > .wrap > .grid > .side { margin-bottom: 24px; flex-direction: row; flex-wrap: wrap; gap: 4px 16px; }
+}
+h2 {
+  margin: 0 0 20px; font-family: var(--f-display); font-weight: 650; font-size: var(--s-4);
+  line-height: 1.02; letter-spacing: -.025em; font-variation-settings: "wdth" 85, "opsz" 72; text-wrap: balance;
+}
+h3 { margin: 0 0 8px; font-family: var(--f-display); font-weight: 600; font-size: var(--s-2); letter-spacing: -.01em; font-variation-settings: "wdth" 90, "opsz" 24; }
+p { margin: 0 0 1em; max-width: 64ch; text-wrap: pretty; }
+.muted { color: var(--ink-2); }
+
+/* Brief */
+.brief { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--gutter); margin-top: 8px; }
+.brief > div { border-top: 1px solid var(--ink); padding-top: 14px; min-width: 0; }
+.brief p { font-size: .95rem; margin: 8px 0 0; }
+@media (max-width: 760px) { .brief { grid-template-columns: 1fr; } }
+
+/* Seed */
+.seed { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: var(--gutter); align-items: end; }
+.dict { font-family: var(--f-display); font-size: clamp(4rem, 13vw, 10.5rem); line-height: .8; letter-spacing: -.05em; font-weight: 800; font-variation-settings: "wdth" 75, "opsz" 96; margin: 0; }
+.dict .acc { color: var(--accent); }
+.dict-def { border-left: 1px solid var(--line); padding-left: 20px; }
+.dict-def .pron { font-family: var(--f-mono); font-size: .85rem; color: var(--ink-2); margin-bottom: 12px; }
+.dict-def ol { margin: 0; padding-left: 1.2em; }
+.dict-def li { margin-bottom: 6px; }
+@media (max-width: 760px) { .seed { grid-template-columns: 1fr; } .dict-def { border-left: 0; padding-left: 0; border-top: 1px solid var(--line); padding-top: 16px; } }
+
+/* Direction layout */
+.dir-head { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+.tagline { font-size: var(--s-2); color: var(--ink-2); margin: -8px 0 28px; max-width: 56ch; }
+.stage {
+  position: relative; background: var(--panel); border-radius: 6px; overflow: hidden;
+  height: clamp(320px, 46vw, 480px); isolation: isolate;
+}
+.stage-cap { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; margin: 10px 0 0; }
+.facts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--gutter); margin-top: 36px; }
+.facts > div { min-width: 0; }
+.facts .label { display: block; margin-bottom: 8px; }
+.facts p { font-size: .95rem; margin: 0; }
+@media (max-width: 760px) { .facts { grid-template-columns: 1fr; gap: 20px; } }
+.meter { display: inline-flex; gap: 3px; vertical-align: middle; margin-left: 6px; }
+.meter i { width: 14px; height: 4px; background: var(--line); border-radius: 1px; }
+.meter i.on { background: var(--accent); }
+
+/* A — Field */
+#field { position: absolute; inset: 0; width: 100%; height: 100%; display: block; touch-action: pan-y; }
+.wordmark {
+  position: absolute; left: 50%; top: 50%; transform: translate(-50%, -54%); margin: 0; pointer-events: none;
+  font-family: var(--f-display); font-weight: 800; font-size: clamp(4.5rem, 16vw, 12rem); line-height: 1;
+  letter-spacing: -.05em; font-variation-settings: "wdth" 75, "opsz" 96; white-space: nowrap;
+}
+.wordmark span { display: inline-block; will-change: transform; }
+.wordmark .acc { color: var(--accent); }
+.field-hint { position: absolute; left: 16px; bottom: 14px; }
+
+/* B — Specimen */
+.spec { cursor: crosshair; display: flex; flex-direction: column; justify-content: center; padding: clamp(16px, 4vw, 48px); }
+.spec-word {
+  font-family: var(--f-display); font-size: clamp(3rem, 11vw, 9rem); line-height: .9; letter-spacing: -.035em;
+  margin: 0; position: relative; z-index: 2; text-wrap: balance;
+}
+.spec-read { position: absolute; top: 14px; left: 16px; right: 16px; display: flex; justify-content: space-between; gap: 12px; z-index: 2; flex-wrap: wrap; }
+.spec-read .label { font-variant-numeric: tabular-nums; }
+.overlay { position: absolute; inset: 0; z-index: 1; pointer-events: none; opacity: 0; transition: opacity .3s; }
+.overlay.on { opacity: 1; }
+.overlay .cols { position: absolute; inset: 0 clamp(16px, 4vw, 48px); display: grid; grid-template-columns: repeat(12, 1fr); gap: 16px; }
+.overlay .cols i { background: var(--grid-tint); border-inline: 1px solid color-mix(in srgb, var(--accent) 22%, transparent); }
+.overlay .base { position: absolute; inset: 0; background-image: repeating-linear-gradient(to bottom, transparent 0 7px, color-mix(in srgb, var(--accent) 16%, transparent) 7px 8px); }
+.spec-tools { position: absolute; right: 16px; bottom: 14px; z-index: 3; }
+.details-row { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--gutter); margin-top: 28px; }
+.details-row > div { border-top: 1px solid var(--line); padding-top: 12px; min-width: 0; }
+.details-row .ex { font-family: var(--f-display); font-size: 1.5rem; line-height: 1.15; margin: 6px 0 4px; font-variation-settings: "wdth" 90, "opsz" 48; font-variant-numeric: tabular-nums; }
+.details-row .ex.hang { text-indent: -.42em; }
+.details-row p { font-size: .85rem; color: var(--ink-2); margin: 0; }
+@media (max-width: 900px) { .details-row { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+
+/* C — Canvas */
+.cv { cursor: grab; touch-action: none; user-select: none; }
+.cv.dragging { cursor: grabbing; }
+.world { position: absolute; left: 0; top: 0; width: 1700px; height: 1050px; transform-origin: 0 0; }
+.world.anim { transition: transform .7s cubic-bezier(.2, .8, .1, 1); }
+.world::before { content: ""; position: absolute; inset: 0; background-image: radial-gradient(circle, var(--line) 1.2px, transparent 1.4px); background-size: 32px 32px; }
+.frame {
+  position: absolute; background: var(--paper); border: 1px solid var(--line); border-radius: 4px; padding: 18px;
+  display: flex; flex-direction: column; gap: 12px; cursor: zoom-in; transition: border-color .2s, box-shadow .2s;
+}
+.frame:hover { border-color: var(--accent); box-shadow: 0 0 0 3px var(--grid-tint); }
+.frame-name { position: absolute; top: -24px; left: 0; font-family: var(--f-mono); font-size: 13px; color: var(--ink-2); white-space: nowrap; }
+.frame h4 { margin: 0; font-family: var(--f-display); font-weight: 650; font-size: 30px; letter-spacing: -.02em; line-height: 1; font-variation-settings: "wdth" 82, "opsz" 72; }
+.frame.big h4 { font-size: 46px; }
+.frame .sub { font-size: 14px; color: var(--ink-2); line-height: 1.35; margin: 0; }
+.ui { flex: 1; display: grid; gap: 8px; grid-template-columns: 1fr 3fr; min-height: 0; }
+.ui .nav, .ui .body { background: var(--panel); border-radius: 3px; }
+.ui .body { display: grid; grid-template-rows: auto 1fr; gap: 8px; padding: 10px; background: transparent; border: 1px dashed var(--line); }
+.ui .bar { height: 10px; border-radius: 2px; background: var(--line); width: 60%; }
+.ui .tiles { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+.ui .tiles i { background: var(--panel); border-radius: 3px; min-height: 40px; }
+.ui .tiles i:first-child { background: var(--accent); opacity: .85; }
+.frame.conf .ui { filter: blur(5px); opacity: .6; }
+.cv-tools { position: absolute; right: 12px; top: 12px; display: flex; gap: 6px; z-index: 3; }
+.cv-tools .btn { background: var(--paper); padding: 6px 10px; }
+.cmdk {
+  position: absolute; left: 12px; top: 12px; z-index: 3; width: min(260px, calc(100% - 140px));
+  background: var(--paper); border: 1px solid var(--line); border-radius: 6px; overflow: hidden;
+}
+.cmdk-in { display: flex; justify-content: space-between; align-items: center; padding: 8px 10px; border-bottom: 1px solid var(--line); font-size: .85rem; color: var(--ink-2); }
+.cmdk ul { list-style: none; margin: 0; padding: 4px; max-height: 172px; overflow: auto; }
+.cmdk li button { width: 100%; text-align: left; background: none; border: 0; padding: 5px 8px; border-radius: 4px; cursor: pointer; font-size: .85rem; display: flex; justify-content: space-between; gap: 8px; }
+.cmdk li button:hover, .cmdk li button:focus-visible { background: var(--panel); }
+.cmdk li button span { color: var(--ink-2); font-family: var(--f-mono); font-size: .7rem; }
+@media (max-width: 560px) { .cmdk ul { display: none; } }
+
+/* D — Narrative */
+.story { display: grid; grid-template-columns: minmax(0, 6fr) minmax(0, 5fr); height: 100%; }
+.story-vis { position: relative; border-right: 1px solid var(--line); overflow: hidden; }
+.story-steps { overflow-y: auto; scroll-snap-type: y proximity; overscroll-behavior: contain; }
+.step { min-height: 100%; padding: clamp(20px, 3vw, 36px); display: flex; flex-direction: column; justify-content: center; scroll-snap-align: start; opacity: .35; transition: opacity .4s; }
+.step.on { opacity: 1; }
+.step .label { margin-bottom: 10px; }
+.step p { font-size: 1.05rem; margin: 0; }
+.step .ph { font-family: var(--f-mono); font-size: .8rem; color: var(--accent); margin-top: 12px; }
+.step:last-child { padding-bottom: 48px; }
+.blocks { position: absolute; inset: 0; }
+.blocks i {
+  position: absolute; width: 22%; height: 16%; border-radius: 4px; background: var(--paper); border: 1px solid var(--line);
+  transition: transform .8s cubic-bezier(.2, .8, .1, 1), background .5s, border-color .5s;
+}
+.blocks i:nth-child(1) { left: 0; top: 0; } .blocks i:nth-child(2) { left: 0; top: 0; } .blocks i:nth-child(3) { left: 0; top: 0; }
+.blocks i:nth-child(4) { left: 0; top: 0; } .blocks i:nth-child(5) { left: 0; top: 0; } .blocks i:nth-child(6) { left: 0; top: 0; }
+.vis-num {
+  position: absolute; left: 8%; bottom: 8%; font-family: var(--f-display); font-weight: 750; font-size: clamp(3rem, 8vw, 6rem);
+  line-height: .9; letter-spacing: -.04em; font-variation-settings: "wdth" 75, "opsz" 96; color: var(--accent);
+  opacity: 0; transform: translateY(12px); transition: opacity .5s, transform .6s;
+}
+.vis-num small { display: block; font-family: var(--f-mono); font-size: .7rem; letter-spacing: .06em; text-transform: uppercase; color: var(--ink-2); font-weight: 400; margin-top: 8px; }
+.story[data-step="3"] .vis-num { opacity: 1; transform: none; }
+.vis-step { position: absolute; left: 16px; top: 14px; }
+@media (max-width: 760px) {
+  .story { grid-template-columns: 1fr; grid-template-rows: 42% 58%; }
+  .story-vis { border-right: 0; border-bottom: 1px solid var(--line); }
+}
+
+/* Lang */
+.lang { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 24px; align-items: end; }
+.lang-line { font-family: var(--f-display); font-weight: 650; font-size: var(--s-4); line-height: 1.05; letter-spacing: -.025em; font-variation-settings: "wdth" 85, "opsz" 72; margin: 0; min-height: 2.1em; }
+.seg { display: inline-flex; border: 1px solid var(--line); border-radius: 999px; padding: 3px; }
+.seg button { border: 0; background: none; padding: 6px 14px; border-radius: 999px; cursor: pointer; font-family: var(--f-mono); font-size: var(--s-0); letter-spacing: .06em; }
+.seg button[aria-pressed="true"] { background: var(--ink); color: var(--paper); }
+.url { font-family: var(--f-mono); font-size: .85rem; color: var(--ink-2); margin-top: 16px; }
+.url b { color: var(--ink); font-weight: 500; }
+@media (max-width: 560px) { .lang { grid-template-columns: 1fr; } }
+
+/* Details list */
+.dl { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0 var(--gutter); margin: 0; }
+.dl > div { border-top: 1px solid var(--line); padding: 16px 0 24px; min-width: 0; }
+.dl dt { font-weight: 600; margin-bottom: 4px; }
+.dl dd { margin: 0; color: var(--ink-2); font-size: .95rem; }
+.dl .label { display: block; margin-bottom: 8px; }
+@media (max-width: 900px) { .dl { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 560px) { .dl { grid-template-columns: 1fr; } }
+
+/* Recommendation */
+.mix { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--gutter); margin: 8px 0 48px; }
+.mix > div { background: var(--panel); border-radius: 6px; padding: 18px; min-width: 0; }
+.mix .role { font-family: var(--f-display); font-size: var(--s-3); font-weight: 650; letter-spacing: -.02em; line-height: 1; margin: 8px 0 10px; font-variation-settings: "wdth" 82, "opsz" 48; }
+.mix .role em { font-style: normal; color: var(--accent); }
+.mix p { font-size: .9rem; margin: 0; }
+@media (max-width: 900px) { .mix { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 480px) { .mix { grid-template-columns: 1fr; } }
+.map { overflow-x: auto; border: 1px solid var(--line); border-radius: 6px; }
+.map table { border-collapse: collapse; width: 100%; min-width: 560px; font-size: .92rem; }
+.map th, .map td { text-align: left; padding: 12px 16px; border-bottom: 1px solid var(--line); vertical-align: top; }
+.map tr:last-child td { border-bottom: 0; }
+.map th { font-family: var(--f-mono); font-weight: 400; font-size: var(--s-0); text-transform: uppercase; letter-spacing: .06em; color: var(--ink-2); }
+.map td:first-child { font-family: var(--f-mono); font-size: .85rem; white-space: nowrap; }
+
+.qs { counter-reset: q; list-style: none; padding: 0; margin: 0; display: grid; gap: 0; }
+.qs li { counter-increment: q; display: grid; grid-template-columns: 3rem minmax(0, 1fr); border-top: 1px solid var(--line); padding: 16px 0; }
+.qs li::before { content: counter(q, decimal-leading-zero); font-family: var(--f-mono); font-size: var(--s-0); color: var(--ink-2); padding-top: 4px; }
+.qs strong { display: block; font-weight: 600; }
+.qs span { color: var(--ink-2); font-size: .95rem; }
+
+footer { border-top: 1px solid var(--line); padding-block: 32px 48px; }
+footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+
+/* Page grid overlay */
+.pagegrid { position: fixed; inset: 0; z-index: 50; pointer-events: none; opacity: 0; transition: opacity .25s;
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+.pagegrid.on { opacity: 1; }
+.pagegrid .grid { height: 100%; }
+.pagegrid .grid i { background: var(--grid-tint); border-inline: 1px solid color-mix(in srgb, var(--accent) 20%, transparent); }
+.pagegrid .wrap { height: 100%; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition-duration: 0s !important; scroll-behavior: auto !important; }
+}
+</style>
+
+<div class="pagegrid" id="pagegrid" aria-hidden="true"><div class="wrap"><div class="grid"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div></div>
+
+<header class="top">
+  <div class="wrap">
+    <div class="mark">Mauro Im<span class="acc">á</span>n</div>
+    <div class="top-r">
+      <span class="label">Exploración conceptual · Nov 2026</span>
+      <button class="btn" id="gridBtn" aria-pressed="false" type="button">Grilla <kbd>G</kbd></button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <div class="hero">
+    <div class="wrap grid">
+      <div class="label">Rediseño · mauroiman.com</div>
+      <h1>Cuatro ideas para un sitio que <em>atraiga</em>.</h1>
+      <p class="lead">Antes de escribir código: cuatro direcciones para explorar, cada una con una demo que podés tocar. Al final va mi recomendación, que combina lo mejor de cada una, y las preguntas que necesito que me respondas para avanzar.</p>
+    </div>
+  </div>
+
+  <!-- Brief -->
+  <section class="block">
+    <div class="wrap"><div class="grid">
+      <div class="side"><span class="label"><b>El brief</b></span><span class="label">Lo que entendí</span></div>
+      <div class="main">
+        <h2>Una tarjeta de presentación que tenga que defenderse sola frente a un ojo crítico.</h2>
+        <div class="brief">
+          <div><span class="label">Audiencia</span><p>Colegas diseñadores, gente del rubro del software, reclutadores y ejecutivos que buscan a quién contratar. Cada uno lee distinto: unos miran el oficio, otros el resultado.</p></div>
+          <div><span class="label">El trabajo del sitio</span><p>Que te quieran contratar o trabajar con vos. Mostrar quién sos, qué hacés y por qué vos y no otro, a través del contenido y de la forma de presentarlo.</p></div>
+          <div><span class="label">Requisitos</span><p>Inglés por defecto y español. Trabajo tipográfico impecable, grilla rigurosa, 100% responsive, interactivo y animado. Primer despliegue de tu marca personal.</p></div>
+        </div>
+      </div>
+    </div></div>
+  </section>
+
+  <!-- Seed -->
+  <section class="block">
+    <div class="wrap"><div class="grid">
+      <div class="side"><span class="label"><b>La semilla</b></span><span class="label">Un concepto que solo vos podés tener</span></div>
+      <div class="main">
+        <div class="seed">
+          <p class="dict" aria-label="Imán">Im<span class="acc">á</span>n</p>
+          <div class="dict-def">
+            <div class="pron">/iˈman/ · sustantivo · en inglés: <i>magnet</i></div>
+            <ol>
+              <li>Cuerpo que atrae a otros.</li>
+              <li>Persona o cosa que atrae la atención o el interés.</li>
+            </ol>
+          </div>
+        </div>
+        <p style="margin-top:32px">Tu apellido significa <b>imán</b>. Es un punto de partida que nadie más puede usar: atracción, campo, fuerza. Y tiene un segundo regalo: la tilde. Un trazo mínimo que cambia cómo se pronuncia la palabra. Es una buena metáfora de tu trabajo, donde el detalle cambia el resultado. Propongo que la tilde sea la firma visual de la marca.</p>
+        <p class="muted">Esta idea atraviesa la dirección A, pero puede convivir con cualquiera de las otras.</p>
+      </div>
+    </div></div>
+  </section>
+
+  <!-- A -->
+  <section class="block" id="dir-a">
+    <div class="wrap"><div class="grid">
+      <div class="side"><span class="label"><b>Dirección A</b></span><span class="label">Marca · concepto</span></div>
+      <div class="main">
+        <h2>Campo magnético</h2>
+        <p class="tagline">La interfaz se comporta como un campo: el cursor es el imán y todo lo demás reacciona.</p>
+        <div class="stage" id="fieldStage">
+          <canvas id="field" aria-label="Limaduras de hierro que se orientan hacia el cursor" role="img"></canvas>
+          <p class="wordmark" id="wordmark" aria-hidden="true"><span>I</span><span>m</span><span class="acc">á</span><span>n</span></p>
+          <span class="label field-hint">Mové el cursor sobre el campo</span>
+        </div>
+        <div class="stage-cap"><span class="label">Demo · limaduras de hierro alrededor de un dipolo</span><span class="label">En el sitio real: WebGL</span></div>
+        <div class="facts">
+          <div><span class="label">En el sitio</span><p>Hero con el campo como protagonista. Botones y cards con atracción magnética sutil. Transiciones donde el contenido es atraído a su lugar. La tilde como isotipo.</p></div>
+          <div><span class="label">Qué comunica</span><p>Una identidad memorable con raíz propia. Te recuerdan por el concepto, no solo por el estilo.</p></div>
+          <div><span class="label">Riesgo</span><p>Si se abusa, queda como un efecto. Tiene que ser un sistema con reglas, concentrado en el hero y en microinteracciones.</p></div>
+        </div>
+      </div>
+    </div></div>
+  </section>
+
+  <!-- B -->
+  <section class="block" id="dir-b">
+    <div class="wrap"><div class="grid">
+      <div class="side"><span class="label"><b>Dirección B</b></span><span class="label">Oficio · tipografía</span></div>
+      <div class="main">
+        <h2>Espécimen</h2>
+        <p class="tagline">El sitio tratado como un catálogo tipográfico, con la grilla expuesta como parte de la estética.</p>
+        <div class="stage spec" id="spec">
+          <div class="spec-read">
+            <span class="label" id="specRead">wght 640 · wdth 82 · opsz 96</span>
+            <span class="label">Mové el cursor: X = peso, Y = ancho</span>
+          </div>
+          <div class="overlay" id="specGrid" aria-hidden="true"><div class="base"></div><div class="cols"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
+          <p class="spec-word" id="specWord">Product, by design.</p>
+          <div class="spec-tools"><button class="btn" id="specGridBtn" type="button" aria-pressed="false">Ver grilla y línea base</button></div>
+        </div>
+        <div class="stage-cap"><span class="label">Demo · tipografía variable con ejes vivos</span><span class="label">En el sitio real: tipografía de fundición</span></div>
+        <div class="details-row">
+          <div><span class="label">Puntuación colgante</span><p class="ex hang">“Design is a verb.”</p><p>Las comillas quedan fuera de la caja para que el texto alinee ópticamente.</p></div>
+          <div><span class="label">Rangos y cifras</span><p class="ex">2017–2026 · $17B</p><p>Semiraya en rangos y números tabulares en métricas.</p></div>
+          <div><span class="label">Comillas por idioma</span><p class="ex">“EN” · «ES»</p><p>Cada idioma con sus reglas: comillas, espacios y separación en sílabas.</p></div>
+          <div><span class="label">Tamaño óptico</span><p class="ex">opsz 12 → 96</p><p>El dibujo de la letra se ajusta según el tamaño en que se lee.</p></div>
+        </div>
+        <div class="facts">
+          <div><span class="label">En el sitio</span><p>Titulares con ejes que responden al scroll y al cursor. Anotaciones al margen en los casos. Grilla visible con la tecla G. Página de colofón.</p></div>
+          <div><span class="label">Qué comunica</span><p>Rigor y ojo para el detalle. Es lo que un director de diseño busca antes de leer una sola palabra.</p></div>
+          <div><span class="label">Riesgo</span><p>Puede sentirse frío o pensado solo para diseñadores. Los ejecutivos necesitan llegar rápido al resultado.</p></div>
+        </div>
+      </div>
+    </div></div>
+  </section>
+
+  <!-- C -->
+  <section class="block" id="dir-c">
+    <div class="wrap"><div class="grid">
+      <div class="side"><span class="label"><b>Dirección C</b></span><span class="label">Producto · navegación</span></div>
+      <div class="main">
+        <h2>Lienzo</h2>
+        <p class="tagline">El portfolio como un lienzo infinito, como en tu herramienta de diseño: cada proyecto es un frame y el zoom te lleva adentro.</p>
+        <div class="stage cv" id="cv">
+          <div class="world" id="world">
+            <div class="frame big" data-f style="left:80px;top:90px;width:560px;height:400px"><span class="frame-name">Compass</span><h4>Compass</h4><p class="sub">PropTech · operaciones de cumplimiento, research de CRM y escala del Design System</p><div class="ui"><div class="nav"></div><div class="body"><div class="bar"></div><div class="tiles"><i></i><i></i><i></i><i></i><i></i><i></i></div></div></div></div>
+            <div class="frame big" data-f style="left:700px;top:90px;width:560px;height:400px"><span class="frame-name">Silstech · YPF</span><h4>Silstech · YPF</h4><p class="sub">Energía · plataforma nacional de logística y seguridad, desde cero</p><div class="ui"><div class="nav"></div><div class="body"><div class="bar"></div><div class="tiles"><i></i><i></i><i></i><i></i><i></i><i></i></div></div></div></div>
+            <div class="frame big" data-f style="left:1320px;top:90px;width:300px;height:400px"><span class="frame-name">StatLink</span><h4>StatLink</h4><p class="sub">Sports tech · pivot de arquitectura de información</p><div class="ui" style="grid-template-columns:1fr"><div class="body"><div class="bar"></div><div class="tiles"><i></i><i></i><i></i></div></div></div></div>
+            <div class="frame" data-f style="left:80px;top:580px;width:300px;height:220px"><span class="frame-name">RF Solutions</span><h4>RF Solutions</h4><p class="sub">Espectro RF · desde 2017</p></div>
+            <div class="frame" data-f style="left:420px;top:580px;width:300px;height:220px"><span class="frame-name">Holcim</span><h4>Mi PoRHtal</h4><p class="sub">Holcim · comunicación de RRHH</p></div>
+            <div class="frame" data-f style="left:760px;top:580px;width:300px;height:220px"><span class="frame-name">Healthcare inc.</span><h4>Healthcare</h4><p class="sub">App de pacientes · accesibilidad</p></div>
+            <div class="frame" data-f style="left:1100px;top:580px;width:240px;height:220px"><span class="frame-name">Viaje Perfecto</span><h4>Viaje Perfecto</h4><p class="sub">Turismo · experiencias</p></div>
+            <div class="frame" data-f style="left:1380px;top:580px;width:240px;height:220px"><span class="frame-name">3XM Group</span><h4>3XM</h4><p class="sub">Rediseño de identidad</p></div>
+            <div class="frame conf" data-f style="left:80px;top:860px;width:460px;height:150px"><span class="frame-name">Cideon · Enify — confidencial</span><h4>Enify</h4><div class="ui"><div class="nav"></div><div class="body"><div class="bar"></div></div></div></div>
+            <div class="frame conf" data-f style="left:580px;top:860px;width:460px;height:150px"><span class="frame-name">ePlan — confidencial</span><h4>ePlan</h4><div class="ui"><div class="nav"></div><div class="body"><div class="bar"></div></div></div></div>
+          </div>
+          <div class="cmdk">
+            <div class="cmdk-in"><span>Ir a un proyecto…</span><kbd>⌘K</kbd></div>
+            <ul id="jump"></ul>
+          </div>
+          <div class="cv-tools">
+            <button class="btn" type="button" id="zOut" aria-label="Alejar">−</button>
+            <button class="btn" type="button" id="zIn" aria-label="Acercar">+</button>
+            <button class="btn" type="button" id="zFit">Ver todo</button>
+          </div>
+        </div>
+        <div class="stage-cap"><span class="label">Demo · arrastrá para moverte, tocá un frame para entrar</span><span class="label">Ctrl + rueda para zoom</span></div>
+        <div class="facts">
+          <div><span class="label">En el sitio</span><p>Vista “lienzo” del archivo completo, con ⌘K para saltar entre proyectos. Los frames confidenciales aparecen difuminados y explican por qué.</p></div>
+          <div><span class="label">Qué comunica</span><p>Que sos product builder: pensás en sistemas y te movés cómodo dentro de productos complejos.</p></div>
+          <div><span class="label">Riesgo</span><p>La navegación no lineal puede perder a un reclutador apurado. Necesita una vista lista al lado, y en móvil se transforma en lista.</p></div>
+        </div>
+      </div>
+    </div></div>
+  </section>
+
+  <!-- D -->
+  <section class="block" id="dir-d">
+    <div class="wrap"><div class="grid">
+      <div class="side"><span class="label"><b>Dirección D</b></span><span class="label">Sustancia · casos</span></div>
+      <div class="main">
+        <h2>Casos narrados</h2>
+        <p class="tagline">Cada caso principal contado como una historia con scroll: contexto, decisión e impacto, mientras la interfaz se arma en pantalla.</p>
+        <div class="stage">
+          <div class="story" id="story" data-step="1">
+            <div class="story-vis">
+              <span class="label vis-step" id="visStep">Silstech · YPF — 1/3</span>
+              <div class="blocks" id="blocks"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+              <div class="vis-num">—%<small>Métrica real a definir</small></div>
+            </div>
+            <div class="story-steps" id="steps" tabindex="0" aria-label="Pasos del caso, desplazá para avanzar">
+              <div class="step on" data-s="1"><span class="label">Contexto</span><p>YPF es la principal empresa de energía de Argentina. Sus procesos de logística y seguridad estaban fragmentados entre la petrolera y sus transportistas.</p></div>
+              <div class="step" data-s="2"><span class="label">Decisión</span><p>Diseñar desde cero una plataforma de escala nacional que una a los dos lados en un solo ecosistema.</p></div>
+              <div class="step" data-s="3"><span class="label">Impacto</span><p>El cierre de cada caso es un número que un ejecutivo pueda repetir en una reunión.</p><p class="ph">→ Acá va una métrica real tuya.</p></div>
+            </div>
+          </div>
+        </div>
+        <div class="stage-cap"><span class="label">Demo · desplazá el texto de la derecha</span><span class="label">Contenido real de tu caso actual</span></div>
+        <div class="facts">
+          <div><span class="label">En el sitio</span><p>Tres casos insignia (Compass, YPF, StatLink) con este formato. El resto del archivo, en formato corto. Cada caso abre con un resumen de 30 segundos.</p></div>
+          <div><span class="label">Qué comunica</span><p>Estrategia y resultados. Es lo que leen los ejecutivos y lo que convierte una visita en una entrevista.</p></div>
+          <div><span class="label">Riesgo</span><p>Es la dirección que más contenido exige: métricas, artefactos de proceso y decisiones explicadas. Sin eso, la forma queda vacía.</p></div>
+        </div>
+      </div>
+    </div></div>
+  </section>
+
+  <!-- Bilingual -->
+  <section class="block">
+    <div class="wrap"><div class="grid">
+      <div class="side"><span class="label"><b>Transversal</b></span><span class="label">Dos idiomas</span></div>
+      <div class="main">
+        <h2>El cambio de idioma también es un momento de diseño.</h2>
+        <div class="lang">
+          <p class="lang-line" id="langLine" lang="en">I design and build digital products.</p>
+          <div class="seg" role="group" aria-label="Idioma">
+            <button type="button" data-l="en" aria-pressed="true">EN</button>
+            <button type="button" data-l="es" aria-pressed="false">ES</button>
+          </div>
+        </div>
+        <p class="url">mauroiman.com<b id="urlPath">/work/ypf</b></p>
+        <p class="muted">Sin recargar la página y en el mismo punto del scroll. Cada idioma con su propia URL para SEO, tipografía ajustada a cada uno (el español es cerca de un 20% más largo) y textos escritos para cada idioma, no traducidos a máquina.</p>
+      </div>
+    </div></div>
+  </section>
+
+  <!-- Details -->
+  <section class="block">
+    <div class="wrap"><div class="grid">
+      <div class="side"><span class="label"><b>Detalles</b></span><span class="label">Por qué vos y no otro</span></div>
+      <div class="main">
+        <h2>Lo que un colega nota y un reclutador siente aunque no sepa nombrarlo.</h2>
+        <dl class="dl">
+          <div><span class="label">Oficio</span><dt>Grilla a la vista</dt><dd>La tecla G muestra la grilla de 12 columnas en cualquier página. Probala en esta.</dd></div>
+          <div><span class="label">Oficio</span><dt>Colofón</dt><dd>Una página que explica tipografías, grilla, paleta y stack. Los diseñadores la buscan.</dd></div>
+          <div><span class="label">Oficio</span><dt>Microtipografía</dt><dd>Kerning óptico, comillas correctas por idioma, semirayas y versalitas reales en siglas como YPF o CRM.</dd></div>
+          <div><span class="label">Producto</span><dt>Changelog del sitio</dt><dd>Versiones públicas del sitio: “v1.2 · nuevo caso”. Tratás tu web como un producto vivo.</dd></div>
+          <div><span class="label">Producto</span><dt>Rendimiento como argumento</dt><dd>Carga en menos de un segundo y Lighthouse en 100. Se muestra en el footer.</dd></div>
+          <div><span class="label">Producto</span><dt>Atajos de teclado</dt><dd>⌘K para navegar, flechas entre casos, Esc para volver. Para los que viven en herramientas.</dd></div>
+          <div><span class="label">Humano</span><dt>Tu hora local</dt><dd>“Son las 11:24 para Mauro”, con tu disponibilidad. Le dice al visitante cuándo puede esperar respuesta.</dd></div>
+          <div><span class="label">Humano</span><dt>Claro y oscuro diseñados</dt><dd>Dos paletas pensadas por separado, no invertidas, que siguen la preferencia del sistema.</dd></div>
+          <div><span class="label">Humano</span><dt>Movimiento con respeto</dt><dd>Con “reducir movimiento” activado, una versión estática igual de cuidada. Accesibilidad WCAG 2.2 AA.</dd></div>
+        </dl>
+      </div>
+    </div></div>
+  </section>
+
+  <!-- Recommendation -->
+  <section class="block">
+    <div class="wrap"><div class="grid">
+      <div class="side"><span class="label"><b>Recomendación</b></span><span class="label">Una síntesis, no una elección</span></div>
+      <div class="main">
+        <h2>Cada dirección resuelve una audiencia distinta. Juntas, cubren a todas.</h2>
+        <div class="mix">
+          <div><span class="label">A · Campo</span><p class="role">La <em>idea</em></p><p>La marca y el momento de impacto del home. Lo que hace que te recuerden.</p></div>
+          <div><span class="label">B · Espécimen</span><p class="role">El <em>oficio</em></p><p>El sistema tipográfico y de grilla de todo el sitio. Lo que convence a los colegas.</p></div>
+          <div><span class="label">D · Casos</span><p class="role">La <em>sustancia</em></p><p>Tres casos insignia narrados. Lo que convence a ejecutivos y reclutadores.</p></div>
+          <div><span class="label">C · Lienzo</span><p class="role">El <em>guiño</em></p><p>Una vista alternativa del archivo completo. El momento “wow” para quien explora.</p></div>
+        </div>
+        <h3>Mapa del sitio propuesto</h3>
+        <div class="map" tabindex="0" aria-label="Mapa del sitio, tabla desplazable">
+          <table>
+            <thead><tr><th>Ruta</th><th>Página</th><th>Su trabajo</th></tr></thead>
+            <tbody>
+              <tr><td>/</td><td>Home</td><td>Campo magnético, quién sos en una frase, tres casos destacados y un llamado a contacto.</td></tr>
+              <tr><td>/work</td><td>Trabajo</td><td>Índice de proyectos con dos vistas: lista y lienzo.</td></tr>
+              <tr><td>/work/[caso]</td><td>Caso</td><td>Narrativa con scroll, resumen de 30 segundos e impacto medible.</td></tr>
+              <tr><td>/about</td><td>Sobre mí</td><td>Trayectoria, forma de trabajar, servicios y CV descargable.</td></tr>
+              <tr><td>/colophon</td><td>Colofón</td><td>Tipografías, grilla, paleta, stack y changelog.</td></tr>
+              <tr><td>/es/…</td><td>Español</td><td>Las mismas rutas en español, con contenido escrito para ese idioma.</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="muted" style="margin-top:20px">Stack sugerido, a confirmar más adelante: Astro (estático, muy rápido, rutas por idioma de serie), GSAP para scroll y movimiento, WebGL para el campo y contenido en archivos versionados en este repo.</p>
+      </div>
+    </div></div>
+  </section>
+
+  <!-- Questions -->
+  <section class="block">
+    <div class="wrap"><div class="grid">
+      <div class="side"><span class="label"><b>Para avanzar</b></span><span class="label">Lo que necesito de vos</span></div>
+      <div class="main">
+        <h2>Cinco decisiones antes de diseñar.</h2>
+        <ol class="qs">
+          <li><div><strong>¿Qué direcciones te atraen?</strong><span>Puede ser la síntesis propuesta, una sola o una mezcla distinta. También vale lo que no te gustó.</span></div></li>
+          <li><div><strong>¿La marca es “Mauro Imán” o algo derivado?</strong><span>Por ejemplo, un isotipo basado en la tilde, un alias o un dominio nuevo.</span></div></li>
+          <li><div><strong>¿Tenés presupuesto para tipografías de fundición?</strong><span>Una licencia web de calidad cambia el resultado. Si no, hay muy buenas opciones libres.</span></div></li>
+          <li><div><strong>¿Qué contenido real tenemos de cada caso?</strong><span>Métricas, imágenes en alta, artefactos de proceso y qué se puede mostrar públicamente.</span></div></li>
+          <li><div><strong>¿Cómo querés posicionarte?</strong><span>Más “builder” (diseño y construyo), más “strategy” (dirijo producto) o un equilibrio. Define el tono de todo el texto.</span></div></li>
+        </ol>
+      </div>
+    </div></div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span class="label">Exploración · sin código del sitio todavía</span>
+    <span class="label">Probá la tecla <kbd>G</kbd></span>
+  </div>
+</footer>
+
+<script>
+(() => {
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const tok = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+
+  /* ── Page grid ── */
+  const pg = document.getElementById('pagegrid'), gb = document.getElementById('gridBtn');
+  const toggleGrid = () => { const on = pg.classList.toggle('on'); gb.setAttribute('aria-pressed', on); };
+  gb.addEventListener('click', toggleGrid);
+  addEventListener('keydown', e => {
+    if (e.key.toLowerCase() === 'g' && !e.metaKey && !e.ctrlKey && !e.altKey && !/input|textarea/i.test(e.target.tagName)) toggleGrid();
+  });
+
+  /* ── A: magnetic field ── */
+  const stage = document.getElementById('fieldStage'), cv = document.getElementById('field'), ctx = cv.getContext('2d');
+  const letters = [...document.querySelectorAll('#wordmark span')];
+  let W = 0, H = 0, dpr = 1, mag = null, target = null, visible = true, raf = 0, t0 = performance.now();
+  const resize = () => {
+    const r = stage.getBoundingClientRect(); dpr = Math.min(devicePixelRatio || 1, 2);
+    W = r.width; H = r.height; cv.width = W * dpr; cv.height = H * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    if (!mag) mag = { x: W * .66, y: H * .5 };
+    draw(performance.now());
+  };
+  function draw(now) {
+    const t = now - t0;
+    if (!target && !reduce) { mag.tx = W * .5 + Math.cos(t * .00035) * W * .26; mag.ty = H * .5 + Math.sin(t * .0006) * H * .28; }
+    else if (target) { mag.tx = target.x; mag.ty = target.y; }
+    else { mag.tx = W * .66; mag.ty = H * .5; }
+    const k = reduce ? 1 : .09; mag.x += (mag.tx - mag.x) * k; mag.y += (mag.ty - mag.y) * k;
+    const th = reduce ? 0 : t * .00018, mx = Math.cos(th), my = Math.sin(th);
+    const s = W < 600 ? 15 : 19, R = Math.max(W, H) * .32;
+    const ink = tok('--ink'), acc = tok('--accent');
+    ctx.clearRect(0, 0, W, H); ctx.lineCap = 'round';
+    const paths = [new Path2D(), new Path2D(), new Path2D(), new Path2D()];
+    for (let y = s / 2; y < H; y += s) for (let x = s / 2; x < W; x += s) {
+      const rx = x - mag.x, ry = y - mag.y, d = Math.hypot(rx, ry);
+      if (d < 10) continue;
+      const ux = rx / d, uy = ry / d, dot = mx * ux + my * uy;
+      const bx = 3 * dot * ux - mx, by = 3 * dot * uy - my, bl = Math.hypot(bx, by) || 1;
+      const f = Math.exp(-d / R), L = 2.5 + 6.5 * f, ax = bx / bl * L, ay = by / bl * L;
+      const b = f > .62 ? 0 : f > .4 ? 1 : f > .22 ? 2 : 3;
+      paths[b].moveTo(x - ax, y - ay); paths[b].lineTo(x + ax, y + ay);
+    }
+    ctx.lineWidth = 1.4;
+    ctx.globalAlpha = .95; ctx.strokeStyle = acc; ctx.stroke(paths[0]);
+    ctx.strokeStyle = ink;
+    ctx.globalAlpha = .55; ctx.stroke(paths[1]);
+    ctx.globalAlpha = .32; ctx.stroke(paths[2]);
+    ctx.globalAlpha = .16; ctx.stroke(paths[3]);
+    ctx.globalAlpha = 1; ctx.fillStyle = acc; ctx.beginPath(); ctx.arc(mag.x, mag.y, 4, 0, Math.PI * 2); ctx.fill();
+    const sr = stage.getBoundingClientRect();
+    letters.forEach(el => {
+      const r = el.getBoundingClientRect(), cx = r.left - sr.left + r.width / 2 - (parseFloat(el.dataset.dx) || 0), cy = r.top - sr.top + r.height / 2 - (parseFloat(el.dataset.dy) || 0);
+      const dx = mag.x - cx, dy = mag.y - cy, d = Math.hypot(dx, dy) || 1, p = Math.min(14, 2600 / (d + 120));
+      const ox = dx / d * p, oy = dy / d * p; el.dataset.dx = ox; el.dataset.dy = oy;
+      el.style.transform = `translate(${ox.toFixed(1)}px, ${oy.toFixed(1)}px)`;
+    });
+  }
+  const loop = now => { draw(now); raf = visible && !reduce ? requestAnimationFrame(loop) : 0; };
+  const start = () => { if (!raf && !reduce) raf = requestAnimationFrame(loop); };
+  stage.addEventListener('pointermove', e => { const r = stage.getBoundingClientRect(); target = { x: e.clientX - r.left, y: e.clientY - r.top }; if (reduce) draw(performance.now()); });
+  stage.addEventListener('pointerleave', () => { target = null; if (reduce) draw(performance.now()); });
+  new ResizeObserver(resize).observe(stage);
+  new IntersectionObserver(([e]) => { visible = e.isIntersecting; if (visible) start(); }).observe(stage);
+  matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => draw(performance.now()));
+  document.fonts && document.fonts.ready.then(() => draw(performance.now()));
+
+  /* ── B: specimen ── */
+  const spec = document.getElementById('spec'), word = document.getElementById('specWord'), read = document.getElementById('specRead');
+  let cur = { w: 640, d: 82 }, goal = { w: 640, d: 82 }, sraf = 0;
+  const apply = () => {
+    word.style.fontVariationSettings = `"wght" ${cur.w.toFixed(0)}, "wdth" ${cur.d.toFixed(1)}, "opsz" 96`;
+    read.textContent = `wght ${cur.w.toFixed(0).padStart(3, '0')} · wdth ${cur.d.toFixed(0)} · opsz 96`;
+  };
+  const sstep = () => {
+    const k = reduce ? 1 : .12; cur.w += (goal.w - cur.w) * k; cur.d += (goal.d - cur.d) * k; apply();
+    sraf = Math.abs(goal.w - cur.w) > .5 || Math.abs(goal.d - cur.d) > .05 ? requestAnimationFrame(sstep) : 0;
+  };
+  spec.addEventListener('pointermove', e => {
+    const r = spec.getBoundingClientRect(), x = (e.clientX - r.left) / r.width, y = (e.clientY - r.top) / r.height;
+    goal.w = 200 + 600 * Math.min(1, Math.max(0, x)); goal.d = 100 - 25 * Math.min(1, Math.max(0, y));
+    if (!sraf) sraf = requestAnimationFrame(sstep);
+  });
+  apply();
+  const sg = document.getElementById('specGrid'), sgb = document.getElementById('specGridBtn');
+  sgb.addEventListener('click', () => { const on = sg.classList.toggle('on'); sgb.setAttribute('aria-pressed', on); });
+
+  /* ── C: canvas ── */
+  const vp = document.getElementById('cv'), world = document.getElementById('world');
+  const frames = [...world.querySelectorAll('[data-f]')];
+  let view = { x: 0, y: 0, k: .4 };
+  const setView = (v, anim) => { view = v; world.classList.toggle('anim', !!anim && !reduce); world.style.transform = `translate(${v.x}px, ${v.y}px) scale(${v.k})`; };
+  const fitRect = (x, y, w, h, pad, anim) => {
+    const vw = vp.clientWidth, vh = vp.clientHeight, k = Math.min(vw / w, vh / h) * pad;
+    setView({ k, x: vw / 2 - (x + w / 2) * k, y: vh / 2 - (y + h / 2) * k }, anim);
+  };
+  const fitAll = anim => fitRect(60, 50, 1580, 980, .96, anim);
+  const zoomTo = (f, anim = true) => fitRect(f.offsetLeft, f.offsetTop - 30, f.offsetWidth, f.offsetHeight + 30, .82, anim);
+  const zoomBy = (m, cx = vp.clientWidth / 2, cy = vp.clientHeight / 2, anim = true) => {
+    const k = Math.min(2.5, Math.max(.15, view.k * m)), s = k / view.k;
+    setView({ k, x: cx - (cx - view.x) * s, y: cy - (cy - view.y) * s }, anim);
+  };
+  let drag = null;
+  vp.addEventListener('pointerdown', e => {
+    if (e.target.closest('.cmdk, .cv-tools')) return;
+    drag = { sx: e.clientX, sy: e.clientY, x: view.x, y: view.y, moved: false, f: e.target.closest('[data-f]') };
+    vp.setPointerCapture(e.pointerId);
+  });
+  vp.addEventListener('pointermove', e => {
+    if (!drag) return;
+    const dx = e.clientX - drag.sx, dy = e.clientY - drag.sy;
+    if (!drag.moved && Math.hypot(dx, dy) > 4) { drag.moved = true; vp.classList.add('dragging'); }
+    if (drag.moved) setView({ k: view.k, x: drag.x + dx, y: drag.y + dy });
+  });
+  const end = () => { if (drag && !drag.moved && drag.f) zoomTo(drag.f); drag = null; vp.classList.remove('dragging'); };
+  vp.addEventListener('pointerup', end); vp.addEventListener('pointercancel', () => { drag = null; vp.classList.remove('dragging'); });
+  vp.addEventListener('wheel', e => {
+    if (!e.ctrlKey && !e.metaKey) return; e.preventDefault();
+    const r = vp.getBoundingClientRect(); zoomBy(e.deltaY < 0 ? 1.12 : 1 / 1.12, e.clientX - r.left, e.clientY - r.top, false);
+  }, { passive: false });
+  document.getElementById('zIn').onclick = () => zoomBy(1.4);
+  document.getElementById('zOut').onclick = () => zoomBy(1 / 1.4);
+  document.getElementById('zFit').onclick = () => fitAll(true);
+  const jump = document.getElementById('jump');
+  frames.forEach(f => {
+    const name = f.querySelector('.frame-name').textContent.split(' — ')[0];
+    const li = document.createElement('li'), b = document.createElement('button');
+    b.type = 'button'; b.innerHTML = `${name}<span>↵</span>`; b.onclick = () => zoomTo(f);
+    li.appendChild(b); jump.appendChild(li);
+  });
+  new ResizeObserver(() => fitAll(false)).observe(vp);
+
+  /* ── D: narrative ── */
+  const story = document.getElementById('story'), steps = document.getElementById('steps'), blocks = [...document.querySelectorAll('#blocks i')], visStep = document.getElementById('visStep');
+  const layouts = {
+    1: [[8, 12, -9], [52, 8, 7], [30, 40, -14], [64, 46, 11], [12, 66, 6], [48, 72, -8]],
+    2: [[8, 10, 0], [36, 10, 0], [64, 10, 0], [8, 32, 0], [36, 32, 0], [64, 32, 0]],
+    3: [[8, 10, 0], [36, 10, 0], [64, 10, 0], [8, 32, 0], [36, 32, 0], [64, 32, 0]]
+  };
+  const setStep = n => {
+    story.dataset.step = n; visStep.textContent = `Silstech · YPF — ${n}/3`;
+    const host = blocks[0].parentElement, w = host.clientWidth, h = host.clientHeight;
+    blocks.forEach((b, i) => {
+      const [x, y, r] = layouts[n][i];
+      b.style.transform = `translate(${x / 100 * w}px, ${y / 100 * h}px) rotate(${r}deg)`;
+      const hi = n >= 2 && (n === 3 ? i === 0 || i === 4 : i === 0);
+      b.style.background = hi ? tok('--accent') : ''; b.style.borderColor = hi ? tok('--accent') : '';
+    });
+    steps.querySelectorAll('.step').forEach(s => s.classList.toggle('on', +s.dataset.s === n));
+  };
+  const io = new IntersectionObserver(es => { es.forEach(e => { if (e.isIntersecting) setStep(+e.target.dataset.s); }); }, { root: steps, threshold: .6 });
+  steps.querySelectorAll('.step').forEach(s => io.observe(s));
+  new ResizeObserver(() => setStep(+story.dataset.step)).observe(story);
+
+  /* ── Lang scramble ── */
+  const line = document.getElementById('langLine'), urlPath = document.getElementById('urlPath');
+  const copy = { en: ['I design and build digital products.', '/work/ypf'], es: ['Diseño y construyo productos digitales.', '/es/trabajo/ypf'] };
+  const glyphs = 'abcdefghijklmnopqrstuvwxyzáéíóúñ';
+  let lraf = 0;
+  const scramble = to => {
+    cancelAnimationFrame(lraf);
+    if (reduce) { line.textContent = to; return; }
+    const from = line.textContent, len = Math.max(from.length, to.length), t1 = performance.now(), dur = 700;
+    const tick = now => {
+      const p = Math.min(1, (now - t1) / dur); let out = '';
+      for (let i = 0; i < len; i++) {
+        const edge = i / len;
+        if (p > edge + .25) out += to[i] || '';
+        else if (p > edge) out += to[i] === ' ' ? ' ' : glyphs[(Math.random() * glyphs.length) | 0];
+        else out += from[i] || '';
+      }
+      line.textContent = out; if (p < 1) lraf = requestAnimationFrame(tick); else line.textContent = to;
+    };
+    lraf = requestAnimationFrame(tick);
+  };
+  document.querySelectorAll('.seg button').forEach(b => b.addEventListener('click', () => {
+    const l = b.dataset.l; if (b.getAttribute('aria-pressed') === 'true') return;
+    document.querySelectorAll('.seg button').forEach(x => x.setAttribute('aria-pressed', x === b));
+    line.lang = l; scramble(copy[l][0]); urlPath.textContent = copy[l][1];
+  }));
+})();
+</script>

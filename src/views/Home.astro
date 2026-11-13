@@ -1,0 +1,117 @@
+---
+import Base from '../layouts/Base.astro';
+import Shot from '../components/Shot.astro';
+import { site, cases, dict, translator, url } from '../lib/content.js';
+
+const { lang } = Astro.props;
+const D = dict(), t = translator(D, lang);
+---
+<Base lang={lang} D={D} titleKey="doc.home" home>
+  <section class="hero" id="home" aria-labelledby="h1">
+    <canvas class="fieldcv" id="fHero" aria-hidden="true"></canvas>
+    <canvas class="fieldcv" id="fHeroP" aria-hidden="true"></canvas>
+    <div class="hero-veil"></div>
+    <div class="wrap">
+      <p class="gloss" data-ih="hero.gloss" set:html={t('hero.gloss')}></p>
+      <h1 id="h1" data-i="hero.h1">{t('hero.h1')}</h1>
+      <p class="lead" data-i="hero.lead">{t('hero.lead')}</p>
+      <div class="ctas">
+        <a class="btn-p" href="#work" data-mag><span data-i="hero.cta1">{t('hero.cta1')}</span><span class="tilde" aria-hidden="true"></span></a>
+        <button type="button" class="btn-s" data-hl data-mag><span data-i="hero.cta2">{t('hero.cta2')}</span></button>
+      </div>
+      <div class="meta"><span class="label" data-i="hero.loc">{t('hero.loc')}</span><span class="label" data-i="hero.avail">{t('hero.avail')}</span></div>
+    </div>
+  </section>
+
+  <section class="sec" id="work" aria-labelledby="work-h">
+    <div class="work-head">
+      <canvas class="work-field" id="fWork" aria-hidden="true"></canvas>
+      <div class="wrap"><div class="grid rv">
+        <div class="side"><span class="label" data-i="work.label">{t('work.label')}</span></div>
+        <div class="main"><h2 id="work-h" data-i="work.h2">{t('work.h2')}</h2></div>
+      </div></div>
+    </div>
+    <div class="wrap">
+      <div class="cases">
+        {cases.map((c, i) => (
+          <article class={`case rv${i === 0 ? ' feat' : ''}`}>
+            <a class="case-link" href={url(lang, `work/${c.slug}/`)} data-l={`work/${c.slug}/`} data-case>
+              <div class="mat" data-notes={c.cover}>
+                <Shot kind={c.cover} />
+                <span class="label ph-tag" data-i="mat.ph">{t('mat.ph')}</span>
+                <span class="label xhint"><span class="tilde" aria-hidden="true"></span><span class="hm" data-i="x.hint">{t('x.hint')}</span><span class="ht" data-i="x.hintTouch">{t('x.hintTouch')}</span></span>
+                <canvas aria-hidden="true"></canvas>
+              </div>
+              <div class="case-meta">
+                <span class="label case-k" data-i={`case.${c.slug}.k`}>{t(`case.${c.slug}.k`)}</span>
+                <h3 data-i={`case.${c.slug}.t`}>{c.title}</h3>
+                <p data-i={`case.${c.slug}.s`}>{t(`case.${c.slug}.s`)}</p>
+                <div class="metric"><b>{c.homeMetric}</b><span data-i={`case.${c.slug}.m`}>{t(`case.${c.slug}.m`)}</span></div>
+                <span class="read" data-i="case.read">{t('case.read')}</span>
+              </div>
+            </a>
+          </article>
+        ))}
+      </div>
+      <div class="grid">
+        <div class="main rv">
+          <ul class="archive">
+            {site.archive.map((a, i) => <li><span class="arch-i"><b>{a.name}</b><span class="label" data-i={`arch.${i}`}>{t(`arch.${i}`)}</span></span></li>)}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="highlights" aria-labelledby="hl-h">
+    <div class="wrap">
+      <div class="hlb rv">
+        <canvas class="fieldcv" id="fHl" aria-hidden="true"></canvas>
+        <div class="hlb-in">
+          <span class="label" data-i="hl.label">{t('hl.label')}</span>
+          <h2 id="hl-h" data-i="hl.h">{t('hl.h')}</h2>
+          <button type="button" class="btn-p" data-hl data-mag><span class="tilde" aria-hidden="true"></span><span data-i="hl.btn">{t('hl.btn')}</span><small>60 s</small></button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="about" aria-labelledby="cap-h">
+    <div class="wrap">
+      <div class="grid rv">
+        <div class="side"><span class="label" data-i="cap.label">{t('cap.label')}</span></div>
+        <div class="main">
+          <h2 id="cap-h" data-i="cap.h2">{t('cap.h2')}</h2>
+          <p class="sub" data-i="cap.sub">{t('cap.sub')}</p>
+          <div class="caps">
+            {[1, 2, 3].map(n => <div class="cap"><h3><span class="tilde" aria-hidden="true"></span><span data-i={`cap.${n}.t`}>{t(`cap.${n}.t`)}</span></h3><p data-i={`cap.${n}.p`}>{t(`cap.${n}.p`)}</p></div>)}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="teams-h">
+    <div class="wrap">
+      <div class="grid rv">
+        <div class="side"><h2 class="label" id="teams-h" data-i="teams.label">{t('teams.label')}</h2></div>
+        <div class="main">
+          <ul class="teams">{site.teams.map(n => <li>{n}</li>)}</ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="about-h">
+    <div class="wrap">
+      <div class="grid about-g rv">
+        <div class="portrait" aria-hidden="true"><span class="tilde"></span><span class="label" data-i="portrait">{t('portrait')}</span></div>
+        <div class="about-t">
+          <h2 id="about-h" data-i="about.h">{t('about.h')}</h2>
+          <p data-i="about.p">{t('about.p')}</p>
+          <a class="btn-s" href={site.linkedin} rel="me noopener" target="_blank" data-mag><span>LinkedIn</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Base>

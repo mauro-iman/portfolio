@@ -1,0 +1,6 @@
+---
+import Case from '../../views/Case.astro';
+import { cases } from '../../lib/content.js';
+export const getStaticPaths = () => cases.map(c => ({ params: { slug: c.slug }, props: { c } }));
+---
+<Case lang="en" c={Astro.props.c} />
