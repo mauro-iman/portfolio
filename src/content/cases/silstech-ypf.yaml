@@ -5,6 +5,32 @@ cover: ypf
 system: false
 homeMetric: "−15%"
 
+# Images live in src/assets/cases/<slug>/. coverImage replaces the drawn cover; workImages go with
+# the workstreams in order (null keeps the drawing); screens and phones fill the gallery, captions in EN/ES.
+coverImage: cover-tv-wall.png
+workImages: [01-incidentes.png, 03-playback.png, 02-pos-flota.png, mob-04.png]
+screens:
+  - { file: 01-login.png, en: "Login", es: "Inicio de sesión" }
+  - { file: 00-dashboard.png, en: "Dashboard", es: "Tablero" }
+  - { file: 01-incidentes.png, en: "Incident management", es: "Gestión de incidentes" }
+  - { file: 01-incidente-detalle.png, en: "Incident insights", es: "Detalle del incidente" }
+  - { file: 01-casos.png, en: "My cases", es: "Mis casos" }
+  - { file: 01-caso-detalle.png, en: "Case details", es: "Detalle del caso" }
+  - { file: 03-playback.png, en: "Trip playback", es: "Playback del viaje" }
+  - { file: 02-pos-flota.png, en: "Fleet position", es: "Posición de la flota" }
+  - { file: 02-pos-flota-video.png, en: "Vehicle cameras", es: "Cámaras del vehículo" }
+  - { file: 02-pos-flota-zoom.png, en: "Vehicle telemetry", es: "Telemetría del vehículo" }
+phones:
+  - { file: mob-01.png, en: "Login", es: "Inicio de sesión" }
+  - { file: mob-02.png, en: "QR code", es: "Código QR" }
+  - { file: mob-03.png, en: "Dashboard", es: "Tablero" }
+  - { file: mob-04.png, en: "Trip plan", es: "Plan de viaje" }
+  - { file: mob-05.png, en: "Trip starts", es: "Inicio del viaje" }
+  - { file: mob-06.png, en: "Trip notification", es: "Notificación de viaje" }
+  - { file: mob-07.png, en: "Report an incident", es: "Reportar un incidente" }
+  - { file: mob-08.png, en: "Customer proximity notification", es: "Aviso de proximidad al cliente" }
+  - { file: mob-09.png, en: "Fuel distribution", es: "Descarga de combustible" }
+
 en:
   sector: Energy
   years: 2019–2021

@@ -1,0 +1,62 @@
+# 3XM Group logo redesign.
+title: 3XM Group
+order: 18
+group: work
+# Media in src/assets/cases/3xm-group/ (videos in public/videos/).
+coverImage: cover.jpg
+screens:
+  - { file: logo-old.jpg, en: "The old logo", es: "El logo anterior" }
+  - { file: logo-new.jpg, en: "The new logo", es: "El logo nuevo" }
+  - { file: mashup.jpg, en: "The new brand on office, cards and merchandise", es: "La marca nueva en la oficina, las tarjetas y el merchandising" }
+
+en:
+  galleryTitle: "The brand, applied."
+  sector: "Brand identity"
+  years: "2018"
+  summary: "A logo redesign that brought energy to the brand while keeping what made it recognizable."
+  role: "Graphic designer and brand consultant"
+  timeline: "Early 2018"
+  didLabel: "What I did"
+  did:
+    - "Graphic design"
+    - "Brand consultancy"
+  results: "The client was fully satisfied, and the new logo became the base for the office, cards, merchandise and every digital asset. Customers still recognize the brand."
+  sections:
+    - kicker: "The old logo"
+      title: "Too serious, too complex."
+      items:
+        - "Muted colors and a formal tone"
+        - "Complex shapes, hard to reproduce at small sizes"
+        - "An oversized symbol next to the name, and a word GROUP that took too much space"
+    - kicker: "The new logo"
+      title: "Same essence, always moving forward."
+      items:
+        - "Vibrant colors, with orange as a secondary for energy"
+        - "A flat, modern and simpler symbol, easy to reproduce"
+        - "A plan to shrink GROUP step by step until it can go without losing recognition"
+
+es:
+  galleryTitle: "La marca, aplicada."
+  sector: "Identidad de marca"
+  years: "2018"
+  summary: "Un rediseño de logo que le dio energía a la marca sin perder lo que la hacía reconocible."
+  role: "Diseñador gráfico y consultor de marca"
+  timeline: "Principios de 2018"
+  didLabel: "Qué hice"
+  did:
+    - "Diseño gráfico"
+    - "Consultoría de marca"
+  results: "El cliente quedó totalmente conforme, y el logo nuevo fue la base de la oficina, las tarjetas, el merchandising y todas las piezas digitales. Los clientes siguen reconociendo la marca."
+  sections:
+    - kicker: "El logo anterior"
+      title: "Demasiado serio, demasiado complejo."
+      items:
+        - "Colores apagados y un tono formal"
+        - "Formas complejas, difíciles de reproducir en tamaños chicos"
+        - "Un isotipo demasiado grande al lado del nombre, y una palabra GROUP que ocupaba demasiado"
+    - kicker: "El logo nuevo"
+      title: "La misma esencia, siempre hacia adelante."
+      items:
+        - "Colores vibrantes, con el naranja como secundario para dar energía"
+        - "Un isotipo plano, moderno y más simple, fácil de reproducir"
+        - "Un plan para achicar GROUP de a poco hasta poder quitarla sin perder reconocimiento"

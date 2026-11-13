@@ -1,0 +1,73 @@
+# Datria360. group: building → "Building now" on the home. Text in [brackets] is still a placeholder.
+title: Datria360
+order: 1
+group: building
+mini: q
+
+en:
+  sector: "B2B SaaS · Beauty and aesthetics"
+  years: "2026"
+  summary: "A growth platform for beauty and aesthetic businesses: it fills the calendar, runs the daily operation and brings clients back, with an AI assistant on WhatsApp."
+  role: "Co-founder · Product & Design Lead"
+  timeline: "2026 – present"
+  team: "Co-founded with Patricia Abdon"
+  didLabel: "Hats I wore"
+  did:
+    - "Product discovery"
+    - "User research and interviews"
+    - "Product design"
+    - "Design validation with users"
+    - "Code shipped with agentic tools"
+    - "Sales and commercial pitch"
+    - "Content for social media"
+  results: "Designed and built from zero this year, now in production with its first clinics."
+  sections:
+    - kicker: "The problem"
+      title: "A full calendar is the whole business."
+      text: "Aesthetic clinics live on their calendar. Booking, following up with patients and collecting payments eat the team’s day, and every empty slot is lost revenue."
+    - kicker: "The product"
+      title: "Three pillars that close the commercial loop."
+      items:
+        - "Conversion fills the calendar: a 24/7 AI assistant, an online booking portal with the business’s own brand, and lead capture"
+        - "Operations keep the business in order: client records, a service catalog and stock, the calendar, reminders and reports"
+        - "Growth brings clients back: a yearly marketing calendar, alerts for inactive clients and campaigns written with AI"
+    - kicker: "Go to market"
+      title: "Four plans, one way in."
+      text: "Plans scale from a solo professional to clinics with several branches, with deposits through Mercado Pago and WhatsApp reminders. Access is by invitation through a Founding Circle, launched with a live presentation and demo for business owners in Córdoba in June 2026."
+    - kicker: "How I built it"
+      title: "Every hat, one product."
+      text: "Discovery and interviews with clinic owners, designs validated with users, production code shipped with agentic tools, and then selling and pitching it myself. [screenshots of the product]"
+
+es:
+  sector: "SaaS B2B · Belleza y estética"
+  years: "2026"
+  summary: "Una plataforma de crecimiento para negocios de belleza y estética: llena la agenda, ordena la operación diaria y trae clientes de vuelta, con un asistente con IA en WhatsApp."
+  role: "Co-founder · Product & Design Lead"
+  timeline: "2026 – hoy"
+  team: "Cofundado con Patricia Abdon"
+  didLabel: "Los sombreros que usé"
+  did:
+    - "Product discovery"
+    - "Research y entrevistas con usuarios"
+    - "Diseño de producto"
+    - "Validación del diseño con usuarios"
+    - "Código en producción con herramientas agénticas"
+    - "Venta y pitch comercial"
+    - "Contenido para redes"
+  results: "Diseñado y construido desde cero este año; hoy en producción con sus primeros centros."
+  sections:
+    - kicker: "El problema"
+      title: "Una agenda llena es todo el negocio."
+      text: "Los centros de estética viven de su agenda. Agendar, hacer seguimiento de pacientes y cobrar se lleva el día del equipo, y cada turno vacío es facturación perdida."
+    - kicker: "El producto"
+      title: "Tres pilares que cierran el circuito comercial."
+      items:
+        - "Conversión llena la agenda: un asistente virtual con IA 24/7, un portal de reservas con la marca del negocio y registro de potenciales clientes"
+        - "Gestión ordena el negocio: fichas de clientes, catálogo de servicios y stock, la agenda, recordatorios y reportes"
+        - "Crecimiento trae clientes de vuelta: un calendario anual de marketing, alertas de clientes inactivos y campañas creadas con IA"
+    - kicker: "Salida al mercado"
+      title: "Cuatro planes, una sola puerta de entrada."
+      text: "Los planes van de un profesional independiente a centros con varias sucursales, con señas por Mercado Pago y recordatorios por WhatsApp. El acceso es por invitación a través de un Círculo Fundador, lanzado con una presentación y demo en vivo para dueñas de negocios en Córdoba en junio de 2026."
+    - kicker: "Cómo lo construí"
+      title: "Todos los sombreros, un producto."
+      text: "Discovery y entrevistas con dueñas de centros, diseños validados con usuarios, código en producción con herramientas agénticas, y después venderlo y presentarlo yo mismo. [capturas del producto]"

@@ -9,6 +9,8 @@ All content lives in two places, English and Spanish side by side:
 - `src/content/site.yaml` — home and shared copy, email, LinkedIn, teams list, archive list.
 - `src/content/cases/<slug>.yaml` — one file per case study (title, facts, metrics, story, workstreams, reflection).
 
+Case images go in `src/assets/cases/<slug>/` and are referenced by file name in the case YAML (`coverImage`, `workImages`, `screens`, `phones`).
+
 Text in `[brackets]` is still a placeholder. Values that contain `: ` must be in quotes.
 
 ## Commands

@@ -406,3 +406,78 @@ h3 { margin: 0; }
 .nf { min-height: 100vh; display: flex; align-items: center; }
 .nf h1 { font-size: var(--s-5, 3rem); letter-spacing: -.03em; margin: .3em 0; }
 .nf p a { margin-right: 8px; }
+
+/* ── Real images (covers, workstreams) ── */
+.mat.has-img > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; }
+.mat.has-img .cover-img { transition: transform .6s var(--out, cubic-bezier(.2, .8, .1, 1)); }
+.case-link:hover .mat.has-img .cover-img { transform: scale(1.02); }
+.mat.fit-contain > img { object-fit: contain; object-position: center; inset: 6%; width: 88%; height: 88%; }
+.mat.fit-cover > img { object-position: left top; }
+.c-mat.has-img { aspect-ratio: 3 / 2; }
+
+/* ── Screens gallery ── */
+.gal { margin-top: clamp(24px, 4vw, 40px); }
+.gal-l { margin: 0 0 12px; font-weight: 500; }
+.gal-strip { list-style: none; margin: 0; padding: 4px max(var(--side), calc((100vw - var(--maxw)) / 2 + var(--side))) 16px; display: flex; gap: 16px; overflow-x: auto; scroll-snap-type: x mandatory; scroll-padding-inline: max(var(--side), calc((100vw - var(--maxw)) / 2 + var(--side))); overscroll-behavior-x: contain; scrollbar-width: thin; scrollbar-color: var(--line) transparent; }
+.gal-strip li { flex: none; scroll-snap-align: start; }
+.gal-it { display: grid; gap: 10px; width: min(480px, 80vw); padding: 0; border: 0; background: none; color: var(--ink); text-align: left; font: inherit; cursor: zoom-in; }
+.gal-ph .gal-it { width: 200px; }
+.gal-mat { display: block; position: relative; aspect-ratio: 16 / 10; background: var(--panel); border: 1px solid var(--line); border-radius: 6px; overflow: hidden; transition: border-color .2s; }
+.gal-ph .gal-mat { aspect-ratio: 375 / 812; border-radius: 18px; }
+.gal-mat img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: left top; display: block; transition: transform .5s var(--out, cubic-bezier(.2, .8, .1, 1)); }
+.gal-it:hover .gal-mat, .gal-it:focus-visible .gal-mat { border-color: var(--fill); }
+.gal-it:hover .gal-mat img { transform: scale(1.02); }
+.gal-it:focus-visible { outline: none; }
+.gal-it:focus-visible .gal-mat { outline: 2px solid var(--accent); outline-offset: 3px; }
+.gal-cap { font-size: .9rem; color: var(--ink-2); line-height: 1.35; }
+
+/* ── Lightbox ── */
+.lb { position: fixed; inset: 0; width: 100%; height: 100%; max-width: none; max-height: none; margin: 0; padding: 0; border: 0; background: color-mix(in srgb, var(--paper) 97%, transparent); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); color: var(--ink); }
+.lb[open] { display: grid; grid-template-rows: auto minmax(0, 1fr); }
+.lb::backdrop { background: transparent; }
+.lb-bar { display: flex; justify-content: space-between; align-items: center; padding: max(12px, env(safe-area-inset-top)) var(--gutter) 8px; }
+.lb-fig { margin: 0; min-height: 0; display: grid; grid-template-rows: minmax(0, 1fr) auto; justify-items: center; gap: 12px; padding: 0 clamp(56px, 7vw, 96px) max(20px, env(safe-area-inset-bottom)); }
+.lb-fig img { max-width: 100%; max-height: 100%; width: auto; height: auto; object-fit: contain; border: 1px solid var(--line); border-radius: 6px; background: var(--panel); align-self: center; }
+.lb.ph .lb-fig img { border-radius: 22px; }
+.lb-fig figcaption { font-size: .95rem; color: var(--ink-2); text-align: center; }
+.lb-nav { position: absolute; top: 50%; transform: translateY(-50%); width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--line); background: var(--paper); color: var(--ink); font-size: 1.1rem; cursor: pointer; display: grid; place-items: center; transition: border-color .2s; }
+.lb-nav:hover { border-color: var(--ink); }
+.lb-prev { left: max(8px, calc(var(--gutter) / 2)); } .lb-next { right: max(8px, calc(var(--gutter) / 2)); }
+.lb-nav[hidden] { display: none; }
+.lb-n { color: var(--ink-2); }
+html.lb-open { overflow: hidden; }
+@media (max-width: 760px) { .lb-fig { padding: 0 12px max(76px, env(safe-area-inset-bottom)); } .lb-nav { top: auto; bottom: max(16px, env(safe-area-inset-bottom)); transform: none; } .lb-prev { left: calc(50% - 56px); } .lb-next { right: calc(50% - 56px); } }
+@media (prefers-reduced-motion: reduce) { .gal-mat img, .mat.has-img .cover-img { transition: none; } .gal-strip { scroll-behavior: auto; } }
+
+/* ── Building now + More work (home) ── */
+.bld { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 48px var(--gutter); margin-top: clamp(32px, 5vw, 56px); }
+.bld .case { grid-column: auto; }
+.bld-role { display: block; margin-top: 10px; color: var(--accent); }
+.more-h { font-size: var(--s-3); margin: 0; letter-spacing: -.02em; }
+#more .archive { margin-top: 24px; }
+@media (max-width: 760px) { .bld { grid-template-columns: 1fr; } }
+
+/* ── Project page ── */
+.p-hero { min-height: auto; padding-bottom: clamp(32px, 5vw, 64px); }
+.p-note { margin: 16px 0 0; font-size: .9rem; color: var(--ink-2); }
+.p-did { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px 10px; }
+.p-did li { display: inline-flex; align-items: center; gap: 8px; border: 1px solid var(--line); border-radius: 999px; padding: 6px 14px 6px 12px; font-size: .95rem; }
+.p-did .tilde { transform: scale(.8); }
+.p-res { margin-top: clamp(28px, 4vw, 40px); }
+.p-sec { padding-top: 0; }
+.p-h2 { margin-bottom: 16px; }
+.p-p { margin: 0; max-width: 62ch; color: var(--ink-2); font-size: 1.05rem; text-wrap: pretty; }
+.p-list { margin: 16px 0 0; padding: 0; list-style: none; display: grid; gap: 10px; max-width: 66ch; }
+.p-list li { position: relative; padding-left: 22px; color: var(--ink-2); text-wrap: pretty; }
+.p-list li::before { content: ""; position: absolute; left: 2px; top: .45em; width: 3px; height: 10px; border-radius: 2px; background: var(--fill); transform: rotate(34deg); }
+
+/* Gallery thumbnails that would crop badly (logos, very wide or tall images) are shown whole. */
+.gal-mat.fit-c img { object-fit: contain; object-position: center; }
+
+/* Prototype videos on project pages */
+.vids { display: grid; gap: 24px; margin-top: 24px; align-items: start; }
+.vids.n2 { grid-template-columns: minmax(0, 3fr) minmax(0, 1fr); }
+.vid { margin: 0; display: grid; gap: 10px; }
+.vid video { display: block; width: 100%; height: auto; background: var(--panel); border: 1px solid var(--line); border-radius: 6px; }
+.vid-ph video { max-width: 300px; border-radius: 18px; }
+@media (max-width: 760px) { .vids.n2 { grid-template-columns: 1fr; } .vid-ph video { margin-inline: auto; } }

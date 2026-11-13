@@ -1,0 +1,61 @@
+# Estética Link event platform. group: building → "Building now" on the home.
+title: Estética Link
+order: 2
+group: building
+mini: sys
+
+en:
+  sector: "Event platform"
+  years: "2026"
+  summary: "An event platform that replaced WordPress and WooCommerce: CRM, an AI agent on WhatsApp and a fully automated flow from ticket sale to reminders and the PDF certificate, plus QR check-in on the day."
+  role: "Product, design and build · Solo"
+  timeline: "Launched November 2026"
+  team: "For Estética Link (Patricia Abdon)"
+  didLabel: "What I did"
+  did:
+    - "Product strategy"
+    - "UX and UI design"
+    - "Full-stack build with agentic tools"
+    - "AI agent on WhatsApp"
+    - "End-to-end automation"
+    - "QR check-in app"
+  results: "Designed and built solo, from the first sketch to launch."
+  sections:
+    - kicker: "Before"
+      title: "A WordPress shop for an event business."
+      text: "Tickets were sold through WordPress and WooCommerce. I replaced all of it with a platform made for running the event."
+    - kicker: "The platform"
+      title: "From the first message to the certificate, automated."
+      items:
+        - "A CRM with the whole attendee database"
+        - "An AI agent on WhatsApp that contacts people from the database so they buy their tickets"
+        - "Automated flow: sale, reminders and the PDF certificate after the event"
+        - "A QR scanner for check-in on the day"
+
+es:
+  sector: "Plataforma de eventos"
+  years: "2026"
+  summary: "Una plataforma de eventos que reemplazó WordPress y WooCommerce: CRM, un agente con IA en WhatsApp y todo el flujo automatizado de la venta a los recordatorios y el certificado en PDF, más check-in con QR el día del evento."
+  role: "Producto, diseño y desarrollo · Solo"
+  timeline: "Lanzada en noviembre de 2026"
+  team: "Para Estética Link (Patricia Abdon)"
+  didLabel: "Qué hice"
+  did:
+    - "Estrategia de producto"
+    - "Diseño UX y UI"
+    - "Desarrollo full-stack con herramientas agénticas"
+    - "Agente con IA en WhatsApp"
+    - "Automatización de punta a punta"
+    - "App de check-in con QR"
+  results: "Diseñada y construida en solitario, del primer boceto al lanzamiento."
+  sections:
+    - kicker: "Antes"
+      title: "Una tienda de WordPress para un negocio de eventos."
+      text: "Las entradas se vendían con WordPress y WooCommerce. Reemplacé todo eso por una plataforma pensada para gestionar el evento."
+    - kicker: "La plataforma"
+      title: "Del primer mensaje al certificado, automatizado."
+      items:
+        - "Un CRM con toda la base de asistentes"
+        - "Un agente con IA en WhatsApp que contacta a la base para que compren su entrada"
+        - "Flujo automático: venta, recordatorios y certificado en PDF después del evento"
+        - "Un escáner QR para el check-in el día del evento"

@@ -1,0 +1,64 @@
+# Cideon · Enify. Screens from the PDF are pending Mauro's OK to publish them.
+title: Cideon · Enify
+order: 12
+group: work
+
+en:
+  sector: "Industrial software · Remote service"
+  years: "2021–2023"
+  summary: "Remote service for machine maintenance: from research and a clear value proposition to an MVP delivered on time."
+  role: "Senior product designer"
+  timeline: "2021 – 2023"
+  team: "Cideon (LOH Group)"
+  didLabel: "What I did"
+  did:
+    - "Discovery and research"
+    - "Information architecture"
+    - "Wireframes"
+    - "UI design"
+    - "Prototyping"
+    - "Agile methodology"
+  results: "Defined the personas and where the product stood against competitors, and anchored the vision and value proposition of the MVP. That let the team design, build and deliver it on time, and customers cut their operating costs."
+  sections:
+    - kicker: "Research and discovery"
+      title: "Understand the business before drawing screens."
+      items:
+        - "Research on the business model, users and competitors"
+        - "Personas"
+        - "Problem statement, value proposition and scope"
+    - kicker: "Wireframes as a story"
+      title: "The service through the eyes of the expert and the technician."
+      text: "I iterated the wireframes with stakeholders in several review rounds, telling the workflow as a simple story so every audience could follow it."
+    - kicker: "Prototype"
+      title: "Material Design, made Cideon."
+      text: "I customized Material Design with Cideon’s brand to speed up development and meet tight deadlines. The design is responsive: laptops, tablets and phones."
+
+es:
+  sector: "Software industrial · Servicio remoto"
+  years: "2021–2023"
+  summary: "Servicio remoto para el mantenimiento de máquinas: del research y una propuesta de valor clara a un MVP entregado a tiempo."
+  role: "Senior product designer"
+  timeline: "2021 – 2023"
+  team: "Cideon (LOH Group)"
+  didLabel: "Qué hice"
+  did:
+    - "Discovery y research"
+    - "Arquitectura de información"
+    - "Wireframes"
+    - "Diseño de UI"
+    - "Prototipos"
+    - "Metodología ágil"
+  results: "Definí las personas y el lugar del producto frente a la competencia, y anclé la visión y la propuesta de valor del MVP. Eso permitió diseñarlo, construirlo y entregarlo a tiempo, y los clientes redujeron sus costos operativos."
+  sections:
+    - kicker: "Research y discovery"
+      title: "Entender el negocio antes de dibujar pantallas."
+      items:
+        - "Research del modelo de negocio, usuarios y competidores"
+        - "Personas"
+        - "Planteo del problema, propuesta de valor y alcance"
+    - kicker: "Wireframes como historia"
+      title: "El servicio con los ojos del experto y del técnico."
+      text: "Iteré los wireframes con stakeholders en varias rondas de revisión, contando el flujo como una historia simple para que cualquier audiencia lo pudiera seguir."
+    - kicker: "Prototipo"
+      title: "Material Design, hecho Cideon."
+      text: "Adapté Material Design a la marca de Cideon para acelerar el desarrollo y cumplir plazos ajustados. El diseño es responsive: laptops, tablets y teléfonos."

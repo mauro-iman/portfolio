@@ -1,0 +1,51 @@
+# Viaje Perfecto.
+title: Viaje Perfecto
+order: 17
+group: work
+# Media in src/assets/cases/viaje-perfecto/ (videos in public/videos/).
+coverImage: cover.jpg
+videos:
+  - { file: viaje-perfecto-desktop.mp4, en: "The website on desktop", es: "El sitio en escritorio" }
+  - { file: viaje-perfecto-mobile.mp4, en: "The website on mobile", es: "El sitio en mobile", phone: true }
+screens:
+  - { file: home.jpeg, en: "Home page", es: "Página de inicio" }
+
+en:
+  galleryTitle: "The website."
+  sector: "Travel · Website"
+  years: "[year]"
+  summary: "A new website for a travel agency that sells customizable experiences instead of fixed packages, designed and built to bring in leads."
+  role: "Business analyst, designer and developer"
+  timeline: "[year]"
+  didLabel: "What I did"
+  did:
+    - "Business analysis"
+    - "UX discovery"
+    - "UI/UX and visual design"
+    - "SEO"
+    - "Web development: HTML, CSS, Bootstrap, jQuery, WordPress and PHP"
+  results: "Leads grew significantly. The agency manages all its own content (experiences, testimonials, blog and news), and the design still looked fresh four years later."
+  sections:
+    - kicker: "Design rationale"
+      title: "Sell the feeling first, then talk."
+      text: "Discovery meant meetings with the owners and some of their customers, plus a look at the competition. The layout leads with images of friends, family and places, then offers phone, chat or a form, and a travel advisor closes the sale."
+
+es:
+  galleryTitle: "El sitio."
+  sector: "Turismo · Sitio web"
+  years: "[año]"
+  summary: "Un sitio nuevo para una agencia de viajes que vende experiencias a medida en lugar de paquetes fijos, diseñado y desarrollado para generar contactos."
+  role: "Analista de negocio, diseñador y desarrollador"
+  timeline: "[año]"
+  didLabel: "Qué hice"
+  did:
+    - "Análisis de negocio"
+    - "Discovery UX"
+    - "Diseño UI/UX y visual"
+    - "SEO"
+    - "Desarrollo web: HTML, CSS, Bootstrap, jQuery, WordPress y PHP"
+  results: "Los contactos crecieron de forma notable. La agencia gestiona todo su contenido (experiencias, testimonios, blog y novedades), y el diseño seguía vigente cuatro años después."
+  sections:
+    - kicker: "Por qué así"
+      title: "Primero vender la emoción, después conversar."
+      text: "El discovery incluyó reuniones con los dueños y algunos clientes, y un análisis de la competencia. El diseño abre con imágenes de amigos, familia y lugares, después ofrece teléfono, chat o formulario, y un asesor de viajes cierra la venta."

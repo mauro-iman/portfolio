@@ -7,6 +7,20 @@ cover: compass
 system: true
 homeMetric: "$400k"
 
+# Images live in src/assets/cases/<slug>/. coverImage replaces the drawn cover; workImages go with
+# the workstreams in order (null keeps the drawing); screens and phones fill the gallery, captions in EN/ES.
+coverImage: compass.jpg
+workImages: [null, null, 4.png, ds-cover.png]
+screens:
+  - { file: 1.png, en: "Index page", es: "Página principal" }
+  - { file: 21.png, en: "Dynamic filters", es: "Filtros dinámicos" }
+  - { file: 3.png, en: "Bulk selection and column settings", es: "Selección masiva y configuración de columnas" }
+  - { file: 4.png, en: "Checklist item editor", es: "Editor de ítems del checklist" }
+  - { file: 5.png, en: "Item editor · main info panel", es: "Editor de ítems · panel de información" }
+  - { file: 61.png, en: "Item editor · transaction tags", es: "Editor de ítems · etiquetas de operación" }
+  - { file: 71.png, en: "Item editor · document tags", es: "Editor de ítems · etiquetas de documento" }
+  - { file: ds-cover.png, en: "Compass multi-brand design system", es: "Design system multimarca de Compass" }
+
 en:
   sector: PropTech
   years: 2024–2025

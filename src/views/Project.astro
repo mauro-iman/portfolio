@@ -1,0 +1,77 @@
+---
+/* Lighter project page (DESIGN.md › Project page): facts, what I did, results, story sections and an
+   optional screens gallery. Content comes from src/content/projects/<slug>.yaml. */
+import Base from '../layouts/Base.astro';
+import Gallery from '../components/Gallery.astro';
+import CoverMat from '../components/CoverMat.astro';
+import Videos from '../components/Videos.astro';
+import { dict, translator, url, nextProject } from '../lib/content.js';
+
+const { lang, p } = Astro.props;
+const D = dict(null, p), t = translator(D, lang), d = p[lang], nx = nextProject(p);
+const facts = [['c.f.role', 'p.roleV'], ['c.f.time', 'p.timeV'], ...(d.team ? [['c.f.team', 'p.teamV']] : [])];
+const hasGallery = (p.screens?.length || p.phones?.length) > 0;
+---
+<Base lang={lang} D={D} titleKey="c.doc" path={`work/${p.slug}/`} pageScripts={hasGallery ? ['gallery.js'] : []}>
+  <section class="c-hero p-hero" id="case-top" aria-labelledby="c-h1">
+    <div class="wrap c-hero-in">
+      <a class="c-back" href={url(lang, p.group === 'building' ? '#building' : '#more')} data-l={p.group === 'building' ? '#building' : '#more'}><span aria-hidden="true">←</span><span data-i="c.back">{t('c.back')}</span></a>
+      <div class="c-head">
+        <p class="label" data-i="p.kicker">{t('p.kicker')}</p>
+        <h1 id="c-h1" data-i={`proj.${p.slug}.t`}>{p.title}</h1>
+        <p class="lead" data-i={`proj.${p.slug}.s`}>{t(`proj.${p.slug}.s`)}</p>
+        <dl class="c-facts">
+          {facts.map(([k, v]) => <div><dt class="label" data-i={k}>{t(k)}</dt><dd data-i={v}>{t(v)}</dd></div>)}
+        </dl>
+        {d.note && <p class="p-note" data-i="p.note">{t('p.note')}</p>}
+      </div>
+    </div>
+  </section>
+
+  {p.coverImage && (
+    <section class="c-cover" aria-label={p.title}>
+      <div class="wrap"><CoverMat c={p} t={t} cls="mat c-mat rv rise" feat eager altKey="c.cover" /></div>
+    </section>
+  )}
+
+  <section class="sec" id="glance" aria-labelledby="did-h">
+    <div class="wrap"><div class="grid rv">
+      <div class="side"><h2 class="label" id="did-h" data-i="p.didL">{t('p.didL')}</h2></div>
+      <div class="main">
+        <ul class="p-did">{(d.did || []).map((x, i) => <li><span class="tilde" aria-hidden="true"></span><span data-i={`p.did${i}`}>{x}</span></li>)}</ul>
+        {d.results && <dl class="c-tldr p-res"><div><dt class="label" data-i="c.q.r">{t('c.q.r')}</dt><dd data-i="p.res">{d.results}</dd></div></dl>}
+      </div>
+    </div></div>
+  </section>
+
+  {(d.sections || []).map((sec, i) => (
+    <section class="sec p-sec" aria-labelledby={`ps${i}-h`}>
+      <div class="wrap"><div class="grid rv">
+        <div class="side">{sec.kicker && <span class="label" data-i={`p.s${i}.k`}>{sec.kicker}</span>}</div>
+        <div class="main">
+          <h2 class="c-h2 p-h2" id={`ps${i}-h`} data-i={`p.s${i}.h`}>{sec.title}</h2>
+          {sec.text && <p class="p-p" data-i={`p.s${i}.p`}>{sec.text}</p>}
+          {sec.items && <ul class="p-list">{sec.items.map((it, j) => <li data-i={`p.s${i}.i${j}`}>{it}</li>)}</ul>}
+        </div>
+      </div></div>
+    </section>
+  ))}
+
+  {p.videos?.length ? <Videos c={p} t={t} /> : null}
+
+  {hasGallery ? <Gallery c={p} t={t} /> : null}
+
+  {nx && nx !== p && (
+    <section class="sec" id="next" aria-label={t('p.nextAria')}>
+      <div class="wrap">
+        <a class="c-next rv" href={url(lang, `work/${nx.slug}/`)} data-l={`work/${nx.slug}/`}>
+          <div class="c-next-in">
+            <span class="label" data-i="p.next">{t('p.next')}</span>
+            <h2><span data-i={`proj.${nx.slug}.t`}>{nx.title}</span><span class="arr" aria-hidden="true">→</span></h2>
+            <p data-i={`proj.${nx.slug}.s`}>{t(`proj.${nx.slug}.s`)}</p>
+          </div>
+        </a>
+      </div>
+    </section>
+  )}
+</Base>

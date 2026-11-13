@@ -1,6 +1,11 @@
 ---
 import Case from '../../views/Case.astro';
-import { cases } from '../../lib/content.js';
-export const getStaticPaths = () => cases.map(c => ({ params: { slug: c.slug }, props: { c } }));
+import Project from '../../views/Project.astro';
+import { cases, paged } from '../../lib/content.js';
+export const getStaticPaths = () => [
+  ...cases.map(c => ({ params: { slug: c.slug }, props: { c } })),
+  ...paged.map(p => ({ params: { slug: p.slug }, props: { p } }))
+];
+const { c, p } = Astro.props;
 ---
-<Case lang="en" c={Astro.props.c} />
+{c ? <Case lang="en" c={c} /> : <Project lang="en" p={p} />}

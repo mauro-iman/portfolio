@@ -8,34 +8,26 @@ teams:
   - YPF
   - Holcim
   - StatLink
+  - UPSL
+  - Megatrans
   - RF Solutions
   - Cideon
   - 3XM Group
   - ePlan
   - Viaje Perfecto
-archive:
-  - name: RF Solutions
-    en: Spectrum monitoring · Since 2017
-    es: Monitoreo de espectro · Desde 2017
-  - name: Holcim · Mi PoRHtal
-    en: HR communication · [year]
-    es: Comunicación de RR. HH. · [año]
-  - name: Healthcare inc.
-    en: Patient accessibility app · [year]
-    es: App de accesibilidad para pacientes · [año]
-  - name: Viaje Perfecto
-    en: Travel experiences · [year]
-    es: Experiencias de viaje · [año]
-  - name: 3XM Group
-    en: Logo redesign · 2018
-    es: Rediseño de logo · 2018
-  - name: Cideon · Enify
-    en: Remote machine maintenance · Under NDA
-    es: Mantenimiento remoto de máquinas · Bajo NDA
-  - name: ePlan
-    en: Engineering quotations · Under NDA
-    es: Cotizaciones de ingeniería · Bajo NDA
 en:
+  c.vid: Prototype
+  c.vid.h: See it move.
+  c.gal: Screens
+  c.gal.h: Inside the product.
+  c.gal.desk: Desktop
+  c.gal.phone: Mobile
+  c.gal.hint: Select a screen to enlarge it.
+  c.lb.close: Close
+  c.lb.prev: Previous
+  c.lb.next: Next
+  c.lb.open: Enlarge
+  c.lb.of: of
   skip: Skip to content
   nav.work: Work
   nav.highlights: Highlights
@@ -49,7 +41,7 @@ en:
   hero.cta1: See selected work
   hero.cta2: Short on time? 60 s
   hero.loc: Buenos Aires · Working worldwide
-  hero.avail: "[Availability]"
+  hero.avail: Open to full-time senior product roles
   work.label: Selected work
   work.h2: Three products, three different kinds of hard.
   case.read: Read the case
@@ -76,7 +68,7 @@ en:
   teams.label: Teams I’ve designed with
   portrait: "[portrait]"
   about.h: Hi, I’m Mauro.
-  about.p: A product designer based in Buenos Aires. [Years] years designing for PropTech, energy, healthcare and sports, usually as the person who connects business, design and engineering.
+  about.p: "A product designer based in Buenos Aires. [Years] years designing for PropTech, energy, fintech, healthcare and sports: inside enterprise teams, as an independent consultant leading client accounts, and this year building my own products end to end."
   about.more: More about me
   cta.h: Let’s build something people are drawn to.
   cta.btn: Start a conversation
@@ -86,7 +78,7 @@ en:
   cta.selMsg: Email selected. Press Ctrl+C or ⌘C to copy.
   foot.now: Now
   foot.in: in Buenos Aires
-  foot.avail: Open to senior product roles · [availability]
+  foot.avail: Open to full-time senior product design roles.
   foot.site: Site
   foot.else: Elsewhere
   foot.colophon: Colophon
@@ -130,7 +122,29 @@ en:
   doc.home: Mauro Imán — Product designer
   doc.desc: Product designer who builds. I turn complex operations into products people trust, from 0→1 platforms to design systems at scale.
   hl.impact: Impact
+  bld.label: Building now
+  bld.h2: Two products, built end to end this year.
+  bld.sub: From discovery and user interviews to code in production with agentic tools, and then selling it. Now I want to bring that to a team and to products at scale.
+  bld.read: See the product
+  more.label: More work
+  more.h2: Other projects
+  p.label: Project
+  p.label.build: Product
+  p.next: Next project
+  p.nextAria: Next project
 es:
+  c.vid: Prototipo
+  c.vid.h: Miralo en movimiento.
+  c.gal: Pantallas
+  c.gal.h: Adentro del producto.
+  c.gal.desk: Escritorio
+  c.gal.phone: Mobile
+  c.gal.hint: Elegí una pantalla para ampliarla.
+  c.lb.close: Cerrar
+  c.lb.prev: Anterior
+  c.lb.next: Siguiente
+  c.lb.open: Ampliar
+  c.lb.of: de
   skip: Saltar al contenido
   nav.work: Trabajo
   nav.highlights: Highlights
@@ -144,7 +158,7 @@ es:
   hero.cta1: Ver trabajos
   hero.cta2: ¿Poco tiempo? 60 s
   hero.loc: Buenos Aires · Trabajo en todo el mundo
-  hero.avail: "[Disponibilidad]"
+  hero.avail: Disponible para roles senior de producto full-time
   work.label: Trabajos seleccionados
   work.h2: Tres productos, tres tipos de desafío.
   case.read: Leer el caso
@@ -171,7 +185,7 @@ es:
   teams.label: Equipos con los que diseñé
   portrait: "[retrato]"
   about.h: Hola, soy Mauro.
-  about.p: Diseñador de producto en Buenos Aires. [Años] años diseñando para PropTech, energía, salud y deportes, casi siempre como quien conecta negocio, diseño e ingeniería.
+  about.p: "Diseñador de producto en Buenos Aires. [Años] años diseñando para PropTech, energía, fintech, salud y deportes: en equipos de grandes empresas, como consultor independiente a cargo de cuentas de clientes y, este año, construyendo mis propios productos de punta a punta."
   about.more: Más sobre mí
   cta.h: Construyamos algo que atraiga.
   cta.btn: Empecemos a hablar
@@ -181,7 +195,7 @@ es:
   cta.selMsg: Email seleccionado. Copialo con Ctrl+C o ⌘C.
   foot.now: Ahora
   foot.in: en Buenos Aires
-  foot.avail: Disponible para roles senior de producto · [disponibilidad]
+  foot.avail: Disponible para roles senior de diseño de producto full-time.
   foot.site: Sitio
   foot.else: En otros lados
   foot.colophon: Colofón
@@ -225,3 +239,13 @@ es:
   doc.home: Mauro Imán — Diseñador de producto
   doc.desc: Diseñador de producto que también construye. Convierto operaciones complejas en productos confiables, desde plataformas 0→1 hasta design systems a escala.
   hl.impact: Impacto
+  bld.label: Lo que estoy construyendo
+  bld.h2: Dos productos, construidos de punta a punta este año.
+  bld.sub: Del discovery y las entrevistas con usuarios al código en producción con herramientas agénticas, y después venderlo. Ahora quiero llevar eso a un equipo y a productos con escala.
+  bld.read: Ver el producto
+  more.label: Más trabajos
+  more.h2: Otros proyectos
+  p.label: Proyecto
+  p.label.build: Producto
+  p.next: Siguiente proyecto
+  p.nextAria: Siguiente proyecto
