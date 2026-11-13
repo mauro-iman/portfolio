@@ -1,0 +1,74 @@
+# Megatrans · Fenix product discovery. Text in [brackets] is still a placeholder.
+title: Megatrans · Fenix
+order: 11
+group: work
+
+en:
+  sector: "Logistics · Product discovery"
+  years: "[year]"
+  summary: "Discovery workshops across Megatrans to reset Fenix, its fleet management product: the real problems, one shared direction, first wireframes and an MVP roadmap."
+  role: "Product discovery lead"
+  timeline: "[year]"
+  didLabel: "What I did"
+  did:
+    - "Discovery workshops with five areas"
+    - "Problem identification"
+    - "Objective alignment"
+    - "Initial wireframes"
+    - "MVP roadmap"
+  results: "[What happened after the discovery, in one line.]"
+  sections:
+    - kicker: "Workshops"
+      title: "Five areas, 124 points on the table."
+      items:
+        - "Customer service · post-sales: 24 points (standardization, centralization, integration, simplification)"
+        - "Customer service · trip monitoring: 9 points"
+        - "Customer service · alarm monitoring: 9 points"
+        - "AySA account: 25 points (stability, scale, backlog bottlenecks)"
+        - "Commercial: 57 points (usability first, shared processes, service quality, CRM)"
+    - kicker: "Problems"
+      title: "The product was limited by its own architecture."
+      items:
+        - "No shared code base and no UX foundation"
+        - "Processes not standardized or integrated, inside and outside the company"
+        - "No defined way of working, and new features built ad hoc"
+        - "Too many billable concepts made billing heavy"
+        - "Building to order for each client multiplied the fronts"
+    - kicker: "Direction"
+      title: "Fenix, always around fleet management."
+      text: "A new frame for everyone: company processes defined, simplified and measured, an ERP for the business functions, and Fenix as a Megatrans business unit centered on fleet management. From there, the first wireframes and an MVP roadmap."
+
+es:
+  sector: "Logística · Product discovery"
+  years: "[año]"
+  summary: "Workshops de discovery en todo Megatrans para replantear Fenix, su producto de gestión de flotas: los problemas reales, una dirección compartida, los primeros wireframes y la hoja de ruta del MVP."
+  role: "Líder de product discovery"
+  timeline: "[año]"
+  didLabel: "Qué hice"
+  did:
+    - "Workshops de discovery con cinco áreas"
+    - "Identificación de problemas"
+    - "Alineación de objetivos"
+    - "Wireframes iniciales"
+    - "Hoja de ruta del MVP"
+  results: "[Qué pasó después del discovery, en una línea.]"
+  sections:
+    - kicker: "Workshops"
+      title: "Cinco áreas, 124 puntos sobre la mesa."
+      items:
+        - "CDS · post venta: 24 puntos (estandarización, centralización, integración, simplificación)"
+        - "CDS · monitoreo de viajes: 9 puntos"
+        - "CDS · monitoreo de alarmas: 9 puntos"
+        - "Cuenta AySA: 25 puntos (estabilidad, escala, cuellos de botella del backlog)"
+        - "Área comercial: 57 puntos (usabilidad ante todo, procesos comunes, calidad de servicio, CRM)"
+    - kicker: "Problemas"
+      title: "El producto estaba limitado por su propia arquitectura."
+      items:
+        - "Sin código base compartido ni base de UX"
+        - "Procesos sin estandarizar ni integrar, adentro y afuera de la empresa"
+        - "Sin una metodología de trabajo definida, y features nuevas hechas sobre la marcha"
+        - "Demasiados conceptos facturables volvían engorrosa la facturación"
+        - "El desarrollo a medida para cada cliente multiplicaba los frentes"
+    - kicker: "Dirección"
+      title: "Fenix, siempre alrededor de la gestión de flota."
+      text: "Un marco nuevo para todos: procesos de la empresa definidos, simplificados y medidos, un ERP para las funciones del negocio, y Fenix como unidad de negocio de Megatrans centrada en la gestión de flota. Desde ahí, los primeros wireframes y la hoja de ruta del MVP."

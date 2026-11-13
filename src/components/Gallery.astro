@@ -1,0 +1,59 @@
+---
+/* Screens gallery for a case: a horizontal strip per group (desktop screens, phone screens).
+   Each thumbnail is a button that opens the lightbox (public/gallery.js) with a large WebP. */
+import { Image, getImage } from 'astro:assets';
+import { img, fit } from '../lib/images.js';
+
+const { c, t } = Astro.props;
+const group = async (list, key, phone) => Promise.all((list || []).map(async (g, i) => {
+  const src = img(c.slug, g.file);
+  // An animated GIF keeps its original file in the lightbox (WebP conversion would keep only the first frame).
+  if (src.format === 'gif') return { src, full: src.src, w: src.width, h: src.height, k: `${key}${i}`, phone, fit: fit(src) };
+  const full = await getImage({ src, width: Math.min(src.width, phone ? 900 : 2000), format: 'webp' });
+  return { src, full: full.src, w: full.attributes.width, h: full.attributes.height, k: `${key}${i}`, phone, fit: fit(src) };
+}));
+const screens = await group(c.screens, 'c.g', false);
+const phones = await group(c.phones, 'c.p', true);
+const rows = [[screens, 'c.gal.desk', false], [phones, 'c.gal.phone', true]].filter(r => r[0].length);
+---
+<section class="sec" id="screens" aria-labelledby="gal-h">
+  <div class="wrap">
+    <div class="grid rv">
+      <div class="side"><span class="label" data-i="c.gal">{t('c.gal')}</span></div>
+      <div class="main">
+        <h2 class="c-h2" id="gal-h" data-i="c.gal.h">{t('c.gal.h')}</h2>
+        <p class="c-next-p" data-i="c.gal.hint">{t('c.gal.hint')}</p>
+      </div>
+    </div>
+  </div>
+  {rows.map(([items, label, phone]) => (
+    <div class={`gal${phone ? ' gal-ph' : ''}`}>
+      {rows.length > 1 && <div class="wrap"><h3 class="label gal-l" data-i={label}>{t(label)}</h3></div>}
+      <ul class="gal-strip" role="list">
+        {items.map(g => (
+          <li>
+            <button type="button" class="gal-it" data-full={g.full} data-w={g.w} data-h={g.h} data-cap={g.k} data-il={g.k} data-il-pre="c.lb.open" aria-label={`${t('c.lb.open')}: ${t(g.k)}`}>
+              <span class={`gal-mat${!phone && g.fit === 'contain' ? ' fit-c' : ''}`}>
+                <Image src={g.src} alt="" widths={phone ? [220, 440] : [480, 960]} sizes={phone ? '220px' : '(max-width: 760px) 80vw, 480px'} format="webp" loading="lazy" decoding="async" />
+              </span>
+              <span class="gal-cap" data-i={g.k}>{t(g.k)}</span>
+            </button>
+          </li>
+        ))}
+      </ul>
+    </div>
+  ))}
+</section>
+
+<dialog class="lb" id="lb" aria-labelledby="lbCap">
+  <div class="lb-bar">
+    <span class="label lb-n" id="lbN" aria-hidden="true"></span>
+    <button type="button" class="btn-sm" id="lbClose" data-i="c.lb.close">{t('c.lb.close')}</button>
+  </div>
+  <figure class="lb-fig">
+    <img id="lbImg" alt="" />
+    <figcaption id="lbCap"></figcaption>
+  </figure>
+  <button type="button" class="lb-nav lb-prev" id="lbPrev" data-il="c.lb.prev" aria-label={t('c.lb.prev')}><span aria-hidden="true">←</span></button>
+  <button type="button" class="lb-nav lb-next" id="lbNext" data-il="c.lb.next" aria-label={t('c.lb.next')}><span aria-hidden="true">→</span></button>
+</dialog>

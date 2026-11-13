@@ -1,8 +1,11 @@
 ---
 /* Case study page (DESIGN.md › Page: Case study). Content comes from src/content/cases/<slug>.yaml. */
 import Base from '../layouts/Base.astro';
-import Shot from '../components/Shot.astro';
+import { Image } from 'astro:assets';
+import CoverMat from '../components/CoverMat.astro';
+import Gallery from '../components/Gallery.astro';
 import { dict, translator, url, nextOf } from '../lib/content.js';
+import { img, fit } from '../lib/images.js';
 
 const { lang, c } = Astro.props;
 const D = dict(c), t = translator(D, lang), d = c[lang], nx = nextOf(c);
@@ -12,7 +15,7 @@ const minis = {
   sys: '<i></i><i></i><i></i><i></i><b></b><u></u><s></s>'
 };
 ---
-<Base lang={lang} D={D} titleKey="c.doc" path={`work/${c.slug}/`} asm pageScripts={['case.js']}>
+<Base lang={lang} D={D} titleKey="c.doc" path={`work/${c.slug}/`} asm pageScripts={['case.js', 'gallery.js']}>
   <section class="c-hero" id="case-top" aria-labelledby="c-h1">
     <canvas class="fieldcv" id="fCase" aria-hidden="true"></canvas>
     <canvas class="c-asm" id="fAsm" aria-hidden="true"></canvas>
@@ -32,12 +35,7 @@ const minis = {
 
   <section class="c-cover" aria-label={c.title}>
     <div class="wrap">
-      <div class="mat c-mat rv rise" data-notes={c.cover}>
-        <Shot kind={c.cover} />
-        <span class="label ph-tag" data-i="mat.ph">{t('mat.ph')}</span>
-        <span class="label xhint"><span class="tilde" aria-hidden="true"></span><span class="hm" data-i="x.hint">{t('x.hint')}</span><span class="ht" data-i="x.hintTouch">{t('x.hintTouch')}</span></span>
-        <canvas aria-hidden="true"></canvas>
-      </div>
+      <CoverMat c={c} t={t} cls="mat c-mat rv rise" feat eager altKey="c.cover" />
     </div>
   </section>
 
@@ -88,17 +86,23 @@ const minis = {
       <div class="main">
         <h2 class="c-h2 rv" id="did-h" data-i="c.did.h">{t('c.did.h')}</h2>
         <div class={`c-work n${d.work.items.length}`}>
-          {d.work.items.map((w, i) => (
+          {d.work.items.map((w, i) => { const src = img(c.slug, (c.workImages || [])[i]); return (
             <article class="c-ws rv">
-              <div class="mat"><div class={`mini${w.mini === 'q' ? '' : ' ' + w.mini}`} aria-hidden="true" set:html={minis[w.mini] || minis.q}></div><span class="label ph-tag" data-i={`c.w${i + 1}.ph`}>{w.screen}</span></div>
+              {src ? (
+                <div class={`mat has-img fit-${fit(src)}`}><Image src={src} alt={t(`c.w${i + 1}.alt`)} data-ia={`c.w${i + 1}.alt`} widths={[400, 800]} sizes="(max-width: 760px) 90vw, 440px" format="webp" loading="lazy" decoding="async" /></div>
+              ) : (
+                <div class="mat"><div class={`mini${w.mini === 'q' ? '' : ' ' + w.mini}`} aria-hidden="true" set:html={minis[w.mini] || minis.q}></div><span class="label ph-tag" data-i={`c.w${i + 1}.ph`}>{w.screen}</span></div>
+              )}
               <h3><span class="tilde" aria-hidden="true"></span><span data-i={`c.w${i + 1}.h`}>{w.title}</span></h3>
               <p data-i={`c.w${i + 1}.p`}>{w.text}</p>
             </article>
-          ))}
+          ); })}
         </div>
       </div>
     </div></div>
   </section>
+
+  {(c.screens?.length || c.phones?.length) ? <Gallery c={c} t={t} /> : null}
 
   {c.system && (
     <section class="sec" id="system" aria-labelledby="sys-h">

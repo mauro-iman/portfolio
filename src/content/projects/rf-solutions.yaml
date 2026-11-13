@@ -1,0 +1,84 @@
+# RF Solutions (anonymized name, as on the live site).
+title: RF Solutions
+order: 14
+group: work
+# Media in src/assets/cases/rf-solutions/ (videos in public/videos/).
+coverImage: cover.jpg
+screens:
+  - { file: 03-spectrum.png, en: "Spectrum Analyzer", es: "Spectrum Analyzer" }
+  - { file: 03-spectrum-geo.png, en: "Spectrum Analyzer: geolocation", es: "Spectrum Analyzer: geolocalización" }
+  - { file: 03-spectrum-lmr.png, en: "Spectrum Analyzer: LMR demodulation", es: "Spectrum Analyzer: demodulación LMR" }
+  - { file: 03-drive.png, en: "Files Drive", es: "Files Drive" }
+  - { file: 03-drive-recent.png, en: "Files Drive: recent files", es: "Files Drive: archivos recientes" }
+  - { file: 03-drive-wav-player.png, en: "Files Drive: WAV player", es: "Files Drive: reproductor WAV" }
+  - { file: 03-drive-mp4-player.png, en: "Files Drive: MP4 player", es: "Files Drive: reproductor MP4" }
+  - { file: 03-drive-csv-viewer.png, en: "Files Drive: CSV viewer", es: "Files Drive: visor de CSV" }
+  - { file: 03-drive-iq-transformation.png, en: "Files Drive: IQ transformation", es: "Files Drive: transformación IQ" }
+  - { file: 03-jobs-active.png, en: "Jobs Manager: active jobs", es: "Jobs Manager: tareas activas" }
+  - { file: 03-jobs-run.png, en: "Jobs Manager: run a job", es: "Jobs Manager: ejecutar una tarea" }
+  - { file: 03-jobs-scheduler.png, en: "Jobs Manager: scheduler", es: "Jobs Manager: agenda" }
+  - { file: 03-jobs-templates.png, en: "Jobs Manager: templates", es: "Jobs Manager: plantillas" }
+  - { file: 03-wizard-01.png, en: "Create job wizard: step 1", es: "Asistente de nueva tarea: paso 1" }
+  - { file: 03-wizard-03.png, en: "Create job wizard: step 2", es: "Asistente de nueva tarea: paso 2" }
+  - { file: 03-wizard-05.png, en: "Create job wizard: step 3", es: "Asistente de nueva tarea: paso 3" }
+  - { file: 03-jobs-report.png, en: "Jobs Manager: report", es: "Jobs Manager: reporte" }
+  - { file: 03-drone-1.png, en: "Free Sky", es: "Free Sky" }
+  - { file: 03-drone-2.png, en: "Free Sky: zoom", es: "Free Sky: zoom" }
+  - { file: 03-drone-3.png, en: "Free Sky: filters, settings and layers", es: "Free Sky: filtros, configuración y capas" }
+  - { file: 03-drone-4.png, en: "Free Sky: details", es: "Free Sky: detalle" }
+
+en:
+  sector: "RF spectrum monitoring"
+  years: "Since 2017"
+  summary: "A web platform to collect and analyze radiofrequency data for security, such as drone threats, and for network optimization."
+  role: "Business analyst, UI/UX designer and design mentor"
+  timeline: "Since 2017"
+  note: "The client name is anonymized and some designs are blurred for confidentiality."
+  didLabel: "What I did"
+  did:
+    - "Business analysis"
+    - "UI/UX design"
+    - "UX content strategy"
+    - "Prototyping"
+    - "Icon design"
+    - "UI design system for developers"
+    - "Product vision"
+    - "Documentation"
+    - "Mentorship"
+  results: "A solid design foundation for the web application: shared patterns and a consistent UI, a clearer product vision, and UI/UX mentorship for the team and the client."
+  sections:
+    - kicker: "The platform"
+      title: "Four modules for the radio spectrum."
+      items:
+        - "Spectrum Analyzer: scan a wide range of the spectrum, select signals of interest and act on them, for example geolocating or demodulating them"
+        - "Files Drive: manage the files every process generates, with players for audio, video, CSV and IQ data"
+        - "Jobs Manager: templates that become jobs to collect data, monitor the spectrum or decode signals, with a scheduler, a three-step wizard and reports"
+        - "Free Sky: the first step toward the next generation of wireless network security"
+
+es:
+  sector: "Monitoreo de espectro RF"
+  years: "Desde 2017"
+  summary: "Una plataforma web para recolectar y analizar datos de radiofrecuencia para seguridad, como amenazas de drones, y para optimización de redes."
+  role: "Analista de negocio, diseñador UI/UX y mentor de diseño"
+  timeline: "Desde 2017"
+  note: "El nombre del cliente está anonimizado y algunos diseños aparecen borrosos por confidencialidad."
+  didLabel: "Qué hice"
+  did:
+    - "Análisis de negocio"
+    - "Diseño UI/UX"
+    - "Estrategia de contenido UX"
+    - "Prototipos"
+    - "Diseño de íconos"
+    - "Design system de UI para desarrollo"
+    - "Visión de producto"
+    - "Documentación"
+    - "Mentoría"
+  results: "Una base de diseño sólida para la aplicación web: patrones compartidos y una UI consistente, una visión de producto más clara y mentoría UI/UX para el equipo y el cliente."
+  sections:
+    - kicker: "La plataforma"
+      title: "Cuatro módulos para el espectro radioeléctrico."
+      items:
+        - "Spectrum Analyzer: recorrer un rango amplio del espectro, elegir señales de interés y actuar sobre ellas, por ejemplo geolocalizarlas o demodularlas"
+        - "Files Drive: gestionar los archivos que genera cada proceso, con reproductores de audio, video, CSV y datos IQ"
+        - "Jobs Manager: plantillas que se convierten en tareas para recolectar datos, monitorear el espectro o decodificar señales, con agenda, un asistente de tres pasos y reportes"
+        - "Free Sky: el primer paso hacia la próxima generación de seguridad en redes inalámbricas"

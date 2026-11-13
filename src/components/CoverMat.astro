@@ -1,0 +1,22 @@
+---
+/* Case cover in its mat: the real cover image when the case has one, else the drawn placeholder
+   with the "see the structure" x-ray (site.js only wires mats that have data-notes). */
+import { Image } from 'astro:assets';
+import Shot from './Shot.astro';
+import { img } from '../lib/images.js';
+
+const { c, t, cls = 'mat', feat = false, eager = false, altKey } = Astro.props;
+const src = img(c.slug, c.coverImage);
+---
+{src ? (
+  <div class={`${cls} has-img`}>
+    <Image class="cover-img" src={src} alt={altKey ? t(altKey) : ''} data-ia={altKey} widths={[640, 960, 1440, 1800].filter(w => w <= src.width)} sizes={feat ? '(max-width: 760px) 100vw, 1200px' : '(max-width: 760px) 100vw, 600px'} format="webp" loading={eager ? 'eager' : 'lazy'} decoding="async" />
+  </div>
+) : (
+  <div class={cls} data-notes={c.cover}>
+    <Shot kind={c.cover} />
+    <span class="label ph-tag" data-i="mat.ph">{t('mat.ph')}</span>
+    <span class="label xhint"><span class="tilde" aria-hidden="true"></span><span class="hm" data-i="x.hint">{t('x.hint')}</span><span class="ht" data-i="x.hintTouch">{t('x.hintTouch')}</span></span>
+    <canvas aria-hidden="true"></canvas>
+  </div>
+)}

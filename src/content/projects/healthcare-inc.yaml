@@ -1,0 +1,77 @@
+# Healthcare Inc. (anonymized name, as on the live site).
+title: Healthcare Inc.
+order: 16
+group: work
+# Media in src/assets/cases/healthcare-inc/ (videos in public/videos/).
+coverImage: cover.jpg
+phones:
+  - { file: hc-1.png, en: "Log in", es: "Ingreso" }
+  - { file: hc-2.png, en: "Dashboard", es: "Inicio" }
+  - { file: hc-3.png, en: "Profile", es: "Perfil" }
+  - { file: hc-4.png, en: "Edit profile", es: "Editar perfil" }
+  - { file: hc-5.png, en: "Submit profile changes", es: "Enviar cambios del perfil" }
+  - { file: hc-6.png, en: "Primary insurance card", es: "Credencial de la obra social" }
+  - { file: hc-7.png, en: "Service history", es: "Historial de servicios" }
+  - { file: hc-8.png, en: "Service history: filters", es: "Historial de servicios: filtros" }
+  - { file: hc-9.png, en: "Service history: date filter", es: "Historial de servicios: filtro por fecha" }
+  - { file: hc-10.png, en: "Service history: order type filter", es: "Historial de servicios: filtro por tipo de pedido" }
+  - { file: hc-11.png, en: "Service history: details", es: "Historial de servicios: detalle" }
+  - { file: hc-12.png, en: "More options", es: "Más opciones" }
+  - { file: hc-13.png, en: "Language", es: "Idioma" }
+  - { file: hc-14.png, en: "Change password", es: "Cambiar contraseña" }
+  - { file: hc-15.png, en: "Submit new password", es: "Enviar contraseña nueva" }
+  - { file: hc-16.png, en: "Two-factor authentication", es: "Autenticación en dos pasos" }
+  - { file: hc-17.png, en: "Two-factor authentication: code", es: "Autenticación en dos pasos: código" }
+  - { file: hc-18.png, en: "Two-factor authentication: code validated", es: "Autenticación en dos pasos: código validado" }
+
+en:
+  sector: "Healthcare · Patient app"
+  years: "[year]"
+  summary: "A patient app built from the client’s website design in a short timeframe, now live on the App Store and Google Play in the US."
+  role: "UI/UX and visual designer"
+  timeline: "[year]"
+  note: "The client name is anonymized for confidentiality."
+  didLabel: "What I did"
+  did:
+    - "UI/UX design"
+    - "Visual design"
+    - "Prototyping"
+    - "Design specs"
+  results: "Delivered within the agreed time and budget, with a smooth implementation for the product owner and developers."
+  sections:
+    - kicker: "For patients"
+      title: "Everything a patient needs, in a few taps."
+      items:
+        - "Simple log in and registration"
+        - "News, training material, products and payments"
+        - "Profile, insurance card and personal information, fully editable"
+        - "Service history with the status of every request, with filters"
+    - kicker: "Language and security"
+      title: "In the patient’s language, and safe."
+      text: "The app can be set to the patient’s language, notifications can be turned on or off, and the password changed in place. I proposed two-factor authentication to confirm changes."
+
+es:
+  sector: "Salud · App para pacientes"
+  years: "[año]"
+  summary: "Una app para pacientes construida a partir del diseño del sitio del cliente en poco tiempo, hoy publicada en App Store y Google Play en EE. UU."
+  role: "Diseñador UI/UX y visual"
+  timeline: "[año]"
+  note: "El nombre del cliente está anonimizado por confidencialidad."
+  didLabel: "Qué hice"
+  did:
+    - "Diseño UI/UX"
+    - "Diseño visual"
+    - "Prototipos"
+    - "Especificaciones de diseño"
+  results: "Entregada en el tiempo y el presupuesto acordados, con una implementación sin sobresaltos para el product owner y el equipo de desarrollo."
+  sections:
+    - kicker: "Para pacientes"
+      title: "Todo lo que un paciente necesita, en pocos toques."
+      items:
+        - "Ingreso y registro simples"
+        - "Novedades, material de capacitación, productos y pagos"
+        - "Perfil, credencial de la obra social y datos personales, todo editable"
+        - "Historial de servicios con el estado de cada pedido, con filtros"
+    - kicker: "Idioma y seguridad"
+      title: "En el idioma del paciente, y segura."
+      text: "La app se configura en el idioma del paciente, las notificaciones se activan o desactivan y la contraseña se cambia ahí mismo. Propuse autenticación en dos pasos para confirmar los cambios."

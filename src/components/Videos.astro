@@ -1,0 +1,25 @@
+---
+/* Prototype videos for a project page. Files live in public/videos/ (served as-is, not processed).
+   No autoplay: the visitor starts each one (WCAG 2.2.2). preload="metadata" shows the first frame. */
+import { BASE } from '../lib/content.js';
+
+const { c, t } = Astro.props;
+---
+<section class="sec" id="video" aria-labelledby="vid-h">
+  <div class="wrap">
+    <div class="grid rv">
+      <div class="side"><span class="label" data-i="c.vid">{t('c.vid')}</span></div>
+      <div class="main">
+        <h2 class="c-h2" id="vid-h" data-i="c.vid.h">{t('c.vid.h')}</h2>
+        <div class={`vids${c.videos.length > 1 ? ' n2' : ''}`}>
+          {c.videos.map((v, i) => (
+            <figure class={`vid${v.phone ? ' vid-ph' : ''}`}>
+              <video controls playsinline preload="metadata" src={`${BASE}videos/${v.file}`} aria-labelledby={`vcap${i}`}></video>
+              <figcaption id={`vcap${i}`} class="gal-cap" data-i={`c.v${i}`}>{t(`c.v${i}`)}</figcaption>
+            </figure>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

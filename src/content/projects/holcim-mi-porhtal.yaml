@@ -1,0 +1,78 @@
+# Holcim · Mi PoRHtal.
+title: Holcim · Mi PoRHtal
+order: 15
+group: work
+# Media in src/assets/cases/holcim-mi-porhtal/ (videos in public/videos/).
+coverImage: cover.jpg
+videos:
+  - { file: holcim-prototype.mp4, en: "Mi PoRHtal prototype walkthrough", es: "Recorrido por el prototipo de Mi PoRHtal", phone: true }
+screens:
+  - { file: holcim-plant.jpg, en: "Employees walking in the Holcim plant", es: "Empleados caminando en la planta de Holcim" }
+  - { file: Tasks-Trials.png, en: "Usability tests: performance per task", es: "Tests de usabilidad: desempeño por tarea" }
+  - { file: More-Requested-Tasks.png, en: "Most requested tasks", es: "Trámites más pedidos" }
+  - { file: Bolsitas.png, en: "Interest in the Bolsitas points program", es: "Interés en el programa de puntos Bolsitas" }
+  - { file: After-hours-usage.png, en: "Would use it after hours", es: "La usarían fuera del horario laboral" }
+  - { file: Navigation-Preference.png, en: "Navigation preference", es: "Preferencia de navegación" }
+  - { file: Holcim-Tools.png, en: "Holcim tools in use", es: "Herramientas de Holcim en uso" }
+
+en:
+  galleryTitle: "From the plant to the data."
+  sector: "Industry · HR self-service"
+  years: "2018"
+  summary: "A mobile HR self-service app for hundreds of plant and office employees at Holcim Argentina, tested in the factory and at headquarters."
+  role: "UI/UX designer"
+  timeline: "2018 · Phase 1, Argentina"
+  team: "Ignacio Garribia (InfoValue) and Holcim Argentina’s Labor Relations"
+  didLabel: "What I did"
+  did:
+    - "Problem definition and personas"
+    - "Success metrics"
+    - "Information architecture"
+    - "Prototype"
+    - "Usability testing plan and sessions"
+    - "Design specs, UI kit and screen map"
+  results: "Phase 1 delivered on time, tested and documented. 90% of testers said they would use it after work, and 70% wanted the Bolsitas rewards program inside the app, so it went into the next version."
+  sections:
+    - kicker: "Problem"
+      title: "HR, one request at a time."
+      text: "Most HR requests arrived by email or in person and were handled one by one. The existing self-service system, Mi Llave, ran on few, unfriendly kiosks with hard-to-remember passwords, and almost nobody used it."
+    - kicker: "People"
+      title: "Operators, supervisors and a role we didn’t expect."
+      items:
+        - "Operators: plant staff and drivers, 18 to 60 years old, often wearing safety gear"
+        - "Supervisors: headquarters staff who manage their own and their team’s information"
+        - "Coordinators, found during testing: people who act on behalf of others"
+    - kicker: "Usability tests"
+      title: "Two labs, 11 tasks, 10% of the staff."
+      text: "Sessions in the Malagueño factory with operators and at Córdoba headquarters with office staff, scoring each task from 0 to 10. The findings shaped phase 2: one set of credentials for every system, the coordinator role, reports and appointments on request, and bigger type and icons for older users."
+
+es:
+  galleryTitle: "De la planta a los datos."
+  sector: "Industria · Autogestión de RR. HH."
+  years: "2018"
+  summary: "Una app móvil de autogestión de RR. HH. para cientos de empleados de planta y oficina de Holcim Argentina, testeada en la fábrica y en la sede central."
+  role: "Diseñador UI/UX"
+  timeline: "2018 · Fase 1, Argentina"
+  team: "Ignacio Garribia (InfoValue) y Relaciones Laborales de Holcim Argentina"
+  didLabel: "Qué hice"
+  did:
+    - "Definición del problema y personas"
+    - "Métricas de éxito"
+    - "Arquitectura de información"
+    - "Prototipo"
+    - "Plan y sesiones de tests de usabilidad"
+    - "Especificaciones, UI kit y mapa de pantallas"
+  results: "Fase 1 entregada a tiempo, testeada y documentada. El 90% de los participantes dijo que la usaría fuera del horario laboral, y el 70% quiso el programa de puntos Bolsitas dentro de la app, así que entró en la versión siguiente."
+  sections:
+    - kicker: "Problema"
+      title: "RR. HH., de a un pedido por vez."
+      text: "La mayoría de los pedidos llegaba por mail o en persona y se resolvía uno por uno. El sistema de autogestión existente, Mi Llave, funcionaba en pocas terminales poco amigables, con contraseñas difíciles de recordar, y casi nadie lo usaba."
+    - kicker: "Personas"
+      title: "Operarios, supervisores y un rol que no esperábamos."
+      items:
+        - "Operarios: personal de planta y choferes, de 18 a 60 años, muchas veces con equipo de seguridad"
+        - "Supervisores: personal de la sede que gestiona su información y la de su equipo"
+        - "Coordinadores, descubiertos en los tests: personas que actúan en nombre de otras"
+    - kicker: "Tests de usabilidad"
+      title: "Dos laboratorios, 11 tareas, 10% del personal."
+      text: "Sesiones en la fábrica de Malagueño con operarios y en la sede de Córdoba con personal administrativo, puntuando cada tarea de 0 a 10. Los hallazgos definieron la fase 2: una sola credencial para todos los sistemas, el rol de coordinador, reportes y turnos a pedido, y letra e íconos más grandes para usuarios mayores."

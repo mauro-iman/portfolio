@@ -1,0 +1,56 @@
+# UPSL. group: work → page + link in "More work". Text in [brackets] is still a placeholder.
+title: UPSL
+order: 10
+group: work
+
+en:
+  sector: "Sports · League operations"
+  years: "[years]"
+  summary: "Maintenance and evolution for UPSL, a North American pro-development soccer league, leading a small team and the client relationship."
+  role: "Product lead of the account · Independent consulting"
+  timeline: "[years]"
+  didLabel: "What I did"
+  did:
+    - "Led a small product team"
+    - "Point of contact with the client"
+    - "Contracts and estimates"
+    - "Project initiatives and roadmap"
+  results: "[What the maintenance work achieved, in one line.]"
+  sections:
+    - kicker: "Context"
+      title: "A fast-growing league, run on paper and text messages."
+      text: "UPSL has more than 500 teams across North America. On the field it is professional; off the field, match-day operations still depended on printed rosters and photos of handwritten notes sent by text."
+    - kicker: "A concept I proposed"
+      title: "Match Day: from the locker room to the final whistle."
+      text: "An offline-first app that digitizes match day, with a role for each person involved. Concept only; it was not built."
+      items:
+        - "The coach picks the lineup on the phone and gets a match-day QR code"
+        - "League staff scan it and check each player’s face against their photo"
+        - "The referee’s screen unlocks only after the roster is verified, then logs goals, subs and cards with one tap"
+        - "A pilot run in parallel with paper before dropping it, with clear success metrics: scores online less than five minutes after the final whistle and no transcription errors"
+
+es:
+  sector: "Deportes · Operación de una liga"
+  years: "[años]"
+  summary: "Mantenimiento y evolución para UPSL, una liga de fútbol de desarrollo profesional de Norteamérica, a cargo de un equipo chico y de la relación con el cliente."
+  role: "Product lead de la cuenta · Consultoría independiente"
+  timeline: "[años]"
+  didLabel: "Qué hice"
+  did:
+    - "Lideré un equipo de producto chico"
+    - "Punto de contacto con el cliente"
+    - "Contratos y presupuestos"
+    - "Iniciativas y roadmap del proyecto"
+  results: "[Qué logró el trabajo de mantenimiento, en una línea.]"
+  sections:
+    - kicker: "Contexto"
+      title: "Una liga que crece rápido, sostenida con papel y mensajes de texto."
+      text: "UPSL tiene más de 500 equipos en Norteamérica. En la cancha es profesional; fuera de ella, la operación del día de partido seguía dependiendo de planteles impresos y fotos de notas a mano enviadas por mensaje."
+    - kicker: "Un concepto que propuse"
+      title: "Match Day: del vestuario al pitazo final."
+      text: "Una app que funciona sin conexión y digitaliza el día de partido, con un rol para cada persona. Es un concepto; no se construyó."
+      items:
+        - "El entrenador arma el equipo en el teléfono y obtiene un código QR del partido"
+        - "El staff de la liga lo escanea y verifica la cara de cada jugador contra su foto"
+        - "La pantalla del árbitro se desbloquea recién con el plantel verificado, y registra goles, cambios y tarjetas con un toque"
+        - "Un piloto en paralelo con el papel antes de abandonarlo, con métricas claras: resultados online en menos de cinco minutos después del pitazo final y cero errores de transcripción"

@@ -1,0 +1,11 @@
+# ePlan. group: list → shown in "More work" without a page.
+title: ePlan · Efficient Quotations
+order: 30
+group: list
+
+en:
+  sector: "Engineering quotations"
+  years: "Under NDA"
+es:
+  sector: "Cotizaciones de ingeniería"
+  years: "Bajo NDA"

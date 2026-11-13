@@ -1,0 +1,73 @@
+# FinTek Services (anonymized name, as on the live site).
+title: FinTek Services
+order: 13
+group: work
+# Media in src/assets/cases/fintek/ (videos in public/videos/).
+videos:
+  - { file: fintek-prototype.mp4, en: "Lending app prototype walkthrough", es: "Recorrido por el prototipo de la app de préstamos", phone: true }
+screens:
+  - { file: customization.gif, en: "Branding customization for each firm’s mobile app", es: "Personalización de marca de la app para cada financiera" }
+
+en:
+  sector: "Fintech · Lending"
+  years: "2020"
+  summary: "A white-label lending app that lets small-town financial institutions go mobile, with a scoring model to select prospects."
+  role: "Business analyst and UX/UI designer"
+  timeline: "July – December 2020"
+  note: "The client name is anonymized for confidentiality."
+  didLabel: "What I did"
+  did:
+    - "Business analysis"
+    - "UX/UI design"
+    - "UX content strategy"
+    - "Prototype"
+  results: "Presented to executives of local financial firms, who signed contracts to start development in 2021."
+  sections:
+    - kicker: "People"
+      title: "Small towns, close relationships, customers drifting to apps."
+      text: "Financial institutions in small towns know their customers by name, but were losing them to mobile apps and the pandemic. Two personas guided the work: Santiago, the institution’s account executive, and Carlos, a customer in his late forties."
+    - kicker: "The app"
+      title: "Benefits first, paperwork later."
+      items:
+        - "Benefits are visible before signing up"
+        - "Sign-up asks only for the bare minimum"
+        - "Three verification levels; each step up unlocks more and asks for more documents"
+        - "Loans and checks from one landing page"
+    - kicker: "Made for each firm"
+      title: "One product, many brands and offers."
+      items:
+        - "Each firm sets its offer from the admin: interest rate, due date, amount and more"
+        - "Branding: two colors, the logo, rounded or square components and a background image"
+        - "A score per user that combines business rules, public data such as the Central Bank and a proprietary algorithm, to read financial status and help prevent fraud"
+
+es:
+  sector: "Fintech · Préstamos"
+  years: "2020"
+  summary: "Una app de préstamos de marca blanca para que las financieras de ciudades chicas pasen al celular, con un modelo de scoring para elegir prospectos."
+  role: "Analista de negocio y diseñador UX/UI"
+  timeline: "Julio – diciembre de 2020"
+  note: "El nombre del cliente está anonimizado por confidencialidad."
+  didLabel: "Qué hice"
+  did:
+    - "Análisis de negocio"
+    - "Diseño UX/UI"
+    - "Estrategia de contenido UX"
+    - "Prototipo"
+  results: "Se presentó a ejecutivos de financieras locales, que firmaron contratos para empezar el desarrollo en 2021."
+  sections:
+    - kicker: "Personas"
+      title: "Ciudades chicas, relaciones cercanas, clientes que se van a las apps."
+      text: "Las financieras de ciudades chicas conocen a sus clientes por el nombre, pero los estaban perdiendo frente a las apps y la pandemia. Dos personas guiaron el trabajo: Santiago, ejecutivo de cuentas de la financiera, y Carlos, un cliente cerca de los 50."
+    - kicker: "La app"
+      title: "Primero los beneficios, después los trámites."
+      items:
+        - "Los beneficios se ven antes de registrarse"
+        - "El registro pide solo lo mínimo"
+        - "Tres niveles de verificación; cada nivel habilita más y pide más documentos"
+        - "Préstamos y cheques desde una sola pantalla de inicio"
+    - kicker: "Hecha para cada financiera"
+      title: "Un producto, muchas marcas y ofertas."
+      items:
+        - "Cada firma define su oferta desde el admin: tasa, vencimiento, monto y más"
+        - "Marca: dos colores, el logo, componentes redondeados o cuadrados y una imagen de fondo"
+        - "Un score por usuario que combina reglas de negocio, datos públicos como el Banco Central y un algoritmo propio, para leer la situación financiera y ayudar a prevenir fraudes"

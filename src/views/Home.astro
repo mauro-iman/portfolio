@@ -1,10 +1,15 @@
 ---
 import Base from '../layouts/Base.astro';
-import Shot from '../components/Shot.astro';
-import { site, cases, dict, translator, url } from '../lib/content.js';
+import CoverMat from '../components/CoverMat.astro';
+import { site, cases, building, more, dict, translator, url } from '../lib/content.js';
 
 const { lang } = Astro.props;
 const D = dict(), t = translator(D, lang);
+const minis = {
+  q: '<div class="q"><i></i><span></span><em></em></div>'.repeat(4),
+  notes: '<i></i>'.repeat(9),
+  sys: '<i></i><i></i><i></i><i></i><b></b><u></u><s></s>'
+};
 ---
 <Base lang={lang} D={D} titleKey="doc.home" home>
   <section class="hero" id="home" aria-labelledby="h1">
@@ -36,12 +41,7 @@ const D = dict(), t = translator(D, lang);
         {cases.map((c, i) => (
           <article class={`case rv${i === 0 ? ' feat' : ''}`}>
             <a class="case-link" href={url(lang, `work/${c.slug}/`)} data-l={`work/${c.slug}/`} data-case>
-              <div class="mat" data-notes={c.cover}>
-                <Shot kind={c.cover} />
-                <span class="label ph-tag" data-i="mat.ph">{t('mat.ph')}</span>
-                <span class="label xhint"><span class="tilde" aria-hidden="true"></span><span class="hm" data-i="x.hint">{t('x.hint')}</span><span class="ht" data-i="x.hintTouch">{t('x.hintTouch')}</span></span>
-                <canvas aria-hidden="true"></canvas>
-              </div>
+              <CoverMat c={c} t={t} feat={i === 0} />
               <div class="case-meta">
                 <span class="label case-k" data-i={`case.${c.slug}.k`}>{t(`case.${c.slug}.k`)}</span>
                 <h3 data-i={`case.${c.slug}.t`}>{c.title}</h3>
@@ -53,10 +53,51 @@ const D = dict(), t = translator(D, lang);
           </article>
         ))}
       </div>
-      <div class="grid">
-        <div class="main rv">
+    </div>
+  </section>
+
+  <section class="sec" id="building" aria-labelledby="bld-h">
+    <div class="wrap">
+      <div class="grid rv">
+        <div class="side"><span class="label" data-i="bld.label">{t('bld.label')}</span></div>
+        <div class="main">
+          <h2 id="bld-h" data-i="bld.h2">{t('bld.h2')}</h2>
+          <p class="sub" data-i="bld.sub">{t('bld.sub')}</p>
+        </div>
+      </div>
+      <div class="bld">
+        {building.map(p => (
+          <article class="case rv">
+            <a class="case-link" href={url(lang, `work/${p.slug}/`)} data-l={`work/${p.slug}/`}>
+              {p.coverImage ? <CoverMat c={p} t={t} /> : (
+                <div class="mat"><div class={`mini${p.mini && p.mini !== 'q' ? ' ' + p.mini : ''}`} aria-hidden="true" set:html={minis[p.mini] || minis.q}></div><span class="label ph-tag" data-i="mat.ph">{t('mat.ph')}</span></div>
+              )}
+              <div class="case-meta">
+                <span class="label case-k" data-i={`proj.${p.slug}.k`}>{t(`proj.${p.slug}.k`)}</span>
+                <h3 data-i={`proj.${p.slug}.t`}>{p.title}</h3>
+                <p data-i={`proj.${p.slug}.s`}>{t(`proj.${p.slug}.s`)}</p>
+                <span class="label bld-role" data-i={`proj.${p.slug}.r`}>{t(`proj.${p.slug}.r`)}</span>
+                <span class="read" data-i="bld.read">{t('bld.read')}</span>
+              </div>
+            </a>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="more" aria-labelledby="more-h">
+    <div class="wrap">
+      <div class="grid rv">
+        <div class="side"><span class="label" data-i="more.label">{t('more.label')}</span></div>
+        <div class="main">
+          <h2 class="more-h" id="more-h" data-i="more.h2">{t('more.h2')}</h2>
           <ul class="archive">
-            {site.archive.map((a, i) => <li><span class="arch-i"><b>{a.name}</b><span class="label" data-i={`arch.${i}`}>{t(`arch.${i}`)}</span></span></li>)}
+            {more.map(p => (
+              <li>{p.group === 'list'
+                ? <span class="arch-i"><b>{p.title}</b><span class="label" data-i={`proj.${p.slug}.k`}>{t(`proj.${p.slug}.k`)}</span></span>
+                : <a href={url(lang, `work/${p.slug}/`)} data-l={`work/${p.slug}/`}><b>{p.title}</b><span class="label" data-i={`proj.${p.slug}.k`}>{t(`proj.${p.slug}.k`)}</span></a>}</li>
+            ))}
           </ul>
         </div>
       </div>

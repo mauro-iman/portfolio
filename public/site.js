@@ -147,6 +147,8 @@
     document.querySelectorAll('[data-i]').forEach(el => { const txt = t(el.dataset.i); if (anim && txt.length > 1 && inView(el)) items.push({ el, txt, y: el.getBoundingClientRect().top }); else el.textContent = txt; });
     document.querySelectorAll('[data-ih]').forEach(el => { el.innerHTML = t(el.dataset.ih); if (anim && inView(el)) { el.classList.remove('strm-f'); void el.offsetWidth; el.classList.add('strm-f'); } });
     stream(items);
+    document.querySelectorAll('[data-ia]').forEach(el => { el.alt = t(el.dataset.ia); });
+    document.querySelectorAll('[data-il]').forEach(el => { el.setAttribute('aria-label', (el.dataset.ilPre ? t(el.dataset.ilPre) + ': ' : '') + t(el.dataset.il)); });
     const other = l === 'en' ? 'es' : 'en';
     const lt = document.getElementById('langTop'); lt.textContent = other.toUpperCase(); lt.lang = other; lt.setAttribute('aria-label', other === 'es' ? 'Español' : 'English');
     const lf = document.getElementById('langFoot'); lf.textContent = other === 'es' ? 'Español' : 'English'; lf.lang = other;
@@ -306,7 +308,8 @@
   const hlo = document.getElementById('hlo'), steps = document.getElementById('hloSteps');
   function buildSteps() {
     const S = [[t('hl.who'), t('hero.h1'), t('hero.lead'), '→ ' + t('hero.avail')]]
-      .concat(MI.cases.map(c => [`${c.title} · ${t(`case.${c.slug}.k`)}`, t(`case.${c.slug}.s`), '', '→ ' + t(`case.${c.slug}.hl`)]));
+      .concat(MI.cases.map(c => [`${c.title} · ${t(`case.${c.slug}.k`)}`, t(`case.${c.slug}.s`), '', '→ ' + t(`case.${c.slug}.hl`)]))
+      .concat([[t('bld.label'), t('bld.h2'), t('bld.sub'), '→ ' + (MI.building || []).join(' · ')]]);
     steps.innerHTML = S.map(([k, h, p, ph], i) => `<div class="hlo-step${i ? '' : ' on'}"><span class="label">${k}</span><h2${i ? '' : ' id="hlo-t"'}>${h}</h2>${p ? `<p>${p}</p>` : ''}<span class="ph">${ph}</span></div>`).join('')
       + `<div class="hlo-step"><span class="label">${t('hl.next')}</span><h2>${t('cta.h')}</h2><div class="cta-row"><a class="btn-p" href="#contact" data-close>${t('cta.btn')}</a><a class="btn-s" href="#work" data-close>${t('work.all')}</a></div></div>`;
     steps.querySelectorAll('[data-close]').forEach(a => a.addEventListener('click', closeHl));

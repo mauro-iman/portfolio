@@ -16,6 +16,13 @@ export default defineConfig({
     '/portfolio/': '/#work',
     '/portfolio/compass/': '/work/compass/',
     '/portfolio/silstech-ypf/': '/work/silstech-ypf/',
-    '/portfolio/statlink/': '/work/statlink/'
+    '/portfolio/statlink/': '/work/statlink/',
+    '/portfolio/fintek/': '/work/fintek/',
+    '/portfolio/fintek-services/': '/work/fintek/',
+    '/portfolio/mi-porhtal-holcim/': '/work/holcim-mi-porhtal/',
+    '/portfolio/healthcare-inc/': '/work/healthcare-inc/',
+    '/portfolio/viaje-perfecto/': '/work/viaje-perfecto/',
+    '/portfolio/rf-solutions-ltd/': '/work/rf-solutions/',
+    '/portfolio/3xm-group/': '/work/3xm-group/'
   } : {}
 });

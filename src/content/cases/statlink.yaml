@@ -5,6 +5,40 @@ cover: statlink
 system: false
 homeMetric: "7"
 
+# Images live in src/assets/cases/<slug>/. coverImage replaces the drawn cover; workImages go with
+# the workstreams in order (null keeps the drawing); screens and phones fill the gallery, captions in EN/ES.
+coverImage: statlink.jpg
+workImages: [null, c11.png, ds-6.jpeg]
+screens:
+  - { file: ds-1.jpeg, en: "Design system cover", es: "Portada del design system" }
+  - { file: ds-2.jpeg, en: "Design system overview", es: "Vista general del design system" }
+  - { file: ds-3.jpeg, en: "Atoms · colors", es: "Átomos · colores" }
+  - { file: ds-4.jpeg, en: "Atoms · typography", es: "Átomos · tipografía" }
+  - { file: ds-5.jpeg, en: "Atoms · icons", es: "Átomos · íconos" }
+  - { file: ds-6.jpeg, en: "Atoms · UI components", es: "Átomos · componentes de UI" }
+  - { file: ds-7.jpeg, en: "Molecules · modal dialogs", es: "Moléculas · diálogos modales" }
+  - { file: ds-8.jpeg, en: "Organisms · cards", es: "Organismos · tarjetas" }
+  - { file: ds-9.jpeg, en: "Organisms · evaluation cards", es: "Organismos · tarjetas de evaluación" }
+  - { file: ds-10.jpeg, en: "Home badges", es: "Badges de inicio" }
+phones:
+  - { file: a1.png, en: "Home", es: "Inicio" }
+  - { file: a2.png, en: "Forgot password", es: "Recuperar contraseña" }
+  - { file: a3.png, en: "Register", es: "Registro" }
+  - { file: b11.png, en: "Empty home screen", es: "Inicio vacío" }
+  - { file: c11.png, en: "Team profile · stats", es: "Perfil de equipo · estadísticas" }
+  - { file: c21.png, en: "Team profile · roster", es: "Perfil de equipo · plantel" }
+  - { file: c31.png, en: "Team profile · roster for managers", es: "Perfil de equipo · plantel para managers" }
+  - { file: c41.png, en: "Team profile · subscription plan", es: "Perfil de equipo · plan de suscripción" }
+  - { file: c51.png, en: "Team profile · info", es: "Perfil de equipo · información" }
+  - { file: d11.png, en: "Player profile · stats", es: "Perfil de jugador · estadísticas" }
+  - { file: d21.png, en: "Player profile · about", es: "Perfil de jugador · sobre mí" }
+  - { file: d31.png, en: "Player profile · team", es: "Perfil de jugador · equipo" }
+  - { file: d41.png, en: "Player profile · subscription plan", es: "Perfil de jugador · plan de suscripción" }
+  - { file: d51.png, en: "Player profile · account", es: "Perfil de jugador · cuenta" }
+  - { file: e11.png, en: "Evaluation cards", es: "Tarjetas de evaluación" }
+  - { file: e21.png, en: "Analysis", es: "Análisis" }
+  - { file: e3.jpeg, en: "My account", es: "Mi cuenta" }
+
 en:
   sector: Sports tech
   years: 2020–2023
@@ -52,7 +86,7 @@ en:
       - mini: sys
         title: Dark atomic design system
         text: A dark UI kit built from scratch — icon font, color palette and components — plus agile ceremonies introduced to the team.
-        screen: "[image: UI kit components]"
+        screen: "[image: design system components]"
   reflection: "[What this project taught me, in one or two sentences.]"
   next: "[one line]"
 
@@ -103,6 +137,6 @@ es:
       - mini: sys
         title: Design system atómico oscuro
         text: Un UI kit oscuro construido desde cero — fuente de íconos, paleta de color y componentes — y ceremonias ágiles incorporadas al equipo.
-        screen: "[imagen: componentes del UI kit]"
+        screen: "[imagen: componentes del design system]"
   reflection: "[Qué me enseñó este proyecto, en una o dos frases.]"
   next: "[una línea]"

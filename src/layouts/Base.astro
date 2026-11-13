@@ -1,7 +1,7 @@
 ---
 /* Shared page shell: head, header, footer, mobile tabs, 60 s overlay and the scripts.
    home: true on the home (nav links are in-page anchors); case pages link back to the home sections. */
-import { site, url, BASE, translator, cases } from '../lib/content.js';
+import { site, url, BASE, translator, cases, building } from '../lib/content.js';
 
 const { lang, D, path = '', titleKey, home = false, asm = false, pageScripts = [] } = Astro.props;
 const t = translator(D, lang);
@@ -10,7 +10,7 @@ const sec = h => home ? h : url(lang, h);           /* nav target for a home sec
 const secL = h => home ? undefined : h;              /* language-neutral path for site.js to rewrite on switch */
 const canonical = new URL(url(lang, path), Astro.site).href;
 const alt = new URL(url(other, path), Astro.site).href;
-const cfg = { lang, base: BASE, path, D, email: site.email, cases: cases.map(c => ({ slug: c.slug, title: c.title, sector: c[lang].sector })) };
+const cfg = { lang, base: BASE, path, D, email: site.email, cases: cases.map(c => ({ slug: c.slug, title: c.title })), building: building.map(p => p.title) };
 const json = JSON.stringify(cfg).replace(/</g, '\\u003c');
 ---
 <!doctype html>
