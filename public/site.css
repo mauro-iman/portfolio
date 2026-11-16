@@ -254,6 +254,7 @@ h3 { margin: 0; }
 .hlo-step h2 { font-size: clamp(2rem, 5vw, 4rem); max-width: 18ch; }
 .hlo-step p { margin: 0; color: var(--ink-2); font-size: var(--s-2); max-width: 50ch; }
 .hlo-step .ph { font-family: var(--f-mono); font-size: .85rem; color: var(--accent); }
+.hlo-me { display: block; width: clamp(104px, 12vw, 148px); height: auto; aspect-ratio: 4 / 5; object-fit: cover; border: 1px solid var(--line); border-radius: 6px; background: var(--panel); margin-bottom: 6px; }
 .hlo-step > * { transition: opacity .6s, transform .8s var(--out); }
 .hlo-step:not(.on) > * { opacity: .15; transform: translateY(14px); }
 
