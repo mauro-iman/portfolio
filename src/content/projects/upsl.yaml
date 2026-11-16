@@ -5,17 +5,20 @@ group: work
 
 en:
   sector: "Sports · League operations"
-  years: "[years]"
+  years: "2024–2025"
   summary: "Maintenance and evolution for UPSL, a North American pro-development soccer league, leading a small team and the client relationship."
   role: "Product lead of the account · Independent consulting"
-  timeline: "[years]"
+  timeline: "July 2024 – April 2025"
   didLabel: "What I did"
   did:
     - "Led a small product team"
     - "Point of contact with the client"
     - "Contracts and estimates"
     - "Project initiatives and roadmap"
-  results: "[What the maintenance work achieved, in one line.]"
+  results: "Fixes and maintenance went from weeks or months to hours or days."
+  resultItems:
+    - "Proposals to improve the whole system and the website, plus a new app, Match Day"
+    - "The work ended when UPSL was acquired by another operator that brought its own technology team"
   sections:
     - kicker: "Context"
       title: "A fast-growing league, run on paper and text messages."
@@ -31,17 +34,20 @@ en:
 
 es:
   sector: "Deportes · Operación de una liga"
-  years: "[años]"
+  years: "2024–2025"
   summary: "Mantenimiento y evolución para UPSL, una liga de fútbol de desarrollo profesional de Norteamérica, a cargo de un equipo chico y de la relación con el cliente."
   role: "Product lead de la cuenta · Consultoría independiente"
-  timeline: "[años]"
+  timeline: "Julio de 2024 – abril de 2025"
   didLabel: "Qué hice"
   did:
     - "Lideré un equipo de producto chico"
     - "Punto de contacto con el cliente"
     - "Contratos y presupuestos"
     - "Iniciativas y roadmap del proyecto"
-  results: "[Qué logró el trabajo de mantenimiento, en una línea.]"
+  results: "Las correcciones y el mantenimiento pasaron de semanas o meses a horas o días."
+  resultItems:
+    - "Propuestas para mejorar todo el sistema y el sitio web, más una app nueva, Match Day"
+    - "El trabajo terminó cuando UPSL fue adquirida por otro operador que llegó con su propio equipo de tecnología"
   sections:
     - kicker: "Contexto"
       title: "Una liga que crece rápido, sostenida con papel y mensajes de texto."

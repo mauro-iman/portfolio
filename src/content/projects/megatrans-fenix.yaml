@@ -5,10 +5,10 @@ group: work
 
 en:
   sector: "Logistics · Product discovery"
-  years: "[year]"
+  years: "2021–2022"
   summary: "Discovery workshops across Megatrans to reset Fenix, its fleet management product: the real problems, one shared direction, first wireframes and an MVP roadmap."
   role: "Product discovery lead"
-  timeline: "[year]"
+  timeline: "October 2021 – January 2022 · workshops, diagnosis and insights presentation"
   didLabel: "What I did"
   did:
     - "Discovery workshops with five areas"
@@ -16,7 +16,7 @@ en:
     - "Objective alignment"
     - "Initial wireframes"
     - "MVP roadmap"
-  results: "[What happened after the discovery, in one line.]"
+  results: "A clear, hard-hitting diagnosis of the bottlenecks in the current architecture, and a new structure so the product can grow and scale."
   sections:
     - kicker: "Workshops"
       title: "Five areas, 124 points on the table."
@@ -40,10 +40,10 @@ en:
 
 es:
   sector: "Logística · Product discovery"
-  years: "[año]"
+  years: "2021–2022"
   summary: "Workshops de discovery en todo Megatrans para replantear Fenix, su producto de gestión de flotas: los problemas reales, una dirección compartida, los primeros wireframes y la hoja de ruta del MVP."
   role: "Líder de product discovery"
-  timeline: "[año]"
+  timeline: "Octubre de 2021 – enero de 2022 · workshops, diagnóstico y presentación de insights"
   didLabel: "Qué hice"
   did:
     - "Workshops de discovery con cinco áreas"
@@ -51,7 +51,7 @@ es:
     - "Alineación de objetivos"
     - "Wireframes iniciales"
     - "Hoja de ruta del MVP"
-  results: "[Qué pasó después del discovery, en una línea.]"
+  results: "Un diagnóstico claro y contundente de los cuellos de botella de la arquitectura actual, con un nuevo esquema para que el producto crezca y escale."
   sections:
     - kicker: "Workshops"
       title: "Cinco áreas, 124 puntos sobre la mesa."
