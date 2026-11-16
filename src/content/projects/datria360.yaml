@@ -38,6 +38,13 @@ en:
     - "Sales and commercial pitch"
     - "Content for social media"
   results: "Designed and built from zero this year, now in production with its first clinics."
+  resultItems:
+    - "99.6% of closed appointments were attended"
+    - "1,000+ appointments since launch"
+    - "ARS 70M+ billed by clinics on the platform"
+    - "450+ patients"
+    - "28% of patients came back"
+    - "12%+ of bookings came in outside business hours"
   sections:
     - kicker: "The problem"
       title: "A full calendar is the whole business."
@@ -97,6 +104,13 @@ es:
     - "Venta y pitch comercial"
     - "Contenido para redes"
   results: "Diseñado y construido desde cero este año; hoy en producción con sus primeros centros."
+  resultItems:
+    - "El 99,6% de los turnos cerrados se cumplieron"
+    - "Más de 1.000 turnos desde el lanzamiento"
+    - "Más de ARS 70M facturados por los centros en la plataforma"
+    - "Más de 450 pacientes"
+    - "El 28% de los pacientes volvió"
+    - "Más del 12% de las reservas llegaron fuera del horario de atención"
   sections:
     - kicker: "El problema"
       title: "Una agenda llena es todo el negocio."

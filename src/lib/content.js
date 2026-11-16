@@ -81,6 +81,7 @@ const projectKeys = (p, l) => {
     'p.didL': d.didLabel || s['c.did'], 'p.res': d.results || ''
   };
   (d.did || []).forEach((x, i) => { o[`p.did${i}`] = x; });
+  (d.resultItems || []).forEach((x, i) => { o[`p.res.i${i}`] = x; });
   (d.sections || []).forEach((sec, i) => {
     o[`p.s${i}.h`] = sec.title; if (sec.text) o[`p.s${i}.p`] = sec.text; if (sec.kicker) o[`p.s${i}.k`] = sec.kicker;
     (sec.items || []).forEach((it, j) => { o[`p.s${i}.i${j}`] = it; });
