@@ -23,7 +23,7 @@ export const projects = fs.readdirSync(path.join(dir, 'projects'))
   .map(f => ({ slug: f.replace(/\.yaml$/, ''), ...read(path.join('projects', f)) }))
   .sort((a, b) => a.order - b.order);
 export const building = projects.filter(p => p.group === 'building');
-export const more = projects.filter(p => p.group !== 'building');
+export const more = projects.filter(p => p.group === 'work');
 export const paged = projects.filter(p => p.group !== 'list');
 export const nextProject = p => { const g = projects.filter(x => x.group === p.group && x.group !== 'list'); return g[(g.indexOf(p) + 1) % g.length]; };
 
@@ -40,7 +40,8 @@ const cardKeys = (c, l) => {
     [`case.${c.slug}.t`]: c.title,
     [`case.${c.slug}.s`]: d.summary,
     [`case.${c.slug}.m`]: d.homeMetricLabel,
-    [`case.${c.slug}.hl`]: d.highlight
+    [`case.${c.slug}.hl`]: d.highlight,
+    [`case.${c.slug}.r`]: d.role
   };
 };
 
@@ -70,7 +71,7 @@ const caseKeys = (c, l) => {
 /* Keys for a project card (home lists, next link) and for a project page. */
 const projectCardKeys = (p, l) => {
   const d = p[l];
-  return { [`proj.${p.slug}.k`]: [d.sector, d.years].filter(Boolean).join(' · '), [`proj.${p.slug}.t`]: p.title, [`proj.${p.slug}.s`]: d.summary || '', [`proj.${p.slug}.r`]: d.role || '' };
+  return { [`proj.${p.slug}.k`]: [d.sector, d.years].filter(Boolean).join(' · '), [`proj.${p.slug}.t`]: p.title, [`proj.${p.slug}.s`]: d.summary || '', [`proj.${p.slug}.r`]: d.role || '', [`proj.${p.slug}.ca`]: d.coverAlt || p.title, [`proj.${p.slug}.va`]: d.videoAlt || p.title };
 };
 const projectKeys = (p, l) => {
   const d = p[l], s = site[l], o = {
@@ -88,6 +89,8 @@ const projectKeys = (p, l) => {
   (p.phones || []).forEach((g, i) => { o[`c.p${i}`] = g[l]; });
   (p.videos || []).forEach((v, i) => { o[`c.v${i}`] = v[l]; });
   if (d.galleryTitle) o['c.gal.h'] = d.galleryTitle;
+  if (d.videoLabel) o['c.vid'] = d.videoLabel;
+  if (d.videoTitle) o['c.vid.h'] = d.videoTitle;
   if (p.coverImage) o['c.cover'] = d.coverAlt || p.title;
   return o;
 };

@@ -1,0 +1,10 @@
+---
+/* Subtle WhatsApp + CRM hint over the Estética Link cover, so the art connects to the product.
+   Decorative (the cover alt text describes it); copy lives in site.yaml (chat.*). */
+const { t } = Astro.props;
+---
+<div class="chat-hint" aria-hidden="true">
+  <p class="ch-b ch-in" data-i="chat.in">{t('chat.in')}</p>
+  <p class="ch-b ch-out"><span class="ch-who" data-i="chat.ai">{t('chat.ai')}</span><span data-i="chat.out">{t('chat.out')}</span></p>
+  <p class="ch-crm"><span class="ch-dot"></span><span data-i="chat.crm">{t('chat.crm')}</span></p>
+</div>

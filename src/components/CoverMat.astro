@@ -10,7 +10,8 @@ const src = img(c.slug, c.coverImage);
 ---
 {src ? (
   <div class={`${cls} has-img`}>
-    <Image class="cover-img" src={src} alt={altKey ? t(altKey) : ''} data-ia={altKey} widths={[640, 960, 1440, 1800].filter(w => w <= src.width)} sizes={feat ? '(max-width: 760px) 100vw, 1200px' : '(max-width: 760px) 100vw, 600px'} format="webp" loading={eager ? 'eager' : 'lazy'} decoding="async" />
+    <Image class="cover-img" style={c.coverPos ? `object-position: ${c.coverPos}` : undefined} src={src} alt={altKey ? t(altKey) : ''} data-ia={altKey} widths={[640, 960, 1440, 1800].filter(w => w <= src.width)} sizes={feat ? '(max-width: 760px) 100vw, 1200px' : '(max-width: 760px) 100vw, 600px'} format="webp" loading={eager ? 'eager' : 'lazy'} decoding="async" />
+    <slot />
   </div>
 ) : (
   <div class={cls} data-notes={c.cover}>

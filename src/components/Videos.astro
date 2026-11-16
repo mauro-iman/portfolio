@@ -1,9 +1,13 @@
 ---
-/* Prototype videos for a project page. Files live in public/videos/ (served as-is, not processed).
-   No autoplay: the visitor starts each one (WCAG 2.2.2). preload="metadata" shows the first frame. */
+/* Project videos. Files live in public/videos/ (served as-is, not processed).
+   One video on the page: an inline player. Two or more: a carousel of thumbnails (a frame at `thumb`
+   seconds, default 2) and each one opens full screen in the lightbox with controls (public/gallery.js).
+   No autoplay on the page (WCAG 2.2.2); in the lightbox it plays because the visitor asked for it. */
 import { BASE } from '../lib/content.js';
 
 const { c, t } = Astro.props;
+const many = c.videos.length > 1;
+const src = v => `${BASE}videos/${v.file}`;
 ---
 <section class="sec" id="video" aria-labelledby="vid-h">
   <div class="wrap">
@@ -11,15 +15,30 @@ const { c, t } = Astro.props;
       <div class="side"><span class="label" data-i="c.vid">{t('c.vid')}</span></div>
       <div class="main">
         <h2 class="c-h2" id="vid-h" data-i="c.vid.h">{t('c.vid.h')}</h2>
-        <div class={`vids${c.videos.length > 1 ? ' n2' : ''}`}>
-          {c.videos.map((v, i) => (
-            <figure class={`vid${v.phone ? ' vid-ph' : ''}`}>
-              <video controls playsinline preload="metadata" src={`${BASE}videos/${v.file}`} aria-labelledby={`vcap${i}`}></video>
-              <figcaption id={`vcap${i}`} class="gal-cap" data-i={`c.v${i}`}>{t(`c.v${i}`)}</figcaption>
-            </figure>
-          ))}
-        </div>
+        {many ? <p class="c-next-p" data-i="c.vid.hint">{t('c.vid.hint')}</p> : (
+          <figure class={`vid${c.videos[0].phone ? ' vid-ph' : ''}`}>
+            <video controls playsinline preload="metadata" src={src(c.videos[0])} aria-labelledby="vcap0"></video>
+            <figcaption id="vcap0" class="gal-cap" data-i="c.v0">{t('c.v0')}</figcaption>
+          </figure>
+        )}
       </div>
     </div>
   </div>
+  {many && (
+    <div class="gal gal-vid">
+      <ul class="gal-strip" role="list">
+        {c.videos.map((v, i) => (
+          <li>
+            <button type="button" class="gal-it" data-video={src(v)} data-ph={v.phone ? '1' : undefined} data-cap={`c.v${i}`} data-il={`c.v${i}`} data-il-pre="c.lb.play" aria-label={`${t('c.lb.play')}: ${t(`c.v${i}`)}`}>
+              <span class={`gal-mat${v.phone ? ' fit-c' : ''}`}>
+                <video muted playsinline preload="metadata" src={`${src(v)}#t=${v.thumb ?? 2}`} tabindex="-1" aria-hidden="true"></video>
+                <span class="vid-play" aria-hidden="true"></span>
+              </span>
+              <span class="gal-cap" data-i={`c.v${i}`}>{t(`c.v${i}`)}</span>
+            </button>
+          </li>
+        ))}
+      </ul>
+    </div>
+  )}
 </section>

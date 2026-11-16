@@ -15,6 +15,11 @@ const group = async (list, key, phone) => Promise.all((list || []).map(async (g,
 const screens = await group(c.screens, 'c.g', false);
 const phones = await group(c.phones, 'c.p', true);
 const rows = [[screens, 'c.gal.desk', false], [phones, 'c.gal.phone', true]].filter(r => r[0].length);
+// Desktop strip: the thumbnail frame takes the strip's most common (median) aspect ratio, so screenshots
+// are not cropped; any image whose ratio differs is shown whole inside that frame.
+const ratios = screens.map(g => g.src.width / g.src.height).sort((a, b) => a - b);
+const stripAR = ratios.length ? Math.min(16 / 9, Math.max(4 / 3, ratios[Math.floor(ratios.length / 2)])) : 1.6;
+screens.forEach(g => { const r = g.src.width / g.src.height; g.whole = Math.abs(r - stripAR) / stripAR > 0.02; });
 ---
 <section class="sec" id="screens" aria-labelledby="gal-h">
   <div class="wrap">
@@ -27,13 +32,13 @@ const rows = [[screens, 'c.gal.desk', false], [phones, 'c.gal.phone', true]].fil
     </div>
   </div>
   {rows.map(([items, label, phone]) => (
-    <div class={`gal${phone ? ' gal-ph' : ''}`}>
+    <div class={`gal${phone ? ' gal-ph' : ''}`} style={phone ? undefined : `--gal-ar: ${stripAR.toFixed(4)}`}>
       {rows.length > 1 && <div class="wrap"><h3 class="label gal-l" data-i={label}>{t(label)}</h3></div>}
       <ul class="gal-strip" role="list">
         {items.map(g => (
           <li>
             <button type="button" class="gal-it" data-full={g.full} data-w={g.w} data-h={g.h} data-cap={g.k} data-il={g.k} data-il-pre="c.lb.open" aria-label={`${t('c.lb.open')}: ${t(g.k)}`}>
-              <span class={`gal-mat${!phone && g.fit === 'contain' ? ' fit-c' : ''}`}>
+              <span class={`gal-mat${!phone && g.whole ? ' fit-c' : ''}`}>
                 <Image src={g.src} alt="" widths={phone ? [220, 440] : [480, 960]} sizes={phone ? '220px' : '(max-width: 760px) 80vw, 480px'} format="webp" loading="lazy" decoding="async" />
               </span>
               <span class="gal-cap" data-i={g.k}>{t(g.k)}</span>
@@ -44,16 +49,3 @@ const rows = [[screens, 'c.gal.desk', false], [phones, 'c.gal.phone', true]].fil
     </div>
   ))}
 </section>
-
-<dialog class="lb" id="lb" aria-labelledby="lbCap">
-  <div class="lb-bar">
-    <span class="label lb-n" id="lbN" aria-hidden="true"></span>
-    <button type="button" class="btn-sm" id="lbClose" data-i="c.lb.close">{t('c.lb.close')}</button>
-  </div>
-  <figure class="lb-fig">
-    <img id="lbImg" alt="" />
-    <figcaption id="lbCap"></figcaption>
-  </figure>
-  <button type="button" class="lb-nav lb-prev" id="lbPrev" data-il="c.lb.prev" aria-label={t('c.lb.prev')}><span aria-hidden="true">←</span></button>
-  <button type="button" class="lb-nav lb-next" id="lbNext" data-il="c.lb.next" aria-label={t('c.lb.next')}><span aria-hidden="true">→</span></button>
-</dialog>
