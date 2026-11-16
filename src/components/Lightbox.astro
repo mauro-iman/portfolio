@@ -1,0 +1,18 @@
+---
+/* Shared lightbox (public/gallery.js): screens open as a large image, videos in the carousel open as a
+   player with controls. Rendered once per page, by the page view, when it has a gallery or a video carousel. */
+const { t } = Astro.props;
+---
+<dialog class="lb" id="lb" aria-labelledby="lbCap">
+  <div class="lb-bar">
+    <span class="label lb-n" id="lbN" aria-hidden="true"></span>
+    <button type="button" class="btn-sm" id="lbClose" data-i="c.lb.close">{t('c.lb.close')}</button>
+  </div>
+  <figure class="lb-fig">
+    <img id="lbImg" alt="" />
+    <video id="lbVid" controls playsinline preload="none" hidden aria-labelledby="lbCap"></video>
+    <figcaption id="lbCap"></figcaption>
+  </figure>
+  <button type="button" class="lb-nav lb-prev" id="lbPrev" data-il="c.lb.prev" aria-label={t('c.lb.prev')}><span aria-hidden="true">←</span></button>
+  <button type="button" class="lb-nav lb-next" id="lbNext" data-il="c.lb.next" aria-label={t('c.lb.next')}><span aria-hidden="true">→</span></button>
+</dialog>

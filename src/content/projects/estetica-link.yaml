@@ -2,9 +2,35 @@
 title: Estética Link
 order: 2
 group: building
+url: https://esteticalink.com/
+coverImage: cover.webp
+coverPos: "72% 30%"
+coverOverlay: chat
 mini: sys
+videos:
+  - { file: estetica-link-intro.webm, en: "The hero intro of the new site", es: "La intro del hero del sitio nuevo" }
+  - { file: estetica-link-credential.webm, en: "Animated attendee credential, made with Three.js to share on social media", es: "Credencial animada para asistentes, hecha con Three.js para compartir en redes", phone: true }
+  - { file: add-to-cart-elink.mp4, en: "Choosing trainings and the add-to-cart animation", es: "Elegir capacitaciones y la animación de agregar al carrito" }
+screens:
+  - { file: 00-home.webp, en: "Home · the congress hero, venue and call to choose a pass", es: "Inicio · el hero del congreso, la sede y el llamado a elegir un pase" }
+  - { file: 01-passes.webp, en: "The two passes, Full Experience and MED + Full Experience", es: "Los dos pases, Full Experience y MED + Full Experience" }
+  - { file: 02-speakers.webp, en: "Speakers, filtered by event", es: "Disertantes, filtrados por evento" }
+  - { file: 03-expo.webp, en: "The trade expo and confirmed brands", es: "La expo comercial y las marcas confirmadas" }
+  - { file: 04-account-tickets.webp, en: "Attendee account · tickets, credential and QR codes", es: "Cuenta del asistente · entradas, credencial y códigos QR" }
+  - { file: 05-account-benefits.webp, en: "Attendee account · sponsor benefits redeemed by QR", es: "Cuenta del asistente · beneficios de sponsors que se canjean con QR" }
+phones:
+  - { file: m00-home.webp, en: "Home · the congress hero", es: "Inicio · el hero del congreso" }
+  - { file: m01-passes.webp, en: "Choose your pass", es: "Elegí tu pase" }
+  - { file: m02-speakers.webp, en: "Speakers, filtered by event", es: "Disertantes, filtrados por evento" }
+  - { file: m03-expo.webp, en: "The trade expo and confirmed brands", es: "La expo comercial y las marcas confirmadas" }
+  - { file: m04-account-tickets.png, en: "Attendee account · tickets and QR codes", es: "Cuenta del asistente · entradas y códigos QR" }
+  - { file: m05-account-benefits.png, en: "Attendee account · sponsor benefits", es: "Cuenta del asistente · beneficios de sponsors" }
+  - { file: 06-whatsapp.webp, en: "WhatsApp · ticket with QR code and a reminder of the pass benefits", es: "WhatsApp · entrada con código QR y aviso de los beneficios del pase" }
 
 en:
+  videoLabel: "Video"
+  videoTitle: "The site in motion."
+  coverAlt: "A woman’s face drawn as a glowing orange wireframe, with fragments drifting away, next to a WhatsApp chat with the AI agent"
   sector: "Event platform"
   years: "2026"
   summary: "An event platform that replaced WordPress and WooCommerce: CRM, an AI agent on WhatsApp and a fully automated flow from ticket sale to reminders and the PDF certificate, plus QR check-in on the day."
@@ -33,6 +59,9 @@ en:
         - "A QR scanner for check-in on the day"
 
 es:
+  videoLabel: "Video"
+  videoTitle: "El sitio en movimiento."
+  coverAlt: "El rostro de una mujer dibujado como una malla naranja luminosa, con fragmentos que se desprenden, junto a un chat de WhatsApp con el agente IA"
   sector: "Plataforma de eventos"
   years: "2026"
   summary: "Una plataforma de eventos que reemplazó WordPress y WooCommerce: CRM, un agente con IA en WhatsApp y todo el flujo automatizado de la venta a los recordatorios y el certificado en PDF, más check-in con QR el día del evento."

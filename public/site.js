@@ -307,9 +307,11 @@
   /* ── 3 Highlights: ordered band + 60 s overlay ── */
   const hlo = document.getElementById('hlo'), steps = document.getElementById('hloSteps');
   function buildSteps() {
-    const S = [[t('hl.who'), t('hero.h1'), t('hero.lead'), '→ ' + t('hero.avail')]]
-      .concat(MI.cases.map(c => [`${c.title} · ${t(`case.${c.slug}.k`)}`, t(`case.${c.slug}.s`), '', '→ ' + t(`case.${c.slug}.hl`)]))
-      .concat([[t('bld.label'), t('bld.h2'), t('bld.sub'), '→ ' + (MI.building || []).join(' · ')]]);
+    const S = [[t('hl.who'), t('hero.h1'), t('hero.lead'), '→ ' + t('hl.who.ph')]]
+      .concat(MI.cases.map(c => [`${c.title} · ${t(`case.${c.slug}.k`)}`, t(`case.${c.slug}.s`), t(`case.${c.slug}.r`), '→ ' + t(`case.${c.slug}.hl`)]))
+      .concat([[t('hl.lead.k'), t('hl.lead.h'), t('hl.lead.p'), '→ ' + t('hl.lead.ph')]])
+      .concat([[t('bld.label'), t('bld.h2'), t('bld.sub'), '→ ' + (MI.building || []).join(' · ')]])
+      .concat([[t('hl.range.k'), t('hl.range.h'), t('hl.range.p'), '→ ' + t('hero.avail')]]);
     steps.innerHTML = S.map(([k, h, p, ph], i) => `<div class="hlo-step${i ? '' : ' on'}"><span class="label">${k}</span><h2${i ? '' : ' id="hlo-t"'}>${h}</h2>${p ? `<p>${p}</p>` : ''}<span class="ph">${ph}</span></div>`).join('')
       + `<div class="hlo-step"><span class="label">${t('hl.next')}</span><h2>${t('cta.h')}</h2><div class="cta-row"><a class="btn-p" href="#contact" data-close>${t('cta.btn')}</a><a class="btn-s" href="#work" data-close>${t('work.all')}</a></div></div>`;
     steps.querySelectorAll('[data-close]').forEach(a => a.addEventListener('click', closeHl));
@@ -354,7 +356,7 @@
     st.addEventListener('pointermove', e => { if (e.pointerType === 'mouse' || e.buttons) ptr = local(st, e); });
     st.addEventListener('pointerdown', e => { if (!e.target.closest('a, button')) ptr = local(st, e); });
     st.addEventListener('pointerleave', () => { ptr = null; });
-    btn.addEventListener('click', e => { e.preventDefault(); boost = 1; ptr = null; });
+    btn.addEventListener('click', () => { boost = 1; ptr = null; }); // the mailto link still opens; the fluid just reacts
     whenVisible(st, now => {
       const { ctx, W, H } = F; if (!W) return;
       const c = center(); let tgt = c;
@@ -554,6 +556,15 @@
     if (a.matches('[data-case], [data-hl-tab], .skip') || a.closest('.hlo')) return;
     const id = a.getAttribute('href').slice(1), target = id && document.getElementById(id); if (!target) return;
     e.preventDefault(); magnetTo(target, '#' + id, a);
+  });
+
+  /* ── Cover videos (home): muted loop, with a pause button (WCAG 2.2.2). Reduced motion starts paused. ── */
+  document.querySelectorAll('[data-vid-tg]').forEach(btn => {
+    const v = btn.closest('.case').querySelector('video'), lab = btn.querySelector('[data-i]');
+    const sync = () => { const p = v.paused; btn.classList.toggle('is-paused', p); lab.dataset.i = p ? 'vid.play' : 'vid.pause'; lab.textContent = t(lab.dataset.i); };
+    if (reduce) { v.removeAttribute('autoplay'); v.pause(); }
+    btn.addEventListener('click', () => { v.paused ? v.play() : v.pause(); });
+    v.addEventListener('play', sync); v.addEventListener('pause', sync); sync();
   });
 
   applyLang(MI.lang, false); spy();

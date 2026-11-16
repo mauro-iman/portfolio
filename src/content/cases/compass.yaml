@@ -73,8 +73,8 @@ en:
         title: Multi-brand design system
         text: Figma variables and tokens as a single source of truth, so a new brand re-skins the product instead of rebuilding it. Brand integrations became twice as fast.
         screen: "[image: system components]"
-  reflection: "[What this project taught me, in one or two sentences.]"
-  next: "[one line]"
+  reflection: "Redesigning one specific workflow, like ICA contract renewals, can have a big impact on company costs. And a scalable brand system made onboarding new brands possible under a single design system."
+  next: "Measure design system adoption by brand and team, so its value shows up in numbers, not only in faster integrations."
   demo:
     c.try: Try it
     c.try.h: One system, any brand.
@@ -146,8 +146,8 @@ es:
         title: Design system multimarca
         text: Variables y tokens en Figma como única fuente de verdad, para que una marca nueva cambie la piel del producto en lugar de reconstruirlo. Las integraciones de marca pasaron a ser el doble de rápidas.
         screen: "[imagen: componentes del sistema]"
-  reflection: "[Qué me enseñó este proyecto, en una o dos frases.]"
-  next: "[una línea]"
+  reflection: "Rediseñar un workflow puntual, como la renovación de contratos ICA, puede tener un gran impacto en los costos de la empresa. Y un sistema de marca escalable resolvió la incorporación de nuevas marcas bajo un mismo design system."
+  next: "medir la adopción del design system por marca y por equipo, para que su valor se vea en números y no solo en integraciones más rápidas."
   demo:
     c.try: Probalo
     c.try.h: Un sistema, cualquier marca.

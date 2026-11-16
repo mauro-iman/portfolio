@@ -28,6 +28,8 @@ en:
   c.lb.next: Next
   c.lb.open: Enlarge
   c.lb.of: of
+  c.lb.play: Play
+  c.vid.hint: Select a video to watch it full screen.
   skip: Skip to content
   nav.work: Work
   nav.highlights: Highlights
@@ -40,8 +42,8 @@ en:
   hero.lead: Product designer who builds. I turn complex operations into products people trust, from 0→1 platforms to design systems at scale.
   hero.cta1: See selected work
   hero.cta2: Short on time? 60 s
-  hero.loc: Buenos Aires · Working worldwide
-  hero.avail: Open to full-time senior product roles
+  hero.loc: Córdoba, Argentina · Working worldwide
+  hero.avail: Open to senior, staff and founding product design roles
   work.label: Selected work
   work.h2: Three products, three different kinds of hard.
   case.read: Read the case
@@ -51,6 +53,14 @@ en:
   hl.h: Recruiter, founder or just busy?
   hl.btn: Show me Mauro’s highlights
   hl.who: Who
+  hl.who.ph: "20+ years · Córdoba, Argentina · Working worldwide"
+  hl.lead.k: How I lead
+  hl.lead.h: Small teams, real ownership.
+  hl.lead.p: "I led the UPSL account and its small product team, from contracts and budgets to delivery. At StatLink I hired the backend developer and set up the team’s agile rituals. At RF Solutions I mentored the team and the client in UI/UX."
+  hl.lead.ph: "Team lead · Hiring · Client relationship · Mentoring"
+  hl.range.k: Range
+  hl.range.h: Twenty years, many industries.
+  hl.range.p: "PropTech, energy, logistics, fintech, healthcare, industry and sports, with teams like Compass, YPF, Holcim and UPSL. From enterprise teams to my own products."
   hl.next: Next
   hl.exit: Exit
   hl.left: s left
@@ -66,9 +76,15 @@ en:
   cap.3.t: Front-end build
   cap.3.p: Production UI and high-fidelity prototypes, so the product ships the way it was designed.
   teams.label: Teams I’ve designed with
-  portrait: "[portrait]"
+  portrait: "Mauro Imán explaining an idea during a work session"
+  vid.pause: Pause video
+  vid.play: Play video
+  chat.in: "Hi! Are there seats left for Saturday’s course?"
+  chat.out: "Yes, 3 left. Shall I save one for you? Here’s the payment link."
+  chat.ai: AI agent · WhatsApp
+  chat.crm: "CRM · Lead → Registered"
   about.h: Hi, I’m Mauro.
-  about.p: "A product designer based in Buenos Aires. [Years] years designing for PropTech, energy, fintech, healthcare and sports: inside enterprise teams, as an independent consultant leading client accounts, and this year building my own products end to end."
+  about.p: "A product designer based in Córdoba, Argentina. More than 20 years designing for PropTech, energy, fintech, healthcare and sports: inside enterprise teams, as an independent consultant leading client accounts, and this year building my own products end to end."
   about.more: More about me
   cta.h: Let’s build something people are drawn to.
   cta.btn: Start a conversation
@@ -77,8 +93,8 @@ en:
   cta.copiedMsg: Email copied to clipboard.
   cta.selMsg: Email selected. Press Ctrl+C or ⌘C to copy.
   foot.now: Now
-  foot.in: in Buenos Aires
-  foot.avail: Open to full-time senior product design roles.
+  foot.in: in Córdoba, Argentina
+  foot.avail: Open to senior, staff and founding product design roles.
   foot.site: Site
   foot.else: Elsewhere
   foot.colophon: Colophon
@@ -131,6 +147,8 @@ en:
   p.label: Project
   p.label.build: Product
   p.next: Next project
+  p.visit: Visit
+  p.newTab: " (opens in a new tab)"
   p.nextAria: Next project
 es:
   c.vid: Prototipo
@@ -145,6 +163,8 @@ es:
   c.lb.next: Siguiente
   c.lb.open: Ampliar
   c.lb.of: de
+  c.lb.play: Reproducir
+  c.vid.hint: Elegí un video para verlo en pantalla completa.
   skip: Saltar al contenido
   nav.work: Trabajo
   nav.highlights: Highlights
@@ -157,8 +177,8 @@ es:
   hero.lead: Diseñador de producto que también construye. Convierto operaciones complejas en productos confiables, desde plataformas 0→1 hasta design systems a escala.
   hero.cta1: Ver trabajos
   hero.cta2: ¿Poco tiempo? 60 s
-  hero.loc: Buenos Aires · Trabajo en todo el mundo
-  hero.avail: Disponible para roles senior de producto full-time
+  hero.loc: Córdoba, Argentina · Trabajo en todo el mundo
+  hero.avail: Disponible para roles de diseño de producto senior, staff y founding
   work.label: Trabajos seleccionados
   work.h2: Tres productos, tres tipos de desafío.
   case.read: Leer el caso
@@ -168,6 +188,14 @@ es:
   hl.h: ¿Recruiter, founder o con poco tiempo?
   hl.btn: Mostrame los highlights de Mauro
   hl.who: Quién
+  hl.who.ph: "Más de 20 años · Córdoba, Argentina · Trabajo en todo el mundo"
+  hl.lead.k: Cómo lidero
+  hl.lead.h: Equipos chicos, responsabilidad real.
+  hl.lead.p: "Lideré la cuenta de UPSL y su equipo chico de producto, desde contratos y presupuestos hasta la entrega. En StatLink contraté al desarrollador backend y armé los rituales ágiles del equipo. En RF Solutions fui mentor de UI/UX del equipo y del cliente."
+  hl.lead.ph: "Liderazgo de equipo · Contratación · Relación con el cliente · Mentoría"
+  hl.range.k: Recorrido
+  hl.range.h: Veinte años, muchas industrias.
+  hl.range.p: "PropTech, energía, logística, fintech, salud, industria y deportes, con equipos como Compass, YPF, Holcim y UPSL. De equipos de grandes empresas a mis propios productos."
   hl.next: Lo que sigue
   hl.exit: Salir
   hl.left: s restantes
@@ -183,9 +211,15 @@ es:
   cap.3.t: Desarrollo front-end
   cap.3.p: UI de producción y prototipos de alta fidelidad, para que el producto salga como se diseñó.
   teams.label: Equipos con los que diseñé
-  portrait: "[retrato]"
+  portrait: "Mauro Imán explicando una idea en una sesión de trabajo"
+  vid.pause: Pausar video
+  vid.play: Reproducir video
+  chat.in: "¡Hola! ¿Quedan lugares para el curso del sábado?"
+  chat.out: "Sí, quedan 3. ¿Te reservo uno? Te paso el link de pago."
+  chat.ai: Agente IA · WhatsApp
+  chat.crm: "CRM · Lead → Inscripta"
   about.h: Hola, soy Mauro.
-  about.p: "Diseñador de producto en Buenos Aires. [Años] años diseñando para PropTech, energía, fintech, salud y deportes: en equipos de grandes empresas, como consultor independiente a cargo de cuentas de clientes y, este año, construyendo mis propios productos de punta a punta."
+  about.p: "Diseñador de producto en Córdoba, Argentina. Más de 20 años diseñando para PropTech, energía, fintech, salud y deportes: en equipos de grandes empresas, como consultor independiente a cargo de cuentas de clientes y, este año, construyendo mis propios productos de punta a punta."
   about.more: Más sobre mí
   cta.h: Construyamos algo que atraiga.
   cta.btn: Empecemos a hablar
@@ -194,8 +228,8 @@ es:
   cta.copiedMsg: Email copiado al portapapeles.
   cta.selMsg: Email seleccionado. Copialo con Ctrl+C o ⌘C.
   foot.now: Ahora
-  foot.in: en Buenos Aires
-  foot.avail: Disponible para roles senior de diseño de producto full-time.
+  foot.in: en Córdoba, Argentina
+  foot.avail: Disponible para roles de diseño de producto senior, staff y founding.
   foot.site: Sitio
   foot.else: En otros lados
   foot.colophon: Colofón
@@ -248,4 +282,6 @@ es:
   p.label: Proyecto
   p.label.build: Producto
   p.next: Siguiente proyecto
+  p.visit: Visitar
+  p.newTab: " (se abre en una pestaña nueva)"
   p.nextAria: Siguiente proyecto

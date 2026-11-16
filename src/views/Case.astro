@@ -4,6 +4,7 @@ import Base from '../layouts/Base.astro';
 import { Image } from 'astro:assets';
 import CoverMat from '../components/CoverMat.astro';
 import Gallery from '../components/Gallery.astro';
+import Lightbox from '../components/Lightbox.astro';
 import { dict, translator, url, nextOf } from '../lib/content.js';
 import { img, fit } from '../lib/images.js';
 
@@ -102,7 +103,7 @@ const minis = {
     </div></div>
   </section>
 
-  {(c.screens?.length || c.phones?.length) ? <Gallery c={c} t={t} /> : null}
+  {(c.screens?.length || c.phones?.length) ? <><Gallery c={c} t={t} /><Lightbox t={t} /></> : null}
 
   {c.system && (
     <section class="sec" id="system" aria-labelledby="sys-h">

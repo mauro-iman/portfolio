@@ -1,7 +1,10 @@
 ---
 import Base from '../layouts/Base.astro';
+import { Image } from 'astro:assets';
 import CoverMat from '../components/CoverMat.astro';
-import { site, cases, building, more, dict, translator, url } from '../lib/content.js';
+import ChatHint from '../components/ChatHint.astro';
+import portrait from '../assets/about/mauro.webp';
+import { site, cases, building, more, dict, translator, url, BASE } from '../lib/content.js';
 
 const { lang } = Astro.props;
 const D = dict(), t = translator(D, lang);
@@ -67,9 +70,15 @@ const minis = {
       </div>
       <div class="bld">
         {building.map(p => (
-          <article class="case rv">
+          <article class={`case rv${p.coverVideo ? ' has-vid' : ''}`}>
             <a class="case-link" href={url(lang, `work/${p.slug}/`)} data-l={`work/${p.slug}/`}>
-              {p.coverImage ? <CoverMat c={p} t={t} /> : (
+              {p.coverVideo ? (
+                <div class="mat vid-mat"><video class="cover-vid" src={`${BASE}videos/${p.coverVideo}`} muted loop playsinline autoplay preload="auto" aria-label={t(`proj.${p.slug}.va`)} data-il={`proj.${p.slug}.va`}></video></div>
+              ) : p.coverImage ? (
+                <CoverMat c={p} t={t} altKey={`proj.${p.slug}.ca`}>
+                  {p.coverOverlay === 'chat' && <ChatHint t={t} />}
+                </CoverMat>
+              ) : (
                 <div class="mat"><div class={`mini${p.mini && p.mini !== 'q' ? ' ' + p.mini : ''}`} aria-hidden="true" set:html={minis[p.mini] || minis.q}></div><span class="label ph-tag" data-i="mat.ph">{t('mat.ph')}</span></div>
               )}
               <div class="case-meta">
@@ -80,6 +89,7 @@ const minis = {
                 <span class="read" data-i="bld.read">{t('bld.read')}</span>
               </div>
             </a>
+            {p.coverVideo && <button type="button" class="vid-tg" data-vid-tg><span class="vid-ic" aria-hidden="true"></span><span class="vh" data-i="vid.pause">{t('vid.pause')}</span></button>}
           </article>
         ))}
       </div>
@@ -94,9 +104,7 @@ const minis = {
           <h2 class="more-h" id="more-h" data-i="more.h2">{t('more.h2')}</h2>
           <ul class="archive">
             {more.map(p => (
-              <li>{p.group === 'list'
-                ? <span class="arch-i"><b>{p.title}</b><span class="label" data-i={`proj.${p.slug}.k`}>{t(`proj.${p.slug}.k`)}</span></span>
-                : <a href={url(lang, `work/${p.slug}/`)} data-l={`work/${p.slug}/`}><b>{p.title}</b><span class="label" data-i={`proj.${p.slug}.k`}>{t(`proj.${p.slug}.k`)}</span></a>}</li>
+              <li><a href={url(lang, `work/${p.slug}/`)} data-l={`work/${p.slug}/`}><b>{p.title}</b><span class="label" data-i={`proj.${p.slug}.k`}>{t(`proj.${p.slug}.k`)}</span></a></li>
             ))}
           </ul>
         </div>
@@ -146,7 +154,7 @@ const minis = {
   <section class="sec" aria-labelledby="about-h">
     <div class="wrap">
       <div class="grid about-g rv">
-        <div class="portrait" aria-hidden="true"><span class="tilde"></span><span class="label" data-i="portrait">{t('portrait')}</span></div>
+        <div class="portrait has-img"><Image src={portrait} alt={t('portrait')} data-ia="portrait" widths={[400, 640, 960]} sizes="(max-width: 760px) 320px, 400px" format="webp" loading="lazy" decoding="async" /></div>
         <div class="about-t">
           <h2 id="about-h" data-i="about.h">{t('about.h')}</h2>
           <p data-i="about.p">{t('about.p')}</p>

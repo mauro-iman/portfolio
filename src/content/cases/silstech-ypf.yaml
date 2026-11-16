@@ -83,8 +83,8 @@ en:
         title: Safety-first mobile app
         text: QR login, trip plan, incident reporting, customer proximity alerts and fuel distribution, designed for drivers on the road. 90% adoption in six months.
         screen: "[screen: driver trip flow]"
-  reflection: "[What this project taught me, in one or two sentences.]"
-  next: "[one line]"
+  reflection: "Designing amid ambiguity and aligning stakeholder expectations was a real challenge. Leading workshops helped us find the best path with the information we had at each stage."
+  next: "Add a continuously learning AI model that spots risk patterns earlier."
 
 es:
   sector: Energía
@@ -138,5 +138,5 @@ es:
         title: App móvil centrada en la seguridad
         text: Ingreso con QR, plan de viaje, reporte de incidentes, avisos de proximidad al cliente y descarga de combustible, pensada para choferes en la ruta. 90% de adopción en seis meses.
         screen: "[pantalla: flujo de viaje del chofer]"
-  reflection: "[Qué me enseñó este proyecto, en una o dos frases.]"
-  next: "[una línea]"
+  reflection: "Diseñar en la ambigüedad y alinear las expectativas de los stakeholders fue un gran desafío. Liderar workshops nos permitió encontrar el mejor camino con la información disponible en cada momento."
+  next: "integrar un modelo de IA de aprendizaje continuo que detecte patrones de riesgo con más anticipación."

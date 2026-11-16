@@ -51,8 +51,8 @@ en:
   timeline: Mid 2020 – Late 2023
   coverAlt: StatLink product cover
   metrics:
-    - { value: "7", label: personas mapped, from club directors to scouts }
-    - { value: "1 → many", label: one login, several profiles per person }
+    - { value: "7", label: "personas mapped, from club directors to scouts" }
+    - { value: "1 → many", label: "one login, several profiles per person" }
     - { value: "0 → 1", label: dark atomic design system built from scratch }
   problem: Every account meant one person with one role, so a coach who also scouted, or a director running several teams, needed separate logins.
   did: Competitive analysis against WyScout and Opta, seven personas, a multi-profile information architecture and a dark atomic design system, plus agile rituals for the team.
@@ -71,7 +71,7 @@ en:
       - kicker: Result
         title: One login for every role in the club.
         text: Teams, players and staff live in one coherent structure, built on a dark design system made for analysis-heavy screens.
-        data: → Partnership with Iterpro · [impact metric]
+        data: → Partnership with Iterpro
   work:
     title: Three moves, one platform.
     items:
@@ -87,8 +87,8 @@ en:
         title: Dark atomic design system
         text: A dark UI kit built from scratch — icon font, color palette and components — plus agile ceremonies introduced to the team.
         screen: "[image: design system components]"
-  reflection: "[What this project taught me, in one or two sentences.]"
-  next: "[one line]"
+  reflection: "Some problems that look like UI problems are really structural. Pivoting the account model mattered more than any screen, and it only became clear once we mapped real people instead of roles."
+  next: "Validate the multi-profile model with club usage data and measure how much duplicate accounts and data drop."
 
 es:
   sector: Deportes
@@ -102,8 +102,8 @@ es:
   timeline: Mediados de 2020 – fines de 2023
   coverAlt: Portada del producto StatLink
   metrics:
-    - { value: "7", label: personas definidas, de directores de club a scouts }
-    - { value: "1 → n", label: un solo login, varios perfiles por persona }
+    - { value: "7", label: "personas definidas, de directores de club a scouts" }
+    - { value: "1 → n", label: "un solo login, varios perfiles por persona" }
     - { value: "0 → 1", label: design system atómico oscuro construido desde cero }
   problem: Cada cuenta era una persona con un solo rol, así que un entrenador que también hacía scouting, o un director con varios equipos, necesitaba logins separados.
   did: Análisis competitivo frente a WyScout y Opta, siete personas, una arquitectura de información multiperfil y un design system atómico oscuro, además de rituales ágiles para el equipo.
@@ -122,7 +122,7 @@ es:
       - kicker: Resultado
         title: Un solo login para cada rol del club.
         text: Equipos, jugadores y staff conviven en una estructura coherente, sobre un design system oscuro pensado para pantallas de análisis.
-        data: → Alianza con Iterpro · [métrica de impacto]
+        data: → Alianza con Iterpro
   work:
     title: Tres movimientos, una plataforma.
     items:
@@ -138,5 +138,5 @@ es:
         title: Design system atómico oscuro
         text: Un UI kit oscuro construido desde cero — fuente de íconos, paleta de color y componentes — y ceremonias ágiles incorporadas al equipo.
         screen: "[imagen: componentes del design system]"
-  reflection: "[Qué me enseñó este proyecto, en una o dos frases.]"
-  next: "[una línea]"
+  reflection: "Algunos problemas que parecen de interfaz son de estructura. Pivotear el modelo de cuentas pesó más que cualquier pantalla, y eso solo se hizo evidente cuando mapeamos personas reales en lugar de roles."
+  next: "validar el modelo multiperfil con datos de uso de los clubes y medir cuánto bajan las cuentas y los datos duplicados."
