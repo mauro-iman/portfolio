@@ -1,7 +1,7 @@
 # Site-wide copy for mauroiman.com, English and Spanish side by side.
 # Keys match the data-i attributes in the pages. Case content lives in src/content/cases/*.yaml.
 # Text in [brackets] is still a placeholder.
-email: maurito@gmail.com
+email: hi@mauroiman.com
 linkedin: https://www.linkedin.com/in/mauroiman/
 teams:
   - Compass
