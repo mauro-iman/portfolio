@@ -313,7 +313,7 @@
       .concat([[t('bld.label'), t('bld.h2'), t('bld.sub'), '→ ' + (MI.building || []).join(' · ')]])
       .concat([[t('hl.range.k'), t('hl.range.h'), t('hl.range.p'), '→ ' + t('hero.avail')]]);
     steps.innerHTML = S.map(([k, h, p, ph], i) => `<div class="hlo-step${i ? '' : ' on'}"><span class="label">${k}</span><h2${i ? '' : ' id="hlo-t"'}>${h}</h2>${p ? `<p>${p}</p>` : ''}<span class="ph">${ph}</span></div>`).join('')
-      + `<div class="hlo-step"><span class="label">${t('hl.next')}</span><h2>${t('cta.h')}</h2><div class="cta-row"><a class="btn-p" href="#contact" data-close>${t('cta.btn')}</a><a class="btn-s" href="#work" data-close>${t('work.all')}</a></div></div>`;
+      + `<div class="hlo-step hlo-end">${MI.portrait ? `<img class="hlo-me" src="${MI.portrait.src}" srcset="${MI.portrait.src} 1x, ${MI.portrait.src2} 2x" width="${MI.portrait.w}" height="${MI.portrait.h}" alt="${t('portrait')}" decoding="async">` : ''}<span class="label">${t('hl.next')}</span><h2>${t('cta.h')}</h2><div class="cta-row"><a class="btn-p" href="#contact" data-close>${t('cta.btn')}</a><a class="btn-s" href="#work" data-close>${t('work.all')}</a></div></div>`;
     steps.querySelectorAll('[data-close]').forEach(a => a.addEventListener('click', closeHl));
   }
   if (document.getElementById('fHl')) {
