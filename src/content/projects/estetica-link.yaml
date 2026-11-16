@@ -3,9 +3,7 @@ title: Estética Link
 order: 2
 group: building
 url: https://esteticalink.com/
-coverImage: cover.webp
-coverPos: "72% 30%"
-coverOverlay: chat
+coverImage: cover-hero.webp
 mini: sys
 videos:
   - { file: estetica-link-intro.webm, en: "The hero intro of the new site", es: "La intro del hero del sitio nuevo" }
@@ -30,7 +28,7 @@ phones:
 en:
   videoLabel: "Video"
   videoTitle: "The site in motion."
-  coverAlt: "A woman’s face drawn as a glowing orange wireframe, with fragments drifting away, next to a WhatsApp chat with the AI agent"
+  coverAlt: "The Estética Link congress home page: the event logo, dates and venue next to a portrait of a woman with orange and gold face paint"
   sector: "Event platform"
   years: "2026"
   summary: "An event platform that replaced WordPress and WooCommerce: CRM, an AI agent on WhatsApp and a fully automated flow from ticket sale to reminders and the PDF certificate, plus QR check-in on the day."
@@ -41,11 +39,18 @@ en:
   did:
     - "Product strategy"
     - "UX and UI design"
+    - "Branding"
     - "Full-stack build with agentic tools"
     - "AI agent on WhatsApp"
     - "End-to-end automation"
     - "QR check-in app"
   results: "Designed and built solo, from the first sketch to launch."
+  resultItems:
+    - "No cost and no dependency on third-party WordPress and WooCommerce plugins"
+    - "The client owns the CRM data"
+    - "A full CMS to manage events, courses, speakers, sponsors and more"
+    - "An automated CRM and AI agent that run the whole operation before, during and after the event"
+    - "The organizer gets time back to think and plan strategically, and to give attendees a better experience"
   sections:
     - kicker: "Before"
       title: "A WordPress shop for an event business."
@@ -61,7 +66,7 @@ en:
 es:
   videoLabel: "Video"
   videoTitle: "El sitio en movimiento."
-  coverAlt: "El rostro de una mujer dibujado como una malla naranja luminosa, con fragmentos que se desprenden, junto a un chat de WhatsApp con el agente IA"
+  coverAlt: "La página de inicio del congreso Estética Link: el logo del evento, las fechas y la sede junto al retrato de una mujer con maquillaje naranja y dorado"
   sector: "Plataforma de eventos"
   years: "2026"
   summary: "Una plataforma de eventos que reemplazó WordPress y WooCommerce: CRM, un agente con IA en WhatsApp y todo el flujo automatizado de la venta a los recordatorios y el certificado en PDF, más check-in con QR el día del evento."
@@ -72,11 +77,18 @@ es:
   did:
     - "Estrategia de producto"
     - "Diseño UX y UI"
+    - "Branding"
     - "Desarrollo full-stack con herramientas agénticas"
     - "Agente con IA en WhatsApp"
     - "Automatización de punta a punta"
     - "App de check-in con QR"
   results: "Diseñada y construida en solitario, del primer boceto al lanzamiento."
+  resultItems:
+    - "Sin costos ni dependencia de plugins de terceros de WordPress y WooCommerce"
+    - "Los datos del CRM son del cliente"
+    - "Un CMS completo para gestionar eventos, cursos, disertantes, sponsors y más"
+    - "Un CRM y un agente con IA automatizados que manejan toda la operación antes, durante y después del evento"
+    - "La organización gana tiempo para pensar y planificar estratégicamente, y darles a los asistentes una mejor experiencia"
   sections:
     - kicker: "Antes"
       title: "Una tienda de WordPress para un negocio de eventos."
