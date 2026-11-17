@@ -1,8 +1,10 @@
 ---
 /* Lighter project page (DESIGN.md › Project page): facts, what I did, results, story sections and an
-   optional screens gallery. Content comes from src/content/projects/<slug>.yaml. */
+   optional screens gallery. A story section can carry its own strip of screens (`sectionScreens`, keyed by
+   the section's index). Content comes from src/content/projects/<slug>.yaml. */
 import Base from '../layouts/Base.astro';
 import Gallery from '../components/Gallery.astro';
+import GalleryStrip from '../components/GalleryStrip.astro';
 import CoverMat from '../components/CoverMat.astro';
 import Videos from '../components/Videos.astro';
 import Lightbox from '../components/Lightbox.astro';
@@ -12,7 +14,8 @@ const { lang, p } = Astro.props;
 const D = dict(null, p), t = translator(D, lang), d = p[lang], nx = nextProject(p);
 const facts = [['c.f.role', 'p.roleV'], ['c.f.time', 'p.timeV'], ...(d.team ? [['c.f.team', 'p.teamV']] : [])];
 const hasGallery = (p.screens?.length || p.phones?.length) > 0;
-const needsLb = hasGallery || (p.videos?.length || 0) > 1;
+const secShots = p.sectionScreens || {};
+const needsLb = hasGallery || (p.videos?.length || 0) > 1 || Object.keys(secShots).length > 0;
 ---
 <Base lang={lang} D={D} titleKey="c.doc" path={`work/${p.slug}/`} pageScripts={needsLb ? ['gallery.js'] : []}>
   <section class="c-hero p-hero" id="case-top" aria-labelledby="c-h1">
@@ -57,6 +60,7 @@ const needsLb = hasGallery || (p.videos?.length || 0) > 1;
           {sec.items && <ul class="p-list">{sec.items.map((it, j) => <li data-i={`p.s${i}.i${j}`}>{it}</li>)}</ul>}
         </div>
       </div></div>
+      {secShots[i]?.length ? <GalleryStrip c={p} t={t} list={secShots[i]} k={`p.s${i}.g`} /> : null}
     </section>
   ))}
 

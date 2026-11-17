@@ -89,6 +89,7 @@ const projectKeys = (p, l) => {
   (p.screens || []).forEach((g, i) => { o[`c.g${i}`] = g[l]; });
   (p.phones || []).forEach((g, i) => { o[`c.p${i}`] = g[l]; });
   (p.videos || []).forEach((v, i) => { o[`c.v${i}`] = v[l]; });
+  Object.entries(p.sectionScreens || {}).forEach(([s, list]) => list.forEach((g, j) => { o[`p.s${s}.g${j}`] = g[l]; }));
   if (d.galleryTitle) o['c.gal.h'] = d.galleryTitle;
   if (d.videoLabel) o['c.vid'] = d.videoLabel;
   if (d.videoTitle) o['c.vid.h'] = d.videoTitle;

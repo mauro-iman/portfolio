@@ -227,7 +227,7 @@ h3 { margin: 0; }
 .ft-list a:hover::after, .ft-list a:focus-visible::after { opacity: 1; transform: rotate(34deg); }
 .ft-legal { display: flex; justify-content: space-between; gap: 8px 16px; flex-wrap: wrap; margin-top: clamp(40px, 6vw, 72px); }
 @media (hover: none) { .kb { display: none; } }
-.ft-word { line-height: .74; margin: 8px 0 -.07em; white-space: nowrap; user-select: none; }
+.ft-word { line-height: .74; margin: 8px 0 -.07em; white-space: nowrap; user-select: none; pointer-events: none; }   /* decorative; its tall glyph box overlaps the footer buttons */
 .ft-word span.w { display: inline-block; font-weight: 800; font-size: 38cqw; letter-spacing: -.055em; }
 @media (max-width: 760px) { .ft-cols > div:nth-child(1), .ft-cols > div:nth-child(4) { grid-column: 1 / -1; } .ft-cols > div:nth-child(2) { grid-column: 1 / 7; } .ft-cols > div:nth-child(3) { grid-column: 7 / 13; } }
 @media (max-width: 760px) { .foot { padding-bottom: calc(84px + env(safe-area-inset-bottom, 0px)); } }

@@ -2,11 +2,13 @@
 title: UPSL
 order: 10
 group: work
+coverImage: cover.webp
 
 en:
+  coverAlt: "Concept art for the Match Day app: a wireframe hand holding a phone with the UPSL crest, over a stadium in black and white"
   sector: "Sports · League operations"
   years: "2024–2025"
-  summary: "Maintenance and evolution for UPSL, a North American pro-development soccer league, leading a small team and the client relationship."
+  summary: "Maintenance and evolution of the Registry System for Teams and Players of UPSL, a North American pro-development soccer league, leading a small team and the client relationship."
   role: "Product lead of the account · Independent consulting"
   timeline: "July 2024 – April 2025"
   didLabel: "What I did"
@@ -15,14 +17,18 @@ en:
     - "Point of contact with the client"
     - "Contracts and estimates"
     - "Project initiatives and roadmap"
-  results: "Fixes and maintenance went from weeks or months to hours or days."
+  results: "Fixes and maintenance went from weeks or months to days."
   resultItems:
     - "Proposals to improve the whole system and the website, plus a new app, Match Day"
-    - "The work ended when UPSL was acquired by another operator that brought its own technology team"
   sections:
     - kicker: "Context"
       title: "A fast-growing league, run on paper and text messages."
       text: "UPSL has more than 500 teams across North America. On the field it is professional; off the field, match-day operations still depended on printed rosters and photos of handwritten notes sent by text."
+      items:
+        - "A system full of bugs to fix step by step, while answering teams and users whenever something broke"
+        - "The management team needed developers to run some renewal flows, a bottleneck that held back the league’s directors"
+        - "Technology spread across several platforms with no integration, so every match result was entered by hand"
+        - "My proposal: one unified flow and a new mobile app for real-time data, feeding the system and the website with results five minutes after the final whistle"
     - kicker: "A concept I proposed"
       title: "Match Day: from the locker room to the final whistle."
       text: "An offline-first app that digitizes match day, with a role for each person involved. Concept only; it was not built."
@@ -33,9 +39,10 @@ en:
         - "A pilot run in parallel with paper before dropping it, with clear success metrics: scores online less than five minutes after the final whistle and no transcription errors"
 
 es:
+  coverAlt: "Arte conceptual de la app Match Day: una mano en wireframe sostiene un celular con el escudo de UPSL, sobre un estadio en blanco y negro"
   sector: "Deportes · Operación de una liga"
   years: "2024–2025"
-  summary: "Mantenimiento y evolución para UPSL, una liga de fútbol de desarrollo profesional de Norteamérica, a cargo de un equipo chico y de la relación con el cliente."
+  summary: "Mantenimiento y evolución del Registry System for Teams and Players (el sistema de registro de equipos y jugadores) de UPSL, una liga de fútbol de desarrollo profesional de Norteamérica, a cargo de un equipo chico y de la relación con el cliente."
   role: "Product lead de la cuenta · Consultoría independiente"
   timeline: "Julio de 2024 – abril de 2025"
   didLabel: "Qué hice"
@@ -44,14 +51,18 @@ es:
     - "Punto de contacto con el cliente"
     - "Contratos y presupuestos"
     - "Iniciativas y roadmap del proyecto"
-  results: "Las correcciones y el mantenimiento pasaron de semanas o meses a horas o días."
+  results: "Las correcciones y el mantenimiento pasaron de semanas o meses a días."
   resultItems:
     - "Propuestas para mejorar todo el sistema y el sitio web, más una app nueva, Match Day"
-    - "El trabajo terminó cuando UPSL fue adquirida por otro operador que llegó con su propio equipo de tecnología"
   sections:
     - kicker: "Contexto"
       title: "Una liga que crece rápido, sostenida con papel y mensajes de texto."
       text: "UPSL tiene más de 500 equipos en Norteamérica. En la cancha es profesional; fuera de ella, la operación del día de partido seguía dependiendo de planteles impresos y fotos de notas a mano enviadas por mensaje."
+      items:
+        - "Un sistema lleno de bugs que había que resolver de a poco, mientras se respondía a los equipos y usuarios cada vez que algo fallaba"
+        - "El equipo de gestión dependía de developers para ejecutar algunos flujos de renovación, un cuello de botella que limitaba a los directivos de la liga"
+        - "La tecnología estaba repartida en varias plataformas sin integración, así que cada resultado se cargaba a mano después del partido"
+        - "Mi propuesta: unificar el flujo y sumar una app mobile para cargar los datos en tiempo real, con los resultados en el sistema y el sitio web cinco minutos después del final del partido"
     - kicker: "Un concepto que propuse"
       title: "Match Day: del vestuario al pitazo final."
       text: "Una app que funciona sin conexión y digitaliza el día de partido, con un rol para cada persona. Es un concepto; no se construyó."
