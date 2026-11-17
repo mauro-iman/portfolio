@@ -1,10 +1,8 @@
 import { defineConfig } from 'astro/config';
 
-/* GitHub Pages. Until mauroiman.com points here the site lives at mauro-iman.github.io/portfolio/.
-   When the domain moves: set SITE_URL=https://mauroiman.com and BASE_PATH=/ in the deploy workflow
-   and add public/CNAME (see DESIGN.md › Hosting). */
-const site = process.env.SITE_URL || 'https://mauro-iman.github.io';
-const base = process.env.BASE_PATH || '/portfolio';
+/* GitHub Pages on mauroiman.com (public/CNAME), served from the root (see DESIGN.md › Hosting). */
+const site = process.env.SITE_URL || 'https://mauroiman.com';
+const base = process.env.BASE_PATH || '/';
 
 export default defineConfig({
   site,
