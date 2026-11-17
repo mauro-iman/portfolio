@@ -109,6 +109,7 @@ en:
   foot.dark: Dark
   foot.legal: Set in Geist on a 12-column grid
   foot.grid: Press G for the grid
+  foot.dl: Download the design system (.md)
   x.hint: Hover to see the structure
   x.hintTouch: Press and hold to see the structure
   c.back: All work
@@ -244,6 +245,7 @@ es:
   foot.dark: Oscuro
   foot.legal: Geist sobre una grilla de 12 columnas
   foot.grid: Tocá G para ver la grilla
+  foot.dl: Descargar el design system (.md)
   x.hint: Pasá el cursor para ver la estructura
   x.hintTouch: Mantené apretado para ver la estructura
   c.back: Todos los trabajos

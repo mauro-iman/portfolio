@@ -226,6 +226,8 @@ h3 { margin: 0; }
 .ft-list a::after { content: ""; position: absolute; right: 0; top: 7px; width: 3px; height: 10px; border-radius: 2px; background: var(--fill); transform: rotate(34deg) translate(-4px, 4px); opacity: 0; transition: opacity .2s, transform .35s var(--spring); }
 .ft-list a:hover::after, .ft-list a:focus-visible::after { opacity: 1; transform: rotate(34deg); }
 .ft-legal { display: flex; justify-content: space-between; gap: 8px 16px; flex-wrap: wrap; margin-top: clamp(40px, 6vw, 72px); }
+.ft-dl { color: inherit; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+.ft-dl:hover, .ft-dl:focus-visible { color: var(--ink); }
 @media (hover: none) { .kb { display: none; } }
 .ft-word { line-height: .74; margin: 8px 0 -.07em; white-space: nowrap; user-select: none; pointer-events: none; }   /* decorative; its tall glyph box overlaps the footer buttons */
 .ft-word span.w { display: inline-block; font-weight: 800; font-size: 38cqw; letter-spacing: -.055em; }

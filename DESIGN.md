@@ -1,24 +1,49 @@
-# DESIGN.md — mauroiman.com
+# Imán — design system
 
-The design system for Mauro Imán's personal site. It is the single source of truth: every exploration, design and line of code follows it.
+The design system behind [mauroiman.com](https://mauroiman.com), Mauro Imán's portfolio. It defines the brand, the tokens, the components and the motion. Use it to build pages, slide decks, documents or images that look like the site.
 
-- Status: design stage (November 2026). No production code yet.
-- Explorations: `explorations/concept-v2.html` (concept and demos), `explorations/home.html` (home page, responsive, EN/ES, both themes) and `explorations/home-review.html` (viewer with Desktop 1440 / Mobile 390 frames).
+- Version 1.0 · November 2026
+- Download: [mauroiman.com/design.md](https://mauroiman.com/design.md)
+- Source: [github.com/mauro-iman/portfolio](https://github.com/mauro-iman/portfolio) (the site's build and content notes are in `SITE.md`)
 
-## Working agreement
+## How to use this file
 
-1. **Read this file before every iteration.** Tokens, type, grid, spacing, components and copy come from here, never from memory or from an older exploration.
-2. **Write every decision back here in the same iteration** it is made, and add a line to the Changelog at the end.
-3. If an exploration and this file disagree, this file wins. Fix the exploration or update this file on purpose.
-4. Copy lives in the Copy deck (EN and ES side by side). Pages use those strings; new strings are added there first.
-5. Placeholders are written in square brackets, e.g. `[availability]`, and never presented as real data.
+For people and for AI tools (Claude, Gemini, ChatGPT, Figma Make…) that generate artifacts from it:
+
+1. **Values are exact.** Use the hex colors, sizes, angles and curves as written. Do not round them, restyle them or pick "something close".
+2. **The brand mark is a shape, not a character.** Draw the tilde from the SVG in [Brand signature](#brand-signature-the-tilde), copied verbatim. Never replace it with `~`, `˜`, a dot, a square, a dash or an icon.
+3. **One green moment per view.** The accent green is rare on purpose. A slide, card or screen gets one green element at most (the tilde, the "á" or one link).
+4. **If something is not specified, keep it plain:** paper background, ink text, Geist, the 12-column grid. Do not add gradients, shadows, glows, emoji or stock icons to fill the gap.
+5. Check the [Reproduction checklist](#reproduction-checklist) before delivering.
+
+## Tokens (machine-readable)
+
+The same values as the tables below, in one block for tools.
+
+```json
+{
+  "color": {
+    "light": { "paper": "#EDEFEE", "panel": "#E1E5E3", "ink": "#0E1311", "ink-2": "#4B5550", "line": "#C5CCC8", "accent": "#08704E", "fill": "#0E8A5F", "fill-inv": "#4ADE9E", "on-accent": "#FFFFFF" },
+    "dark":  { "paper": "#0B0F0D", "panel": "#131916", "ink": "#E6EBE8", "ink-2": "#97A39D", "line": "#25302B", "accent": "#4ADE9E", "fill": "#4ADE9E", "fill-inv": "#08704E", "on-accent": "#06110C" }
+  },
+  "font": { "display": "Geist", "text": "Geist", "mono": "Geist Mono", "fallback": { "sans": "Inter, Helvetica Neue, Arial, sans-serif", "mono": "IBM Plex Mono, ui-monospace, monospace" } },
+  "type": { "label": "0.75rem mono uppercase 0.06em", "body": "1rem/1.55 400", "lead": "1.25rem", "statement": "1.75rem", "h2": "clamp(2rem, 4vw, 3rem)", "h1": "clamp(2.75rem, 7.5vw, 6.5rem)", "display": { "weight": "650-800", "tracking": "-0.025em to -0.055em", "leading": "0.94-1.05" } },
+  "grid": { "columns": 12, "maxWidth": "1280px", "gutter": "24px", "gutterMobile": "16px", "labelColumns": "1-3", "contentColumns": "4-12" },
+  "space": [4, 8, 12, 16, 24, 32, 48, 64],
+  "radius": { "card": "6px", "inner": "4px", "pill": "999px" },
+  "border": "1px line",
+  "shadow": "none",
+  "tilde": { "shape": "rounded rectangle", "ratio": "3:11 (width:height)", "corner": "fully rounded ends", "rotation": "34deg clockwise", "fill": "fill (or fill-inv on ink)", "svg": "see Brand signature" },
+  "motion": { "spring": "cubic-bezier(.3, 1.45, .5, 1)", "out": "cubic-bezier(.2, .8, .1, 1)", "fast": "200ms", "move": "350-500ms", "rise": "900ms" }
+}
+```
 
 ## Concept: Imán / Field
 
 *Imán* is Spanish for *magnet*. The site behaves like a magnetic field: **everything is drawn to its place.**
 
 - **The field:** iron filings around a dipole, drawn behind selected surfaces. They react to the cursor, a finger or scroll.
-- **The tilde:** the accent of the "á" is the one recurring brand mark. It works as the nav indicator, bullet, loader, favicon, link hover and logotype accent.
+- **The tilde:** the accent of the "á" is the one recurring brand mark. It works as the nav indicator, bullet, loader, favicon, link hover and logotype accent (see [Brand signature](#brand-signature-the-tilde)).
 - **The assembly:** opening a case study, the filings fly in and form the case title, then the UI rises in 3D.
 - **60-second highlights:** a "Short on time?" mode for recruiters and executives, available from every page.
 
@@ -37,7 +62,6 @@ Three ideas from magnetite and ferrofluid experiments, each with exactly one pla
    - Lens radius ~110px (70–120), opens/closes in 350ms; touch: press and hold.
    - Film colors: base `#0A3D2B`, lines and labels `#4ADE9E`, label backing `rgba(6,17,12,.7)`.
    - Production: real wireframes exported per case, aligned 1:1 with the cover image.
-   - The origin story of Verde ferrita (the green of viewing film) still needs verifying against real photos.
 3. **Ferrofluid:** a black drop at the foot of the closing CTA raises spikes toward the magnet. The magnet is the button by default; spikes follow a far cursor, return when it nears the button, and surge on click. It appears **only** here; there is no field inside the CTA button. Shape rules:
    - Spikes are sharp cones with concave flanks (profile `(1−u)^2.4`), never fins or waves.
    - Two rows for depth: a back row (65% height, offset half a spike, lighter) and a front row.
@@ -45,6 +69,93 @@ Three ideas from magnetite and ferrofluid experiments, each with exactly one pla
    - Lean toward the magnet at most ±0.35; springy settle, no constant wobble.
    - Shading: vertical gradient `#3A433F → #111613 → #020403`, a thin highlight down the left flank, a specular dot near each tip, a 1px rim on the top surface only, one green glint on the tallest tip.
    - Production version: a shader with reflections.
+
+## Brand signature: the tilde
+
+The tilde is the accent of the "á" in Im**á**n, lifted out of the word and used on its own. It is the only brand mark: there is no logo symbol, monogram or icon set.
+
+**What it is:** a short bar with fully rounded ends, leaning right at 34°, filled with the accent green. It looks like an acute accent (´) drawn as a solid shape.
+
+**What it is not:** the tilde character `~` or `˜`, a wave, a dot, a square, a dash, a slash in a font, an outline, or an icon.
+
+### Geometry
+
+| Property | Value |
+|---|---|
+| Shape | Rounded rectangle (a pill standing upright) |
+| Proportion | 3 : 11 (width : height). Large uses may go to 8 : 30, same feel |
+| Ends | Fully rounded (corner radius = half the width) |
+| Rotation | 34° clockwise around its center, so the top leans right. Never left, never another angle |
+| Fill | Solid `fill` (`#0E8A5F` on light, `#4ADE9E` on dark). On ink or dark-on-light surfaces use `fill-inv` |
+| Stroke, gradient, shadow, glow | None |
+| Minimum size | 2.5 × 8 px on screen; 1 × 3.7 mm in print |
+
+### Canonical SVG
+
+Copy these verbatim. The drawing box is square so the mark can be placed and scaled like an icon; the bar is centered.
+
+On light backgrounds:
+
+```svg
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" role="img" aria-label="Tilde">
+  <rect x="13.8" y="7.9" width="4.4" height="16.2" rx="2.2" fill="#0E8A5F" transform="rotate(34 16 16)"/>
+</svg>
+```
+
+On dark backgrounds, the same with `fill="#4ADE9E"`.
+
+Three-tilde row (bullets in a row, the loader's resting frame):
+
+```svg
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 16" width="40" height="16" aria-hidden="true">
+  <g fill="#0E8A5F">
+    <rect x="6.5" y="2.5" width="3" height="11" rx="1.5" transform="rotate(34 8 8)"/>
+    <rect x="18.5" y="2.5" width="3" height="11" rx="1.5" transform="rotate(34 20 8)"/>
+    <rect x="30.5" y="2.5" width="3" height="11" rx="1.5" transform="rotate(34 32 8)"/>
+  </g>
+</svg>
+```
+
+CSS (how the site draws it):
+
+```css
+.tilde { display: inline-block; width: 3px; height: 11px; border-radius: 2px;
+         background: var(--fill); transform: rotate(34deg); }
+```
+
+Drawing it by hand (Figma, Keynote, PowerPoint, Google Slides, Illustrator): insert a rounded rectangle, set width and height in a 3 : 11 ratio (for example 0.08 × 0.29 in, or 3 × 11 px at 1×), set the corner radius to the maximum, rotate it 34° clockwise, fill it with the hex above and remove the outline.
+
+### Uses
+
+Each use is the same shape; only size, placement and behavior change.
+
+| Use | Size (w × h) | Placement | Behavior |
+|---|---|---|---|
+| Navigation indicator | 3 × 11 px | Above the active menu item, 2px over the text, left-aligned with it | Springs to the new item: `left` over 500 ms, `cubic-bezier(.3, 1.45, .5, 1)` |
+| Mobile tab bar indicator | 2.5 × 8 px | 4px from the top of the active tab | Same spring |
+| Bullet | 3 × 10 px | Left of the line, top at .45em | Static |
+| Link and row hover | 3 × 10 px | At the right end of the link or row | Fades in over 200 ms and slides in from (−4px, +4px) with the spring over 350 ms |
+| Separator | 3 × 14 px, 18px each side | Between names in a list (the teams line) | Static |
+| Button accent | 3 × 11 px | After the label of the primary button, in `fill-inv` (the button is ink) | Leans with the button |
+| Progress marker | 3 × 11 px | Riding the end of a progress bar (60 s highlights) | Moves with the bar |
+| Large accent | 8 × 30 px, radius 4px | Next to a portrait | Static |
+| Favicon | `favicon.svg` (4 × 22 in a 32 box) | Browser tab | Switches green with the system theme |
+| Loader | Three tildes, 3 × 11 px, 5px apart | Inline, where content is loading | Each fades .25 → 1 → .25 in turn, 900 ms loop, 150 ms apart. Reduced motion: three at full opacity, still. (Specified; the site has no loading states yet) |
+
+### Logotype
+
+- The wordmark is **Mauro Imán** set in Geist 700, tracking −.01em, in `ink`. The whole letter **á** (letter and accent) is `accent` green; every other letter stays ink. It is the typeface's own "á", not a drawn tilde placed over an "a".
+- The large footer wordmark is **Imán** alone, Geist 800, tracking −.055em, same coloring, fitted by its ink bounds from column 1 to column 12.
+- Never set the name in another typeface, never color more than the "á", never replace the accent with the tilde shape.
+
+### Do and don't
+
+- **Do** use the tilde to point at one thing: where you are, what is next, what you can click.
+- **Do** keep it small. It is a mark, not an illustration; the largest use is 30px tall.
+- **Don't** type `~` to represent it, even in a quick mockup or a slide.
+- **Don't** use a dot, square or circle as a bullet or loader; the tilde is the bullet and the loader.
+- **Don't** rotate it to another angle, mirror it, outline it, add a gradient or glow, or animate it in ways not listed above.
+- **Don't** use more than one green moment per view: if the tilde is green, the rest of the view is ink.
 
 ## Color — Verde ferrita
 
@@ -151,12 +262,6 @@ Rules:
 3. `prefers-reduced-motion`: a still frame of the field; transitions become fades.
 4. A "Field off" switch in the footer turns it off site-wide and is remembered (key `mi-field`).
 
-## The tilde
-
-- Angle: −0.98 rad for the field's "order" direction; drawn as a 3×11px bar rotated 34° in UI.
-- Uses: nav indicator (springs between items), bullets, three-tilde loader, favicon (works at 16px), link hover (appears at the end of the link), the "á" in the logotype.
-- Color: `--fill`, or `--fill-inv` on ink surfaces.
-
 ## Motion
 
 - Spring: `cubic-bezier(.3, 1.45, .5, 1)` for things that snap (tilde, magnetic buttons). Out: `cubic-bezier(.2, .8, .1, 1)` for entrances.
@@ -168,7 +273,7 @@ Rules:
   2. **Pull** — damped spring, ζ 0.6, settle time 560 ms + 0.14 ms/px (620–1250 ms). Arrival at the target in ~240–480 ms. Past the target the overshoot is compressed to ≤16px (or less if there is no room), so every trip ends with the same small rebound regardless of distance.
   3. **Field** — while travelling, a fixed overlay shows filings on a 30px grid (26px on mobile) that move with the page and point at a magnet beyond the viewport edge in the direction of travel. Length 5–22px grows with speed; opacity .12–.42 grows toward the magnet; the band nearest the magnet is green. Fades out in 260 ms after landing. Speed is measured per time (normalized to a 60 Hz frame), never per frame, so 90/120 Hz phones look identical. On touch screens the field is 25% stronger (opacity cap .6) and the seam is 3px.
   4. **Clack** — at the moment of impact a 2px `--fill` seam snaps across under the header (scaleX 0→1 in ~170 ms, then fades, 620 ms total) and touch devices get a 12 ms haptic tick (only after a real user gesture).
-  Lands under the sticky header (Home at 0), updates the hash and moves focus to the section (`tabindex=-1`). Wheel, touch or key interrupts it. Reduced motion: instant jump, no overlay, no seam. Safety timer lands it if frames stall. Case links (placeholders) and the 60 s tab are excluded. v1 (pure ease-in + overshoot) was rejected: it felt laggy at the start and the effect was invisible.
+  Lands under the sticky header (Home at 0), updates the hash and moves focus to the section (`tabindex=-1`). Wheel, touch or key interrupts it. Reduced motion: instant jump, no overlay, no seam. Safety timer lands it if frames stall. The 60 s tab is excluded.
 - **Language switch (stream):** text in view resolves left→right out of "filings" (`/ \ | - ·` in `--ink-2` at 70%), keeping the new text's length so layout barely moves. Per element 160 ms + 12 ms/char (max 650 ms), ease-out, staggered top→bottom (max 260 ms). Glyphs refresh every 55 ms. Rich-text strings (`data-ih`) fade in over 450 ms instead. Text out of view changes instantly. Screen readers get the final text at once (visually hidden copy; the animated layer is `aria-hidden`). Reduced motion and first load: instant. Never on the language buttons themselves. A 1.1 s safety timer always lands the final text, even if frames stall; switching again mid-stream finishes the current one first.
 - **Opening a case (home → case page):** the home and each case are separate pages (own URL, shareable, indexable), stitched so they read as one gesture:
   1. **Gather (home, 420 ms)** — clicking a case cover dims the page to 8% and fills the screen with filings on a 30px grid that turn from the resting field angle toward the case title, as if the magnet landed on it. Length 4→13px, longer near the title; the band within ~200px of it is green. Ease-out cubic.
@@ -176,8 +281,8 @@ Rules:
   3. **Cross-document View Transition** — header and tab bar keep their place (`view-transition-name`), the rest cross-fades in 300 ms. Browsers without support simply navigate.
   4. **Field (case page, ~1 s)** — the title becomes a bar magnet with its poles at the two ends. Every filing on screen (the handed-off grid, or a fresh 30px grid on a direct visit) turns to the dipole's field lines in a wave spreading out from the title (650 ms each, delay up to 380 ms by distance) and creeps up to 14px toward it. Filings get longer and turn green near the poles, so the arcs from pole to pole are readable before anything moves.
   5. **Pull** — from 950 ms the filings nearest the title (about one per three letter points) are pulled in along curved paths that start on their field line, oriented along their path, left to right (stagger 320 ms + up to 100 ms jitter, flight 820 ms, out-back ease, 1.3px lines, sample step = font size / 28, 4–7px), and turn to the resting angle as they land. The rest stay as the field. At 2.3 s, after the last filing lands, the real H1 fades in and the field dissolves (500 ms) into the background field; back link, label, lead and facts stagger in (0.04 / 0.12 / 0.22 s). Everything except the H1 stays hidden until then; a 4 s CSS fallback shows it all if scripts fail.
-  **Under review, variant B "sweep"** (default in the exploration; A above is "pull", kept for comparison; the review viewer switches them): filings never travel. As if a strong magnet slid behind a plastic lid, it sweeps across the hero (right→left by default, left→right as an option) in 1.3 s (sine in-out, starting just off screen). Every filing turns toward it as it passes, on a spring (stiff only while the magnet is near, light damping, so they wobble and then freeze in the lean they had when it left). Background filings (30px grid, or the home's hand-off grid) stretch and turn green in the band around the magnet. Filings on a fine grid inside the letters (step = font size / 28) only appear once the magnet is right over them, so the title forms in its wake. The real H1 fades in 420 ms after the sweep ends.
-  *Visibility pass (felt imperceptible, especially on phones):* sweep slowed to 1.7 s and starts only half a band off screen; a soft green glow (12%, fades in and out with the sweep) travels with the magnet; stiffer, less damped spring (more wobble); background filings keep an afterglow (decays in ~0.6 s) so the magnet leaves a visible wake of longer, brighter filings; phones get 1.6px, longer filings. Letters get no afterglow and settle to one shared lean once combed, so the title stays legible. Reveal at ~2.3 s.
+  **Variant B "sweep"** (an alternative to "pull" above): filings never travel. As if a strong magnet slid behind a plastic lid, it sweeps across the hero (right→left by default, left→right as an option) in 1.3 s (sine in-out, starting just off screen). Every filing turns toward it as it passes, on a spring (stiff only while the magnet is near, light damping, so they wobble and then freeze in the lean they had when it left). Background filings (30px grid, or the home's hand-off grid) stretch and turn green in the band around the magnet. Filings on a fine grid inside the letters (step = font size / 28) only appear once the magnet is right over them, so the title forms in its wake. The real H1 fades in 420 ms after the sweep ends.
+  *Visibility:* sweep slowed to 1.7 s and starts only half a band off screen; a soft green glow (12%, fades in and out with the sweep) travels with the magnet; stiffer, less damped spring (more wobble); background filings keep an afterglow (decays in ~0.6 s) so the magnet leaves a visible wake of longer, brighter filings; phones get 1.6px, longer filings. Letters get no afterglow and settle to one shared lean once combed, so the title stays legible. Reveal at ~2.3 s.
   **Comb (variant B only, mouse only):** once the title is formed, moving the mouse over it shows the letters as filings again and they turn toward the pointer like a hand-held magnet; the text returns 0.9 s after the mouse stops or leaves. Not on touch (it would fight scrolling) or with reduced motion.
   Reduced motion or Field off: no gather, no view transition, no assembly. The browser's back button restores the home as it was.
 - The case chapters use scroll as the timeline: scattered (problem) → attracted (decision) → aligned (result).
@@ -193,159 +298,10 @@ Rules:
 - **Highlights band:** full-width `--panel` stage with the ordered field; heading + primary button with the tilde and a "60 s" mono tag. Under 480px the button is full width (padding 12px 18px) with the tag pushed to the right; EN fits on one line, ES wraps to two balanced lines.
 - **Capabilities:** three columns (one under 760px), each with H3, a short paragraph and tilde bullets. No field.
 - **Teams list:** names set as large text (`--s-3`, 600, `--ink-2`, hover `--ink`), separated by the tilde. Never a logo marquee.
-- **About teaser:** portrait mat (4:5, `--panel`) + short bio + link. Portrait placeholder until a real photo exists.
+- **About teaser:** portrait mat (4:5, `--panel`) + short bio + link.
 - **Closing CTA:** one per page. Heading, ink button and the ferrofluid drop below it. Next to the button, "Copy email" that confirms visibly and through `role="status"`.
-- **Footer:** local time in Buenos Aires, availability, site and external links, settings (Field, Theme, Language, Top). The "Imán" wordmark spans the full width and bleeds off the bottom; it is `aria-hidden` because the name is also present as text.
+- **Footer:** local time in Córdoba, Argentina, availability, site and external links, settings (Field, Theme, Language, Top), and a link to download this file. The "Imán" wordmark spans the full width and bleeds off the bottom; it is `aria-hidden` because the name is also present as text.
 - **Search:** closed by default as a pill; opens with click or ⌘K / Ctrl+K, closes with Esc.
-
-## Page: Home
-
-Order and behavior. The home is the map of the site: every section links deeper.
-
-| # | Section | Field | Desktop layout | Mobile layout |
-|---|---|---|---|---|
-| 1 | Hero | Full + flow | Field fills the first viewport (min-height 640px, up to 920px; it is a minimum, never a fixed height, so short windows grow the hero instead of clipping the gloss; top padding clamp(56px, 9vh, 112px)). Gloss and H1 in columns 1–9, bottom-left; lead in 1–7; CTAs below; meta row (location, availability) at the bottom right. | Field fills ~78svh. Same order, full width. Touch moves the magnet; scrolling aligns the filings. |
-| 2 | Selected work | Medium (index field behind the section header only) | Label in 1–3, H2 in 4–12. One featured card (columns 1–12, image 16:10) then two cards (6 + 6). Archive list below in 4–12. | Cards stacked full width, images 4:3. Archive list full width. |
-| 3 | Highlights band | Ordered | Full-width stage inside the wrap, ~360px tall. | Same, ~420px tall, stacked. |
-| 4 | Capabilities | Off | Label 1–3, statement H2 4–12, three columns below in 4–12. | Stacked. |
-| 5 | Teams | Off | Label 1–3, list in 4–12. | Full width, wraps. |
-| 6 | About teaser | Off | Portrait in 1–4, text in 6–12. | Portrait first (max 320px), text below. |
-| 7 | Closing CTA | Ferrofluid | Full-width stage, ~520px. | ~480px, smaller spikes. |
-| 8 | Footer | At rest | As in Components. | Columns become two, then one. |
-
-## Page: Case study
-
-First case built: **Compass** (`case.html`). Same header, footer, tab bar, settings, language stream and magnetic scroll as the home (shared `site.css` + `site.js`; each page only holds its own content). The header marks **Work** as current. Order:
-
-| # | Section | Field | Layout | Notes |
-|---|---|---|---|---|
-| 1 | Intro + assembly | Full on load, then medium | Back link "← All work", label (sector · year), H1 in columns 1–9, lead in 1–7, facts row (Role, Scope, Team, Timeline) as a 4-column `dl`. | **Assembly:** filings fly in, left to right, from the field the home handed off (or scattered on a direct visit) and line up into the title (~2.3 s: field, then pull; see Motion › Opening a case), the real H1 fades in and the filings dissolve into the background field. The H1 is real text from the start (hidden only visually while it assembles). Reduced motion: no assembly. |
-| 2 | Cover | Subtle (film on hover) | Full width (columns 1–12), 16:10 mat with the cover and the structure film. | Rises in 3D on first view (perspective 1200px, rotateX 14° → 0, 900 ms). |
-| 3 | At a glance | Off | Label 1–3; three metrics 4–12 (tabular, `--s-4`), then three one-line answers: problem, what I did, result. | The recruiter's 60 seconds inside the page. |
-| 4 | Chapters | Medium, scroll-driven | Sticky field panel in columns 1–6 (top band on mobile), chapters in 7–12 with a sticky rail (01 Problem, 02 Decision, 03 Result). | Field goes scattered → attracted → aligned with page scroll. Each chapter ends with one data point. Rail buttons use the magnetic scroll. |
-| 5 | What I did | Off | Label 1–3; three workstreams in 4–12, each with H3, paragraph and an image mat with caption. | Reading zone: type, grid and images only. |
-| 6 | System demo | Off (the demo is the visual) | Label 1–3; interactive mock in 4–12. | "A system that absorbs new brands": three brand chips re-skin the same UI; the tilde snaps to the active chip. Respects reduced motion. |
-| 7 | Reflection | Off | Large quote in 2–11, small "What I'd do next" below. | |
-| 8 | Next case | Medium, follows the cursor | Full-width panel link: label "Next case", title, one line, arrow. | The field leans toward the pointer; the whole panel is one link. |
-| 9 | Closing CTA + footer | As on the home | Same components. | One CTA per page. |
-
-- Case covers on the home link to their case page; cases not built yet stay as placeholders.
-- Built cases: **Compass** (`case.html`) and **Silstech · YPF** (`ypf.html`). Every case uses the same layout and keys; a small copy file per case (`ypf.js`) overrides the Compass copy. Sections a case doesn't need are left out of its HTML (YPF has no system demo) and the script skips them. Next case links form a loop: Compass → YPF → Compass (StatLink still a placeholder).
-- **Long titles:** the H1 may wrap (YPF wraps to two lines on desktop at 13vw). The assembly reads the real line breaks and assembles every line; the magnet's poles sit at the two ends of the widest line, centered on the block, and lines below start 120 ms later.
-- Language choice persists across pages (`mi-lang`), like theme and Field.
-- Chapter and workstream copy is a **draft written from the home copy**; facts, numbers and details in [brackets] must come from Mauro.
-
-## Copy deck
-
-Placeholders in brackets must be replaced before launch.
-
-| Key | EN (default) | ES |
-|---|---|---|
-| nav.work | Work | Trabajo |
-| nav.highlights | Highlights | Highlights |
-| nav.about | About | Sobre mí |
-| nav.contact | Contact | Contacto |
-| tab.home | Home | Inicio |
-| tab.60 | 60 s | 60 s |
-| hero.gloss | imán /iˈman/ — Spanish for *magnet* | imán /iˈman/ — lo que atrae |
-| hero.h1 | I design products people are drawn to. | Diseño productos que atraen. |
-| hero.lead | Product designer who builds. I turn complex operations into products people trust, from 0→1 platforms to design systems at scale. | Diseñador de producto que también construye. Convierto operaciones complejas en productos confiables, desde plataformas 0→1 hasta design systems a escala. |
-| hero.cta1 | See selected work | Ver trabajos |
-| hero.cta2 | Short on time? 60 s | ¿Poco tiempo? 60 s |
-| hero.loc | Buenos Aires · Working worldwide | Buenos Aires · Trabajo en todo el mundo |
-| hero.avail | [Availability] | [Disponibilidad] |
-| work.label | Selected work | Trabajos seleccionados |
-| work.h2 | Three products, three different kinds of hard. | Tres productos, tres tipos de desafío. |
-| case.compass.t | Compass | Compass |
-| case.compass.s | Design at the scale of a $17B company built on acquisitions: compliance operations, CRM research and a design system that absorbs new brands. | Diseño a la escala de una empresa de USD 17B que crece por adquisiciones: operaciones de compliance, research de CRM y un design system que absorbe marcas nuevas. |
-| case.ypf.t | Silstech · YPF | Silstech · YPF |
-| case.ypf.s | A national logistics and safety platform, designed from zero for Argentina's leading energy company and its carriers. | Una plataforma nacional de logística y seguridad, diseñada desde cero para la principal energética de Argentina y sus transportistas. |
-| case.statlink.t | StatLink | StatLink |
-| case.statlink.s | The information architecture pivot that reshaped a platform for coaches, players and scouts. | El pivot de arquitectura de información que transformó una plataforma para entrenadores, jugadores y scouts. |
-| case.read | Read the case | Leer el caso |
-| work.all | View all work | Ver todos los trabajos |
-| hl.h | Recruiter, founder or just busy? | ¿Recruiter, founder o con poco tiempo? |
-| hl.btn | Show me Mauro's highlights | Mostrame los highlights de Mauro |
-| cap.label | What I do | Qué hago |
-| cap.h2 | Strategy, design and code in one person. | Estrategia, diseño y código en una sola persona. |
-| cap.sub | Fewer handoffs, faster decisions, products that ship as designed. | Menos traspasos, decisiones más rápidas y productos que salen como se diseñaron. |
-| cap.1.t | Product strategy | Estrategia de producto |
-| cap.1.p | Research, discovery and the hard prioritization calls that turn a vague goal into a plan. | Research, discovery y las decisiones de prioridad que convierten un objetivo difuso en un plan. |
-| cap.2.t | Product & systems design | Diseño de producto y sistemas |
-| cap.2.p | Flows, interfaces and design systems for complex, data-heavy operations. | Flujos, interfaces y design systems para operaciones complejas y con muchos datos. |
-| cap.3.t | Front-end build | Desarrollo front-end |
-| cap.3.p | Production UI and high-fidelity prototypes, so the product ships the way it was designed. | UI de producción y prototipos de alta fidelidad, para que el producto salga como se diseñó. |
-| teams.label | Teams I've designed with | Equipos con los que diseñé |
-| about.h | Hi, I'm Mauro. | Hola, soy Mauro. |
-| about.p | A product designer based in Buenos Aires. [Years] years designing for PropTech, energy, healthcare and sports, usually as the person who connects business, design and engineering. | Diseñador de producto en Buenos Aires. [Años] años diseñando para PropTech, energía, salud y deportes, casi siempre como quien conecta negocio, diseño e ingeniería. |
-| about.more | More about me | Más sobre mí |
-| cta.h | Let's build something people are drawn to. | Construyamos algo que atraiga. |
-| cta.btn | Start a conversation | Empecemos a hablar |
-| cta.copy | Copy | Copiar |
-| cta.copied | Copied | Copiado |
-| foot.now | Now | Ahora |
-| foot.in | in Buenos Aires | en Buenos Aires |
-| foot.site | Site | Sitio |
-| foot.else | Elsewhere | En otros lados |
-| foot.settings | Settings | Ajustes |
-| foot.top | Top ↑ | Arriba ↑ |
-| foot.field | Field | Campo |
-| foot.theme | Theme | Tema |
-| foot.system / light / dark | System / Light / Dark | Sistema / Claro / Oscuro |
-| foot.legal | Set in Geist on a 12-column grid | Geist sobre una grilla de 12 columnas |
-
-UI strings used by the home (also in `home.html`):
-
-| Key | EN | ES |
-|---|---|---|
-| skip | Skip to content | Saltar al contenido |
-| case.*.k | PropTech / Energy / Sports tech · [year] | PropTech / Energía / Deportes · [año] |
-| m.val / m.zero / m.impact | company valuation / built from scratch / [impact metric] | valuación de la empresa / construido desde cero / [métrica de impacto] |
-| mat.ph / portrait | [cover image] / [portrait] | [imagen de portada] / [retrato] |
-| arch.rf / arch.sector | Since 2017 / [sector] · [year] | Desde 2017 / [sector] · [año] |
-| hl.label | Short on time? | ¿Poco tiempo? |
-| hl.who / hl.next / hl.exit | Who / Next / Exit | Quién / Lo que sigue / Salir |
-| hl.left / hl.done | s left / Done | s restantes / Listo |
-| cta.copiedMsg | Email copied to clipboard. | Email copiado al portapapeles. |
-| cta.selMsg | Email selected. Press Ctrl+C or ⌘C to copy. | Email seleccionado. Copialo con Ctrl+C o ⌘C. |
-| foot.avail | Open to senior product roles · [availability] | Disponible para roles senior de producto · [disponibilidad] |
-| foot.colophon | Colophon | Colofón |
-| foot.on / foot.off | On / Off | Sí / No |
-| foot.grid | Press G for the grid (hidden on touch devices) | Tocá G para ver la grilla |
-| x.hint | Hover to see the structure | Pasá el cursor para ver la estructura |
-| x.hintTouch | Press and hold to see the structure | Mantené apretado para ver la estructura |
-| x.* (annotations) | Data table · 4 cols, KPI cards, Status token, Navigation, Route, Origin, Destination, Profile card, Avatar, Role tag | Same terms in both languages (design vocabulary) |
-
-## Performance budget
-
-Motion is the brand, so it has to feel smooth on a mid-range Android phone, not only on a laptop. Rules (measured in `home.html`: per-frame logic costs ~0.2 ms on desktop and ~0.05 ms on mobile, so the cost is painting canvases, not JavaScript):
-
-- **Pixel density:** decorative canvases render at most 2× on fine pointers and 1.5× on touch screens; 1× at reduced quality. Thin filings stay crisp at 1.5×.
-- **Frame rate:** 60 fps on fine pointers, 30 fps on touch screens (hero, fields, ferrofluid, footer). Canvas loops run only while their section is on screen (IntersectionObserver) and pause while the magnetic scroll is running (its own overlay is the only thing drawn).
-- **Adaptive quality:** every loop feeds the real frame interval into one shared monitor. If frames stay slower than ~24 ms for 1.5 s, quality steps down once: level 1 = density 1×, filings 30% sparser, half the flow particles; level 0 = also half the frame rate. It never steps back up within the visit.
-- **Batching:** filings are drawn as one path per opacity band (4 strokes per field per frame), never one stroke per filing.
-- **Production:** move the field math to an OffscreenCanvas worker where available, and lazy-start fields below the fold. Test on a mid-range Android (e.g. Galaxy A series) before shipping; target ≥ 50 fps while scrolling the home.
-- **Review viewer:** only one copy of the page is ever loaded; on a phone it shows the real page full width (never the 1440px desktop scaled down, which costs ~9× the pixels).
-
-## Implementation notes
-
-- The field moves from 2D canvas to a custom **WebGL2** shader, with no three.js.
-- It pauses off-screen and in background tabs, caps resolution at 2×, and uses fewer filings and 30 fps on mobile.
-- Fallbacks: a still PNG of the field for Open Graph images, and a static frame when WebGL is not available.
-- Suggested stack: Astro (static output), GSAP, WebGL for the field.
-- **Content (decided):** no admin panel. Cases and copy live as Markdown/JSON files in the repo (EN and ES side by side); Mauro edits them or asks Claude. Source content comes from the live WordPress site (mauroiman.com/portfolio).
-- **Hosting (decided): GitHub Pages on mauroiman.com**, deployed by `.github/workflows/deploy.yml` on every push to `main` (repo Settings → Pages → Source "GitHub Actions"). The site is served from the domain root: `SITE_URL=https://mauroiman.com`, `BASE_PATH=/` (also the defaults in `astro.config.mjs`), and `public/CNAME` holds `mauroiman.com`. DNS on Cloudflare points to GitHub Pages; `mauro-iman.github.io/portfolio/` redirects to the domain. The old WordPress case URLs (`/portfolio/compass/` …) redirect to `/work/…`.
-- **Build (v1):** Astro static site. `src/content/site.yaml` (site copy, email, LinkedIn, teams, archive) and `src/content/cases/<slug>.yaml` (one file per case, EN and ES side by side) are the only places content lives. `src/views/Home.astro` and `Case.astro` render both languages at `/` and `/es/` (`/work/<slug>/`, `/es/work/<slug>/`) with hreflang alternates. The exploration scripts (`public/site.js`, `case.js`, `site.css`) run unchanged in behavior: the page injects both dictionaries (`window.MI`), so the language switch still streams the text in place, and it now also updates the address and internal links to the other language. The 2D canvas field stays for v1; WebGL is a later step.
-- **Case images:** files live in `src/assets/cases/<slug>/` (migrated from the live WordPress site) and are named in the case YAML: `coverImage` (replaces the drawn cover on the home card and the case cover; the x-ray hint only stays on drawn covers), `workImages` (one per workstream, in order; `null` keeps the drawing) and `screens` / `phones` (the gallery, captions in EN/ES). Astro converts everything to WebP in several widths and lazy-loads thumbnails. Wide banners and phone screens are shown whole; regular screens fill the frame from the top left. Alt text: the cover alt from the copy, workstream images use the gallery caption of the same file (or the workstream title); all switch with the language.
-- **Screens section** (case pages, after "What I did"): label "Screens", heading "Inside the product.", one horizontal snap strip per group (desktop 16:10 thumbnails, phones in a rounded phone ratio), bleeding to the right edge. Each thumbnail is a button ("Enlarge: caption") that opens a native `<dialog>` lightbox: large WebP, caption, "n of N", ← → keys and buttons, swipe on touch, Esc or backdrop click closes and focus returns to the thumbnail.
-- **Home structure (v1.1):** Hero → Selected work (3 featured cases) → **Building now** (`#building`: Datria360 and Estética Link, 2 cards, role line in accent, intro "Two products, built end to end this year… now I want to bring that to a team and to products at scale") → **More work** (`#more`: every other project, linked to its page; NDA items listed without a link) → Highlights → Capabilities → Teams → About → Contact. The 60 s highlights add a "Building now" step.
-- **Project pages** (`src/content/projects/<slug>.yaml`, view `Project.astro`, same `/work/<slug>/` routes): lighter than a case, no assembly intro. Hero with facts (role, timeline, team), an optional anonymization note, "What I did" as chips (Datria360 uses "Hats I wore"), Results, then story sections (kicker, title, text and/or list) and the optional Screens gallery. Next project loops within its group. `group`: `building`, `work` or `list` (no page).
-- **Project media**: `coverImage`, `screens` and `phones` work as in cases (files in `src/assets/cases/<slug>/`); `galleryTitle` per language overrides "Inside the product." when the images are not product screens (3XM, Holcim, Viaje Perfecto). Thumbnails that would crop badly (logos, very wide or tall images, by the same `fit()` rule as covers) are shown whole. An animated GIF opens as the original file in the lightbox, since WebP conversion keeps only the first frame.
-- **Prototype videos** (`videos: [{ file, en, es, phone }]`, files in `public/videos/`, served as-is): a "Prototype · See it move." section before the gallery, native `<video controls playsinline preload="metadata">`, no autoplay (WCAG 2.2.2); `phone: true` caps the width at 300 px. The four videos (FinTek, Holcim, Viaje Perfecto desktop and mobile) are the live site's originals, about 80 MB together: under GitHub's 100 MB per-file limit, but they make the repo heavy. Decision (2026-11-13): keep the originals in the repo as they are. If size becomes a problem later, recompress them (ffmpeg, H.264 at 720p) or host them outside the repo. They have no speech, so no captions track.
-- **Video carousel** (decision 2026-11-15, Mauro): an inline player only when the page has a single video. With two or more, the section is a carousel on the same strip as the screens: each card shows a frame of the video (`thumb` seconds, default 2) with a play badge, and a click opens it in the shared lightbox (`src/components/Lightbox.astro`, `public/gallery.js`) with native controls; it plays on open because the visitor asked for it, stops on close or when moving to another item, ← → move between videos (not while the player has focus, where arrows seek), Esc closes and focus returns to the card. Optional `videoLabel` / `videoTitle` rename the section per project.
-- **Positioning decisions:** Datria360 title is "Co-founder · Product & Design Lead" everywhere (site, LinkedIn, CV) for consistency. Sensatica LLC is not presented as an agency: consulting work is told by role (StatLink, UPSL as "independent consulting"). Unbuilt proposals are not cases; the UPSL Match Day concept appears inside the UPSL page, labelled as a concept, without price or Sensatica branding. Availability: "Open to senior, staff and founding product design roles" (principal reads as implied by staff; "full-time" dropped so founding roles are not excluded).
-- Adding a case: copy a case YAML, change `title`, `order`, `cover` and the copy; the page, home card, next-case loop and 60 s highlights pick it up. `system: true` adds the brand demo. Workstreams accept 2–4 items (4 lay out 2 × 2).
-- Site map: `/`, `/work` (list and canvas views), `/work/[case]`, `/about`, `/colophon`, `/es/…`.
 
 ## Accessibility (WCAG 2.2 AA)
 
@@ -357,63 +313,45 @@ Motion is the brand, so it has to feel smooth on a mid-range Android phone, not 
 - `lang` set per page and on language switches. A skip link ("Skip to content") is the first focusable element.
 - One H1 per page; headings never skip levels.
 
-## Content still pending
+## Performance budget
 
-- One real metric per case (Compass, Silstech · YPF, StatLink) and the year of each.
-- Public contact email (the explorations use the example `hello@mauroiman.com`), availability line and which social links to show.
-- Real cover images for the three cases (the home uses UI mock placeholders).
-- One case written in three chapters (problem, decision, result) with a data point each.
-- Confirmation of the teams list (which names can be shown).
-- Screenshots of Estética Link for its project page.
+Motion is the brand, so it has to feel smooth on a mid-range Android phone, not only on a laptop. The cost is painting canvases, not JavaScript. Rules:
 
-## Changelog
+- **Pixel density:** decorative canvases render at most 2× on fine pointers and 1.5× on touch screens; 1× at reduced quality. Thin filings stay crisp at 1.5×.
+- **Frame rate:** 60 fps on fine pointers, 30 fps on touch screens (hero, fields, ferrofluid, footer). Canvas loops run only while their section is on screen (IntersectionObserver) and pause while the magnetic scroll is running (its own overlay is the only thing drawn).
+- **Adaptive quality:** every loop feeds the real frame interval into one shared monitor. If frames stay slower than ~24 ms for 1.5 s, quality steps down once: level 1 = density 1×, filings 30% sparser, half the flow particles; level 0 = also half the frame rate. It never steps back up within the visit.
+- **Batching:** filings are drawn as one path per opacity band (4 strokes per field per frame), never one stroke per filing.
+- **Production:** move the field math to an OffscreenCanvas worker where available, and lazy-start fields below the fold. Test on a mid-range Android (e.g. Galaxy A series) before shipping; target ≥ 50 fps while scrolling the home.
 
-- 2026-11-11 — Concept Imán/Field; palette Verde ferrita; voice Producto (Geist + Geist Mono).
-- 2026-11-11 — Added from references: case chapters, attracting CTA, closing footer, implementation notes, this file.
-- 2026-11-11 — Theme rules (system default, manual System/Light/Dark switch, persistence).
-- 2026-11-11 — Magnetic fluids layer: flow in the hero, film on case images, ferrofluid only in the closing CTA (replaces the field inside the button).
-- 2026-11-11 — Working agreement, spacing/shape/breakpoints, component specs, Home page structure and the EN/ES copy deck.
-- 2026-11-11 — Home iteration 1 built (`home.html`): all 8 sections, highlights overlay, theme switch, Field switch, EN/ES, G grid overlay. Ferrofluid spike lean capped at ±0.55 so spikes stand up.
-- 2026-11-11 — Feedback round 1: flow budget lowered; film redefined as a structure x-ray that reveals each case's wireframe; ferrofluid rebuilt as two rows of concave cones; alignment rule (stages from column 2, featured case 8/4, footer 3/3/3/3, wordmark fitted by ink bounds).
-- 2026-11-11 — Mobile fix: button labels at line-height 1.2 with balanced wrapping; the highlights button goes full width under 480px so its label is never clipped.
-- 2026-11-11 — Hero flow set to the midpoint between iteration 1 and round 1: 210/100 particles, 11-point trails, speed 0.45–2.75, opacity .42 ink / .82 green, green above .42.
-- 2026-11-11 — Language switch stream: new text resolves out of filings, accessible and skipped under reduced motion.
-- 2026-11-11 — Hero uses min-height so the gloss never clips on short windows; in-page navigation uses the magnetic scroll (attraction + overshoot clack).
-- 2026-11-11 — Magnetic scroll v2 replaces v1 (rejected as unsatisfying): instant grab, ζ 0.6 spring with constant 16px rebound, visible filings during travel, green seam + haptic clack on impact.
-- 2026-11-11 — Magnetic scroll: velocity normalized by time (the field was half as visible on 120 Hz phones); stronger field and 3px seam on touch.
-- 2026-11-11 — Performance budget: DPR caps (2× / 1.5× touch), 30 fps on touch, loops paused during the magnetic scroll, adaptive quality levels; review viewer loads one page only and shows the real mobile page on phones.
-- 2026-11-11 — Case study page defined (Compass): assembly intro, cover, at a glance, scroll chapters, workstreams, brand-absorbing system demo, reflection, next case. Shared site.css/site.js for all pages; language persists.
-- 2026-11-11 — Opening a case: separate pages stitched into one gesture (gather toward the title on the home, hand-off of the filing grid, cross-document View Transition, assembly from those filings). Assembly filings thinner (1.3px) and denser (step = font size / 28); the rest of the intro waits for the title.
-- 2026-11-11 — Opening a case: added a ~1 s field phase (the title acts as a bar magnet; filings align to its pole-to-pole arcs) and curved pull along field lines, so the attraction reads as magnetic instead of dots lining up. Intro reveal moves to 2.3 s.
-- 2026-11-11 — Second case page: Silstech · YPF (draft copy, no system demo). Case pages share one layout with per-case copy files; the assembly now supports titles that wrap to several lines.
-- 2026-11-12 — Case intro variant B "sweep" (magnet sliding behind the page, filings turn in place, title forms in its wake) plus mouse comb on the title. Variant A "pull" kept; the review viewer switches between Sweep ←, Sweep → and Pull.
-- 2026-11-12 — Sweep visibility pass: slower sweep, traveling glow, afterglow wake, more wobble, thicker filings on phones; letters settle to one lean.
-- 2026-11-12 — Exploration closed; building the real site starts. Content decision: no admin, content files versioned in the repo, migrated from the live site.
-- 2026-11-12 — Real site v1: Astro on GitHub Pages, content in YAML (EN/ES), routes `/`, `/es/`, `/work/<slug>/`. Compass, Silstech · YPF and StatLink use the real facts and metrics from the live site; StatLink case added; archive shows sectors; email and LinkedIn from the live site. Language switch now also changes the URL.
-- 2026-11-12 — Real case images: 57 screens from the live site (Compass 9, Silstech · YPF 20, StatLink 28) as covers, workstream images and a new Screens gallery with lightbox; optimized to WebP at build.
-- 2026-11-12 — Removed "UI kit components" from StatLink: it belongs to Digital Global Systems (DGS). The design system workstream now shows the UI components board.
-- 2026-11-13 — Building now (Datria360, Estética Link), More work with linked project pages (UPSL, Megatrans · Fenix, Cideon · Enify, FinTek, RF Solutions, Holcim, Healthcare Inc., Viaje Perfecto, 3XM), ePlan listed under NDA; Holcim Performance LH dropped. Old WordPress URLs mapped. Availability and About copy updated.
-- 2026-11-13 — Project media from the live site: covers and galleries for RF Solutions (21 screens, DGS UI kit excluded), Healthcare Inc. (18 phone screens), Holcim (plant photo and research charts), 3XM (old and new logo, brand applied), FinTek (branding GIF) and Viaje Perfecto; prototype videos for FinTek, Holcim and Viaje Perfecto. Datria360 copy updated from the commercial deck: three pillars (Conversion, Operations, Growth), four plans and the Founding Circle launch in Córdoba, June 2026.
-- 2026-11-13 — Home review: location is Córdoba, Argentina (hero, About, footer); About says more than 20 years; portrait photo in About (`src/assets/about/mauro.webp`, 1600×2000). Datria360 card shows the app video (`coverVideo`, muted loop, pause button, paused under reduced motion). Estética Link card uses the wireframe-face art with a subtle WhatsApp agent + CRM overlay (`coverOverlay: chat`, decorative, copy in `chat.*`). More work lists only projects with a page; ePlan removed.
-- 2026-11-13 — 60 s highlights expanded from 6 to 8 steps: Who (with 20+ years and location), the three cases now with the role, a new "How I lead" step (UPSL team and account, hiring the StatLink backend developer, agile rituals, RF Solutions mentoring), Building now, a new "Range" step (industries and teams), then the CTA. Copy in `hl.*`.
-- 2026-11-13 — Availability line widened to senior, staff and founding product design roles (hero, footer, last highlights step). Closing CTA button now opens the mailto link (an exploration leftover was blocking it).
-- 2026-11-15 — Datria360 page: website link, branding, the AI agent and the stack it runs on; cover (appointments calendar) and a 7-screen gallery (landing, sign-in, appointments, patient record, service catalog, marketing strategy center, booking portal with the agent). The home card keeps the video.
-- 2026-11-15 — Project page sections (`.p-sec`, e.g. The problem / The product): 16px of padding above the heading instead of 0, so the title no longer sits on the divider line.
-- 2026-11-15 — Case studies: draft reflections and “What I’d do next” lines for Compass, Silstech · YPF and StatLink (to be reviewed by Mauro); StatLink metric labels quoted so the text after the comma shows; “[impact metric]” removed from the Iterpro line.
-- 2026-11-15 — Video carousel: with two or more videos (Estética Link, Viaje Perfecto) the section is a carousel and each video opens full screen with controls; single videos (FinTek, Holcim) stay inline. The lightbox moved out of the gallery into its own component so a page with videos and no screens can use it.
-- 2026-11-16 — Estética Link cover is now the congress home page hero (`cover-hero.webp`, temporary per Mauro); the WhatsApp/CRM chat overlay is off, since it covered the logo and the cover already shows the product.
-- 2026-11-16 — Estética Link: Branding added to What I did; the Result now lists five outcomes (no plugin costs or dependencies, client-owned CRM data, a full CMS, an automated CRM + AI agent across the event, time back for the organizer). Project pages accept an optional `resultItems` list under the result line.
-- 2026-11-16 — Datria360 Result lists six traction numbers (99.6% attendance on closed appointments, 1,000+ appointments, ARS 70M+ billed, 450+ patients, 28% returning, 12%+ bookings outside business hours).
-- 2026-11-16 — Contact email is now hi@mauroiman.com (was a personal Gmail), set once in `site.yaml` and used by every mailto and copy button.
-- 2026-11-16 — 60 s highlights: the last step (“Let’s build something people are drawn to.”) shows a small portrait above the label (104–148 px wide, 4:5, same photo and alt as About). Estética Link benefits screenshots replaced so they no longer show a personal email.
-- 2026-11-17 — Project years filled: UPSL July 2024 – April 2025, Megatrans · Fenix October 2021 – January 2022 (4 months of workshops), Healthcare Inc. about 4 months in 2020 (at 3XM Group, new team line), Viaje Perfecto July – December 2016.
-- 2026-11-17 — Results: UPSL (fixes went from weeks or months to days; proposals incl. Match Day; ended when UPSL was acquired), Megatrans · Fenix (architecture bottleneck diagnosis and a new structure to scale), Viaje Perfecto (top 10 in local Google searches, as a list with the previous outcomes). No result placeholders left.
-- 2026-11-17 — Healthcare Inc. reframed: role and summary say Mauro joined to complete the design; result says it was handed off on time for launch. Kept in Other projects.
-- 2026-11-17 — UPSL: the acquisition line removed (it is context, not an outcome, and looked out of place as a note); the summary names the product, the Registry System for Teams and Players; cover is the Match Day concept art (`upsl/cover.webp`, trial); Context adds four points (bugs and user support, renewals that needed developers, platforms with no integration and manual results, the unified-flow + mobile app proposal).
-- 2026-11-17 — Megatrans · Fenix: prototype video of the proposed MVP (`megatrans-fenix-prototype.webm`, 1280×720, 58 s, 4.3 MB), shown inline as the page’s only video; the caption says it is not the final product.
-- 2026-11-17 — Cideon · Enify cover: Enify key art, a red wireframe machine part over a dark grid (`cideon-enify/cover.jpg`, 1920×1080), shown in full (`coverFit: full`). It replaced the four-device mockup, which repeated the gallery.
-- 2026-11-17 — Cideon · Enify: gallery of four, the remote-service call as device mockups (iMac, iPad, iPhone, which replace the plain desktop screenshot) and the SAP integration screen (3D parts tree). The four wireframes of the service room (chat; call beside the chat; call with the chat collapsed; the phone chat with a join-the-call banner) moved to their own strip under “Wireframes as a story”. The frame takes the median ratio (16:10); images with other ratios are shown whole. The annotated SAP mockup was left out: it repeats the clean screen with German labels.
-- 2026-11-17 — Project pages: a story section can carry its own strip of screens (`sectionScreens: { <section index>: [{file, en, es}] }`), rendered under the section with the same thumbnails and lightbox as the gallery (← → stay in that strip). The strip markup moved to `GalleryStrip.astro`, shared with the gallery.
-- 2026-11-17 — Footer: the “Imán” wordmark ignores the pointer (`pointer-events: none`). Its glyph box overlapped the footer buttons and blocked clicks on Top at some widths.
-- 2026-11-17 — Domain: the site moved to mauroiman.com, served from the root (`BASE_PATH=/`, `public/CNAME`). With the old `/portfolio` base the domain loaded the pages without styles or scripts.
-- 2026-11-15 — Estética Link: two videos in its page (the new site’s hero intro, 1920×1080, and the animated Three.js attendee credential, 1080×1920 as a phone video), as WebM (9.7 MB and 7.1 MB, converted by Mauro from the 15.7 MB and 21.9 MB MP4s). Projects can now rename the video section with `videoLabel` / `videoTitle` (Estética Link: “Video · The site in motion.”). Later the same day: a third video (add-to-cart animation, 1280×720) and a 5-screen gallery (passes, speakers, expo, attendee tickets, sponsor benefits).
+## Other media
+
+How the system carries outside the browser: slide decks, documents, social images, print.
+
+- **Fonts:** Geist and Geist Mono are free (Google Fonts, Vercel). Install them before building. If a tool cannot load them, use Inter and IBM Plex Mono, keep the weights and tracking, and say so.
+- **Background:** a whole artifact is either light (`paper` `#EDEFEE`, text `ink` `#0E1311`) or dark (`paper` `#0B0F0D`, text `#E6EBE8`). Do not mix themes inside one deck or page.
+- **Layout:** the 12-column grid. Mono labels in columns 1–3, content in columns 4–12. Generous margins; at least 1/12 of the width on each side.
+- **Slide pattern:** a mono uppercase label at the top left (`ink-2`, letter-spacing .06em), a Geist 700 headline with tight tracking (−.03em) and line-height 1, then content. Cards are `panel` with a 6px radius, no border or a 1px `line` border, no shadow.
+- **Card pattern:** a tilde (or a short mono label) at the top left, a Geist 700 title, one or two lines of `ink-2` text. Left-aligned; centered text only for a single short statement.
+- **Images and screenshots:** on a `panel` mat with a 6px radius. Never recolor or invert screenshots.
+- **Charts:** ink and `ink-2` for data, `fill` green for the one series or value that matters, `line` for gridlines. No 3D, no gradients.
+- **Iconography:** none by default. If an artifact truly needs icons, use simple 1.5px outline icons in `ink`, never green, never filled.
+
+## Reproduction checklist
+
+Before delivering a page, deck or image made with this system:
+
+- [ ] The tilde is the SVG shape (rounded bar, 3 : 11, 34° to the right), not `~`, a dot or a square.
+- [ ] Only one green element per view.
+- [ ] Only the "á" of "Imán" is green in the name.
+- [ ] Geist for text, Geist Mono for labels (or the stated fallback).
+- [ ] Colors are the exact hex values above, from one theme only.
+- [ ] Content sits on the 12-column grid; labels in 1–3, content in 4–12.
+- [ ] No gradients, glows, shadows, stock icons or emoji.
+- [ ] Text contrast meets WCAG 2.2 AA (4.5 : 1 for text, 3 : 1 for graphics).
+
+## Changes to the system
+
+System-level changes only. The site's full changelog is in `SITE.md`.
+
+- 2026-11-17 — v1.0: published as a standalone, downloadable design system. Brand signature specified with exact geometry, canonical SVG, sizes per use, logotype rules and do/don't; machine-readable tokens; guidance for other media and a reproduction checklist.
+- 2026-11-11 — Concept Imán / Field, palette Verde ferrita, voice Producto (Geist + Geist Mono).

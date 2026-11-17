@@ -17,8 +17,8 @@ Text in `[brackets]` is still a placeholder. Values that contain `: ` must be in
 
 ```bash
 npm install      # once
-npm run dev      # local preview at http://localhost:4321/portfolio/
+npm run dev      # local preview at http://localhost:4321/
 npm run build    # static site in dist/
 ```
 
-Design decisions and the changelog are in `DESIGN.md`. The design explorations stay in `explorations/`.
+The design system is in `DESIGN.md` (also published at mauroiman.com/design.md). Pages, content, build, hosting and the changelog are in `SITE.md`; positioning decisions in `POSITIONING.md`. The design explorations stay in `explorations/`.

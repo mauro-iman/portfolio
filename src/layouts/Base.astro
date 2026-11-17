@@ -114,7 +114,7 @@ const json = JSON.stringify(cfg).replace(/</g, '\\u003c');
         <button type="button" class="btn-sm" id="topBtn" data-i="foot.top">{t('foot.top')}</button>
       </div>
     </div>
-    <div class="ft-legal"><span class="label">© {new Date().getFullYear()} Mauro Imán</span><span class="label"><span data-i="foot.legal">{t('foot.legal')}</span><span class="kb"> · <span data-i="foot.grid">{t('foot.grid')}</span></span></span></div>
+    <div class="ft-legal"><span class="label">© {new Date().getFullYear()} Mauro Imán</span><span class="label"><span data-i="foot.legal">{t('foot.legal')}</span><span class="kb"> · <span data-i="foot.grid">{t('foot.grid')}</span></span> · <a class="ft-dl" href={`${import.meta.env.BASE_URL}design.md`} download="mauroiman-design-system.md" data-i="foot.dl">{t('foot.dl')}</a></span></div>
     <div class="ft-word" aria-hidden="true"><span class="w" id="word">Im<span class="acc">á</span>n</span></div>
   </div>
 </footer>
