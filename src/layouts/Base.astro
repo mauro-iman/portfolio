@@ -75,8 +75,8 @@ const json = JSON.stringify(cfg).replace(/</g, '\\u003c');
           <span class="label" data-i="nav.contact">{t('nav.contact')}</span>
           <h2 id="cta-h" data-i="cta.h">{t('cta.h')}</h2>
           <div class="cta-row">
-            <a class="btn-p" href={`mailto:${site.email}`} id="ctaBtn"><span data-i="cta.btn">{t('cta.btn')}</span><span class="tilde" aria-hidden="true"></span></a>
-            <button type="button" class="copy" id="copy" aria-describedby="status"><span class="em" id="email">{site.email}</span><span class="ck" id="ck" data-i="cta.copy">{t('cta.copy')}</span></button>
+            <a class="btn-p" href={`mailto:${site.email}`} id="ctaBtn" data-mag><span data-i="cta.btn">{t('cta.btn')}</span><span class="tilde" aria-hidden="true"></span></a>
+            <button type="button" class="copy" id="copy" aria-describedby="status" data-mag><span class="em" id="email">{site.email}</span><span class="ck" id="ck" data-i="cta.copy">{t('cta.copy')}</span></button>
           </div>
           <p class="status" id="status" role="status" aria-live="polite"></p>
         </div>
