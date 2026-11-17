@@ -1,9 +1,23 @@
-# Cideon · Enify. Screens from the PDF are pending Mauro's OK to publish them.
+# Cideon · Enify.
 title: Cideon · Enify
 order: 12
 group: work
+coverImage: cover.jpg
+coverFit: full
+screens:
+  - { file: 01-remote-imac.webp, en: "Remote service on desktop · the support room: the expert sees the technician’s camera, draws arrows on it, controls the remote device and chats", es: "Servicio remoto en escritorio · la sala de soporte: el experto ve la cámara del técnico, dibuja flechas encima, controla el dispositivo remoto y chatea" }
+  - { file: 02-remote-ipad.webp, en: "On a tablet · the call fills the screen, with the expert’s arrows and the call controls", es: "En tablet · la llamada ocupa toda la pantalla, con las flechas del experto y los controles de la llamada" }
+  - { file: 03-remote-iphone.png, en: "On a phone · the same call, held in one hand at the machine", es: "En el celular · la misma llamada, en una mano frente a la máquina" }
+  - { file: 04-sap.png, en: "SAP integration · search by serial number, drill down the parts tree on the 3D model, and see each part’s details and documents", es: "Integración con SAP · búsqueda por número de serie, navegación del árbol de piezas sobre el modelo 3D, y los detalles y documentos de cada pieza" }
+sectionScreens:
+  1:
+    - { file: 00a-wire-chat.png, en: "Wireframe · a service room: the room list and the chat", es: "Wireframe · una sala de servicio: la lista de salas y el chat" }
+    - { file: 00b-wire-call.webp, en: "Wireframe · the video call opens next to the chat", es: "Wireframe · la videollamada se abre junto al chat" }
+    - { file: 00c-wire-call-full.webp, en: "Wireframe · the chat collapses and the call takes the space", es: "Wireframe · el chat se colapsa y la llamada ocupa el espacio" }
+    - { file: 00d-wire-mobile.png, en: "Wireframe · on a phone, a banner in the chat invites you to join the active call", es: "Wireframe · en el celular, un aviso en el chat invita a sumarse a la llamada activa" }
 
 en:
+  coverAlt: "Enify key art: a machine part drawn as a red wireframe inside a targeting ring, over a dark 3D grid"
   sector: "Industrial software · Remote service"
   years: "2021–2023"
   summary: "Remote service for machine maintenance: from research and a clear value proposition to an MVP delivered on time."
@@ -34,6 +48,7 @@ en:
       text: "I customized Material Design with Cideon’s brand to speed up development and meet tight deadlines. The design is responsive: laptops, tablets and phones."
 
 es:
+  coverAlt: "Arte de Enify: una pieza de máquina dibujada en wireframe rojo dentro de un anillo de mira, sobre una grilla 3D oscura"
   sector: "Software industrial · Servicio remoto"
   years: "2021–2023"
   summary: "Servicio remoto para el mantenimiento de máquinas: del research y una propuesta de valor clara a un MVP entregado a tiempo."

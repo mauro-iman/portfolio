@@ -1,25 +1,9 @@
 ---
-/* Screens gallery for a case: a horizontal strip per group (desktop screens, phone screens).
-   Each thumbnail is a button that opens the lightbox (public/gallery.js) with a large WebP. */
-import { Image, getImage } from 'astro:assets';
-import { img, fit } from '../lib/images.js';
+/* Screens gallery for a case: a horizontal strip per group (desktop screens, phone screens). */
+import GalleryStrip from './GalleryStrip.astro';
 
 const { c, t } = Astro.props;
-const group = async (list, key, phone) => Promise.all((list || []).map(async (g, i) => {
-  const src = img(c.slug, g.file);
-  // An animated GIF keeps its original file in the lightbox (WebP conversion would keep only the first frame).
-  if (src.format === 'gif') return { src, full: src.src, w: src.width, h: src.height, k: `${key}${i}`, phone, fit: fit(src) };
-  const full = await getImage({ src, width: Math.min(src.width, phone ? 900 : 2000), format: 'webp' });
-  return { src, full: full.src, w: full.attributes.width, h: full.attributes.height, k: `${key}${i}`, phone, fit: fit(src) };
-}));
-const screens = await group(c.screens, 'c.g', false);
-const phones = await group(c.phones, 'c.p', true);
-const rows = [[screens, 'c.gal.desk', false], [phones, 'c.gal.phone', true]].filter(r => r[0].length);
-// Desktop strip: the thumbnail frame takes the strip's most common (median) aspect ratio, so screenshots
-// are not cropped; any image whose ratio differs is shown whole inside that frame.
-const ratios = screens.map(g => g.src.width / g.src.height).sort((a, b) => a - b);
-const stripAR = ratios.length ? Math.min(16 / 9, Math.max(4 / 3, ratios[Math.floor(ratios.length / 2)])) : 1.6;
-screens.forEach(g => { const r = g.src.width / g.src.height; g.whole = Math.abs(r - stripAR) / stripAR > 0.02; });
+const rows = [[c.screens, 'c.g', 'c.gal.desk', false], [c.phones, 'c.p', 'c.gal.phone', true]].filter(r => r[0]?.length);
 ---
 <section class="sec" id="screens" aria-labelledby="gal-h">
   <div class="wrap">
@@ -31,21 +15,5 @@ screens.forEach(g => { const r = g.src.width / g.src.height; g.whole = Math.abs(
       </div>
     </div>
   </div>
-  {rows.map(([items, label, phone]) => (
-    <div class={`gal${phone ? ' gal-ph' : ''}`} style={phone ? undefined : `--gal-ar: ${stripAR.toFixed(4)}`}>
-      {rows.length > 1 && <div class="wrap"><h3 class="label gal-l" data-i={label}>{t(label)}</h3></div>}
-      <ul class="gal-strip" role="list">
-        {items.map(g => (
-          <li>
-            <button type="button" class="gal-it" data-full={g.full} data-w={g.w} data-h={g.h} data-cap={g.k} data-il={g.k} data-il-pre="c.lb.open" aria-label={`${t('c.lb.open')}: ${t(g.k)}`}>
-              <span class={`gal-mat${!phone && g.whole ? ' fit-c' : ''}`}>
-                <Image src={g.src} alt="" widths={phone ? [220, 440] : [480, 960]} sizes={phone ? '220px' : '(max-width: 760px) 80vw, 480px'} format="webp" loading="lazy" decoding="async" />
-              </span>
-              <span class="gal-cap" data-i={g.k}>{t(g.k)}</span>
-            </button>
-          </li>
-        ))}
-      </ul>
-    </div>
-  ))}
+  {rows.map(([list, k, label, phone]) => <GalleryStrip c={c} t={t} list={list} k={k} phone={phone} label={rows.length > 1 ? label : null} />)}
 </section>
