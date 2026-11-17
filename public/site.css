@@ -205,7 +205,7 @@ h3 { margin: 0; }
 .cta-in { position: absolute; z-index: 3; left: calc((100% - 11 * var(--gutter)) / 12 + var(--gutter)); top: clamp(24px, 5vw, 56px); right: clamp(20px, 5vw, 56px); display: flex; flex-direction: column; align-items: flex-start; gap: 18px; pointer-events: none; }
 .cta-in h2 { font-size: clamp(2rem, 5vw, 3.75rem); line-height: .96; letter-spacing: -.035em; max-width: 13ch; }
 .cta-row { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; pointer-events: auto; }
-.copy { display: inline-flex; align-items: center; gap: 12px; min-height: 48px; border: 1px solid var(--line); background: var(--paper); border-radius: 999px; padding: 6px 6px 6px 18px; cursor: pointer; transition: border-color .2s; }
+.copy { display: inline-flex; align-items: center; gap: 12px; min-height: 48px; border: 1px solid var(--line); background: var(--paper); border-radius: 999px; padding: 6px 6px 6px 18px; cursor: pointer; transition: transform .35s var(--spring), border-color .2s; }
 .copy:hover { border-color: var(--ink); }
 .copy .em { font-family: var(--f-mono); font-size: .88rem; }
 .copy .ck { font-family: var(--f-mono); font-size: .7rem; letter-spacing: .06em; text-transform: uppercase; background: var(--panel); border-radius: 999px; padding: 8px 12px; transition: background-color .2s, color .2s; }
