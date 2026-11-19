@@ -405,7 +405,7 @@ h3 { margin: 0; }
 .archive .arch-i { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 16px; padding: 14px 0; border-bottom: 1px solid var(--line); align-items: baseline; }
 .c-work.n4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 .c-work.n2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-@media (max-width: 760px) { .c-work.n4, .c-work.n2 { grid-template-columns: 1fr; } .archive .arch-i { grid-template-columns: 1fr; gap: 4px; } }
+@media (max-width: 760px) { .c-work.n4, .c-work.n2 { grid-template-columns: 1fr; } .archive .arch-i, .archive a { grid-template-columns: 1fr; gap: 6px; } .archive a { padding-right: 28px; } .archive .label { white-space: normal; } }
 .nf { min-height: 100vh; display: flex; align-items: center; }
 .nf h1 { font-size: var(--s-5, 3rem); letter-spacing: -.03em; margin: .3em 0; }
 .nf p a { margin-right: 8px; }
