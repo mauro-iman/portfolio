@@ -37,7 +37,7 @@ const needsLb = hasGallery || (p.videos?.length || 0) > 1 || Object.keys(secShot
   {p.coverVideo && p.coverVideoPage ? (
     <section class="c-cover has-vid" aria-label={p.title}>
       <div class="wrap"><div class="c-vid-box rv rise">
-        <div class="mat c-mat vid-mat c-vid"><video class="cover-vid" src={`${BASE}videos/${p.coverVideo}`} muted loop playsinline autoplay preload="auto" aria-label={t('c.coverV')} data-il="c.coverV"></video></div>
+        <div class="mat c-mat vid-mat c-vid"><video class="cover-vid" src={`${BASE}videos/${p.coverVideo}`} poster={`${BASE}videos/${p.coverVideo.replace(/\.\w+$/, '-poster.webp')}`} muted loop playsinline preload="none" aria-label={t('c.coverV')} data-il="c.coverV"></video></div>
         <button type="button" class="vid-tg" data-vid-tg><span class="vid-ic" aria-hidden="true"></span><span class="vh" data-i="vid.pause">{t('vid.pause')}</span></button>
       </div></div>
     </section>
