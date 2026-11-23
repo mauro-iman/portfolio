@@ -73,7 +73,7 @@ const minis = {
           <article class={`case rv${p.coverVideo ? ' has-vid' : ''}`}>
             <a class="case-link" href={url(lang, `work/${p.slug}/`)} data-l={`work/${p.slug}/`}>
               {p.coverVideo ? (
-                <div class="mat vid-mat"><video class="cover-vid" src={`${BASE}videos/${p.coverVideo}`} muted loop playsinline autoplay preload="auto" aria-label={t(`proj.${p.slug}.va`)} data-il={`proj.${p.slug}.va`}></video></div>
+                <div class="mat vid-mat"><video class="cover-vid" src={`${BASE}videos/${p.coverVideo}`} poster={`${BASE}videos/${p.coverVideo.replace(/\.\w+$/, '-poster.webp')}`} muted loop playsinline preload="none" aria-label={t(`proj.${p.slug}.va`)} data-il={`proj.${p.slug}.va`}></video></div>
               ) : p.coverImage ? (
                 <CoverMat c={p} t={t} altKey={`proj.${p.slug}.ca`}>
                   {p.coverOverlay === 'chat' && <ChatHint t={t} />}

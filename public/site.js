@@ -558,13 +558,42 @@
     e.preventDefault(); magnetTo(target, '#' + id, a);
   });
 
-  /* ── Cover videos (home cards and project pages): muted loop, with a pause button (WCAG 2.2.2). Reduced motion starts paused. ── */
+  /* ── Loader: the three tildes (DESIGN.md › Uses › Loader), shown in a mat while its content loads. ── */
+  const loader = box => { let l = box.querySelector(':scope > .ld'); if (!l) { l = document.createElement('span'); l.className = 'ld'; l.setAttribute('aria-hidden', 'true'); l.innerHTML = '<i class="tilde"></i><i class="tilde"></i><i class="tilde"></i>'; box.append(l); } return l; };
+
+  /* Images in mats fade in once loaded, with the loader until then (only images not already loaded). */
+  document.querySelectorAll('.mat.has-img > img, .portrait.has-img > img').forEach(im => {
+    if (im.complete && im.naturalWidth) return;
+    const box = im.parentElement; loader(box); box.classList.add('is-loading');
+    const done = () => box.classList.remove('is-loading');
+    im.addEventListener('load', done, { once: true }); im.addEventListener('error', done, { once: true });
+  });
+
+  /* ── Cover videos (home cards and project pages): muted loop, with a pause button (WCAG 2.2.2).
+     Nothing downloads until the video nears the viewport (preload="none" + poster); off screen it pauses.
+     Reduced motion or Save-Data: it stays on its poster until the visitor presses play. ── */
+  const saveData = navigator.connection && navigator.connection.saveData === true;
+  const vidIO = 'IntersectionObserver' in window ? new IntersectionObserver(es => es.forEach(e => {
+    const v = e.target;
+    if (e.isIntersecting) { if (v.dataset.user !== 'paused') v.play().catch(() => {}); }
+    else if (!v.paused) v.pause();
+  }), { rootMargin: '200px 0px' }) : null;
   document.querySelectorAll('[data-vid-tg]').forEach(btn => {
-    const v = btn.closest('.case, .c-cover').querySelector('video'), lab = btn.querySelector('[data-i]');
-    const sync = () => { const p = v.paused; btn.classList.toggle('is-paused', p); lab.dataset.i = p ? 'vid.play' : 'vid.pause'; lab.textContent = t(lab.dataset.i); };
-    if (reduce) { v.removeAttribute('autoplay'); v.pause(); }
-    btn.addEventListener('click', () => { v.paused ? v.play() : v.pause(); });
-    v.addEventListener('play', sync); v.addEventListener('pause', sync); sync();
+    const v = btn.closest('.case, .c-cover').querySelector('video'), lab = btn.querySelector('[data-i]'), box = v.closest('.mat');
+    const auto = !reduce && !saveData;
+    const off = () => v.paused && (v.dataset.user === 'paused' || !auto);
+    const sync = () => { const p = off(); btn.classList.toggle('is-paused', p); lab.dataset.i = p ? 'vid.play' : 'vid.pause'; lab.textContent = t(lab.dataset.i); };
+    loader(box);
+    const busy = () => { if (v.readyState < 3) box.classList.add('is-loading'); }, idle = () => box.classList.remove('is-loading');
+    v.addEventListener('play', () => { busy(); sync(); });
+    v.addEventListener('waiting', busy); v.addEventListener('playing', idle); v.addEventListener('canplay', () => { if (!v.paused) idle(); });
+    v.addEventListener('pause', () => { idle(); sync(); }); v.addEventListener('error', idle);
+    btn.addEventListener('click', () => {
+      if (v.paused) { v.dataset.user = ''; v.play().catch(() => {}); } else { v.dataset.user = 'paused'; v.pause(); }
+      sync();
+    });
+    if (auto) { if (vidIO) vidIO.observe(v); else v.play().catch(() => {}); }
+    sync();
   });
 
   applyLang(MI.lang, false); spy();
