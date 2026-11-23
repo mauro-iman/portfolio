@@ -4,12 +4,13 @@ order: 2
 group: building
 url: https://esteticalink.com/
 coverImage: cover-hero.webp
-# coverVideo replaces the cover on the home card; coverVideoPage also puts it at the top of this page.
+# coverVideo replaces the cover on the home card; pageVideo is the cover video at the top of this page.
+# Each cover video needs a <name>-poster.webp next to it in public/videos/.
 coverVideo: credenciales.webm
-coverVideoPage: true
+pageVideo: estetica-link-intro.webm
 mini: sys
 videos:
-  - { file: estetica-link-intro.webm, en: "The hero intro of the new site", es: "La intro del hero del sitio nuevo" }
+  - { file: credenciales.webm, en: "The two passes, Full Experience and MED + Full Experience, as animated credentials", es: "Los dos pases, Full Experience y MED + Full Experience, como credenciales animadas" }
   - { file: estetica-link-credential.webm, en: "Animated attendee credential, made with Three.js to share on social media", es: "Credencial animada para asistentes, hecha con Three.js para compartir en redes", phone: true }
   - { file: add-to-cart-elink.mp4, en: "Choosing trainings and the add-to-cart animation", es: "Elegir capacitaciones y la animación de agregar al carrito" }
 screens:
@@ -32,6 +33,7 @@ en:
   videoLabel: "Video"
   videoTitle: "The site in motion."
   videoAlt: "Estética Link attendee credentials, animated in 3D"
+  pageVideoAlt: "The hero intro of the new Estética Link site: a particle portrait that becomes the congress cover"
   coverAlt: "The Estética Link congress home page: the event logo, dates and venue next to a portrait of a woman with orange and gold face paint"
   sector: "Event platform"
   years: "2026"
@@ -71,6 +73,7 @@ es:
   videoLabel: "Video"
   videoTitle: "El sitio en movimiento."
   videoAlt: "Credenciales de asistentes de Estética Link, animadas en 3D"
+  pageVideoAlt: "La intro del hero del sitio nuevo de Estética Link: un retrato de partículas que se convierte en la portada del congreso"
   coverAlt: "La página de inicio del congreso Estética Link: el logo del evento, las fechas y la sede junto al retrato de una mujer con maquillaje naranja y dorado"
   sector: "Plataforma de eventos"
   years: "2026"
