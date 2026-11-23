@@ -10,7 +10,7 @@ homeMetric: "$400k"
 # Images live in src/assets/cases/<slug>/. coverImage replaces the drawn cover; workImages go with
 # the workstreams in order (null keeps the drawing); screens and phones fill the gallery, captions in EN/ES.
 coverImage: compass.jpg
-workImages: [null, null, 4.png, ds-cover.png]
+workImages: [ica-workflow.png, research-synthesis.webp, checklist-admin.png, ds-cover.png]
 screens:
   - { file: 1.png, en: "Index page", es: "Página principal" }
   - { file: 21.png, en: "Dynamic filters", es: "Filtros dinámicos" }
@@ -24,11 +24,11 @@ screens:
 en:
   sector: PropTech
   years: 2024–2025
-  summary: "Design at the scale of a $17B company built on acquisitions: compliance operations, CRM research and a design system that absorbs new brands."
+  summary: "Design at the scale of a $17B company built on acquisitions: compliance operations, CRM research and an existing design system extended to absorb new brands."
   homeMetricLabel: saved per year
   highlight: "$400k saved per year · 2× faster brand integrations"
   role: Senior product designer (lead individual contributor)
-  scope: Contract automation · Compliance tools · CRM research · Design system
+  scope: Contract renewals · Compliance tools · CRM research · Design system
   team: Transaction Operations, Brokers of Record, product and engineering
   timeline: Early 2024 – Late 2025
   coverAlt: Compass product cover
@@ -36,44 +36,44 @@ en:
     - { value: "$400k", label: annual savings from the contract renewal workflow }
     - { value: "4.8/5", label: UX satisfaction for the compliance checklist tool }
     - { value: "2×", label: faster brand integrations with the multi-brand system }
-  problem: Every acquisition, from Christie’s to @properties, brought its own tools, brands and compliance steps, and routine changes waited on engineering.
-  did: Automated contract renewals, researched how agents work on behalf of others, rebuilt the compliance checklist tool as self-service and built one design system for every brand.
-  result: "$400k saved a year, routine compliance updates with no engineering involved, and new brands integrated twice as fast."
+  problem: Every acquisition, from Christie’s to @properties, added a brand the design system wasn’t built to carry, while contract and compliance workflows were full of bottlenecks and unnecessary steps, and routine changes waited on engineering.
+  did: Streamlined contract renewals, researched how administrative staff act on behalf of agents in the CRM, rebuilt the compliance checklist tool as self-service and extended the existing design system to support every brand.
+  result: "$400k saved a year by shortening the renewal window, routine compliance updates with no engineering involved, and new brands integrated twice as fast."
   story:
     title: From scattered to aligned.
     chapters:
       - kicker: Problem
-        title: Growth by acquisition, one product at a time.
-        text: Christie’s, @properties and Washington Fine Properties each arrived with their own tools, brands and compliance steps. Operations scaled; the experience fragmented, and every routine compliance change needed an engineer.
+        title: The operation grew faster than its foundations.
+        text: Christie’s, @properties and Washington Fine Properties each brought more agents, more transactions and a new brand. The infrastructure behind them wasn’t built for that scale, so every acquisition added friction.
         data: → A $17B company built on acquisitions
       - kicker: Decision
         title: Fix the shared foundations, not every screen.
-        text: Instead of redesigning product by product, I focused on what every brand shares — the contract workflow, the compliance rules behind each transaction and one design system as the single source of truth.
-        data: → One system for every brand, with design system office hours for the teams
+        text: Instead of patching product by product, I worked on what every brand and every transaction runs on, so growth would stop costing more effort.
+        data: → Four initiatives on the same foundations
       - kicker: Result
-        title: New brands snap into place.
-        text: Renewals run without manual chasing, compliance teams update their own checklists, and each acquisition joins the system instead of adding to the noise.
+        title: Growth stopped creating friction.
+        text: New brands plug into the system, renewals close on time and compliance teams work without waiting on engineering.
         data: → $400k saved per year · 100% of routine compliance updates without engineering
   work:
     title: Four initiatives, one direction.
     items:
       - mini: q
-        title: Contract service automation
-        text: Redesigned the contract renewal workflow for the Transaction Operations team, turning manual follow-ups into an automated service that saves $400k a year.
-        screen: "[screen: contract renewal workflow]"
+        title: ICA renewals workflow redesign
+        text: Redesigned the ICA contract renewal workflow for Transaction Operations to cut friction, bottlenecks and unnecessary steps, and enabled concurrent renewals. The shorter renewal window prevents renegotiated terms and saves $400k a year.
+        screen: ""
       - mini: notes
         title: CRM “On behalf of” research
-        text: Research with 14 participants on how assistants and teams act for agents inside the CRM. The findings shaped the roadmap for a multichannel inbox.
-        screen: "[image: research synthesis]"
+        text: Research with 14 agents and administrative staff showed that admins, not agents, are the main users acting on their behalf in the CRM, and that they need the agent’s full email history. The findings put a multichannel inbox on the roadmap.
+        screen: ""
       - mini: q
         title: Checklist Admin Tool v2
-        text: Rebuilt a legacy tool for Brokers of Record as self-service, with dynamic filters, bulk editing and a full checklist item editor. UX satisfaction 4.8/5.
+        text: Rebuilt a legacy tool with hardcoded logic as self-service for Brokers of Record, with dynamic filters, bulk editing and a full checklist item editor. Scenario-based usability tests scored UX satisfaction at 4.8/5.
         screen: "[screen: checklist item editor]"
       - mini: sys
         title: Multi-brand design system
-        text: Figma variables and tokens as a single source of truth, so a new brand re-skins the product instead of rebuilding it. Brand integrations became twice as fast.
+        text: Extended Compass’s existing design system with Figma variables and tokens, so a new brand re-skins the product with no manual rework instead of rebuilding it. Brand integrations became twice as fast.
         screen: "[image: system components]"
-  reflection: "Redesigning one specific workflow, like ICA contract renewals, can have a big impact on company costs. And a scalable brand system made onboarding new brands possible under a single design system."
+  reflection: "Redesigning one specific workflow, like ICA contract renewals, can have a big impact on company costs. And extending the existing design system with brand tokens made it possible to onboard new brands under a single system."
   next: "Measure design system adoption by brand and team, so its value shows up in numbers, not only in faster integrations."
   demo:
     c.try: Try it
@@ -97,11 +97,11 @@ en:
 es:
   sector: PropTech
   years: 2024–2025
-  summary: "Diseño a la escala de una empresa de USD 17B que crece por adquisiciones: operaciones de compliance, research de CRM y un design system que absorbe marcas nuevas."
+  summary: "Diseño a la escala de una empresa de USD 17B que crece por adquisiciones: operaciones de compliance, research de CRM y un design system existente extendido para absorber marcas nuevas."
   homeMetricLabel: de ahorro por año
   highlight: "USD 400k de ahorro anual · integración de marcas 2× más rápida"
   role: Senior product designer (lead individual contributor)
-  scope: Automatización de contratos · Herramientas de compliance · Research de CRM · Design system
+  scope: Renovación de contratos · Herramientas de compliance · Research de CRM · Design system
   team: Transaction Operations, Brokers of Record, producto e ingeniería
   timeline: Principios de 2024 – fines de 2025
   coverAlt: Portada del producto Compass
@@ -109,44 +109,44 @@ es:
     - { value: "$400k", label: de ahorro anual con el flujo de renovación de contratos }
     - { value: "4.8/5", label: de satisfacción UX con la herramienta de checklists de compliance }
     - { value: "2×", label: más rápida la integración de marcas con el sistema multimarca }
-  problem: Cada adquisición, de Christie’s a @properties, traía sus propias herramientas, marcas y pasos de compliance, y los cambios de rutina dependían de ingeniería.
-  did: Automaticé la renovación de contratos, investigué cómo se trabaja en nombre de otros agentes, convertí la herramienta de checklists de compliance en autoservicio y armé un único design system para todas las marcas.
-  result: "USD 400k de ahorro por año, cambios de compliance de rutina sin pasar por ingeniería y marcas nuevas integradas el doble de rápido."
+  problem: Cada adquisición, de Christie’s a @properties, sumaba una marca que el design system no estaba preparado para soportar, mientras los flujos de contratos y compliance tenían cuellos de botella y pasos innecesarios, y los cambios de rutina dependían de ingeniería.
+  did: Simplifiqué la renovación de contratos, investigué cómo el personal administrativo actúa en nombre de los agentes dentro del CRM, convertí la herramienta de checklists de compliance en autoservicio y extendí el design system existente para que soporte todas las marcas.
+  result: "USD 400k de ahorro por año al acortar la ventana de renovación, cambios de compliance de rutina sin pasar por ingeniería y marcas nuevas integradas el doble de rápido."
   story:
     title: Del caos al orden.
     chapters:
       - kicker: Problema
-        title: Crecer comprando, un producto a la vez.
-        text: Christie’s, @properties y Washington Fine Properties llegaron cada una con sus herramientas, marcas y pasos de compliance. La operación escalaba, la experiencia se fragmentaba y cada cambio de compliance necesitaba a un ingeniero.
+        title: La operación creció más rápido que sus bases.
+        text: Christie’s, @properties y Washington Fine Properties trajeron más agentes, más operaciones y una marca nueva. La infraestructura detrás no estaba pensada para esa escala, así que cada adquisición sumaba fricción.
         data: → Una empresa de USD 17B construida a base de adquisiciones
       - kicker: Decisión
         title: Arreglar las bases compartidas, no cada pantalla.
-        text: En lugar de rediseñar producto por producto, me enfoqué en lo que todas las marcas comparten — el flujo de contratos, las reglas de compliance detrás de cada operación y un design system como única fuente de verdad.
-        data: → Un sistema para todas las marcas, con office hours de design system para los equipos
+        text: En lugar de emparchar producto por producto, trabajé sobre lo que usan todas las marcas y todas las operaciones, para que crecer dejara de costar más esfuerzo.
+        data: → Cuatro iniciativas sobre las mismas bases
       - kicker: Resultado
-        title: Las marcas nuevas encajan solas.
-        text: Las renovaciones avanzan sin persecuciones manuales, los equipos de compliance actualizan sus propios checklists y cada adquisición se suma al sistema en vez de sumar ruido.
+        title: Crecer dejó de generar fricción.
+        text: Las marcas nuevas se suman al sistema, las renovaciones se cierran a tiempo y los equipos de compliance trabajan sin esperar a ingeniería.
         data: → USD 400k de ahorro por año · 100% de los cambios de compliance de rutina sin ingeniería
   work:
     title: Cuatro iniciativas, una dirección.
     items:
       - mini: q
-        title: Automatización del servicio de contratos
-        text: Rediseñé el flujo de renovación de contratos del equipo de Transaction Operations y convertí los seguimientos manuales en un servicio automático que ahorra USD 400k por año.
-        screen: "[pantalla: flujo de renovación de contratos]"
+        title: ICA renewals workflow redesign
+        text: Rediseñé el flujo de renovación de contratos ICA para Transaction Operations para reducir fricción, cuellos de botella y pasos innecesarios, y habilité renovaciones en paralelo. La ventana de renovación más corta evita renegociar términos y ahorra USD 400k por año.
+        screen: ""
       - mini: notes
         title: Research de CRM “On behalf of”
-        text: Research con 14 participantes sobre cómo asistentes y equipos actúan en nombre de los agentes dentro del CRM. Los hallazgos definieron el roadmap de una bandeja multicanal.
-        screen: "[imagen: síntesis del research]"
+        text: Research con 14 agentes y administrativos que mostró que los administrativos, no los agentes, son quienes más actúan en su nombre dentro del CRM, y que necesitan todo el historial de mails del agente. Los hallazgos pusieron una bandeja multicanal en el roadmap.
+        screen: ""
       - mini: q
         title: Checklist Admin Tool v2
-        text: Reconstruí una herramienta heredada para los Brokers of Record como autoservicio, con filtros dinámicos, edición masiva y un editor completo de ítems. Satisfacción UX de 4.8/5.
+        text: Reconstruí como autoservicio una herramienta heredada con lógica hardcodeada para los Brokers of Record, con filtros dinámicos, edición masiva y un editor completo de ítems. En tests de usabilidad por escenarios logró una satisfacción UX de 4.8/5.
         screen: "[pantalla: editor de ítems del checklist]"
       - mini: sys
         title: Design system multimarca
-        text: Variables y tokens en Figma como única fuente de verdad, para que una marca nueva cambie la piel del producto en lugar de reconstruirlo. Las integraciones de marca pasaron a ser el doble de rápidas.
+        text: Extendí el design system existente de Compass con variables y tokens en Figma, para que una marca nueva cambie la piel del producto sin retrabajo manual en lugar de reconstruirlo. Las integraciones de marca pasaron a ser el doble de rápidas.
         screen: "[imagen: componentes del sistema]"
-  reflection: "Rediseñar un workflow puntual, como la renovación de contratos ICA, puede tener un gran impacto en los costos de la empresa. Y un sistema de marca escalable resolvió la incorporación de nuevas marcas bajo un mismo design system."
+  reflection: "Rediseñar un workflow puntual, como la renovación de contratos ICA, puede tener un gran impacto en los costos de la empresa. Y extender el design system existente con tokens de marca permitió incorporar marcas nuevas bajo un mismo sistema."
   next: "medir la adopción del design system por marca y por equipo, para que su valor se vea en números y no solo en integraciones más rápidas."
   demo:
     c.try: Probalo

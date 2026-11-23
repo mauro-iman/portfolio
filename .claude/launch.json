@@ -2,6 +2,12 @@
   "version": "0.0.1",
   "configurations": [
     {
+      "name": "film",
+      "runtimeExecutable": "python",
+      "runtimeArgs": ["-m", "http.server", "5190", "--bind", "127.0.0.1", "--directory", "launch/film"],
+      "port": 5190
+    },
+    {
       "name": "explorations",
       "runtimeExecutable": "python",
       "runtimeArgs": [
@@ -42,6 +48,21 @@
         "127.0.0.1"
       ],
       "port": 4330
+    },
+    {
+      "name": "video",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": [
+        "--prefix",
+        "launch/video",
+        "run",
+        "studio",
+        "--",
+        "--port",
+        "3011",
+        "--no-open"
+      ],
+      "port": 3011
     }
   ]
 }

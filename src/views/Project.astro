@@ -8,7 +8,7 @@ import GalleryStrip from '../components/GalleryStrip.astro';
 import CoverMat from '../components/CoverMat.astro';
 import Videos from '../components/Videos.astro';
 import Lightbox from '../components/Lightbox.astro';
-import { dict, translator, url, nextProject } from '../lib/content.js';
+import { dict, translator, url, nextProject, BASE } from '../lib/content.js';
 
 const { lang, p } = Astro.props;
 const D = dict(null, p), t = translator(D, lang), d = p[lang], nx = nextProject(p);
@@ -34,7 +34,14 @@ const needsLb = hasGallery || (p.videos?.length || 0) > 1 || Object.keys(secShot
     </div>
   </section>
 
-  {p.coverImage && (
+  {p.coverVideo && p.coverVideoPage ? (
+    <section class="c-cover has-vid" aria-label={p.title}>
+      <div class="wrap"><div class="c-vid-box rv rise">
+        <div class="mat c-mat vid-mat c-vid"><video class="cover-vid" src={`${BASE}videos/${p.coverVideo}`} muted loop playsinline autoplay preload="auto" aria-label={t('c.coverV')} data-il="c.coverV"></video></div>
+        <button type="button" class="vid-tg" data-vid-tg><span class="vid-ic" aria-hidden="true"></span><span class="vh" data-i="vid.pause">{t('vid.pause')}</span></button>
+      </div></div>
+    </section>
+  ) : p.coverImage && (
     <section class="c-cover" aria-label={p.title}>
       <div class="wrap"><CoverMat c={p} t={t} cls={`mat c-mat rv rise${p.coverFit === 'full' ? ' mat-full' : ''}`} feat eager altKey="c.cover" /></div>
     </section>
