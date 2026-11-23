@@ -94,6 +94,7 @@ const projectKeys = (p, l) => {
   if (d.videoLabel) o['c.vid'] = d.videoLabel;
   if (d.videoTitle) o['c.vid.h'] = d.videoTitle;
   if (p.coverImage) o['c.cover'] = d.coverAlt || p.title;
+  if (p.coverVideo) o['c.coverV'] = d.videoAlt || p.title;
   return o;
 };
 

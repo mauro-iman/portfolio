@@ -558,9 +558,9 @@
     e.preventDefault(); magnetTo(target, '#' + id, a);
   });
 
-  /* ── Cover videos (home): muted loop, with a pause button (WCAG 2.2.2). Reduced motion starts paused. ── */
+  /* ── Cover videos (home cards and project pages): muted loop, with a pause button (WCAG 2.2.2). Reduced motion starts paused. ── */
   document.querySelectorAll('[data-vid-tg]').forEach(btn => {
-    const v = btn.closest('.case').querySelector('video'), lab = btn.querySelector('[data-i]');
+    const v = btn.closest('.case, .c-cover').querySelector('video'), lab = btn.querySelector('[data-i]');
     const sync = () => { const p = v.paused; btn.classList.toggle('is-paused', p); lab.dataset.i = p ? 'vid.play' : 'vid.pause'; lab.textContent = t(lab.dataset.i); };
     if (reduce) { v.removeAttribute('autoplay'); v.pause(); }
     btn.addEventListener('click', () => { v.paused ? v.play() : v.pause(); });

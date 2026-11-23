@@ -5,3 +5,6 @@ dist/
 Thumbs.db
 .env*
 .astro/
+
+# launch film and reel (large renders, licensed audio)
+launch/
