@@ -570,29 +570,41 @@
   });
 
   /* ── Cover videos (home cards and project pages): muted loop, with a pause button (WCAG 2.2.2).
-     Nothing downloads until the video nears the viewport (preload="none" + poster); off screen it pauses.
+     Nothing downloads until the video nears the viewport (preload="none" + poster). Then the whole clip
+     downloads before it plays (poster + tilde loader meanwhile), so a slow connection never makes it stutter
+     and every loop plays from memory. Off screen it pauses.
      Reduced motion or Save-Data: it stays on its poster until the visitor presses play. ── */
   const saveData = navigator.connection && navigator.connection.saveData === true;
+  const fetchVid = v => v._ready || (v._ready = (async () => {
+    v._dl = true; v.closest('.mat').classList.add('is-loading');
+    try {
+      const r = await fetch(v.getAttribute('src')); if (!r.ok) throw new Error(r.status);
+      const url = URL.createObjectURL(await r.blob());
+      await new Promise(res => { v.addEventListener('loadeddata', res, { once: true }); v.addEventListener('error', res, { once: true }); v.src = url; v.load(); });
+    } catch (e) { /* fall back to streaming the original file */ }
+    v._dl = false; v.closest('.mat').classList.remove('is-loading');
+  })());
+  const startVid = v => { v._want = true; fetchVid(v).then(() => { if (v._want && v.paused) v.play().catch(() => {}); }); };
+  const stopVid = v => { v._want = false; if (!v.paused) v.pause(); };
   const vidIO = 'IntersectionObserver' in window ? new IntersectionObserver(es => es.forEach(e => {
     const v = e.target;
-    if (e.isIntersecting) { if (v.dataset.user !== 'paused') v.play().catch(() => {}); }
-    else if (!v.paused) v.pause();
+    if (e.isIntersecting) { if (v.dataset.user !== 'paused') startVid(v); } else stopVid(v);
   }), { rootMargin: '200px 0px' }) : null;
   document.querySelectorAll('[data-vid-tg]').forEach(btn => {
     const v = btn.closest('.case, .c-cover').querySelector('video'), lab = btn.querySelector('[data-i]'), box = v.closest('.mat');
     const auto = !reduce && !saveData;
-    const off = () => v.paused && (v.dataset.user === 'paused' || !auto);
+    const off = () => (v.paused && !v._want) && (v.dataset.user === 'paused' || !auto);
     const sync = () => { const p = off(); btn.classList.toggle('is-paused', p); lab.dataset.i = p ? 'vid.play' : 'vid.pause'; lab.textContent = t(lab.dataset.i); };
     loader(box);
-    const busy = () => { if (v.readyState < 3) box.classList.add('is-loading'); }, idle = () => box.classList.remove('is-loading');
+    const busy = () => { if (v.readyState < 3) box.classList.add('is-loading'); }, idle = () => { if (!v._dl) box.classList.remove('is-loading'); };
     v.addEventListener('play', () => { busy(); sync(); });
     v.addEventListener('waiting', busy); v.addEventListener('playing', idle); v.addEventListener('canplay', () => { if (!v.paused) idle(); });
     v.addEventListener('pause', () => { idle(); sync(); }); v.addEventListener('error', idle);
     btn.addEventListener('click', () => {
-      if (v.paused) { v.dataset.user = ''; v.play().catch(() => {}); } else { v.dataset.user = 'paused'; v.pause(); }
+      if (v.paused && !v._want) { v.dataset.user = ''; startVid(v); } else { v.dataset.user = 'paused'; stopVid(v); }
       sync();
     });
-    if (auto) { if (vidIO) vidIO.observe(v); else v.play().catch(() => {}); }
+    if (auto) { if (vidIO) vidIO.observe(v); else startVid(v); }
     sync();
   });
 
